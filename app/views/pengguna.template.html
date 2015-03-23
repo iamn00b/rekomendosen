@@ -1,0 +1,66 @@
+{% extends "global.template.html" %}
+
+{% block body %}
+	<nav class="rd-nav teal lighten-2">
+    <div class="nav-wrapper">
+    	<div class="left teal lighten-3 profil-button">
+    		<a href="#" data-activates="sidebar" class="rd-profil-collapse"><i class="mdi-navigation-menu"></i></a>
+    	</div>
+
+    	<div class="left teal lighten-3 logo">
+	      <a href="#!" class="hide-on-small-only">Rd</a>
+	      <a href="#!" class="left teal lighten-3 rd-nav-logo center hide-on-med-and-up">Rekomendosen</a>
+	    </div>
+
+      <form class="left teal lighten-1 pencarian hide-on-small-only">
+        <div class="input-field">
+          <input id="search" type="text" placeholder="pencarian" required>
+          <label for="search"><i class="mdi-action-search"></i></label>
+        </div>
+      </form>
+
+      <ul class="right hide-on-small-only">
+        <li><a href="components.html">Dosen</a></li>
+        <li><a href="javascript.html">Mata Kuliah</a></li>
+        <!-- <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li> -->
+      </ul>
+
+      <ul id="sidebar" class="profil side-nav">
+
+      	<li class="logo">
+      		RDss
+      	</li>
+
+      	<li class="detail">
+	      	<p class="nama">Hai, <strong>{{ pengguna.nama }}</strong></p>
+	      	<p>NPM <strong>{{ pengguna.npm }}</strong></p>
+      	</li>
+
+      	<!-- <li class="achievement-list">
+      		<p>Achievement</p>
+      	</li> -->
+
+      	<li class="action">
+		      <ul class="tabs">
+		        <li class="tab col s6"><a href="#test1" class="active">Notifikasi</a></li>
+		        <li class="tab col s6"><a href="#test2">Riwayat</a></li>
+		      </ul>
+			    <div id="test1" class="col s12">Test 1</div>
+			    <div id="test2" class="col s12">Test 2</div>
+      	</li>
+		  </ul>
+		  
+    </div>
+  </nav>
+
+  <div class="container">
+	{% block content %}
+	{% endblock %}
+	</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	$(".rd-profil-collapse").sideNav();
+</script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+    "require": {
+        "slim/slim": "~2.5",
+        "slim/views": "*",
+        "twig/twig": "*",
+        "illuminate/database": "*",
+        "ristek/sso": "*"
+    },
+    "autoload": {
+        "files": [ "app/config/database.php" ],
+        "classmap": [ "app/models" ]
+    }
+}

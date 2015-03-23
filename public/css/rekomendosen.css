@@ -1,0 +1,40 @@
+/* ---------------------------------------- */
+/* ---------- NAVIGATION & PROFILE -------- */
+/* ---------------------------------------- */
+.rd-nav .profil-button {
+	padding : 0 0 0 2rem;
+}
+.rd-nav .logo, 
+.rd-nav .pencarian {
+	padding: 0 2rem;
+}
+
+/* warna teks placeholder di input, gak bisa digabung
+   selectornya */ 
+.rd-nav .pencarian ::-webkit-input-placeholder 	{ color: rgba(255, 255, 255, 0.4); }
+.rd-nav .pencarian :-moz-placeholder 			{ color: rgba(255, 255, 255, 0.4); }
+.rd-nav .pencarian ::-moz-placeholder 			{ color: rgba(255, 255, 255, 0.4); }
+.rd-nav .pencarian :-ms-input-placeholder 		{ color: rgba(255, 255, 255, 0.4); }
+
+.rd-nav .profil li {
+	color: #333;
+}
+
+.rd-nav .profil li:hover{
+	background: inherit;
+}
+
+.rd-nav .profil li p {
+	line-height: 100%;
+}
+
+.rd-nav .profil li.logo {
+	text-align: center;
+	margin-top: 32px;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #ddd;
+}
+
+.rd-nav .profil .nama {
+	font-size: 20px;
+}
