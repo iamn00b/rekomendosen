@@ -38,3 +38,18 @@
 .rd-nav .profil .nama {
 	font-size: 20px;
 }
+
+/*index*/
+.rd-footer{
+	position: absolute;
+	bottom:0;
+	width:100%;
+}
+.rd-bottom{
+	padding-top: 215px;
+	position:relative;
+}
+.rd-bottom-org{
+	padding-top: 53px;
+	position:relative;
+}
