@@ -4,10 +4,16 @@
 .rd-nav .profil-button {
 	padding : 0 0 0 2rem;
 }
-.rd-nav .logo, 
+
 .rd-nav .pencarian {
-	padding: 0 2rem;
+	padding: 0 2rem 0 2rem;
+	
 }
+
+.rd-nav .logo{
+	padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
 
 /* warna teks placeholder di input, gak bisa digabung
    selectornya */ 
@@ -52,4 +58,8 @@
 .rd-bottom-org{
 	padding-top: 53px;
 	position:relative;
+}
+
+.rd-logo{
+	padding-top: 10px;
 }
