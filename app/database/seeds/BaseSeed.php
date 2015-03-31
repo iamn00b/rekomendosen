@@ -16,6 +16,78 @@ class BaseSeed {
 		$dosen2->jeniskelamin = "Laki-Laki";
 		$dosen2->ttl = date("1999-07-22");
 		
+		$dosenbela = new Dosen;
+		$dosenbela->nip = "030603001";
+		$dosenbela->nama = "Prof. Belawati H. Widjaja, Dra, M.Sc., Ph.D.";
+		$dosenbela->jeniskelamin = "Perempuan";
+		$dosenbela->ttl = date("1938-12-27");
+		
+		$dosenaniati = new Dosen;
+		$dosenaniati->nip = "194805291975012001";
+		$dosenaniati->nama = "Prof. Aniati Murni Arymurthy , Ir, M.Sc, Dr.";
+		$dosenaniati->jeniskelamin = "Perempuan";
+		$dosenaniati->ttl = date("1948-05-29");
+		
+		$dosenheru = new Dosen;
+		$dosenheru->nip = "196104191992031001";
+		$dosenheru->nama = "Prof. Heru Suhartanto, Drs, M.Sc , Ph.D.";
+		$dosenheru->jeniskelamin = "Laki-Laki";
+		$dosenheru->ttl = date("1961-04-19");
+		
+		$dosenchan = new Dosen;
+		$dosenchan->nip = "196111251992031001";
+		$dosenchan->nama = "Prof. T. Basaruddin,Drs, M.Sc, PhD";
+		$dosenchan->jeniskelamin = "Laki-Laki";
+		$dosenchan->ttl = date("1961-11-25");
+		
+		$dosentoemin = new Dosen;
+		$dosentoemin->nip = "194901071976031001";
+		$dosentoemin->nama = "Prof. Toemin A. Masoem, M.Sc, Dr.";
+		$dosentoemin->jeniskelamin = "Laki-Laki";
+		$dosentoemin->ttl = date("1949-01-07");
+		
+		$dosenzainal = new Dosen;
+		$dosenzainal->nip = "195912241995121001";
+		$dosenzainal->nama = "Prof. Zainal Arifin Hasibuan, Ir.,MLS, PhD.";
+		$dosenzainal->jeniskelamin = "Laki-Laki";
+		$dosenzainal->ttl = date("1959-12-24");
+		
+		$dosennizar = new Dosen;
+		$dosennizar->nip = "197607242000121001";
+		$dosennizar->nama = "Achmad Nizar Hidayanto, S.Kom, M.Kom. Dr.";
+		$dosennizar->jeniskelamin = "Laki-Laki";
+		$dosennizar->ttl = date("1976-07-24");
+		
+		$dosenade = new Dosen;
+		$dosenade->nip = "197612122010121001";
+		$dosenade->nama = "Ade Azurat, S.Kom., Dr.";
+		$dosenade->jeniskelamin = "Laki-Laki";
+		$dosenade->ttl = date("1976-12-12");
+		
+		$dosenadhi = new Dosen;
+		$dosenadhi->nip = "195906231997021001";
+		$dosenadhi->nama = "Adhi Yuniarto L.Y., Ir, M.Kom.";
+		$dosenadhi->jeniskelamin = "Laki-Laki";
+		$dosenadhi->ttl = date("1111-06-23");
+		
+		$dosenalfan = new Dosen;
+		$dosenalfan->nip = "121303009";
+		$dosenalfan->nama = "Alfan Farizki Wicaksono, ST., M.Sc.";
+		$dosenalfan->jeniskelamin = "Laki-Laki";
+		$dosenalfan->ttl = date("1111-11-11");
+		
+		$dosenamril = new Dosen;
+		$dosenamril->nip = "120703001";
+		$dosenamril->nama = "Amril Syalim, S.Kom. M.Eng.";
+		$dosenamril->jeniskelamin = "Laki-Laki";
+		$dosenamril->ttl = date("1111-11-11");
+		
+		$dosenbagyo = new Dosen;
+		$dosenbagyo->nip = "130517315";
+		$dosenbagyo->nama = "Bagyo Y. Moeliodihardjo, Ir, M.Sc.";
+		$dosenbagyo->jeniskelamin = "Laki-Laki";
+		$dosenbagyo->ttl = date("1111-11-11");
+		
 		$dosen3 = new Dosen;
 		$dosen3->nip = "1114";
 		$dosen3->nama = "Caca";
@@ -50,6 +122,18 @@ class BaseSeed {
 		$dosen1->save();
 		$dosen2->save();
 		$dosen3->save();
+		$dosenbela->save();
+		$dosenaniati->save();
+		$dosenheru->save();
+		$dosenchan->save();
+		$dosentoemin->save();
+		$dosenzainal->save();
+		$dosennizar->save();
+		$dosenade->save();
+		$dosenadhi->save();
+		$dosenalfan->save();
+		$dosenamril->save();
+		$dosenbagyo->save();
 		$matkul1->save();
 		$matkul2->save();
 		$review1->save();
