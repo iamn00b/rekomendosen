@@ -1,0 +1,12 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}RUD Review{% endblock %}
+
+{% block content %}
+		{% for rvw in review %}
+		<li>{{ rvw.jenis}}</li>
+		<li>{{ rvw.isi}}</li>
+		<li>{{ rvw.dosen_nip}}</li>
+		<A href = "{{ BASE_URL }}/admin/rudreview/delete/{{ rvw.id}}">Delete</a>
+		{% endfor %}
+{% endblock %}

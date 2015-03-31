@@ -3,5 +3,11 @@
 {% block title %}CRUD Dosen{% endblock %}
 
 {% block content %}
-
+		{% for dsn in dosen %}
+		<li>{{ dsn.nip}}</li>
+		<li>{{ dsn.nama}}</li>
+		<li>{{ dsn.jeniskelamin}}</li>
+		<li>{{ dsn.ttl}}</li>
+		<A href = "{{ BASE_URL }}/admin/cruddosen/delete/{{ dsn.id}}">Delete</a>
+		{% endfor %}
 {% endblock %}

@@ -70,4 +70,40 @@ class Home extends _MainController {
 		$data['matkul'] = $matkul;
 		$this->render('pencarian.html',$data);
 	}
+	
+	function tampilcruddosen() {
+		$dosen = Dosen::all();
+		$data = array();
+		$data['dosen'] = $dosen;
+		$this->render('cruddosen.html',$data);
+	}
+	
+	function deletecruddosen($id) {
+		$dosen = Dosen::where('id', '=', $id)->delete();
+		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
+	}
+	
+	function tampilrudreview() {
+		$review = Review::all();
+		$data = array();
+		$data['review'] = $review;
+		$this->render('rudreview.html',$data);
+	}
+	
+	function deleterudreview($id) {
+		$review = Review::where('id', '=', $id)->delete();
+		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
+	}
+	
+	function tampilrudkomentar() {
+		$komentar = Komentar::all();
+		$data = array();
+		$data['komentar'] = $komentar;
+		$this->render('rudkomentar.html',$data);
+	}
+	
+	function deleterudkomentar($id) {
+		$komentar = Komentar::where('id', '=', $id)->delete();
+		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
+	}
 }
