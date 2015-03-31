@@ -10,13 +10,13 @@ class DosenMigration {
     {
         Capsule::schema()->dropIfExists('dosen');
         Capsule::schema()->create('dosen', function($table) {
+            $table->increments('id');
             $table->string('nip');
             $table->string('nama');
             $table->string('jeniskelamin');
             $table->date('ttl');
             $table->timestamps();
 
-            $table->primary('nip');
         });
     }
 }
