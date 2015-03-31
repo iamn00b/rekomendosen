@@ -20,4 +20,11 @@ class Home extends _MainController {
 	function logout() {
 		Auth::logout();
 	}
+	
+	function tampilandosen() {
+		$daftardosen= Dosen::all();
+		$this->render('dosen.html',array('dosen'=>$daftardosen));
+		
+		
+	}
 }

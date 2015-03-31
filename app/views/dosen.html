@@ -1,0 +1,12 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}DaftarDosen{% endblock %}
+
+{% block content %}
+	{% for dsn in dosen %}
+		<h2>{{ dsn.nama }}</h2>
+		<p>{{ dsn.nip }}</p>
+		<p>{{ dsn.ttl }}</p>
+		<p>{{ dsn.jeniskelamin }}</p>
+	{% endfor %}
+{% endblock %}

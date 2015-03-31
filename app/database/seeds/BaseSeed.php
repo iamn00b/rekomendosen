@@ -4,9 +4,11 @@ class BaseSeed {
 
     function run()
     {
-        // $dosen = new Dosen;
-        // $dosen->nik = "0089645";
-        // $dosen->nama = "Budi Gugun";
-        // $dosen->save();
+		$dosen1 = new Dosen;
+        $dosen1->nip = "000002";
+        $dosen1->nama = "Hadaiq";
+		$dosen1->ttl = date("1999-09-23");
+		$dosen1->jeniskelamin = "Cewe";
+        $dosen1->save();
     }
 }
