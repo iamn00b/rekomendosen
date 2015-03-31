@@ -1,0 +1,12 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}RD Feedback{% endblock %}
+
+{% block content %}
+		{% for fd in feedback %}
+		<li>{{ fd.rating}}</li>
+		<li>{{ fd.isi}}</li>
+		<li>{{ fd.pengguna_npm}}</li>
+		<A href = "{{ BASE_URL }}/admin/rdfeedback/delete/{{ fd.id}}">Delete</a>
+		{% endfor %}
+{% endblock %}

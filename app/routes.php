@@ -10,15 +10,19 @@ $app->get('/rinciandosen/:id',	function ($id) use ($app) 	{ (new Home())->tampil
 $app->get('/rincianmatkul/:id', function ($id) use ($app) 	{ (new Home())->tampilrincianmatkul($id); 		})->name('rincianmatkul');
 $app->get('/pencarian/:query', 	function ($query) use ($app){ (new Home())->tampilhasilpencarian($query); 	})->name('pencarian');
 
-$app->post('/feedback/', 		function () use ($app)		{ (new Home())->welcome(); 						})->name('feedback');
+$app->post('/feedback/', 		function () use ($app)		{ (new Home())->isifeedback(); 						})->name('feedback');
 
 
 /* ADMIN */
 $app->get('/admin/cruddosen/', function () use ($app) 		{ (new Home())->tampilcruddosen(); 		})->name('cruddosen');
 $app->get('/admin/cruddosen/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deletecruddosen($id); 		})->name('dosendelete');
+$app->get('/admin/crudmatakuliah/', function () use ($app) 		{ (new Home())->tampilcrudmatakuliah(); 		})->name('crudmatakuliah');
+$app->get('/admin/crudmatakuliah/delete/:kodemk', function ($kodemk) use ($app) 		{ (new Home($kodemk))->deletecrudmatakuliah($kodemk); 		})->name('matakuliahdelete');
 $app->get('/admin/rudreview/', function () use ($app) 		{ (new Home())->tampilrudreview(); 		})->name('rudreview');
 $app->get('/admin/rudreview/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterudreview($id); 		})->name('reviewdelete');
 $app->get('/admin/rudkomentar/', function () use ($app) 		{ (new Home())->tampilrudkomentar(); 		})->name('rudkomentar');
 $app->get('/admin/rudkomentar/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterudkomentar($id); 		})->name('komentardelete');
 $app->get('/admin/crudpengguna/', function () use ($app) 		{ (new Home())->tampilcrudpengguna(); 		})->name('crudpengguna');
-$app->get('/admin/crudpengguna/delete/:id', function ($npm) use ($app) 		{ (new Home($npm))->deletecrudpengguna($npm); 		})->name('penggunadelete');
+$app->get('/admin/crudpengguna/delete/:npm', function ($npm) use ($app) 		{ (new Home($npm))->deletecrudpengguna($npm); 		})->name('penggunadelete');
+$app->get('/admin/rdfeedback/', function () use ($app) 		{ (new Home())->tampilrdfeedback(); 		})->name('rdfeedback');
+$app->get('/admin/rdfeedback/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterdfeedback($id); 		})->name('feedbackdelete');

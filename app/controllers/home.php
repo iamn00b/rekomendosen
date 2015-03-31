@@ -83,6 +83,18 @@ class Home extends _MainController {
 		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
 	}
 	
+	function tampilcrudmatakuliah() {
+		$matakuliah = Matakuliah::all();
+		$data = array();
+		$data['matakuliah'] = $matakuliah;
+		$this->render('crudmatakuliah.html',$data);
+	}
+	
+	function deletecrudmatakuliah($kodemk) {
+		$matakuliah = Matakuliah::where('kodemk', '=', $kodemk)->delete();
+		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
+	}
+	
 	function tampilrudreview() {
 		$review = Review::all();
 		$data = array();
@@ -117,5 +129,31 @@ class Home extends _MainController {
 	function deletecrudpengguna($npm) {
 		$pengguna = Pengguna::where('npm', '=', $npm)->delete();
 		$this->app->response->redirect($this->app->urlFor('crudpengguna'), 400);
+	}
+	
+	function isifeedback() {
+		$feedback = $this->app->request->post();
+		$rating = $feedback['rating'];
+		$isi = $feedback['feedback'];
+		$pengguna = Auth::getPengguna();
+		$npm = $pengguna->npm;
+		$feedback1 = new Feedback;
+		$feedback1->rating = $rating;
+		$feedback1->isi = $isi;
+		$feedback1->pengguna_npm = $npm;
+		$feedback1->save();
+		$this->render('home.html');
+	}
+	
+	function tampilrdfeedback() {
+		$feedback = Feedback::all();
+		$data = array();
+		$data['feedback'] = $feedback;
+		$this->render('rdfeedback.html',$data);
+	}
+	
+	function deleterdfeedback($id) {
+		$feedback = Feedback::where('id', '=', $id)->delete();
+		$this->app->response->redirect($this->app->urlFor('rdfeedback'), 400);
 	}
 }
