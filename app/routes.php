@@ -11,7 +11,10 @@ $app->get('/dosen', function () use ($app) 			{
 
 	(new _MainController())->render('dosen.html');
 })->name('welcome');
-$app->get('/mata-kuliah', function () use ($app) 			{ 
+$app->get('/matakuliah', function () use ($app) 			{ 
+
+	(new _MainController())->render('matakuliah.html');
+})->name('welcome');$app->get('/mata-kuliah', function () use ($app) 			{ 
 
 	(new _MainController())->render('mata-kuliah.html');
 })->name('welcome');

@@ -37,12 +37,41 @@
 .rd-nav .profil li.logo {
 	text-align: center;
 	margin-top: 32px;
-	margin-bottom: 16px;
+	margin-bottom: 40px;
 	border-bottom: 1px solid #ddd;
 }
 
+#sidebar{
+	font-size:18px;
+}
+
+.rd-nav .profil .detail{
+	line-height:30px;
+}
+
 .rd-nav .profil .nama {
-	font-size: 20px;
+	font-size: 30px;
+}
+
+.jumlahrekomendasi{
+	line-height:40px;
+}
+
+.jumlahrekomendasi .rekomendasi{
+	color: #80cbc4;
+}
+
+.jumlahrekomendasi .tidakrekomendasi{
+	color: #f29292;
+}
+
+.achievement-list{
+	font-size:14px;
+	line-height:20px;
+}
+
+.rd-nav .profil .action{
+	margin-top:60px;
 }
 
 /*index*/
