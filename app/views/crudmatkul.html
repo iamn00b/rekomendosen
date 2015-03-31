@@ -1,0 +1,13 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}CRUD Mata Kuliah{% endblock %}
+
+{% block content %}	
+		{% for matkul in matakuliah %}
+	</li>{{ matkul.nama }} </li>
+	</li>{{ matkul.sks }}  </li>
+	</li>{{ matkul.prodi }} </li>
+		{% endfor %}
+		<A href = "/admin/crudmatkul/delete/{{matkul.id}}"> Delete</a>
+		
+{% endblock %}

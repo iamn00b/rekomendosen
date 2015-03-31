@@ -146,29 +146,23 @@ class BaseSeed {
 		$matkulfisdas2->sks = 3;
 		$matkulfisdas2->prodi = "Fakultas";
 		
-		$matkulfisdas2 = new MataKuliah;
-		$matkulfisdas2->kodemk = "IKO12500";
-		$matkulfisdas2->nama = "Pengantar Sistem Dijital";
-		$matkulfisdas2->sks = 4;
-		$matkulfisdas2->prodi = "Fakultas";
+		$matkulpsd = new MataKuliah;
+		$matkulpsd->kodemk = "IKO12500";
+		$matkulpsd->nama = "Pengantar Sistem Dijital";
+		$matkulpsd->sks = 4;
+		$matkulpsd->prodi = "Fakultas";
 		
-		$matkulfisdas2 = new MataKuliah;
-		$matkulfisdas2->kodemk = "IKO21502";
-		$matkulfisdas2->nama = "Pengantar Organisasi Komputer";
-		$matkulfisdas2->sks = 3;
-		$matkulfisdas2->prodi = "Fakultas";
+		$matkulpok = new MataKuliah;
+		$matkulpok->kodemk = "IKO21502";
+		$matkulpok->nama = "Pengantar Organisasi Komputer";
+		$matkulpok->sks = 3;
+		$matkulpok->prodi = "Fakultas";
 		
-		$matkulfisdas2 = new MataKuliah;
-		$matkulfisdas2->kodemk = "IKO21105";
-		$matkulfisdas2->nama = "Matematika Dasar 2";
-		$matkulfisdas2->sks = 4;
-		$matkulfisdas2->prodi = "Fakultas";
-		
-		$matkulfisdas2 = new MataKuliah;
-		$matkulfisdas2->kodemk = "IKO12106";
-		$matkulfisdas2->nama = "Fisika Dasar 2";
-		$matkulfisdas2->sks = 3;
-		$matkulfisdas2->prodi = "Fakultas";
+		$matkulmatdas2 = new MataKuliah;
+		$matkulmatdas2->kodemk = "IKO21105";
+		$matkulmatdas2->nama = "Matematika Dasar 2";
+		$matkulmatdas2->sks = 4;
+		$matkulmatdas2->prodi = "Fakultas";
 		
 		$matkulfisdas2 = new MataKuliah;
 		$matkulfisdas2->kodemk = "IKO12106";
@@ -182,7 +176,16 @@ class BaseSeed {
 		$matkulfisdas2->sks = 3;
 		$matkulfisdas2->prodi = "Fakultas";
 		
-		-----------------------------------------------------
+		$matkulfisdas2 = new MataKuliah;
+		$matkulfisdas2->kodemk = "IKO12106";
+		$matkulfisdas2->nama = "Fisika Dasar 2";
+		$matkulfisdas2->sks = 3;
+		$matkulfisdas2->prodi = "Fakultas";
+		
+		
+		$feedback = new Feedback;
+		$feedback->isi = "kotak feedbacknya";
+		
 		
 		$review1 = new Review;
 		$review1->jenis = "baik";

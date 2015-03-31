@@ -1,0 +1,14 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+		<li>Isi : 
+		{% for form in form %}
+			{% if feedback.id == _id %} ///
+			<li>Isi : {{ form.isi}}</li>
+			{% endif %}
+		{% endfor %} </li>
+	
+		
+{% endblock %}

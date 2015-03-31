@@ -16,15 +16,45 @@ class Home extends _MainController {
 	function index() {
 		$this->render('home.html'); 
 	}
-
 	function logout() {
 		Auth::logout();
 	}
 	
+	function tampilrincianmatkul() {
+		$daftar = Matakuliah::find('IK00001');
+		$daftar->dosens;
+		$data = array();
+		$data['matakuliah'] = $daftar;
+		$this->render('rincianmatkul.html',$data);
+		
+		
+	function tampilmatkul() {
+		$daftar = Matakuliah::all();
+		foreach ($daftar as $in) {
+			$in->dosens;
+		}
+		$data = array();
+		$data['matakuliah'] = $daftar;
+		$this->render('matakuliah.html',$data);
+	}
+	}
 	function tampilandosen() {
 		$daftardosen= Dosen::all();
 		$this->render('dosen.html',array('dosen'=>$daftardosen));
-		
-		
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function tampilcrudmatkul() {
+		$matkul= Matakuliah::all();
+		$data = array();
+		$data['matakuliah'] = $matkul;
+		$this->render('crudmatkul.html',$data);
 	}
 }
