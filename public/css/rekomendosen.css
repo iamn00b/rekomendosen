@@ -92,3 +92,16 @@
 .rd-logo{
 	padding-top: 10px;
 }
+
+/*daftar dosen*/
+.cap{
+	padding-left: 0.3rem;
+	margin-top: -20px;
+	margin-bottom: 30px;
+}
+.matkul{
+	letter-spacing: -1pt;
+}
+.lain{
+	text-decoration: underline;
+}
