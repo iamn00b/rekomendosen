@@ -182,7 +182,7 @@ class BaseSeed {
 		$matkulfisdas2->sks = 3;
 		$matkulfisdas2->prodi = "Fakultas";
 		
-		-----------------------------------------------------
+		// -----------------------------------------------------
 		
 		$review1 = new Review;
 		$review1->jenis = "baik";

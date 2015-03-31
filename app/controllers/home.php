@@ -46,8 +46,8 @@ class Home extends _MainController {
 		$this->render('rincianmatkul.html',$data);
 	}
 	
-	function tampilrinciandosen() {
-		$dosen = Dosen::find('1112');
+	function tampilrinciandosen($id) {
+		$dosen = Dosen::find($id);
 		$temp = $dosen->nip;
 		$daftarreview = Review::where('dosen_nip','=', $temp)->get();
 		$daftarkomentar = Komentar::all();
