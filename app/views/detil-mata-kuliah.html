@@ -3,45 +3,43 @@
 {% block title %}Daftar Mata Kuliah{% endblock %}
 
 {% block content %}
-	<h2>Analisis Numerik</h2>
-	<h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6>      
-	<div class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class=" card card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-          <div class="row">
-            <div class="col s8">
-              <span class="black-text">
+<h2>Analisis Numerik</h2>
+  <h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6>      
+    <div class="col s12 m4 offset-m2 l6 offset-l3">
+      <div class="card-panel grey lighten-5">
+        <div class="row">
+          <div class="col s9">
+            <div class="black-text detil-matkul">
                 <h4>Deskripsi Singkat</h4>  
                 <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-              </span>
-              <span class="black-text">
-                <h4>Pernah Diajar Oleh</h4> 
-                <div class="row valign-wrapper"> 
-                  <div class="col s2">
-                    <img src="{{ BASE_URL }}img/tes.jpg" alt="" class="circle responsive-img small">
-                  </div>
-                  <div class="col s2">
-                    <img src="{{ BASE_URL }}img/tes.jpg" alt="" class="circle responsive-img small">
-                  </div>
-                </div>
-              </span>
             </div>
-            <div class="col s4">
-              <span class="teal-text text-lighten-3 center-align">
-                <h5>Semester</h5>
-              <h1 style="line-height: 5px;"><strong>6</strong></h5>
-              </span>
+            <div class="black-text detil-matkul">
+              <h4>Pernah Diajar Oleh</h4> 
+              <div class="row valign-wrapper"> 
+                <div class="col s2">
+                  <img src="{{ BASE_URL }}img/tes.jpg" alt="" class="circle responsive-img small">
+                </div>
+                <div class="col s2">
+                  <img src="{{ BASE_URL }}img/tes.jpg" alt="" class="circle responsive-img small">
+                </div>
+              </div>
+            </div>
+            <div class="black-text detil-matkul">
+              <h4>Bobot SKS</h4>  
+              <p>3 sks</p>
+            </div>
+            <div class="black-text">
+              <h4>Dibuka Pada Semester</h4>  
+              <p>Genap</p>
             </div>
           </div>
-	        <div class="row">
-		        <div class="col s12 m4 l2">
-	                <h6 class="black-text"><strong>Dosen Pengajar:</strong></h6>
-		        </div>
-		        <div class="col s12 m4 l8">
-	              	<span class="black-text ">
-	                	<h6>Dosen A, Dosen B, <a href="detil-mata-kuliah" class="lain teal-text text-lighten-3">lainnya...</a></h6>
-	              	</span>
-		        </div>
-	        </div>
+          <div class="col s3">
+            <div class="teal-text text-lighten-3 center-align">
+              <h4>Semester</h4>
+              <h1 style="line-height: 5px;"><strong>6</strong></h5>
+            </div>
+          </div>
         </div>
-      </div>     
+      </div>
+    </div>     
 {% endblock %}
