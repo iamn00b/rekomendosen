@@ -61,4 +61,11 @@ class Home extends _MainController {
 		$data['report'] = $daftarreport;
 		$this->render('rinciandosen.html',$data);
 	}
+	
+	function tampilhasilpencarian($query) {
+		$dosen = Dosen::where('nama','=', $query)->get();
+		$data = array();
+		$data['dosen'] = $dosen->get(0);
+		$this->render('pencarian.html',$data);
+	}
 }
