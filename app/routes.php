@@ -7,3 +7,4 @@ $app->get('/matakuliah/', function () use ($app) 		{ (new Home())->tampilmatkul(
 $app->get('/logout/', function () use ($app) 	{ (new Home())->logout(); 		})->name('logout');
 $app->get('/rinciandosen/', function () use ($app) 		{ (new Home())->tampilrinciandosen(); 		})->name('home');
 $app->get('/rincianmatkul/', function () use ($app) 		{ (new Home())->tampilrincianmatkul(); 		})->name('home');
+$app->get('/pencarian/:query', function ($query) use ($app) 		{ (new Home())->tampilhasilpencarian($query); 		})->name('home');
