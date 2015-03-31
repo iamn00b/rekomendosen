@@ -63,9 +63,11 @@ class Home extends _MainController {
 	}
 	
 	function tampilhasilpencarian($query) {
-		$dosen = Dosen::where('nama','=', $query)->get();
+		$dosen = Dosen::where('nama','LIKE', "%".$query."%")->get();
+		$matkul = MataKuliah::where('nama','LIKE', "%".$query."%")->get();
 		$data = array();
-		$data['dosen'] = $dosen->get(0);
+		$data['dosen'] = $dosen;
+		$data['matkul'] = $matkul;
 		$this->render('pencarian.html',$data);
 	}
 }
