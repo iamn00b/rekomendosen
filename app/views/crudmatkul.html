@@ -3,11 +3,11 @@
 {% block title %}CRUD Mata Kuliah{% endblock %}
 
 {% block content %}	
-		{% for matkul in matakuliah %}
-	</li>{{ matkul.nama }} </li>
-	</li>{{ matkul.sks }}  </li>
-	</li>{{ matkul.prodi }} </li>
+	{% for matkul in matakuliah %}
+	<li>{{ matkul.nama }} </li>
+	<li>{{ matkul.sks }}  </li>
+	<li>{{ matkul.prodi }} </li>
 		{% endfor %}
-		<A href = "/admin/crudmatkul/delete/{{matkul.id}}"> Delete</a>
+		<A href = "{{BASE_URL}}/admin/crudmatkul/delete/{{matkul.id}}"> Delete</a>
 		
 {% endblock %}

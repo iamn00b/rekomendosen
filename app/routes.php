@@ -6,4 +6,4 @@ $app->get('/dosen/', function () use ($app) 	{ (new Home())->tampilandosen(); 		
 $app->get('/logout/', function () use ($app) 	{ (new Home())->logout(); 		})->name('logout');
 
 $app->get('/admin/crudmatkul/', function () use ($app) 	{ (new Home())->tampilcrudmatkul(); })->name('home');
-$app->get('/admin/crudmatkul/delete/id', function ($id) use ($app) 	{ (new Home())->deletecrudmatkul(id); })->name('matkuldelete');
+$app->get('/admin/crudmatkul/delete/:id', function ($id) use ($app) 	{ (new Home())->deletecrudmatkul(id); })->name('matkuldelete');

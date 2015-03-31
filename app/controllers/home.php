@@ -43,18 +43,16 @@ class Home extends _MainController {
 		$this->render('dosen.html',array('dosen'=>$daftardosen));
 	}	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	function tampilcrudmatkul() {
 		$matkul= Matakuliah::all();
 		$data = array();
 		$data['matakuliah'] = $matkul;
 		$this->render('crudmatkul.html',$data);
+	}
+	
+	function deletecrudmatkul($id) {
+		$dosen = Matakuliah::where('id', '=', $id)->delete();
+		$this->app->response->redirect($this->app->urlFor('crudmatkul'), );
 	}
 }
