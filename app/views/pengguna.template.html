@@ -57,10 +57,41 @@
 	{% block content %}
 	{% endblock %}
 	</div>
+
+  <div class="fixed-action-btn" style="bottom: 25px; right: 45px;">
+    <a class="modal-trigger waves-effect waves-white btn-floating btn-large teal lighten-1 tooltipped" href="#feedback-dialog" data-position="top" data-delay="50" data-tooltip="Beri Feedback">
+      <i class="large mdi-content-add"></i>
+    </a>
+  </div>
+
+  <!-- Modal Feedback -->
+  <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
+    <div class="modal-content">
+      <h4>Beri Feedback</h4>
+      <p>A bunch of text</p>
+      
+      <div class="range-field">
+        <input type="range" id="rating" name="rating" min="1" max="5" />
+      </div>
+
+      <div class="input-field">
+        <textarea id="feedback" name="feedback" class="materialize-textarea"></textarea>
+        <label for="feedback">Feedback</label>
+      </div>
+        
+      <label>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="green waves-effect waves-white btn">Kirim</a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+    </div>
+  </form>
 {% endblock %}
 
 {% block js %}
 <script>
-	$(".rd-profil-collapse").sideNav();
+	$(".rd-profil-collapse").sideNav(); 
+  $('.modal-trigger').leanModal();
+  $('select').material_select();
 </script>
 {% endblock %}
