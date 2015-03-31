@@ -20,4 +20,5 @@ $app->get('/admin/rudreview/', function () use ($app) 		{ (new Home())->tampilru
 $app->get('/admin/rudreview/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterudreview($id); 		})->name('reviewdelete');
 $app->get('/admin/rudkomentar/', function () use ($app) 		{ (new Home())->tampilrudkomentar(); 		})->name('rudkomentar');
 $app->get('/admin/rudkomentar/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterudkomentar($id); 		})->name('komentardelete');
-
+$app->get('/admin/crudpengguna/', function () use ($app) 		{ (new Home())->tampilcrudpengguna(); 		})->name('crudpengguna');
+$app->get('/admin/crudpengguna/delete/:id', function ($npm) use ($app) 		{ (new Home($npm))->deletecrudpengguna($npm); 		})->name('penggunadelete');

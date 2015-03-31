@@ -1,0 +1,13 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}CRUD Pengguna{% endblock %}
+
+{% block content %}
+		{% for png in daftarpengguna %}
+		<li>{{ png.npm}}</li>
+		<li>{{ png.nama}}</li>
+		<li>{{ png.role}}</li>
+		<li>{{ png.banned_hingga}}</li>
+		<A href = "{{ BASE_URL }}/admin/crudpengguna/delete/{{ png.npm}}">Delete</a>
+		{% endfor %}
+{% endblock %}

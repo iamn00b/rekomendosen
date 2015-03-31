@@ -42,5 +42,9 @@ class Pengguna extends Model {
 	function isBanned() {
 		return (time() - $this->banned_hingga < 0);
 	}
+	
+	public function feedbacks() {
+		return $this->hasMany('Feedback');
+	}
 
 }

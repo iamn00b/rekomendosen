@@ -106,4 +106,16 @@ class Home extends _MainController {
 		$komentar = Komentar::where('id', '=', $id)->delete();
 		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
 	}
+	
+	function tampilcrudpengguna() {
+		$pengguna = Pengguna::all();
+		$data = array();
+		$data['daftarpengguna'] = $pengguna;
+		$this->render('crudpengguna.html',$data);
+	}
+	
+	function deletecrudpengguna($npm) {
+		$pengguna = Pengguna::where('npm', '=', $npm)->delete();
+		$this->app->response->redirect($this->app->urlFor('crudpengguna'), 400);
+	}
 }
