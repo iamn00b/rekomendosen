@@ -7,3 +7,7 @@ $app->get('/index', function () use ($app) 			{
 
 	(new _MainController())->render('index.html');
 })->name('welcome');
+$app->get('/dosen', function () use ($app) 			{ 
+
+	(new _MainController())->render('dosen.html');
+})->name('welcome');
