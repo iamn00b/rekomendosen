@@ -3,8 +3,16 @@
 {% block title %}Hasil Pencarian{% endblock %}
 
 {% block content %}
-	<li>{{ dosen.nama}}</li>
-	<li>{{ dosen.nip }}</li>
-	<li>{{ dosen.jeniskelamin }}</li>
-	<li>{{ dosen.ttl }}</li>
+	{% for dsn in dosen %}
+	<li>{{ dsn.nama}}</li>
+	<li>{{ dsn.nip }}</li>
+	<li>{{ dsn.jeniskelamin }}</li>
+	<li>{{ dsn.ttl }}</li>
+	{% endfor %}
+	{% for mtkl in matkul %}
+	<li>{{ mtkl.nama}}</li>
+	<li>{{ mtkl.kodemk }}</li>
+	<li>{{ mtkl.sks }}</li>
+	<li>{{ mtkl.prodi }}</li>
+	{% endfor %}
 {% endblock %}

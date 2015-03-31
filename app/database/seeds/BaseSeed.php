@@ -22,20 +22,24 @@ class BaseSeed {
 		$dosen3->jeniskelamin = "Perempuan";
 		$dosen3->ttl = date("1994-07-22");
 		
+		$dosen1->save();
+		$dosen2->save();
+		$dosen3->save();
+		
 		$matkul1 = new MataKuliah;
 		$matkul1->kodemk = "IK00001";
 		$matkul1->nama = "PPL";
 		$matkul1->sks = 6;
 		$matkul1->prodi = "Ilmu Komputer";
-		$matkul1->dosens()->attach($dosen1->nip);
-		$matkul1->dosens()->attach($dosen3->nip);
+		$matkul1->dosens()->attach($dosen1->id);
+		$matkul1->dosens()->attach($dosen3->id);
 		
 		$matkul2 = new MataKuliah;
 		$matkul2->kodemk = "IK00002";
 		$matkul2->nama = "Propensi";
 		$matkul2->sks = 6;
 		$matkul2->prodi = "Sistem Informasi";
-		$matkul2->dosens()->attach($dosen2->nip);
+		$matkul2->dosens()->attach($dosen2->id);
 		
 		$matkulmatdas1 = new MataKuliah;
 		$matkulmatdas1->kodemk = "MAT10113";
@@ -194,9 +198,6 @@ class BaseSeed {
 		$review2->isi = "terlalu cepat ngajarnya";
 		$review2->dosen_nip = $dosen1->nip;
 		
-		$dosen1->save();
-		$dosen2->save();
-		$dosen3->save();
 		$matkul1->save();
 		$matkul2->save();
 		$review1->save();
