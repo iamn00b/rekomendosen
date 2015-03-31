@@ -1,0 +1,11 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}RUD Komentar{% endblock %}
+
+{% block content %}
+		{% for kmntr in komentar %}
+		<li>{{ kmntr.isi}}</li>
+		<li>{{ kmntr.review_id}}</li>
+		<A href = "{{ BASE_URL }}/admin/rudkomentar/delete/{{ kmntr.id}}">Delete</a>
+		{% endfor %}
+{% endblock %}
