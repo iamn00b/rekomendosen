@@ -38,8 +38,8 @@ class Home extends _MainController {
 		$this->render('matakuliah.html',$data);
 	}
 	
-	function tampilrincianmatkul() {
-		$daftar = Matakuliah::find('IK00001');
+	function tampilrincianmatkul($id) {
+		$daftar = Matakuliah::find($id);
 		$daftar->dosens;
 		$data = array();
 		$data['matakuliah'] = $daftar;
