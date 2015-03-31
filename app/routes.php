@@ -15,3 +15,7 @@ $app->get('/mata-kuliah', function () use ($app) 			{
 
 	(new _MainController())->render('mata-kuliah.html');
 })->name('welcome');
+$app->get('/detil-mata-kuliah/', function () use ($app) 			{ 
+
+	(new _MainController())->render('detil-mata-kuliah.html');
+})->name('welcome');
