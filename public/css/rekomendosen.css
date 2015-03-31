@@ -105,6 +105,14 @@
 .lain{
 	text-decoration: underline;
 }
-.detil-matkul{
+
+/* detil dosen */
+.card .btn-rekomendasi{
+	margin-right:0;
+}
+.row-btn-rekomendasi{
+	width:170px;
+	margin:0 auto;
+}.detil-matkul{
 	margin-bottom: 30px;
 }

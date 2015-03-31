@@ -22,3 +22,7 @@ $app->get('/detil-mata-kuliah/', function () use ($app) 			{
 
 	(new _MainController())->render('detil-mata-kuliah.html');
 })->name('welcome');
+$app->get('/detil-dosen/', function () use ($app) 			{ 
+
+	(new _MainController())->render('detil-dosen.html');
+})->name('welcome');

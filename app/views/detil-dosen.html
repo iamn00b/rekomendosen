@@ -1,0 +1,38 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}Daftar Dosen{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<img src="{{ BASE_URL }}img/tes.jpg" alt="" class="col s2 activator circle responsive-img">
+		<div class="col">
+			<h2>Rizkania Amaranggana Yusuf</h2>
+			<h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6> 
+		</div>
+	</div>
+	<div class="col m12">
+        <div class="card card-panel grey lighten-5">
+          <div class="row">
+            <div class="col m9">
+              <span class="black-text">
+                <h4>Deskripsi Singkat</h4>
+              </span>
+              <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+            </div>
+            <div class="col m3">
+              <div class="row teal-text text-lighten-3 center-align">
+                <h4>Rating</h4>
+				<h1 style="line-height: 5px;"><strong>9</strong>.<small>85</small></h1>
+              </div>
+			  <div class="row">
+                <h6 class="row center-align"><strong>Rekomendasi Anda?</strong></h6>
+				<div class="row-btn-rekomendasi">
+				<a class="waves-effect waves-light btn btn-rekomendasi"><i class="mdi-content-add white-text"></i></a>
+				<a class="waves-effect waves-light btn red lighten-1 btn-rekomendasi"><i class="mdi-content-remove white-text"></i></a>
+				</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>     
+{% endblock %}
