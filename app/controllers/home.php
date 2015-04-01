@@ -83,6 +83,21 @@ class Home extends _MainController {
 		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
 	}
 	
+	function createcrudmatakuliah() {
+		$matkul = $this->app->request->post();
+		$kodemk = $matkul['kodemk'];
+		$nama = $matkul['namamk'];
+		$sks = $matkul['sksmk'];
+		$prodi = $matkul['prodimk'];
+		$matkul1 = new MataKuliah;
+		$matkul1->kodemk = $kodemk;
+		$matkul1->nama = $nama;
+		$matkul1->sks = $sks;
+		$matkul1->prodi = $prodi;
+		$matkul1->save();
+		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
+	}
+	
 	function tampilcrudmatakuliah() {
 		$matakuliah = Matakuliah::all();
 		$data = array();
