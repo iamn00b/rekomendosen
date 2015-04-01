@@ -41,14 +41,14 @@
 		<li>{{ mk.sks}}</li>
 		<li>{{ mk.prodi}}</li>
 		<A href = "{{ BASE_URL }}/admin/crudmatakuliah/delete/{{ mk.kodemk}}">Delete</a>
-<A class = "modal-trigger" href = "#matkulupdate-dialog" onclick="<?php $kode = {{mk.kodemk}}; ?>">Update</a>
+<A class = "modal-trigger" href = "#matkulupdate-dialog" data-id= "{{mk.kodemk}}">Update</a>
 		
 		<!-- Modal Feedback -->
 		  <form action="{{ urlFor('matakuliahupdate') }}" method="post" id="matkulupdate-dialog" class="modal modal-footer">
 			<div class="modal-content">
 			  <h4>Update Mata Kuliah</h4>
 			  <div class="input-field">
-				<textarea id="kodemk" name="kodemk" class="materialize-textarea"><?php echo $kode; ?></textarea>
+				<textarea id="kodemk" name="kodemk" class="materialize-textarea"></textarea>
 				<label for="kodemk">Kode Mata Kuliah : </label>
 			  </div>
 			  
@@ -79,6 +79,8 @@
 
 {% block js %}
 <script>
+  var kode = $('#modal-trigger').attr('data-id');
+  $('modal-body #kodemk').val(kode);
   $('.modal-trigger').leanModal();
 </script>
 {% endblock %}
