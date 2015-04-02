@@ -35,36 +35,37 @@
 			  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
 			</div>
 		  </form>
+
 		{% for mk in matakuliah %}
 		<li>{{ mk.kodemk}}</li>
 		<li>{{ mk.nama}}</li>
 		<li>{{ mk.sks}}</li>
 		<li>{{ mk.prodi}}</li>
-		<A href = "{{ BASE_URL }}/admin/crudmatakuliah/delete/{{ mk.kodemk}}">Delete</a>
-<A class = "modal-trigger" href = "#matkulupdate-dialog" data-id= "{{mk.kodemk}}">Update</a>
+		<a href = "{{ BASE_URL }}/admin/crudmatakuliah/delete/{{ mk.kodemk}}">Delete</a>
+		<a class = "modal-trigger" href = "#matkulupdate-dialog-{{ mk.kodemk }}" data-id= "{{mk.kodemk}}">Update</a>
 		
 		<!-- Modal Feedback -->
-		  <form action="{{ urlFor('matakuliahupdate') }}" method="post" id="matkulupdate-dialog" class="modal modal-footer">
+		  <form action="{{ BASE_URL }}/admin/crudmatakuliah/update/{{mk.kodemk}}" method="post" id="matkulupdate-dialog-{{ mk.kodemk }}" class="modal modal-footer">
 			<div class="modal-content">
 			  <h4>Update Mata Kuliah</h4>
 			  <div class="input-field">
-				<textarea id="kodemk" name="kodemk" class="materialize-textarea"></textarea>
-				<label for="kodemk">Kode Mata Kuliah : </label>
+				<textarea id="kodemk-{{nk.kodemk}}" name="kodemk" class="materialize-textarea">{{ mk.kodemk }}</textarea>
+				<label for="kodemk-{{nk.kodemk}}">Kode Mata Kuliah : </label>
 			  </div>
 			  
 			  <div class="input-field">
-				<textarea id="namamk" name="namamk" class="materialize-textarea">{{mk.nama}}</textarea>
-				<label for="namamk">Nama Mata Kuliah : </label>
+				<textarea id="namamk-{{nk.kodemk}}" name="namamk" class="materialize-textarea">{{mk.nama}}</textarea>
+				<label for="namamk-{{nk.kodemk}}">Nama Mata Kuliah : </label>
 			  </div>
 			  
 			  <div class="input-field">
-				<textarea id="sksmk" name="sksmk" class="materialize-textarea">{{mk.sks}}</textarea>
-				<label for="sksmk">SKS : </label>
+				<textarea id="sksmk-{{nk.kodemk}}" name="sksmk" class="materialize-textarea">{{mk.sks}}</textarea>
+				<label for="sksmk-{{nk.kodemk}}">SKS : </label>
 			  </div>
 			  
 			  <div class="input-field">
-				<textarea id="prodimk" name="prodimk" class="materialize-textarea">{{mk.prodi}}</textarea>
-				<label for="prodimk">Program Studi : </label>
+				<textarea id="prodimk-{{nk.kodemk}}" name="prodimk" class="materialize-textarea">{{mk.prodi}}</textarea>
+				<label for="prodimk-{{nk.kodemk}}">Program Studi : </label>
 			  </div>
 				
 			  <label>

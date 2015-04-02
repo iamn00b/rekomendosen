@@ -18,8 +18,8 @@ $app->get('/admin/cruddosen/', function () use ($app) 		{ (new Home())->tampilcr
 $app->get('/admin/cruddosen/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deletecruddosen($id); 		})->name('dosendelete');
 $app->get('/admin/crudmatakuliah/', function () use ($app) 		{ (new Home())->tampilcrudmatakuliah(); 		})->name('crudmatakuliah');
 $app->get('/admin/crudmatakuliah/delete/:kodemk', function ($kodemk) use ($app) 		{ (new Home($kodemk))->deletecrudmatakuliah($kodemk); 		})->name('matakuliahdelete');
-$app->post('/admin/crudmatakuliah/', 		function () use ($app)		{ (new Home())->createcrudmatakuliah(); 						})->name('matakuliahcreate');
-$app->post('/admin/crudmatakuliah/', 		function () use ($app)		{ (new Home())->updatecrudmatakuliah(); 						})->name('matakuliahupdate');
+$app->post('/admin/crudmatakuliah/create/', 		function () use ($app)		{ (new Home())->createcrudmatakuliah(); 						})->name('matakuliahcreate');
+$app->post('/admin/crudmatakuliah/update/:kodemk', 		function ($kodemk) use ($app)		{ (new Home())->updatecrudmatakuliah($kodemk); 						})->name('matakuliahupdate');
 $app->get('/admin/rudreview/', function () use ($app) 		{ (new Home())->tampilrudreview(); 		})->name('rudreview');
 $app->get('/admin/rudreview/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterudreview($id); 		})->name('reviewdelete');
 $app->get('/admin/rudkomentar/', function () use ($app) 		{ (new Home())->tampilrudkomentar(); 		})->name('rudkomentar');

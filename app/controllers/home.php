@@ -105,6 +105,23 @@ class Home extends _MainController {
 		$this->render('crudmatakuliah.html',$data);
 	}
 	
+	function updatecrudmatakuliah($id) {
+		$matkul = $this->app->request->post();
+
+		$kodemk = $matkul['kodemk'];
+		$nama = $matkul['namamk'];
+		$sks = $matkul['sksmk'];
+		$prodi = $matkul['prodimk'];
+
+		$matkul1 = MataKuliah::find($id);
+		$matkul1->kodemk = $kodemk;
+		$matkul1->nama = $nama;
+		$matkul1->sks = $sks;
+		$matkul1->prodi = $prodi;
+		$matkul1->save();
+		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
+	}
+	
 	function deletecrudmatakuliah($kodemk) {
 		$matakuliah = Matakuliah::where('kodemk', '=', $kodemk)->delete();
 		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
