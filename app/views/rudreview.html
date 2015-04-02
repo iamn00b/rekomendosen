@@ -8,5 +8,28 @@
 		<li>{{ rvw.isi}}</li>
 		<li>{{ rvw.dosen_nip}}</li>
 		<A href = "{{ BASE_URL }}/admin/rudreview/delete/{{ rvw.id}}">Delete</a>
+		<a class = "modal-trigger" href = "#reviewupdate-dialog-{{ rvw.id }}" data-id= "{{rvw.id}}">Update</a>
+		
+		<!-- Modal Feedback -->
+		  <form action="{{ BASE_URL }}/admin/rudreview/update/{{rvw.id}}" method="post" id="reviewupdate-dialog-{{ rvw.id }}" class="modal modal-footer">
+			<div class="modal-content">
+			  <h4>Update Review</h4>
+			  <div class="input-field">
+				<textarea id="jenisrvw-{{rvw.id}}" name="jenisrvw" class="materialize-textarea">{{ rvw.jenis }}</textarea>
+				<label for="jenisrvw-{{rvw.id}}">Jenis Review : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="isirvw-{{rvw.id}}" name="isirvw" class="materialize-textarea">{{rvw.isi}}</textarea>
+				<label for="isirvw-{{rvw.id}}">Isi Review : </label>
+			  </div>
+				
+			  <label>
+			</div>
+			<div class="modal-footer">
+			  <button type="submit" class="green waves-effect waves-white btn">Kirim</button>
+			  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+			</div>
+		  </form>
 		{% endfor %}
 {% endblock %}

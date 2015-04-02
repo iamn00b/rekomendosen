@@ -12,6 +12,10 @@ class Pengguna extends Model {
 	
 	// RELATION FUNC
 	
+	public function reviews() {
+		return $this->hasMany('Review');
+	}
+	
 	public function komentars() {
 		return $this->hasMany('Komentar');
 	}
