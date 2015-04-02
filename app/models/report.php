@@ -9,7 +9,7 @@ class Report extends Model {
 		return $this->belongsTo('Review');
 	}
 	
-	public function pengguna() {
+	public function penggunas() {
 		return $this->belongsTo('Pengguna');
 	}
 

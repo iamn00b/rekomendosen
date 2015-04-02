@@ -71,11 +71,41 @@ class Home extends _MainController {
 		$this->render('pencarian.html',$data);
 	}
 	
+	function createcruddosen() {
+		$dosen = $this->app->request->post();
+		$nip = $dosen['nipdsn'];
+		$nama = $dosen['namadsn'];
+		$jeniskelamin = $dosen['jeniskelamindsn'];
+		$ttl = $dosen['ttldsn'];
+		$dosen1 = new Dosen;
+		$dosen1->nip = $nip;
+		$dosen1->nama = $nama;
+		$dosen1->jeniskelamin = $jeniskelamin;
+		$dosen1->ttl = $ttl;
+		$dosen1->save();
+		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
+	}
+	
 	function tampilcruddosen() {
 		$dosen = Dosen::all();
 		$data = array();
 		$data['dosen'] = $dosen;
 		$this->render('cruddosen.html',$data);
+	}
+	
+	function updatecruddosen($id) {
+		$dosen = $this->app->request->post();
+		$nip = $dosen['nipdsn'];
+		$nama = $dosen['namadsn'];
+		$jeniskelamin = $dosen['jeniskelamindsn'];
+		$ttl = $dosen['ttldsn'];
+		$dosen1 = Dosen::find($id);
+		$dosen1->nip = $nip;
+		$dosen1->nama = $nama;
+		$dosen1->jeniskelamin = $jeniskelamin;
+		$dosen1->ttl = $ttl;
+		$dosen1->save();
+		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
 	}
 	
 	function deletecruddosen($id) {
@@ -107,12 +137,10 @@ class Home extends _MainController {
 	
 	function updatecrudmatakuliah($id) {
 		$matkul = $this->app->request->post();
-
 		$kodemk = $matkul['kodemk'];
 		$nama = $matkul['namamk'];
 		$sks = $matkul['sksmk'];
 		$prodi = $matkul['prodimk'];
-
 		$matkul1 = MataKuliah::find($id);
 		$matkul1->kodemk = $kodemk;
 		$matkul1->nama = $nama;
@@ -134,6 +162,17 @@ class Home extends _MainController {
 		$this->render('rudreview.html',$data);
 	}
 	
+	function updaterudreview($id) {
+		$review = $this->app->request->post();
+		$jenis = $review['jenisrvw'];
+		$isi = $review['isirvw'];
+		$review1 = Review::find($id);
+		$review1->jenis = $jenis;
+		$review1->isi = $isi;
+		$review1->save();
+		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
+	}
+	
 	function deleterudreview($id) {
 		$review = Review::where('id', '=', $id)->delete();
 		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
@@ -146,9 +185,33 @@ class Home extends _MainController {
 		$this->render('rudkomentar.html',$data);
 	}
 	
+	function updaterudkomentar($id) {
+		$komentar = $this->app->request->post();
+		$isi = $komentar['isikmntr'];
+		$komentar1 = Komentar::find($id);
+		$komentar1->isi = $isi;
+		$komentar1->save();
+		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
+	}
+	
 	function deleterudkomentar($id) {
 		$komentar = Komentar::where('id', '=', $id)->delete();
 		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
+	}
+	
+	function createcrudpengguna() {
+		$pengguna = $this->app->request->post();
+		$npm = $pengguna['npmpng'];
+		$nama = $pengguna['namapng'];
+		$role = $pengguna['rolepng'];
+		$bannedhingga = $pengguna['bannedhinggapng'];
+		$pengguna1 = new Pengguna;
+		$pengguna1->npm = $npm;
+		$pengguna1->nama = $nama;
+		$pengguna1->role = $role;
+		$pengguna1->banned_hingga = $bannedhingga;
+		$pengguna1->save();
+		$this->app->response->redirect($this->app->urlFor('crudpengguna'), 400);
 	}
 	
 	function tampilcrudpengguna() {
@@ -156,6 +219,21 @@ class Home extends _MainController {
 		$data = array();
 		$data['daftarpengguna'] = $pengguna;
 		$this->render('crudpengguna.html',$data);
+	}
+	
+	function updatecrudpengguna($npm) {
+		$pengguna = $this->app->request->post();
+		$npm = $pengguna['npmpng'];
+		$nama = $pengguna['namapng'];
+		$role = $pengguna['rolepng'];
+		$bannedhingga = $pengguna['bannedhinggapng'];
+		$pengguna1 = Pengguna::find($npm);
+		$pengguna1->npm = $npm;
+		$pengguna1->nama = $nama;
+		$pengguna1->role = $role;
+		$pengguna1->banned_hingga = $bannedhingga;
+		$pengguna1->save();
+		$this->app->response->redirect($this->app->urlFor('crudpengguna'), 400);
 	}
 	
 	function deletecrudpengguna($npm) {
@@ -187,5 +265,12 @@ class Home extends _MainController {
 	function deleterdfeedback($id) {
 		$feedback = Feedback::where('id', '=', $id)->delete();
 		$this->app->response->redirect($this->app->urlFor('rdfeedback'), 400);
+	}
+	
+	function tampilreport() {
+		$report = Report::all();
+		$data = array();
+		$data['report'] = $report;
+		$this->render('melihatreport.html',$data);
 	}
 }

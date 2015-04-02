@@ -21,7 +21,7 @@ class Review extends Model {
 		return $this->hasMany('Report');
 	}
 	
-	public function pengguna() {
+	public function penggunas() {
 		return $this->belongsTo('Pengguna');
 	}
 }

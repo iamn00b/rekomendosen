@@ -3,11 +3,76 @@
 {% block title %}CRUD Dosen{% endblock %}
 
 {% block content %}
+		<A class = "modal-trigger" href = "#dosencreate-dialog">Add</a>
+		 <!-- Modal Feedback -->
+		  <form action="{{ urlFor('dosencreate') }}" method="post" id="dosencreate-dialog" class="modal modal-footer">
+			<div class="modal-content">
+			  <h4>Create Dosen</h4>
+			  <div class="input-field">
+				<textarea id="nipdsn" name="nipdsn" class="materialize-textarea"></textarea>
+				<label for="nipdsn">NIP Dosen : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="namadsn" name="namadsn" class="materialize-textarea"></textarea>
+				<label for="namadsn">Nama : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="jeniskelamindsn" name="jeniskelamindsn" class="materialize-textarea"></textarea>
+				<label for="jeniskelamindsn">Jenis Kelamin : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="ttldsn" name="ttldsn" class="materialize-textarea"></textarea>
+				<label for="ttldsn">TTL : </label>
+			  </div>
+				
+			  <label>
+			</div>
+			<div class="modal-footer">
+			  <button type="submit" class="green waves-effect waves-white btn">Kirim</button>
+			  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+			</div>
+		  </form>
 		{% for dsn in dosen %}
 		<li>{{ dsn.nip}}</li>
 		<li>{{ dsn.nama}}</li>
 		<li>{{ dsn.jeniskelamin}}</li>
 		<li>{{ dsn.ttl}}</li>
 		<A href = "{{ BASE_URL }}/admin/cruddosen/delete/{{ dsn.id}}">Delete</a>
+		<a class = "modal-trigger" href = "#dosenupdate-dialog-{{ dsn.id }}" data-id= "{{dsn.id}}">Update</a>
+		
+		<!-- Modal Feedback -->
+		  <form action="{{ BASE_URL }}/admin/cruddosen/update/{{dsn.id}}" method="post" id="dosenupdate-dialog-{{ dsn.id }}" class="modal modal-footer">
+			<div class="modal-content">
+			  <h4>Update Dosen</h4>
+			  <div class="input-field">
+				<textarea id="nipdsn-{{dsn.id}}" name="nipdsn" class="materialize-textarea">{{ dsn.nip }}</textarea>
+				<label for="nipdsn-{{dsn.id}}">NIP Dosen : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="namadsn-{{dsn.id}}" name="namadsn" class="materialize-textarea">{{dsn.nama}}</textarea>
+				<label for="namadsn-{{dsn.id}}">Nama : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="jeniskelamindsn-{{dsn.id}}" name="jeniskelamindsn" class="materialize-textarea">{{dsn.jeniskelamin}}</textarea>
+				<label for="jeniskelamindsn-{{dsn.id}}">Jenis Kelamin : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="ttldsn-{{dsn.id}}" name="ttldsn" class="materialize-textarea">{{dsn.ttl}}</textarea>
+				<label for="ttldsn-{{dsn.id}}">TTL : </label>
+			  </div>
+				
+			  <label>
+			</div>
+			<div class="modal-footer">
+			  <button type="submit" class="green waves-effect waves-white btn">Kirim</button>
+			  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+			</div>
+		  </form>
 		{% endfor %}
 {% endblock %}

@@ -255,6 +255,8 @@ class BaseSeed {
 		$report3->review_id = $review2->id;
 		$report3->pengguna_npm = $pengguna1->npm;
 		
+		$pengguna1->save();
+		
 		$komentar1->save();
 		$komentar2->save();
 		$komentar3->save();
