@@ -347,4 +347,9 @@ class Home extends _MainController {
 		$data['report'] = $report;
 		$this->render('melihatreport.html',$data);
 	}
+	
+	function tampilstatistik() {
+
+		$this->render('melihatstatistik.html');
+	}
 }
