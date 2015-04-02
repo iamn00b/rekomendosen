@@ -8,5 +8,9 @@ class UpvoteDownvote extends Model {
 	public function reviews() {
 		return $this->belongsTo('Review');
 	}
+	
+	public function pengguna() {
+		return $this->belongsTo('Pengguna');
+	}
 
 }

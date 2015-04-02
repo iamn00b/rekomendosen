@@ -14,6 +14,7 @@ class ReviewMigration {
             $table->string('jenis');
             $table->string('isi');
 			$table->string('dosen_nip');
+            $table->string('pengguna_npm');
             $table->timestamps();
         });
     }

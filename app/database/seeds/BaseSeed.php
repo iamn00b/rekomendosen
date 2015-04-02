@@ -4,6 +4,14 @@ class BaseSeed {
 
     function run()
     {
+    	/* Pengguna */
+    	$pengguna1 = new Pengguna;
+    	$pengguna1->npm = '1206240814';
+    	$pengguna1->nama = 'Thirafi Dide';
+    	$pengguna1->role = Pengguna::ADMINISTRATOR;
+    	$pengguna1->save();
+
+    	/* DOSEN */
 		$dosen1 = new Dosen;
 		$dosen1->nip = "1112";
 		$dosen1->nama = "Anto";
@@ -26,6 +34,7 @@ class BaseSeed {
 		$dosen2->save();
 		$dosen3->save();
 		
+		/* MATA KULIAH */
 		$matkul1 = new MataKuliah;
 		$matkul1->kodemk = "IK00001";
 		$matkul1->nama = "PPL";
@@ -186,17 +195,19 @@ class BaseSeed {
 		$matkulfisdas2->sks = 3;
 		$matkulfisdas2->prodi = "Fakultas";
 		
-		// -----------------------------------------------------
-		
+		/* REVIEW */
+
 		$review1 = new Review;
 		$review1->jenis = "baik";
 		$review1->isi = "sangat direkomendasikan";
 		$review1->dosen_nip = $dosen1->nip;
+		$review1->pengguna_npm = $pengguna1->npm;
 		
 		$review2 = new Review;
 		$review2->jenis = "buruk";
 		$review2->isi = "terlalu cepat ngajarnya";
 		$review2->dosen_nip = $dosen1->nip;
+		$review2->pengguna_npm = $pengguna1->npm;
 		
 		$matkul1->save();
 		$matkul2->save();
@@ -206,42 +217,53 @@ class BaseSeed {
 		$komentar1 = new Komentar;
 		$komentar1->isi = "saya setuju";
 		$komentar1->review_id = $review1->id;
+		$komentar1->pengguna_npm = $pengguna1->npm;
 		
 		$komentar2 = new Komentar;
 		$komentar2->isi = "saya tidak setuju";
 		$komentar2->review_id = $review1->id;
+		$komentar2->pengguna_npm = $pengguna1->npm;
 		
 		$komentar3 = new Komentar;
 		$komentar3->isi = "mantap!";
 		$komentar3->review_id = $review2->id;
+		$komentar3->pengguna_npm = $pengguna1->npm;
 		
 		$vote1 = new UpvoteDownvote;
 		$vote1->tipe = 1;
 		$vote1->review_id = $review1->id;
+		$vote1->pengguna_npm = $pengguna1->npm;
 		
 		$vote2 = new UpvoteDownvote;
 		$vote2->tipe = 0;
 		$vote2->review_id = $review1->id;
+		$vote2->pengguna_npm = $pengguna1->npm;
 		
 		$vote3 = new UpvoteDownvote;
 		$vote3->tipe = 1;
 		$vote3->review_id = $review2->id;
+		$vote3->pengguna_npm = $pengguna1->npm;
 		
 		$report1 = new Report;
 		$report1->review_id = $review1->id;
+		$report1->pengguna_npm = $pengguna1->npm;
 		
 		$report2 = new Report;
 		$report2->review_id = $review1->id;
+		$report2->pengguna_npm = $pengguna1->npm;
 		
 		$report3 = new Report;
 		$report3->review_id = $review2->id;
+		$report3->pengguna_npm = $pengguna1->npm;
 		
 		$komentar1->save();
 		$komentar2->save();
 		$komentar3->save();
+
 		$vote1->save();
 		$vote2->save();
 		$vote3->save();
+
 		$report1->save();
 		$report2->save();
 		$report3->save();

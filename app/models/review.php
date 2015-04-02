@@ -20,4 +20,8 @@ class Review extends Model {
 	public function reports() {
 		return $this->hasMany('Report');
 	}
+	
+	public function pengguna() {
+		return $this->belongsTo('Pengguna');
+	}
 }

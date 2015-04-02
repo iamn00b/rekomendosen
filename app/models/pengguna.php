@@ -10,6 +10,22 @@ class Pengguna extends Model {
 	protected $fillable 	= ['nama', 'npm'];
 	protected $primaryKey 	= 'npm';
 	
+	// RELATION FUNC
+	
+	public function komentars() {
+		return $this->hasMany('Komentar');
+	}
+	
+	public function upvotedownvotes() {
+		return $this->hasMany('UpvoteDownvote');
+	}
+	
+	public function reports() {
+		return $this->hasMany('Report');
+	}
+
+	// MODEL FUNC
+	
 	function setAdmin() {
 		$this->role = self::ADMINISTRATOR;
 	}
