@@ -39,4 +39,3 @@ $app->post('/admin/crudpengguna/update/:npm', 		function ($npm) use ($app)		{ (n
 $app->get('/admin/rdfeedback/', function () use ($app) 		{ (new Home())->tampilrdfeedback(); 		})->name('rdfeedback');
 $app->get('/admin/rdfeedback/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deleterdfeedback($id); 		})->name('feedbackdelete');
 $app->get('/admin/melihatreport/', function () use ($app) 		{ (new Home())->tampilreport(); 		})->name('rreport');
-$app->get('/admin/melihatstatistik/', function () use ($app) 		{ (new Home())->tampilstatistik(); 		})->name('rstatistik');
