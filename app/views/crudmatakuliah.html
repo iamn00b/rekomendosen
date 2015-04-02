@@ -77,11 +77,3 @@
 		  </form>
 		{% endfor %}
 {% endblock %}
-
-{% block js %}
-<script>
-  var kode = $('#modal-trigger').attr('data-id');
-  $('modal-body #kodemk').val(kode);
-  $('.modal-trigger').leanModal();
-</script>
-{% endblock %}
