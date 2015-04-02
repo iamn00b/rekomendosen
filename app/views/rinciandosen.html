@@ -8,16 +8,18 @@
 		<li>TTL : {{ dosen.ttl}}</li>
 		<li>Jenis Kelamin : {{ dosen.jeniskelamin}}</li>
 
-		<form method="POST" action="{{ BASE_URL }}">
-			<textarea name="review-baik"></textarea>
+		<form method="POST" action="{{ BASE_URL }}/tambahreview/{{dosen.nip}}">
+			<textarea name="review"></textarea>
+			<input type="hidden" name="jenis" value="0">
 			<button type="submit">Submit</button>
 		</form>
 
-		<form method="POST" action="{{ BASE_URL }}">
-			<textarea name="review-buruk"></textarea>
+		<form method="POST" action="{{ BASE_URL }}/tambahreview/{{dosen.nip}}">
+			<textarea name="review"></textarea>
+			<input type="hidden" name="jenis" value="1">
 			<button type="submit">Submit</button>
 		</form>
-		
+
 		<li>Review :
 		{% for rvw in review %}
 			{% set counterup = 0 %}
