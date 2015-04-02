@@ -62,6 +62,80 @@ class Home extends _MainController {
 		$this->render('rinciandosen.html',$data);
 	}
 	
+	function addreviewbaik($nip) {
+		$review = $this->app->request->post();
+		$isi = $review['review-baik'];
+		$pengguna = Auth::getPengguna();
+		$review1 = new Review;
+		$review1->jenis = "baik";
+		$review1->isi = $isi;
+		$review1->dosen_nip = $nip;
+		$review1->pengguna_npm = $pengguna->npm;
+		$review1->save();
+		$dosen = Dosen::where('nip', '=', $nip)->get();
+		$iddosen = $dosen[0]->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
+	function addreviewburuk($nip) {
+		$review = $this->app->request->post();
+		$isi = $review['review-buruk'];
+		$pengguna = Auth::getPengguna();
+		$review1 = new Review;
+		$review1->jenis = "buruk";
+		$review1->isi = $isi;
+		$review1->dosen_nip = $nip;
+		$review1->pengguna_npm = $pengguna->npm;
+		$review1->save();
+		$dosen = Dosen::where('nip', '=', $nip)->get();
+		$iddosen = $dosen[0]->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
+	function addkomentar($id) {
+		$komentar = $this->app->request->post();
+		$isi = $komentar['komentar'];
+		$pengguna = Auth::getPengguna();
+		$komentar1 = new Komentar;
+		$komentar1->isi = $isi;
+		$komentar1->review_id = $id;
+		$komentar1->pengguna_npm = $pengguna->npm;
+		$komentar1->save();
+		$review = Review::where('id', '=', $id)->get();
+		$nip = $review[0]->dosen_nip;
+		$dosen = Dosen::where('nip', '=', $nip)->get();
+		$iddosen = $dosen[0]->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
+	function addupvote($id) {
+		$vote = new UpvoteDownvote;
+		$vote->tipe = 1;
+		$vote->review_id = $id;
+		$pengguna1 = Auth::getPengguna();
+		$vote->pengguna_npm = $pengguna1->npm;
+		$vote->save();
+		$review = Review::where('id', '=', $id)->get();
+		$nip = $review[0]->dosen_nip;
+		$dosen = Dosen::where('nip', '=', $nip)->get();
+		$iddosen = $dosen[0]->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
+	function adddownvote($id) {
+		$vote = new UpvoteDownvote;
+		$vote->tipe = 0;
+		$vote->review_id = $id;
+		$pengguna1 = Auth::getPengguna();
+		$vote->pengguna_npm = $pengguna1->npm;
+		$vote->save();
+		$review = Review::where('id', '=', $id)->get();
+		$nip = $review[0]->dosen_nip;
+		$dosen = Dosen::where('nip', '=', $nip)->get();
+		$iddosen = $dosen[0]->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
 	function tampilhasilpencarian($query) {
 		$dosen = Dosen::where('nama','LIKE', "%".$query."%")->get();
 		$matkul = MataKuliah::where('nama','LIKE', "%".$query."%")->get();

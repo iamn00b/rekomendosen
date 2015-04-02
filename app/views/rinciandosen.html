@@ -8,12 +8,12 @@
 		<li>TTL : {{ dosen.ttl}}</li>
 		<li>Jenis Kelamin : {{ dosen.jeniskelamin}}</li>
 
-		<form method="POST" action="{{ BASE_URL }}">
+		<form method="POST" action="{{ BASE_URL }}/review/baik/{{ dosen.nip}}">
 			<textarea name="review-baik"></textarea>
 			<button type="submit">Submit</button>
 		</form>
 
-		<form method="POST" action="{{ BASE_URL }}">
+		<form method="POST" action="{{ BASE_URL }}/review/buruk/{{ dosen.nip}}">
 			<textarea name="review-buruk"></textarea>
 			<button type="submit">Submit</button>
 		</form>
@@ -32,8 +32,8 @@
 					{% endif %}
 				{% endif %}
 			{% endfor %} </li>
-			<li>Upvote : {{ counterup }} <a href="#">Up</a></li>
-			<li>Downvote : {{ counterdown }} <a href="#">Down</a></li>
+			<li>Upvote : {{ counterup }} <a href="{{ BASE_URL }}/upvote/{{ rvw.id}}">Up</a></li>
+			<li>Downvote : {{ counterdown }} <a href="{{ BASE_URL }}/downvote/{{ rvw.id}}">Down</a></li>
 			{% set counterreport = 0 %}
 			{% for rprt in report %}
 				{% if rvw.id == rprt.review_id %}
@@ -50,7 +50,7 @@
 				{% endif %}
 			{% endfor %} </li>
 
-			<form method="POST" action="{{ BASE_URL }}">
+			<form method="POST" action="{{ BASE_URL }}/komentar/{{ rvw.id }}">
 				<textarea name="komentar"></textarea>
 				<button type="submit">Submit</button>
 			</form>
