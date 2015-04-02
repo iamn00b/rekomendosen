@@ -18,6 +18,7 @@ $app->post('/feedback/', 		function () use ($app)		{ (new Home())->isifeedback()
 
 
 /* ADMIN */
+$app->get('/admin', function() use ($app) { (new Home())->tampilstatistik(); })->name('statistik');
 $app->get('/admin/cruddosen/', function () use ($app) 		{ (new Home())->tampilcruddosen(); 		})->name('cruddosen');
 $app->get('/admin/cruddosen/delete/:id', function ($id) use ($app) 		{ (new Home($id))->deletecruddosen($id); 		})->name('dosendelete');
 $app->post('/admin/cruddosen/create/', 		function () use ($app)		{ (new Home())->createcruddosen(); 						})->name('dosencreate');

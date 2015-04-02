@@ -347,4 +347,17 @@ class Home extends _MainController {
 		$data['report'] = $report;
 		$this->render('melihatreport.html',$data);
 	}
+
+	function tampilstatistik() {
+		$data = array();
+		$data['statpengguna'] = array();
+		$data['statpengguna']['total'] = Pengguna::count();
+		$data['statpengguna']['totalbulan'] = Pengguna::count();
+		$data['statpengguna']['totalminggu'] = Pengguna::count();
+
+		$data['statreview']['total'] = Review::count();
+		$data['statkomentar']['total'] = Komentar::count();
+
+		$this->render('statistik.html', $data);
+	}
 }
