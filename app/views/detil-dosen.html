@@ -10,7 +10,7 @@
 			<h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6> 
 		</div>
 	</div>
-	<div class="col m12">
+	<div class="row">
         <div class="card card-panel grey lighten-5">
           <div class="row">
             <div class="col m9">
@@ -24,7 +24,7 @@
                 <h4>Rating</h4>
 				<h1 style="line-height: 5px;"><strong>9</strong>.<small>85</small></h1>
               </div>
-			  <div class="row">
+			  <div id="rekomendasi-anda" class="row">
                 <h6 class="row center-align"><strong>Rekomendasi Anda?</strong></h6>
 				<div class="row-btn-rekomendasi">
 				<a class="waves-effect waves-light btn btn-rekomendasi"><i class="mdi-content-add white-text"></i></a>
@@ -34,5 +34,49 @@
             </div>
           </div>
         </div>
-      </div>     
+      </div>  
+	<div class="row">
+		<a class="waves-effect waves-light btn tab-rekomendasi">Rekomendasi</a>
+		<a class="waves-effect waves-light btn tab-rekomendasi disabled red lighten-1">Tidak Rekomendasi</a>
+	</div>
+	<div class="row">
+        <div class="card card-panel grey lighten-5 card-review">
+			<div class="row">
+				<div class="col m1 vote-review">
+					<i class="mdi-navigation-arrow-drop-up btn-vote-review"></i>
+					<span>+7</span>
+					<i class="mdi-navigation-arrow-drop-down btn-vote-review"></i>
+				</div>
+				<div class="col m2">
+					<img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img">
+				</div>
+				<div class="col m9">
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m9 offset-m3">
+					<div class="col m2"><img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+					<div class="col m10">
+						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m9 offset-m3">
+					<div class="col m2"><img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+					<div class="col m10">
+						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col m9 offset-m3">
+					<textarea id="textarea1" class="materialize-textarea"></textarea>
+					<label for="textarea1">Komentar</label>
+					<a class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</a>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
