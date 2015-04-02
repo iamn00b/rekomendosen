@@ -73,19 +73,14 @@
   <!-- Modal Feedback -->
   <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
     <div class="modal-content">
-      <h4>Beri Feedback</h4>
-      <p>A bunch of text</p>
-      
+      <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
+      <label for="nilai">Nilai</label>
       <div class="range-field">
         <input type="range" id="rating" name="rating" min="1" max="5" />
       </div>
-
-      <div class="input-field">
-        <textarea id="feedback" name="feedback" class="materialize-textarea"></textarea>
-        <label for="feedback">Feedback</label>
+      <label for="feedback">Feedback</label>
+        <textarea id="feedback" name="feedback" class="materialize-textarea"></textarea>  
       </div>
-        
-      <label>
     </div>
     <div class="modal-footer">
       <a href="#" class="green waves-effect waves-white btn">Kirim</a>
@@ -96,6 +91,8 @@
 
 {% block js %}
 <script>
-	$(".rd-profil-collapse").sideNav();
+	 $(".rd-profil-collapse").sideNav(); 
+  $('.modal-trigger').leanModal();
+  $('select').material_select();
 </script>
 {% endblock %}
