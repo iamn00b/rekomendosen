@@ -9,7 +9,6 @@ class BaseSeed {
     	$pengguna1->npm = '1206240814';
     	$pengguna1->nama = 'Thirafi Dide';
     	$pengguna1->role = Pengguna::ADMINISTRATOR;
-    	$pengguna1->save();
 
     	/* DOSEN */
 		$dosen1 = new Dosen;
@@ -267,6 +266,8 @@ class BaseSeed {
 		$report1->save();
 		$report2->save();
 		$report3->save();
+		
+    	$pengguna1->save();
 
         // $dosen = new Dosen;
         // $dosen->nik = "0089645";
