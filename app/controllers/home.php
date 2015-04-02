@@ -347,7 +347,7 @@ class Home extends _MainController {
 		$data['report'] = $report;
 		$this->render('melihatreport.html',$data);
 	}
-
+	
 	function tampilstatistik() {
 		$data = array();
 		$data['statpengguna'] = array();
@@ -360,4 +360,3 @@ class Home extends _MainController {
 
 		$this->render('statistik.html', $data);
 	}
-}
