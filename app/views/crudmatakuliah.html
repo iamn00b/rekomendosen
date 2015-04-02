@@ -1,0 +1,86 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}CRUD Mata Kuliah{% endblock %}
+
+{% block content %}
+		<A class = "modal-trigger" href = "#matkulcreate-dialog">Add</a>
+		 <!-- Modal Feedback -->
+		  <form action="{{ urlFor('matakuliahcreate') }}" method="post" id="matkulcreate-dialog" class="modal modal-footer">
+			<div class="modal-content">
+			  <h4>Create Mata Kuliah</h4>
+			  <div class="input-field">
+				<textarea id="kodemk" name="kodemk" class="materialize-textarea"></textarea>
+				<label for="kodemk">Kode Mata Kuliah : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="namamk" name="namamk" class="materialize-textarea"></textarea>
+				<label for="namamk">Nama Mata Kuliah : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="sksmk" name="sksmk" class="materialize-textarea"></textarea>
+				<label for="sksmk">SKS : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="prodimk" name="prodimk" class="materialize-textarea"></textarea>
+				<label for="prodimk">Program Studi : </label>
+			  </div>
+				
+			  <label>
+			</div>
+			<div class="modal-footer">
+			  <button type="submit" class="green waves-effect waves-white btn">Kirim</button>
+			  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+			</div>
+		  </form>
+		{% for mk in matakuliah %}
+		<li>{{ mk.kodemk}}</li>
+		<li>{{ mk.nama}}</li>
+		<li>{{ mk.sks}}</li>
+		<li>{{ mk.prodi}}</li>
+		<A href = "{{ BASE_URL }}/admin/crudmatakuliah/delete/{{ mk.kodemk}}">Delete</a>
+<A class = "modal-trigger" href = "#matkulupdate-dialog" data-id= "{{mk.kodemk}}">Update</a>
+		
+		<!-- Modal Feedback -->
+		  <form action="{{ urlFor('matakuliahupdate') }}" method="post" id="matkulupdate-dialog" class="modal modal-footer">
+			<div class="modal-content">
+			  <h4>Update Mata Kuliah</h4>
+			  <div class="input-field">
+				<textarea id="kodemk" name="kodemk" class="materialize-textarea"></textarea>
+				<label for="kodemk">Kode Mata Kuliah : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="namamk" name="namamk" class="materialize-textarea">{{mk.nama}}</textarea>
+				<label for="namamk">Nama Mata Kuliah : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="sksmk" name="sksmk" class="materialize-textarea">{{mk.sks}}</textarea>
+				<label for="sksmk">SKS : </label>
+			  </div>
+			  
+			  <div class="input-field">
+				<textarea id="prodimk" name="prodimk" class="materialize-textarea">{{mk.prodi}}</textarea>
+				<label for="prodimk">Program Studi : </label>
+			  </div>
+				
+			  <label>
+			</div>
+			<div class="modal-footer">
+			  <button type="submit" class="green waves-effect waves-white btn">Kirim</button>
+			  <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+			</div>
+		  </form>
+		{% endfor %}
+{% endblock %}
+
+{% block js %}
+<script>
+  var kode = $('#modal-trigger').attr('data-id');
+  $('modal-body #kodemk').val(kode);
+  $('.modal-trigger').leanModal();
+</script>
+{% endblock %}
