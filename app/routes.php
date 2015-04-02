@@ -26,3 +26,4 @@ $app->get('/detil-dosen/', function () use ($app) 			{
 
 	(new _MainController())->render('detil-dosen.html');
 })->name('welcome');
+$app->post('/feedback/', 		function () use ($app)		{ (new Home())->welcome(); 						})->name('feedback');
