@@ -20,6 +20,23 @@
 
 		<script type="text/javascript" src="{{ BASE_URL }}js/jquery.min.js"></script>
       	<script type="text/javascript" src="{{ BASE_URL }}js/materialize.min.js"></script>
+		<script>
+			$('.modal-trigger').leanModal();
+			$( "#tab-rekomendasi" ).click(function() {
+				$( "#review-tidak-rekomendasi" ).fadeOut( "slow" );
+				$( "#review-rekomendasi" ).fadeIn( "slow" );
+				$( "#tab-rekomendasi" ).addClass("disabled");
+				$( "#tab-tidak-rekomendasi" ).removeClass("disabled");
+				$( "#tab-tidak-rekomendasi" ).addClass("red lighten-1");
+			});
+			$( "#tab-tidak-rekomendasi" ).click(function() {
+				$( "#review-rekomendasi" ).fadeOut( "slow" );
+				$( "#review-tidak-rekomendasi" ).fadeIn( "slow" );
+				$( "#tab-tidak-rekomendasi" ).addClass("disabled");
+				$( "#tab-tidak-rekomendasi" ).removeClass("red lighten-1");
+				$( "#tab-rekomendasi" ).removeClass("disabled");
+			});
+		</script>
 		{% block js %}
 		{% endblock %}		
 	</body>

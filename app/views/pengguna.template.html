@@ -28,7 +28,7 @@
       <ul id="sidebar" class="profil side-nav">
 
       	<li class="logo">
-      		RDss
+      		<img src="{{ BASE_URL }}img/logopanjang.png">
       	</li>
 
       	<li class="detail">
@@ -63,10 +63,36 @@
 	{% block content %}
 	{% endblock %}
 	</div>
+
+  <div class="fixed-action-btn" style="bottom: 25px; right: 45px;">
+    <a class="modal-trigger waves-effect waves-white btn-floating btn-large teal lighten-1 tooltipped" href="#feedback-dialog" data-position="top" data-delay="50" data-tooltip="Beri Feedback">
+      <i class="large mdi-content-add"></i>
+    </a>
+  </div>
+
+  <!-- Modal Feedback -->
+  <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
+    <div class="modal-content">
+      <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
+      <label for="nilai">Nilai</label>
+      <div class="range-field">
+        <input type="range" id="rating" name="rating" min="1" max="5" />
+      </div>
+      <label for="feedback">Feedback</label>
+        <textarea id="feedback" name="feedback" class="materialize-textarea"></textarea>  
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="green waves-effect waves-white btn">Kirim</a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+    </div>
+  </form>
 {% endblock %}
 
 {% block js %}
 <script>
-	$(".rd-profil-collapse").sideNav();
+	 $(".rd-profil-collapse").sideNav(); 
+  $('.modal-trigger').leanModal();
+  $('select').material_select();
 </script>
 {% endblock %}
