@@ -347,9 +347,10 @@ class Home extends _MainController {
 		$data['report'] = $report;
 		$this->render('melihatreport.html',$data);
 	}
-	
+
 	function tampilstatistik() {
 		$data = array();
+
 		$data['statpengguna'] = array();
 		$data['statpengguna']['total'] = Pengguna::count();
 		$data['statpengguna']['totalbulan'] = Pengguna::count();
