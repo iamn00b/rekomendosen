@@ -37,10 +37,10 @@
 			{% set counterreport = 0 %}
 			{% for rprt in report %}
 				{% if rvw.id == rprt.review_id %}
-					{% set counterreport = counterdown + 1 %}
+					{% set counterreport = counterreport + 1 %}
 				{% endif %}
 			{% endfor %} </li>
-			<li>Report : {{ counterreport }}</li>
+			<li>Report : {{ counterreport }} <a href="{{ BASE_URL }}/report/{{ rvw.id}}">Report</a></li>
 			<li>Jenis : {{ rvw.jenis}}</li>
 			<li>Isi : {{ rvw.isi}}</li>
 			<li>Komentar :

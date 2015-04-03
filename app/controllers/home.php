@@ -136,6 +136,19 @@ class Home extends _MainController {
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
 	
+	function addreport($id) {
+		$report = new Report;
+		$report->review_id = $id;
+		$pengguna1 = Auth::getPengguna();
+		$report->pengguna_npm = $pengguna1->npm;
+		$report->save();
+		$review = Review::where('id', '=', $id)->get();
+		$nip = $review[0]->dosen_nip;
+		$dosen = Dosen::where('nip', '=', $nip)->get();
+		$iddosen = $dosen[0]->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
 	function tampilhasilpencarian($query) {
 		$dosen = Dosen::where('nama','LIKE', "%".$query."%")->get();
 		$matkul = MataKuliah::where('nama','LIKE', "%".$query."%")->get();
