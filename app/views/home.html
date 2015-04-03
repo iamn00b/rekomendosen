@@ -3,6 +3,66 @@
 {% block title %}Beranda{% endblock %}
 
 {% block content %}
-	<h2>{{ nama }}</h2>
-	<p>NPM {{ npm }}</p>
+	<ul id="review-rekomendasi">
+		<li class="row">
+			<div class="card card-panel grey lighten-5 card-review">
+			<h6 class="geser-kanan-timeline"><strong>Dosen A</strong> direkomendasikan seseorang</h6>
+				<div class="row">
+					<div class="col m2">
+						<img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img">
+					</div>
+					<div class="col m10">
+						<BLOCKQUOTE>Ini review bagus. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</BLOCKQUOTE>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col m9 offset-m2">
+						<div class="col m2"><img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+						<div class="col m10">
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col m9 offset-m2">
+						<div class="col m2"><img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+						<div class="col m10">
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col m9 offset-m3">
+						<textarea id="textarea1" class="materialize-textarea"></textarea>
+						<label for="textarea1">Komentar</label>
+						<a class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<ul id="review-rekomendasi">
+		<li class="row">
+			<div class="card card-panel grey lighten-5 card-review">
+			<h6 class="geser-kanan-timeline"><strong>Dosen A</strong> direkomendasikan seseorang</h6>
+				<div class="row">
+					<div class="col m2">
+						<img src="{{ BASE_URL }}img/tes.jpg" alt="" class="activator circle responsive-img">
+					</div>
+					<div class="col m10">
+						<BLOCKQUOTE>Ini review bagus. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</BLOCKQUOTE>
+					</div>
+				</div>
+				<div class="row">
+				</div>
+				<div class="row">
+					<div class="input-field col m9 offset-m3">
+						<textarea id="textarea1" class="materialize-textarea"></textarea>
+						<label for="textarea1">Komentar</label>
+						<a class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
 {% endblock %}

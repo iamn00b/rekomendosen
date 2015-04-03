@@ -207,3 +207,9 @@
 .padding-20{
 	padding:20px !important;
 }
+
+/*home*/
+.geser-kanan-timeline{
+	margin-left: 150px;
+	margin-bottom:15px;
+}
