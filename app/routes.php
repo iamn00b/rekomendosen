@@ -17,3 +17,5 @@ $app->get('/admin-pengguna/', function () use ($app) 	{ (new _MainController())-
 $app->get('/admin-review/', function () use ($app) 	{ (new _MainController())->render('admin-review.html');	})->name('admin-review');
 $app->get('/admin-komentar/', function () use ($app) 	{ (new _MainController())->render('admin-komentar.html');	})->name('admin-komentar');
 $app->get('/admin-report/', function () use ($app) 	{ (new _MainController())->render('admin-report.html');	})->name('admin-report');
+$app->get('/admin-feedback/', function () use ($app) 	{ (new _MainController())->render('admin-feedback.html');	})->name('admin-feedback');
+$app->get('/admin/', function () use ($app) { (new _MainController())->render('admin.html');	})->name('admin');
