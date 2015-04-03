@@ -155,3 +155,12 @@
 #review-tidak-rekomendasi{
 	display:none;
 }
+
+/* Hasil Pencarian */
+#hasil-pencarian-dosen{
+	margin-top:-10px;
+	margin-bottom:25px;
+}
+#hasil-pencarian-mata-kuliah{
+	margin-top:-10px;
+}
