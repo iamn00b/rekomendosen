@@ -46,6 +46,7 @@
 
 #sidebar{
 	font-size:18px;
+	overflow-y:auto;
 }
 
 .rd-nav .profil .detail{
@@ -143,8 +144,7 @@
 	color:#ffffff !important;
 }
 .rata-kanan{
-	position:absolute;
-	right:0;
+	float:right;
 }
 .col-tab-rekomendasi-kiri{
 	padding: 0 0.25rem 0 0 !important;
@@ -163,4 +163,29 @@
 }
 #hasil-pencarian-mata-kuliah{
 	margin-top:-10px;
+}
+
+/* Admin Sidebar */
+#menu-admin{
+	margin: 0 -15px;
+}
+.menu-admin-item a{
+	color:#ffffff !important;
+	font-size:1.3rem;
+}
+.menu-admin-item.active{
+	background-color:#26a69a !important;
+}
+
+/* Admin Profil Dosen */
+.hapus-profil-dosen{
+	color:#ef5350 !important;
+	font-size:1.4rem;
+	margin-top:-10px;
+}
+.teks-tengah{
+	text-align:center;
+}
+.geser-kanan-dikit{
+	margin-right:5px !important;
 }

@@ -11,3 +11,5 @@ $app->get('/detil-dosen/', function () use ($app) 		{ (new _MainController())->r
 $app->post('/feedback/', function () use ($app)	{ (new Home())->welcome(); 		})->name('feedback');
 $app->post('/tutorial/', function () use ($app)	{ (new Home())->welcome(); 		})->name('tutorial');
 $app->get('/hasil-pencarian/', function () use ($app) 	{ (new _MainController())->render('hasil-pencarian.html');	})->name('hasil-pencarian');
+$app->get('/admin-profil-dosen/', function () use ($app) 	{ (new _MainController())->render('admin-profil-dosen.html');	})->name('admin-profil-dosen');
+$app->get('/admin-mata-kuliah/', function () use ($app) 	{ (new _MainController())->render('admin-mata-kuliah.html');	})->name('admin-mata-kuliah');

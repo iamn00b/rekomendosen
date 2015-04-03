@@ -1,0 +1,99 @@
+{% extends "global.template.html" %}
+
+{% block body %}
+	<nav class="rd-nav teal lighten-2">
+    <div class="nav-wrapper">
+    	<div class="left teal lighten-3 profil-button">
+    		<a href="#" data-activates="sidebar" class="rd-profil-collapse"><i class="mdi-navigation-menu"></i></a>
+    	</div>
+
+    	<div class="left teal lighten-3 logo">
+	      <a href="home" class="hide-on-small-only"><img src="{{ BASE_URL }}img/logopendek.png"></a>
+	      <a href="home" class="left teal lighten-3 rd-nav-logo center hide-on-med-and-up"><img src="{{ BASE_URL }}img/logopanjang.png"></a>
+	    </div>
+
+      <form class="left teal lighten-1 pencarian hide-on-small-only">
+        <div class="input-field right">
+          <input id="search" type="text" placeholder="pencarian" required>
+          <label for="search"><i class="mdi-action-search"></i></label>
+        </div>
+      </form>
+
+      <ul class="right hide-on-small-only">
+        <li><a href="dosen">Dosen</a></li>
+        <li><a href="mata-kuliah">Mata Kuliah</a></li>
+        <li><a class="modal-trigger" href="#feedback-dialog" data-position="top" data-delay="50">Feedback</a></li>
+        <!-- <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li> -->
+      </ul>
+
+      <ul id="sidebar" class="profil side-nav">
+
+      	<li class="logo">
+      		<img src="{{ BASE_URL }}img/logopanjang.png">
+      	</li>
+
+      	<li class="detail">
+	      	<span class="nama">Hai, <strong>{{ pengguna.nama }}</strong>!</span><br/>
+	      	<span class="npm">NPM <strong>{{ pengguna.npm }}</strong></span>
+      	</li>
+		
+		<li>
+			<h5>ADMINISTRATOR TOOLS</h5>
+      	</li>
+
+      	<li>
+			<ul id="menu-admin">
+				<li class="menu-admin-item teal lighten-2"><a href="#">Statistik Website</a></li>
+				<li class="menu-admin-item active"><a href="#">Kelola Profil Dosen</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Kelola Mata Kuliah</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Kelola Pengguna</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Kelola Review</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Kelola Komentar</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Kelola Report</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Kelola Feedback</a></li>
+				<li class="menu-admin-item teal lighten-2"><a href="#">Maintenance Mode</a></li>
+			</ul>
+		</li>
+		</ul>
+		  
+    </div>
+  </nav>
+
+  <div class="container">
+	{% block content %}
+	{% endblock %}
+	</div>
+
+  <!-- <div class="fixed-action-btn" style="bottom: 25px; right: 45px;">
+    <a class="modal-trigger waves-effect waves-white btn-floating btn-large teal lighten-1 tooltipped" href="#feedback-dialog" data-position="top" data-delay="50" data-tooltip="Beri Feedback">
+      <i class="large mdi-content-add"></i>
+    </a>
+  </div> -->
+
+  <!-- Modal Feedback -->
+  <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
+    <div class="modal-content">
+      <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
+      <label for="nilai">Nilai</label>
+      <div class="range-field">
+        <input type="range" id="rating" name="rating" min="1" max="5" />
+      </div>
+      <label for="feedback">Feedback</label>
+      <div class="input-field feedback">  
+        <textarea id="feedback" name="feedback" class="materialize-textarea"></textarea>  
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="green waves-effect waves-white btn">Kirim</a>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+    </div>
+  </form>
+{% endblock %}
+
+{% block js %}
+<script>
+	 $(".rd-profil-collapse").sideNav(); 
+  $('.modal-trigger').leanModal();
+  $('select').material_select();
+</script>
+{% endblock %}
