@@ -3,148 +3,47 @@
 {% block title %}Daftar Dosen{% endblock %}
 
 {% block content %}
-	<h2>Kelola Profil Dosen</h2>
-	<a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-profil-dosen">Tambah</a>
+	<h2>Kelola Mata Kuliah</h2>
+	<a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-mata-kuliah">Tambah</a>
 	<!-- Modal Structure -->
-	<div id="modal-tambah-profil-dosen" class="modal">
+	<div id="modal-tambah-mata-kuliah" class="modal">
 		<div class="modal-content">
-		  <h4>Tambah Profil Dosen</h4>
-		  <div class="row">
-		  <div class="col m3 teks-tengah">
-			<img src="img/grey.jpg" alt="" class=" activator circle responsive-img">
-			<a href="#">Pilih Foto</a>
-		  </div>
+		  <h4>Tambah Mata Kuliah</h4>
 		  <form class="col m9">
 			<div class="row">
 			<div class="input-field col m12">
 			<input type="text" class="validate">
-			<label for="nama_dosen">Nama Dosen</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="text" class="validate">
-			<label for="research_interest">Research Interest</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="email" class="validate">
-			<label for="email">Alamat Email</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="text" class="validate">
-			<label for="website">Website</label>
+			<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
 			</div>
 			</div>
 			<div class="row">
 			<div class="input-field col m12">
 			<textarea class="materialize-textarea"></textarea>
-			<label for="mengajar_mata_kuliah">Mengajar Mata Kuliah</label>
+			<label for="deskripsi_singkat">Deskripsi Singkat</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="pernah_diajar_oleh">Pernah Diajar Oleh</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="website">Dibuka Pada Semester</label>
 			</div>
 			</div>
 		  </form>
 		  </div>
-		</div>
 		<div class="modal-footer">
 		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Simpan</a>
 		</div>
 		</div>
-	<ul id="daftar-profil-dosen">
-		<li class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class="card card-panel grey lighten-5 waves-effect waves-light">
-			<a href="#modal-hapus-profil-dosen" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-          <div class="row valign-wrapper modal-trigger" href="#modal-ubah-profil-dosen">
-            <div class="col s2">
-              <img src="{{ BASE_URL }}img/tes.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col s8">
-              <span class="black-text">
-                <h4>Rizkania Amaranggana Yusuf</h4>
-              </span>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-            </div>
-            <div class="col s2">
-              <span class="teal-text text-lighten-3 center-align">
-                <h4>Rating</h4>
-              <h1 style="line-height: 5px;"><strong>9</strong>.<small>85</small></h1>
-              </span>
-            </div>
-          </div>
-	        <div class="row">
-		        <div class="col s12 m4 l2">
-	                <h6 class="matkul black-text"><strong>Mengajar Mata Kuliah:</strong></h6>
-		        </div>
-		        <div class="col s12 m4 l8">
-	              	<span class="black-text ">
-	                	<h6>Proyek Perangkat Lunak, Analisis Numerik, <a href="detil-dosen" class="lain teal-text text-lighten-3">lainnya...</a></h6>
-	              	</span>
-		        </div>
-	        </div>
-        </div>
-		<!-- Modal Structure -->
-		<div id="modal-ubah-profil-dosen" class="modal">
-		<div class="modal-content">
-		  <h4>Ubah Profil Dosen</h4>
-		  <div class="row">
-		  <div class="col m3 teks-tengah">
-			<img src="img/grey.jpg" alt="" class=" activator circle responsive-img">
-			<a href="#">Pilih Foto</a>
-		  </div>
-		  <form class="col m9">
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="text" class="validate">
-			<label for="nama_dosen">Nama Dosen</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="text" class="validate">
-			<label for="research_interest">Research Interest</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="email" class="validate">
-			<label for="email">Alamat Email</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<input type="text" class="validate">
-			<label for="website">Website</label>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col m12">
-			<textarea class="materialize-textarea"></textarea>
-			<label for="mengajar_mata_kuliah">Mengajar Mata Kuliah</label>
-			</div>
-			</div>
-		  </form>
-		  </div>
-		</div>
-		<div class="modal-footer">
-		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Simpan</a>
-		</div>
-		</div>
-		<!-- Modal Structure -->
-		<div id="modal-hapus-profil-dosen" class="modal">
-		<div class="modal-content">
-		<p>Hapus data diri dosen A?</p>
-		</div>
-		<div class="modal-footer">
-		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-		<a href="#!" class="modal-action modal-close waves-effect waves-green btn geser-kanan-dikit">Ya</a>
-		</div>
-		</div>
-		</li>
-		<li>
+	<ul id="daftar-mata-kuliah">
 		<div class=" card card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-          <div class="row valign-wrapper">
+			<a href="#modal-hapus-mata-kuliah" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
+          <div class="row valign-wrapper modal-trigger" href="#modal-ubah-mata-kuliah">
             <div class="col s2">
               <img src="{{ BASE_URL }}img/grey.jpg" alt="" class=" activator circle responsive-img"> <!-- notice the "circle" class -->
             </div>
@@ -172,6 +71,51 @@
 		        </div>
 	        </div>
         </div>
+			<!-- Modal Structure -->
+	<div id="modal-ubah-mata-kuliah" class="modal">
+		<div class="modal-content">
+		  <h4>Ubah Mata Kuliah</h4>
+		  <form class="col m9">
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<textarea class="materialize-textarea"></textarea>
+			<label for="deskripsi_singkat">Deskripsi Singkat</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="pernah_diajar_oleh">Pernah Diajar Oleh</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="website">Dibuka Pada Semester</label>
+			</div>
+			</div>
+		  </form>
+		  </div>
+		<div class="modal-footer">
+		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Simpan</a>
+		</div>
+		</div>
+		<!-- Modal Structure -->
+		<div id="modal-hapus-mata-kuliah" class="modal">
+		<div class="modal-content">
+		<p>Hapus mata kuliah A?</p>
+		</div>
+		<div class="modal-footer">
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+		</div>
+		</div>
 		</li>
 	</ul>
 {% endblock %}
