@@ -1,0 +1,77 @@
+{% extends "admin.template.html" %}
+
+{% block title %}Daftar Dosen{% endblock %}
+
+{% block content %}
+	<h2>Kelola Review</h2>
+	<ul id="daftar-review" class="row margin-nol">
+	<li>
+		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light" href="#!">
+			<a href="#modal-hapus-review" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
+          <div class="row valign-wrapper modal-trigger" href="#modal-ubah-review">
+            <div class="col s10">
+              <span class="black-text">
+                <h4>1206277350</h4>
+              </span>
+				<ul>
+					<li>Dosen: Arifin Suparjo</li>
+					<li>Jenis: Rekomendasi</li>
+					<li>Isi: Pak Arifin orangnya baik hati, tidak sombong, dan rajin menabung.</li>
+				</ul>
+			</div>
+            <div class="col s2">
+              <span class="teal-text text-lighten-3 center-align">
+                <h5>Vote</h5>
+              <h1 style="line-height: 5px;"><strong>3</strong></h5>
+              </span>
+            </div>
+          </div>
+        </div>
+			<!-- Modal Structure -->
+	<div id="modal-ubah-review" class="modal">
+		<div class="modal-content">
+		  <h4>Ubah Review</h4>
+		  <form class="col m12">
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="npm">NPM</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="dosen">Dosen</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<input type="text" class="validate">
+			<label for="jenis">Jenis</label>
+			</div>
+			</div>
+			<div class="row">
+			<div class="input-field col m12">
+			<textarea class="materialize-textarea"></textarea>
+			<label for="isi">Isi</label>
+			</div>
+			</div>
+		  </form>
+		  </div>
+		<div class="modal-footer">
+		  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn">Simpan</a>
+		</div>
+		</div>
+		<!-- Modal Structure -->
+		<div id="modal-hapus-review" class="modal">
+		<div class="modal-content">
+		<p>Hapus Review A?</p>
+		</div>
+		<div class="modal-footer">
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+		</div>
+		</div>
+		</li>
+	</ul>
+{% endblock %}

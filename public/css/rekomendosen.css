@@ -189,3 +189,16 @@
 .geser-kanan-dikit{
 	margin-right:5px !important;
 }
+
+/* Admin Pengguna */
+#daftar-pengguna .card{
+	padding:20px !important;
+}
+.margin-nol{
+	margin:0 !important;
+}
+
+/* Admin Review */
+#daftar-review .card{
+	padding:20px !important;
+}

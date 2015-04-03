@@ -13,3 +13,5 @@ $app->post('/tutorial/', function () use ($app)	{ (new Home())->welcome(); 		})-
 $app->get('/hasil-pencarian/', function () use ($app) 	{ (new _MainController())->render('hasil-pencarian.html');	})->name('hasil-pencarian');
 $app->get('/admin-profil-dosen/', function () use ($app) 	{ (new _MainController())->render('admin-profil-dosen.html');	})->name('admin-profil-dosen');
 $app->get('/admin-mata-kuliah/', function () use ($app) 	{ (new _MainController())->render('admin-mata-kuliah.html');	})->name('admin-mata-kuliah');
+$app->get('/admin-pengguna/', function () use ($app) 	{ (new _MainController())->render('admin-pengguna.html');	})->name('admin-pengguna');
+$app->get('/admin-review/', function () use ($app) 	{ (new _MainController())->render('admin-review.html');	})->name('admin-review');
