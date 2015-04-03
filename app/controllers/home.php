@@ -374,3 +374,4 @@ class Home extends _MainController {
 
 		$this->render('statistik.html', $data);
 	}
+}
