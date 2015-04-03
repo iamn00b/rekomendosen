@@ -23,6 +23,7 @@
         <li><a href="dosen">Dosen</a></li>
         <li><a href="mata-kuliah">Mata Kuliah</a></li>
         <li><a class="modal-trigger" href="#feedback-dialog" data-position="top" data-delay="50">Feedback</a></li>
+        <li><a class="modal-trigger" href="#tutorial-dialog" data-position="top" data-delay="50">Tutorial</a></li>
         <!-- <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li> -->
       </ul>
 
@@ -75,11 +76,11 @@
   <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
     <div class="modal-content">
       <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
-      <label for="nilai">Nilai</label>
+      <label class="black-text achievement-list" for="nilai">Nilai</label>
       <div class="range-field">
         <input type="range" id="rating" name="rating" min="1" max="5" />
       </div>
-      <label for="feedback">Feedback</label>
+      <label class="black-text achievement-list" cfor="feedback">Feedback</label>
       <div class="input-field feedback">  
         <textarea id="feedback" name="feedback" class="materialize-textarea"></textarea>  
       </div>
@@ -87,6 +88,20 @@
     <div class="modal-footer">
       <a href="#" class="green waves-effect waves-white btn">Kirim</a>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+    </div>
+  </form>
+  <!-- Modal Tutorial -->
+  <form action="{{ urlFor('tutorial') }}" method="post" id="tutorial-dialog" class="modal modal-footer">
+    <div class="modal-content">
+      <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Tutorial</h4>
+      <p class="black-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui ante, tincidunt non tortor semper, mollis convallis magna. Curabitur ut sodales est, ultricies cursus enim. Maecenas sit amet tincidunt augue. Praesent aliquet a nisi in pellentesque. Morbi convallis, arcu ut faucibus dictum, elit sem auctor magna, et dictum mi est quis sem. Vestibulum mattis, justo id scelerisque pharetra, dolor augue blandit augue, ac tempus urna elit eget augue. In massa velit, aliquam nec convallis volutpat, eleifend sit amet sapien. Aenean nec vestibulum turpis. Duis ornare ultrices nisl, ut pellentesque eros aliquam commodo. Aliquam congue viverra consequat. Mauris sed tincidunt justo. Suspendisse vitae velit eget massa ullamcorper sagittis. Donec ut nunc eu dui consectetur vestibulum.</p>
+      <p class="black-text">
+      Phasellus lacus eros, auctor sit amet turpis ut, aliquet viverra justo. Fusce et nibh sapien. Donec bibendum, ex scelerisque commodo molestie, ante eros convallis ex, nec scelerisque odio leo nec urna. Sed egestas congue magna, id lacinia neque imperdiet scelerisque. In at quam nec justo viverra commodo. Nunc imperdiet lectus risus, vel efficitur ligula elementum ac. Ut vel dui vitae mauris fringilla interdum vel quis nunc. Donec ullamcorper bibendum odio ac accumsan. Vivamus hendrerit pellentesque leo, vitae sodales orci posuere sit amet. Nunc lacinia ligula at porttitor auctor. Integer placerat felis sed ligula consequat, at finibus tortor maximus. Integer felis lectus, sagittis non viverra nec, consequat vel sem. Curabitur lorem ex, commodo at iaculis quis, dictum varius nibh.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Tutup</a>
     </div>
   </form>
 {% endblock %}
