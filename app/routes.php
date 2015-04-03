@@ -15,3 +15,5 @@ $app->get('/admin-profil-dosen/', function () use ($app) 	{ (new _MainController
 $app->get('/admin-mata-kuliah/', function () use ($app) 	{ (new _MainController())->render('admin-mata-kuliah.html');	})->name('admin-mata-kuliah');
 $app->get('/admin-pengguna/', function () use ($app) 	{ (new _MainController())->render('admin-pengguna.html');	})->name('admin-pengguna');
 $app->get('/admin-review/', function () use ($app) 	{ (new _MainController())->render('admin-review.html');	})->name('admin-review');
+$app->get('/admin-komentar/', function () use ($app) 	{ (new _MainController())->render('admin-komentar.html');	})->name('admin-komentar');
+$app->get('/admin-report/', function () use ($app) 	{ (new _MainController())->render('admin-report.html');	})->name('admin-report');
