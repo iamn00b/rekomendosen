@@ -1,6 +1,6 @@
 <?php
 
-class MataKuliah extends Model {
+class Matakuliah extends Model {
 	
 	protected $table 		= 'matakuliah';
 	protected $primaryKey 	= 'kodemk';
