@@ -9,3 +9,4 @@ $app->get('/mata-kuliah', function () use ($app) { (new _MainController())->rend
 $app->get('/detil-mata-kuliah/', function () use ($app) { (new _MainController())->render('detil-mata-kuliah.html');	})->name('detil-mata-kuliah');
 $app->get('/detil-dosen/', function () use ($app) 		{ (new _MainController())->render('detil-dosen.html');	})->name('detil-dosen');
 $app->post('/feedback/', function () use ($app)	{ (new Home())->welcome(); 		})->name('feedback');
+$app->post('/tutorial/', function () use ($app)	{ (new Home())->welcome(); 		})->name('tutorial');
