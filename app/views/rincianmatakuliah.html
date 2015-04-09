@@ -8,7 +8,7 @@
 		<li>SKS : {{ matakuliah.sks}}</li>
 		<li>Prodi : {{ matakuliah.prodi}}</li>
 		<li>Daftar Dosen :
-		{% for dsn in matakuliah.dosens %}
+		{% for dsn in matakuliah.dosens.get %}
 		{{ dsn.nama }}
 		{% endfor %}</li>
 		

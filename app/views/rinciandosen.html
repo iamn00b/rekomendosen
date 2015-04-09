@@ -18,39 +18,21 @@
 			<button type="submit">Submit</button>
 		</form>
 
-		<li>Review :
-		{% for rvw in review %}
-			{% set counterup = 0 %}
-			{% set counterdown = 0 %}
-			{% for vt in vote %}
-				{% if rvw.id == vt.review_id %}
-					{% if vt.tipe == 1 %}
-						{% set counterup = counterup + 1 %}
-					{% endif %}
-					{% if vt.tipe == 0 %}
-						{% set counterdown = counterdown + 1 %}
-					{% endif %}
-				{% endif %}
-			{% endfor %} </li>
-			<li>Upvote : {{ counterup }} <a href="{{ BASE_URL }}/upvote/{{ rvw.id}}">Up</a></li>
-			<li>Downvote : {{ counterdown }} <a href="{{ BASE_URL }}/downvote/{{ rvw.id}}">Down</a></li>
-			{% set counterreport = 0 %}
-			{% for rprt in report %}
-				{% if rvw.id == rprt.review_id %}
-					{% set counterreport = counterreport + 1 %}
-				{% endif %}
-			{% endfor %} </li>
-			<li>Report : {{ counterreport }} <a href="{{ BASE_URL }}/report/{{ rvw.id}}">Report</a></li>
-			<li>Jenis : {{ rvw.jenis}}</li>
-			<li>Isi : {{ rvw.isi}}</li>
-			<li>Komentar :
-			{% for kmntr in komentar %}
-				{% if rvw.id == kmntr.review_id %}
-				<li>Isi : {{ kmntr.isi}}</li>
-				{% endif %}
-			{% endfor %} </li>
+		<li>Review :</li>
+		{% for review in dosen.reviews.get %}
+			<li>Upvote : {{ review.jumlahUpvote }} <a href="{{ BASE_URL }}/upvote/{{ review.id}}">Up</a></li>
+			<li>Downvote : {{ review.jumlahDownvote }} <a href="{{ BASE_URL }}/downvote/{{ review.id}}">Down</a></li>
+			<li>Report : {{ review.jumlahReport }} <a href="{{ BASE_URL }}/report/{{ review.id}}">Report</a></li>
 
-			<form method="POST" action="{{ BASE_URL }}/komentar/{{ rvw.id }}">
+			<li>Jenis : {{ review.jenis }}</li>
+			<li>Isi : {{ review.isi}}</li>
+
+			<li>Komentar :</li>
+			{% for komentar in review.komentars.get %}
+				<li>Isi : {{ komentar.isi}}</li>
+			{% endfor %}
+
+			<form method="POST" action="{{ BASE_URL }}/komentar/{{ review.id }}">
 				<textarea name="komentar"></textarea>
 				<button type="submit">Submit</button>
 			</form>

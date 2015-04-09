@@ -199,13 +199,13 @@ class BaseSeed {
 		$review1 = new Review;
 		$review1->jenis = "baik";
 		$review1->isi = "sangat direkomendasikan";
-		$review1->dosen_nip = $dosen1->nip;
+		$review1->dosen_id = $dosen1->id;
 		$review1->pengguna_npm = $pengguna1->npm;
 		
 		$review2 = new Review;
 		$review2->jenis = "buruk";
 		$review2->isi = "terlalu cepat ngajarnya";
-		$review2->dosen_nip = $dosen1->nip;
+		$review2->dosen_id = $dosen1->id;
 		$review2->pengguna_npm = $pengguna1->npm;
 		
 		$matkul1->save();

@@ -25,4 +25,12 @@ class Auth extends Controller {
 		return $pengguna;
 
 	}
+
+	static function harusAdministrator() {
+
+		$pengguna = self::getPengguna();
+
+		if ($pengguna->role != Pengguna::ADMINISTRATOR);
+			//redirect
+	}
 }

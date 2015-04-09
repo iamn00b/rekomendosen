@@ -3,13 +3,13 @@
 {% block title %}Hasil Pencarian{% endblock %}
 
 {% block content %}
-	{% for dsn in dosen %}
+	{% for dsn in daftarDosen %}
 	<li>{{ dsn.nama}}</li>
 	<li>{{ dsn.nip }}</li>
 	<li>{{ dsn.jeniskelamin }}</li>
 	<li>{{ dsn.ttl }}</li>
 	{% endfor %}
-	{% for mtkl in matkul %}
+	{% for mtkl in daftarMataKuliah %}
 	<li>{{ mtkl.nama}}</li>
 	<li>{{ mtkl.kodemk }}</li>
 	<li>{{ mtkl.sks }}</li>
