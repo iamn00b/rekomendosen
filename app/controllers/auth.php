@@ -12,17 +12,16 @@ class Auth extends Controller {
 
 	static function getPengguna() {
 
-		// self::login();
+		self::login();
 
-		// $sso = SSO::getUser();
-		// $pengguna = Pengguna::firstOrCreate(array('nama' => $sso->name, 'npm' => $sso->npm));
+		$sso = SSO::getUser();
+		$pengguna = Pengguna::firstOrCreate(array('nama' => $sso->name, 'npm' => $sso->npm));
 
-		// $pengguna->nama = $sso->name;
-		// if (empty($pengguna->role))
-		// 	$pengguna->setRole($sso->role); 
-		// $pengguna->save();
+		$pengguna->nama = $sso->name;
+		if (empty($pengguna->role))
+			$pengguna->setRole($sso->role); 
+		$pengguna->save();
 
-		$pengguna = Pengguna::first();
 		return $pengguna;
 
 	}
