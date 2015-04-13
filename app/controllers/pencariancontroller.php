@@ -2,7 +2,7 @@
 
 class PencarianController extends _MainController {
 
-	const HALAMAN_HASIL_PENCARIAN = 'hasil-pencarian.html';
+	const HALAMAN_HASIL_PENCARIAN = 'pencarian.html';
 
 
 	function tampilHasilPencarian() {
