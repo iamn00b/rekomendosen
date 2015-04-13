@@ -50,7 +50,7 @@
 					<div class="modal-content">
 						<h4><i class="mdi-content-add-circle"></i> Beri 'Rekomendasi'</h4>
 						<div class="input-field">
-							<textarea id="textarea-baik" name="review" class="materialize-textarea"></textarea>
+							<textarea id="textarea-baik" name="review" class="materialize-textarea" required></textarea>
 							<label for="textarea-baik">Tulis rekomendasi</label>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					<div method="POST" action="{{ urlFor('reviewbaik', {'id' : dosen.id}) }}" class="modal-content">
 						<h4><i class="mdi-content-remove-circle"></i> Beri 'Tidak Rekomendasi'</h4>
 						<div class="input-field">
-							<textarea id="textarea-buruk" name="review" class="materialize-textarea"></textarea>
+							<textarea id="textarea-buruk" name="review" class="materialize-textarea" required></textarea>
 							<label for="textarea-buruk">Tulis rekomendasi</label>
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 
 				<form method="POST" action="{{ urlFor('komentar', {"id" : review.id }) }}" class="row">
 					<div class="input-field col m9 offset-m3">
-						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea"></textarea>
+						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea" required></textarea>
 						<label for="komentar-{{review.id}}">Komentar</label>
 						<button type="submit" class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</button>
 					</div>
