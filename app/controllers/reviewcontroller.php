@@ -62,11 +62,11 @@ class ReviewController extends _MainController {
 	}
 
 	function tambahUpvote($id) {
-		$this->tambahVote($id, UpvoteDownvote::UPVOTE);
+		$this->tambahVote($id, UpvoteDownvote::UP);
 	}
 	
 	function tambahDownvote($id) {
-		$this->tambahVote($id, UpvoteDownvote::DOWNVOTE);
+		$this->tambahVote($id, UpvoteDownvote::DOWN);
 	}
 
 	function beriReport($id) {

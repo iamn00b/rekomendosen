@@ -4,7 +4,7 @@ class MataKuliahController extends _MainController {
 	
 	const HALAMAN_DAFTAR_MATA_KULIAH = 'matakuliah/matakuliah.html';
 	const HALAMAN_RINCIAN_MATA_KULIAH = 'matakuliah/rincianmatakuliah.html';
-	const HALAMAN_ADMIN_MATA_KULIAH = 'admin/admin-mata-kuliah.html';
+	const HALAMAN_ADMIN_MATA_KULIAH = 'crudmatakuliah.html';
 	
 	function tampilDaftarMataKuliah() {
 
@@ -34,7 +34,7 @@ class MataKuliahController extends _MainController {
 
 	function createMataKuliah() {
 		$matkul = $this->app->request->post();
-		
+
 		$kodemk = $matkul['kodemk'];
 		$nama = $matkul['namamk'];
 		$sks = $matkul['sksmk'];

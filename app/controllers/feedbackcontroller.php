@@ -27,7 +27,7 @@ class FeedbackController extends _MainController {
 		$this->render(self::HALAMAN_ADMIN_FEEDBACK,$data);
 	}
 	
-	function deleteAdministrasiFeedback($id) {
+	function deleteFeedback($id) {
 		$feedback = Feedback::where('id', '=', $id)->delete();
 		$this->app->response->redirect($this->app->urlFor('rdfeedback'), 400);
 	}
