@@ -2,17 +2,17 @@
 
 class DosenController extends _MainController { 
 
-	const HALAMAN_DAFTAR_DOSEN = 'dosen.html';
-	const HALAMAN_RINCIAN_DOSEN = 'rinciandosen.html';
+	const HALAMAN_DAFTAR_DOSEN = 'dosen/dosen.html';
+	const HALAMAN_RINCIAN_DOSEN = 'dosen/rinciandosen.html';
 
-	const HALAMAN_ADMIN_DOSEN = 'cruddosen.html';
+	const HALAMAN_ADMIN_DOSEN = 'admin/dosen.html';
 
 
 	function tampilDaftarDosen() {
 		$daftarDosen = Dosen::all();	//TODO : Paginasi
 
 		$data = array();
-		$data['dosen'] = $daftarDosen;
+		$data['daftarDosen'] = $daftarDosen;
 
 		$this->render(self::HALAMAN_DAFTAR_DOSEN, $data);
 	}
@@ -31,7 +31,7 @@ class DosenController extends _MainController {
 		$dosen = Dosen::all();			// TODO : Paginasi
 
 		$data = array();
-		$data['dosen'] = $dosen;
+		$data['daftarDosen'] = $dosen;
 
 		$this->render(self::HALAMAN_ADMIN_DOSEN,$data);
 	}
@@ -40,10 +40,10 @@ class DosenController extends _MainController {
 	function createDosen() {
 		$dosen = $this->app->request->post();
 
-		$nip = $dosen['nipdsn'];
-		$nama = $dosen['namadsn'];
-		$jeniskelamin = $dosen['jeniskelamindsn'];
-		$ttl = $dosen['ttldsn'];
+		$nip = $dosen['nip'];
+		$nama = $dosen['nama'];
+		$jeniskelamin = $dosen['jeniskelamin'];
+		$ttl = $dosen['ttl'];
 
 		$dosen1 = new Dosen;
 		$dosen1->nip = $nip;
@@ -58,10 +58,10 @@ class DosenController extends _MainController {
 	function updateDosen($id) {
 		$dosen = $this->app->request->post();
 
-		$nip = $dosen['nipdsn'];
-		$nama = $dosen['namadsn'];
-		$jeniskelamin = $dosen['jeniskelamindsn'];
-		$ttl = $dosen['ttldsn'];
+		$nip = $dosen['nip'];
+		$nama = $dosen['nama'];
+		$jeniskelamin = $dosen['jeniskelamin'];
+		$ttl = $dosen['ttl'];
 
 		$dosen1 = Dosen::find($id);
 		$dosen1->nip = $nip;

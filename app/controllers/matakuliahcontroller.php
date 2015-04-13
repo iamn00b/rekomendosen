@@ -2,8 +2,8 @@
 
 class MataKuliahController extends _MainController {
 	
-	const HALAMAN_DAFTAR_MATA_KULIAH = 'matakuliah.html';
-	const HALAMAN_RINCIAN_MATA_KULIAH = 'rincianmatakuliah.html';
+	const HALAMAN_DAFTAR_MATA_KULIAH = 'matakuliah/matakuliah.html';
+	const HALAMAN_RINCIAN_MATA_KULIAH = 'matakuliah/rincianmatakuliah.html';
 	const HALAMAN_ADMIN_MATA_KULIAH = 'crudmatakuliah.html';
 	
 	function tampilDaftarMataKuliah() {
@@ -11,7 +11,7 @@ class MataKuliahController extends _MainController {
 		$daftarMataKuliah = Matakuliah::all();	// TODO : Paginasi
 
 		$data = array();
-		$data['matakuliah'] = $daftarMataKuliah;
+		$data['daftarMataKuliah'] = $daftarMataKuliah;
 		$this->render(self::HALAMAN_DAFTAR_MATA_KULIAH, $data);
 	}
 	

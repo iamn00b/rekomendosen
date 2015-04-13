@@ -7,14 +7,18 @@ use SSO\SSO;
 class HomeController extends _MainController {
 
 	function welcome() {
-		if (Auth::check()) 
-			$this->app->response->redirect($this->app->urlFor('home'), 400);
+		// if (Auth::check()) 
+		// 	$this->app->response->redirect($this->app->urlFor('home'), 400);
 		
-		$this->render('welcome.html');
+		$this->render('index.html', array(), false);
 	}
 
 	function index() {
-		$this->render('home.html'); 
+
+		$data = array();
+
+		$data['daftarReview'] = Review::orderBy('created_at', 'desc')->get(); //orderBy('created_at')->get();
+		$this->render('home.html', $data); 
 	}
 
 	function logout() {
@@ -32,6 +36,6 @@ class HomeController extends _MainController {
 		$data['statreview']['total'] = Review::count();
 		$data['statkomentar']['total'] = Komentar::count();
 
-		$this->render('statistik.html', $data);
+		$this->render('admin/statistik.html', $data);
 	}
 }

@@ -1,13 +1,14 @@
 <?php
 
 class FeedbackController extends _MainController {
+
+	const HALAMAN_ADMIN_FEEDBACK = 'admin/feedback.html';
 	
-
-
 	function tambahFeedback() {
 		$feedback = $this->app->request->post();
 		$rating = $feedback['rating'];
 		$isi = $feedback['feedback'];
+
 		$pengguna = Auth::getPengguna();
 		$npm = $pengguna->npm;
 		$feedback1 = new Feedback;
@@ -15,14 +16,15 @@ class FeedbackController extends _MainController {
 		$feedback1->isi = $isi;
 		$feedback1->pengguna_npm = $npm;
 		$feedback1->save();
-		$this->render('home.html');
+
+		$this->app->response->redirect($this->app->urlFor('home'), 400);
 	}
 	
 	function tampilAdministrasiFeedback() {
 		$feedback = Feedback::all();
 		$data = array();
-		$data['feedback'] = $feedback;
-		$this->render('rdfeedback.html',$data);
+		$data['daftarFeedback'] = $feedback;
+		$this->render(self::HALAMAN_ADMIN_FEEDBACK,$data);
 	}
 	
 	function deleteFeedback($id) {

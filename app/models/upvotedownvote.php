@@ -8,11 +8,11 @@ class UpvoteDownvote extends Model {
 	protected $table 		= 'upvotedownvote';
 	protected $primaryKey 	= 'id';
 	
-	public function reviews() {
+	public function review() {
 		return $this->belongsTo('Review');
 	}
 	
-	public function penggunas() {
+	public function pengguna() {
 		return $this->belongsTo('Pengguna');
 	}
 

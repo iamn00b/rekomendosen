@@ -1,0 +1,196 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}{{ dosen.nama }}{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="col s2 activator circle responsive-img">
+		<div class="col">
+			<h2>{{ dosen.nama }}</h2>
+			<h6 class="cap"><strong>NIP</strong> {{ dosen.nip }}</h6> 
+			<h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6> 
+		</div>
+	</div>
+	<div class="row">
+        <div class="card card-panel grey lighten-5">
+          <div class="row">
+            <div class="col m9">
+            	<div class="row">
+            		<div class="col s12">
+		              <span class="black-text">
+		                <h4>Deskripsi Singkat</h4>
+		              </span>
+		              <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+	            	</div>
+	            </div>
+	            <a name="daftarmatakuliah"></a>
+	            <div class="row">
+	            	<div class="col s12">
+					  <h5>Pernah Mengajar</h5> 
+	                  <span class="black-text valign-wrapper">
+	                    {% for matakuliah in dosen.matakuliahs.get %} 
+	                      <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}" class="valign-wrapper rd-left">
+	                        <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
+	                        <h6 class="valign">{{ matakuliah.nama }}, </h6>
+	                      </a>
+	                    {% endfor %} 
+	                  </span>
+	                </div>
+	            </div>
+            </div>
+            <div class="col m3">
+              <div class="row teal-text text-lighten-3 center-align">
+                <h4>Rating</h4>
+				<h1 style="line-height: 5px;"><strong>{{ dosen.jumlahRatingAsString['depan'] }}</strong>.<small>{{ dosen.jumlahRatingAsString['belakang'] }}</small></h1>
+				<p>dari {{ dosen.reviews.count }} review</p>
+              </div>
+			  <div id="rekomendasi-anda" class="row">
+			  <!-- Modal Structure -->
+				<form method="POST" action="{{ urlFor('reviewbaik', {'id' : dosen.id}) }}" id="modal1" class="modal">
+					<div class="modal-content">
+						<h4><i class="mdi-content-add-circle"></i> Beri 'Rekomendasi'</h4>
+						<div class="input-field">
+							<textarea id="textarea-baik" name="review" class="materialize-textarea"></textarea>
+							<label for="textarea-baik">Tulis rekomendasi</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="modal-action waves-effect waves-green teks-putih btn">Kirim</a>
+					</div>
+				</form>
+				<form method="POST" action="{{ urlFor('reviewburuk', {'id' : dosen.id}) }}" id="modal2" class="modal">
+					<div method="POST" action="{{ urlFor('reviewbaik', {'id' : dosen.id}) }}" class="modal-content">
+						<h4><i class="mdi-content-remove-circle"></i> Beri 'Tidak Rekomendasi'</h4>
+						<div class="input-field">
+							<textarea id="textarea-buruk" name="review" class="materialize-textarea"></textarea>
+							<label for="textarea-buruk">Tulis rekomendasi</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="modal-action waves-effect waves-green teks-putih btn">Kirim</a>
+					</div>
+				</form>
+                <h6 class="row center-align"><strong>Rekomendasi Anda?</strong></h6>
+				<div class="row-btn-rekomendasi">
+				<a href="#modal1" class="modal-trigger waves-effect waves-light btn btn-rekomendasi"><i class="mdi-content-add white-text"></i></a>
+				<a href="#modal2" class="modal-trigger waves-effect waves-light btn red lighten-1 btn-rekomendasi"><i class="mdi-content-remove white-text"></i></a>
+				</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+	<div class="row">
+		<div class="col m6 col-tab-rekomendasi-kiri">
+		<a id="tab-rekomendasi" class="waves-effect waves-light btn tab-rekomendasi disabled">Rekomendasi</a>
+		</div>
+		<div class="col m6 col-tab-rekomendasi-kanan">
+		<a id="tab-tidak-rekomendasi" class="waves-effect waves-light btn red lighten-1 tab-rekomendasi">Tidak Rekomendasi</a>
+		</div>
+	</div>
+	<ul id="review-rekomendasi">
+
+	{% for review in dosen.reviewBaiks.get %}
+		<li class="row">
+			<div class="card card-panel grey lighten-5 card-review">
+				<div class="row">
+					<div class="col m1 vote-review">
+						<a href="{{ urlFor('upvote', {'id': review.id }) }}"><i class="mdi-navigation-arrow-drop-up btn-vote-review"></i></a>
+						<span>{{ review.jumlahVoteAsString }}</span>
+						<a href="{{ urlFor('downvote', {'id': review.id }) }}"><i class="mdi-navigation-arrow-drop-down btn-vote-review"></i></a>
+					</div>
+					<div class="col m2">
+						<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img">
+					</div>
+					<div class="col m9 rd-review">
+						<p>{{ review.isi }}</p>
+					</div>
+				</div>
+
+				{% for komentar in review.komentars.get %}
+				<div class="row">
+					<div class="col m9 offset-m3">
+						<div class="col m2"><img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+						<div class="col m10">
+							<p>{{ komentar.isi }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				<form method="POST" action="{{ urlFor('komentar', {"id" : review.id }) }}" class="row">
+					<div class="input-field col m9 offset-m3">
+						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea"></textarea>
+						<label for="komentar-{{review.id}}">Komentar</label>
+						<button type="submit" class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</button>
+					</div>
+				</form>
+			</div>
+		</li>
+	{% endfor %}
+
+	</ul>
+	<ul id="review-tidak-rekomendasi">
+
+	{% for review in dosen.reviewBuruks.get %}
+		<li class="row">
+			<div class="card card-panel grey lighten-5 card-review">
+				<div class="row">
+					<div class="col m1 vote-review">
+						<a href="{{ urlFor('upvote', {'id': review.id }) }}"><i class="mdi-navigation-arrow-drop-up btn-vote-review"></i></a>
+						<span>{{ review.jumlahVoteAsString }}</span>
+						<a href="{{ urlFor('downvote', {'id': review.id }) }}"><i class="mdi-navigation-arrow-drop-down btn-vote-review"></i></a>
+					</div>
+					<div class="col m2">
+						<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img">
+					</div>
+					<div class="col m9 rd-review">
+						<p>{{ review.isi }}</p>
+					</div>
+				</div>
+
+				{% for komentar in review.komentars.get %}
+				<div class="row">
+					<div class="col m9 offset-m3">
+						<div class="col m2"><img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+						<div class="col m10">
+							<p>{{ komentar.isi }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				<form method="POST" action="{{ urlFor('komentar', {'id' : review.id }) }}" class="row">
+					<div class="input-field col m9 offset-m3">
+						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea"></textarea>
+						<label for="komentar-{{review.id}}">Komentar</label>
+						<button type="submit" class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</button>
+					</div>
+				</form>
+			</div>
+		</li>
+	{% endfor %}
+
+	</ul>
+{% endblock %}
+
+{% block js %}
+		<script>
+			$('.modal-trigger').leanModal();
+			$( "#tab-rekomendasi" ).click(function() {
+				$( "#review-tidak-rekomendasi" ).fadeOut( "slow" );
+				$( "#review-rekomendasi" ).fadeIn( "slow" );
+				$( "#tab-rekomendasi" ).addClass("disabled");
+				$( "#tab-tidak-rekomendasi" ).removeClass("disabled");
+				$( "#tab-tidak-rekomendasi" ).addClass("red lighten-1");
+			});
+			
+			$( "#tab-tidak-rekomendasi" ).click(function() {
+				$( "#review-rekomendasi" ).fadeOut( "slow" );
+				$( "#review-tidak-rekomendasi" ).fadeIn( "slow" );
+				$( "#tab-tidak-rekomendasi" ).addClass("disabled");
+				$( "#tab-tidak-rekomendasi" ).removeClass("red lighten-1");
+				$( "#tab-rekomendasi" ).removeClass("disabled");
+			});
+		</script>
+{% endblock %}

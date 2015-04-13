@@ -1,0 +1,57 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}Daftar Dosen{% endblock %}
+
+{% block content %}
+	<h2>Daftar Dosen</h2>
+	<h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6>  
+	{% for dosen in daftarDosen %}
+		<div class="card rd-card card-panel grey lighten-5 waves-effect waves-light" href="{{ urlFor('rinciandosen', {'id' : dosen.id }) }}">
+			<div class="row valign-wrapper">
+				<div class="col s2">
+					<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="circle responsive-img"> 
+				</div>
+				<div class="col s8">
+					<span class="black-text">
+						<h4>{{ dosen.nama }}</h4>
+					</span>
+					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+				</div>
+				<div class="col s2">
+					<span class="teal-text text-lighten-3 center-align">
+						<h4>Rating</h4>
+						<h1 style="line-height: 5px;"><strong>{{ dosen.jumlahRatingAsString['depan'] }}</strong>.<small>{{ dosen.jumlahRatingAsString['belakang'] }}</small></h1>
+						<p>dari {{ dosen.reviews.count }} review</p>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m4 l2">
+							<h6 class="matkul black-text"><strong>Mengajar Mata Kuliah:</strong></h6>
+				</div>
+				<div class="col s12 m4 l8">
+                  <span class="black-text valign-wrapper">
+                    {% for matakuliah in dosen.matakuliahs.take(3).get %} 
+                      <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}" class="valign-wrapper rd-left">
+                        <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
+                        <h6 class="valign">{{ matakuliah.nama }}, </h6>
+                      </a>
+                    {% endfor %} 
+
+                    {% if dosen.matakuliahs.count > 3 %}
+                    <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}#daftarmatakuliah" class="lain teal-text text-lighten-3 valign"> lainnya...</a>
+                    {% endif %}
+                  </span>
+				</div>
+			</div>
+		</div> 
+	{% endfor %}   
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+  $('.rd-card').click(function() {
+    window.location = $(this).attr('href');
+  })
+</script>
+{% endblock %}

@@ -13,6 +13,7 @@ class MataKuliahMigration {
             $table->string('kodemk');
             $table->string('nama');
             $table->integer('sks');
+            $table->integer('semester');
             $table->string('prodi');
             $table->timestamps();
 

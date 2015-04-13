@@ -1,12 +1,14 @@
 <?php
 
 class ReviewController extends _MainController {
+
+	const HALAMAN_ADMIN_REPORT = 'admin/report.html';
 	
 	
 	function tambahReview($id, $tipe) {
 		$review = $this->app->request->post();
 
-		$isi = $review['review-baik'];
+		$isi = $review['review'];
 		$pengguna = Auth::getPengguna();
 
 		$review1 = new Review;
@@ -46,22 +48,25 @@ class ReviewController extends _MainController {
 	function tambahVote($id, $tipe) {
 		$pengguna1 = Auth::getPengguna();
 
-		$vote = new UpvoteDownvote;
-		$vote->tipe = $tipe;
-		$vote->review_id = $id;
-		$vote->pengguna_npm = $pengguna1->npm;
-		$vote->save();
+		// if(UpvoteDownvote::all()->where('review_id' , '=' , $id)->count() < 1){
+			$vote = new UpvoteDownvote;
+			$vote->tipe = $tipe;
+			$vote->review_id = $id;
+			$vote->pengguna_npm = $pengguna1->npm;
+			$vote->save();
+		// }
+		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
 
 	function tambahUpvote($id) {
-		$this->tambahVote($id, 1);
+		$this->tambahVote($id, UpvoteDownvote::UP);
 	}
 	
 	function tambahDownvote($id) {
-		$this->tambahVote($id, 0);
+		$this->tambahVote($id, UpvoteDownvote::DOWN);
 	}
 
 	function beriReport($id) {
@@ -131,7 +136,7 @@ class ReviewController extends _MainController {
 	function tampilAdministrasiReport() {
 		$report = Report::all();
 		$data = array();
-		$data['report'] = $report;
-		$this->render('melihatreport.html',$data);
+		$data['daftarReport'] = $report;
+		$this->render(self::HALAMAN_ADMIN_REPORT, $data);
 	}
 }

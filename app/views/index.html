@@ -1,0 +1,41 @@
+{% extends "global.template.html" %}
+
+{% block title %} Rekomendosen {% endblock %}
+
+{% block body %}
+<div class="teal lighten-2">
+	<div class="container">
+		<div class="row no-bottom-space">
+			<div class="col s6">
+				<div class="rd-bottom">
+			 		<img class="responsive-img" src="{{ BASE_URL }}/img/logo.png">
+			 		<h6 class="white-text">Ketahui, pilih, beritahu</h6>
+			 		<p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget nisi in urna ultricies euismod hendrerit eu lacus. Morbi laoreet.</p>
+			 		<a href ="{{ urlFor('home') }}" class="waves-effect waves-light green lighten-1 btn-large">Login via SSO</a>
+			 		<!-- <a href="#" class="grey-text text-lighten-4" style="text-decoration:underline">Kenapa harus login SSO?</a> -->
+			 	</div> 	
+		 	</div>
+		 	<div class="col s6 offset-6 right-align">
+		 		<div class="rd-bottom-org">
+		 			<img class="responsive-img" src="{{ BASE_URL }}/img/org.png">
+		 		</div>
+		 	</div>
+		</div>
+	</div>
+</div>
+
+
+<footer class="page-footer white rd-footer center-align">
+	<div class="container">
+		<div class="row no-bottom-space">
+	    	<div class="col s12">
+		        <p class="rd-copyright title grey-text text-darken-4">© 2015 Rekomendosen A04</p>
+		        <p class="rd-copyright sub grey-text text-darken-3">Aplikasi ini merupakan bagian dari proyek yang dikembangkan untuk mata kuliah Proyek Perangkat Lunak. <em>All Rights Reserved</em></p>
+	      	</div>
+	    </div>
+	</div>
+</footer>
+{% endblock %}
+
+
+

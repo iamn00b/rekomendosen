@@ -13,7 +13,7 @@ class Pengguna extends Model {
 	// RELATION FUNC
 	
 	public function reviews() {
-		return $this->hasMany('Review');
+		return $this->hasMany('Review', 'pengguna_npm');
 	}
 	
 	public function komentars() {
@@ -65,6 +65,14 @@ class Pengguna extends Model {
 	
 	public function feedbacks() {
 		return $this->hasMany('Feedback');
+	}
+
+	function jumlahReviewBaik() {
+		return $this->reviews()->where('jenis', '=', Review::BAIK)->count();
+	}
+
+	function jumlahReviewBuruk() {
+		return $this->reviews()->where('jenis', '=', Review::BURUK)->count();
 	}
 
 }

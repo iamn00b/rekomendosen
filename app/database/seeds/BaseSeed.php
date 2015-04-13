@@ -38,16 +38,36 @@ class BaseSeed {
 		$matkul1->kodemk = "IK00001";
 		$matkul1->nama = "PPL";
 		$matkul1->sks = 6;
+		$matkul1->semester = 6;
 		$matkul1->prodi = "Ilmu Komputer";
 		$matkul1->dosens()->attach($dosen1->id);
 		$matkul1->dosens()->attach($dosen3->id);
 		
 		$matkul2 = new MataKuliah;
-		$matkul2->kodemk = "IK00002";
+		$matkul2->kodemk = "SI00001";
 		$matkul2->nama = "Propensi";
 		$matkul2->sks = 6;
+		$matkul2->semester = 6;
 		$matkul2->prodi = "Sistem Informasi";
+		$matkul2->dosens()->attach($dosen1->id);
 		$matkul2->dosens()->attach($dosen2->id);
+
+		$matkul3 = new MataKuliah;
+		$matkul3->kodemk = "IK00003";
+		$matkul3->nama = "Analisis Numerik";
+		$matkul3->sks = 3;
+		$matkul3->semester = 6;
+		$matkul3->prodi = "Ilmu Komputer";
+		$matkul3->dosens()->attach($dosen1->id);
+		$matkul3->dosens()->attach($dosen2->id);
+
+		$matkul4 = new MataKuliah;
+		$matkul4->kodemk = "IK00002";
+		$matkul4->nama = "Aljabar Linear";
+		$matkul4->sks = 3;
+		$matkul4->semester = 2;
+		$matkul4->prodi = "Ilmu Komputer";
+		$matkul4->dosens()->attach($dosen1->id);
 		
 		$matkulmatdas1 = new MataKuliah;
 		$matkulmatdas1->kodemk = "MAT10113";
@@ -210,6 +230,9 @@ class BaseSeed {
 		
 		$matkul1->save();
 		$matkul2->save();
+		$matkul3->save();
+		$matkul4->save();
+
 		$review1->save();
 		$review2->save();
 		

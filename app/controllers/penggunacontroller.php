@@ -2,29 +2,27 @@
 
 class PenggunaController extends _MainController {
 	
-	const HALAMAN_ADMINISTRASI_PENGGUNA = 'crudpengguna.html';
+	const HALAMAN_ADMINISTRASI_PENGGUNA = 'admin/pengguna.html';
 
 	function tampilAdministrasiPengguna() {
 		$pengguna = Pengguna::all();
 		$data = array();
-		$data['daftarpengguna'] = $pengguna;
+		$data['daftarPengguna'] = $pengguna;
 		$this->render(self::HALAMAN_ADMINISTRASI_PENGGUNA, $data);
 	}
 
 	function createPengguna() {
 		$pengguna = $this->app->request->post();
 
-		$npm = $pengguna['npmpng'];
-		$nama = $pengguna['namapng'];
-		$role = $pengguna['rolepng'];
-		$bannedhingga = $pengguna['bannedhinggapng'];
+		$npm = $pengguna['npm'];
+		$nama = $pengguna['nama'];
+		$role = $pengguna['role'];
 
 		$pengguna1 = new Pengguna;
 
 		$pengguna1->npm = $npm;
 		$pengguna1->nama = $nama;
 		$pengguna1->role = $role;
-		$pengguna1->banned_hingga = $bannedhingga;
 		$pengguna1->save();
 
 		$this->app->response->redirect($this->app->urlFor('crudpengguna'), 400);
@@ -33,10 +31,10 @@ class PenggunaController extends _MainController {
 	function updatePengguna($npm) {
 		$pengguna = $this->app->request->post();
 
-		$npm = $pengguna['npmpng'];
-		$nama = $pengguna['namapng'];
-		$role = $pengguna['rolepng'];
-		$bannedhingga = $pengguna['bannedhinggapng'];
+		$npm = $pengguna['npm'];
+		$nama = $pengguna['nama'];
+		$role = $pengguna['role'];
+		$bannedhingga = $pengguna['bannedhingga'];
 
 		$pengguna1 = Pengguna::find($npm);
 		$pengguna1->npm = $npm;

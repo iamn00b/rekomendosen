@@ -1,6 +1,9 @@
 <?php
 
 class Review extends Model {
+
+	const BAIK = 'baik';
+	const BURUK = 'buruk';
 	
 	protected $table 		= 'review';
 	protected $primaryKey 	= 'id';
@@ -33,7 +36,20 @@ class Review extends Model {
 		return $this->upvotedownvotes()->where('tipe', '=', UpvoteDownvote::DOWNVOTE)->count();
 	}
 
+	public function jumlahVoteAsString() {
+		$total = $this->jumlahUpvote() - $this->jumlahDownvote();
+
+		if ($total >= 0) 
+			return "+" . $total;
+
+		return "" . $total;
+	}
+
 	public function jumlahReport() {
 		return $this->reports()->count();
+	}
+
+	public function isBaik() {
+		return $this->jenis == self::BAIK;
 	}
 }
