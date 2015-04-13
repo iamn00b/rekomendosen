@@ -4,7 +4,6 @@
 $app->get('/', 					function () use ($app) 		{ (new HomeController())->welcome(); 						})->name('welcome');
 $app->get('/home/', 			function () use ($app) 		{ (new HomeController())->index(); 						})->name('home');
 $app->get('/logout/', 			function () use ($app) 		{ (new HomeController())->logout(); 						})->name('logout');
-$app->get('/login/', 			function () use ($app) 		{ (new HomeController())->login(); 						})->name('login');
 
 $app->get('/dosen/', 			function () use ($app) 		{ (new DosenController())->tampilDaftarDosen(); 					})->name('dosen');
 $app->get('/dosen/:id',	function ($id) use ($app) 	{ (new DosenController())->tampilRincianDosen($id); 		})->name('rinciandosen');
