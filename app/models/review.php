@@ -25,7 +25,7 @@ class Review extends Model {
 	}
 	
 	public function pengguna() {
-		return $this->belongsTo('Pengguna');
+		return $this->belongsTo('Pengguna', 'pengguna_npm');
 	}
 
 	public function jumlahUpvote() {
@@ -51,5 +51,9 @@ class Review extends Model {
 
 	public function isBaik() {
 		return $this->jenis == self::BAIK;
+	}
+
+	public function jenisAsString() {
+		return ($this->isBaik()) ? 'Rekomendasi' : 'Tidak Rekomendasi';
 	}
 }

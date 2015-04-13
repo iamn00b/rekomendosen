@@ -10,7 +10,7 @@
 		<div class="col m12 card card-panel grey lighten-5 padding-20" href="#!">
 			<div class="row no-bottom-space">
 				<div class="col s12">
-					<a href="#modal-hapus-Report" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
+					<a href="#modal-hapus-feedback-{{feedback.id}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
 				</div>
 			</div>
 
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<!-- Modal Structure -->
-		<div id="modal-hapus-Report" class="modal">
+		<div id="modal-hapus-feedback-{{feedback.id}}" class="modal">
 			<div class="modal-content">
 				<p>Hapus Feedback dari {{feedback.pengguna_npm}}?</p>
 			</div>

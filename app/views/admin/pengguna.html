@@ -3,108 +3,107 @@
 {% block title %}Kelola Pengguna{% endblock %}
 
 {% block content %}
-	<h2>Kelola Pengguna</h2>
-	<a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-pengguna">Tambah</a>
+<h2>Kelola Pengguna</h2>
+<a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-pengguna">Tambah</a>
 
-	<!-- Modal Structure -->
-	<form method="POST" action="{{ urlFor('penggunacreate') }}" id="modal-tambah-pengguna" class="modal">
-		<div class="modal-content">
-		  <h4>Tambah Pengguna</h4>
-			<div class="row">
-				<div class="input-field col m12">
-					<input id="npm-create" name="npm" type="text" class="validate">
-					<label for="npm-create">NPM</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col m12">
-					<input id="role-create" name="nama" type="text" class="validate">
-					<label for="role-create">Nama</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col m12">
-					<input id="status-create" name="role" type="text" class="validate">
-					<label for="status-create">Role</label>
-				</div>
+<!-- Modal Structure -->
+<form method="POST" action="{{ urlFor('penggunacreate') }}" id="modal-tambah-pengguna" class="modal">
+	<div class="modal-content">
+		<h4>Tambah Pengguna</h4>
+		<div class="row">
+			<div class="input-field col m12">
+				<input id="npm-create" name="npm" type="text" class="validate">
+				<label for="npm-create">NPM</label>
 			</div>
 		</div>
-		<div class="modal-footer">
-		  <button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+		<div class="row">
+			<div class="input-field col m12">
+				<input id="role-create" name="nama" type="text" class="validate">
+				<label for="role-create">Nama</label>
+			</div>
 		</div>
-	</form>
+		<div class="row">
+			<div class="input-field col m12">
+				<input id="status-create" name="role" type="text" class="validate">
+				<label for="status-create">Role</label>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+	</div>
+</form>
 
-	<ul id="daftar-pengguna" class="row margin-nol">
+<ul id="daftar-pengguna" class="row margin-nol">
 	{% for pengguna in daftarPengguna %}
 	<li>
 		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-		  <a href="#modal-hapus-pengguna-{{pengguna.npm}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-          <div class="row section modal-trigger" href="#modal-ubah-pengguna-{{pengguna.npm}}">
+			<a href="#modal-hapus-pengguna-{{pengguna.npm}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
+			<div class="row section modal-trigger" href="#modal-ubah-pengguna-{{pengguna.npm}}">
             <!-- <div class="col m2">
               <img src="{{ BASE_URL }}img/grey.jpg" alt="" class=" activator circle responsive-img"> notice the "circle" class
-            </div> -->
-            <div class="col m10 offset-m2">
-              <span class="black-text">
-                <h4>{{ pengguna.npm }}</h4>
-              </span>
-				<ul>
-					<li>Nama: <strong>{{ pengguna.nama }}</strong></li>
-					<li>Role: <strong>{{ pengguna.role }}</strong></li>
-					<li>Banned Hingga: <strong>{{ pengguna.banned_hingga}}</strong></li>
-				</ul>
-			</div>
+          </div> -->
+          <div class="col m10 offset-m2">
+          	<span class="black-text">
+          		<h4>{{ pengguna.npm }}</h4>
+          	</span>
+          	<ul>
+          		<li>Nama: <strong>{{ pengguna.nama }}</strong></li>
+          		<li>Role: <strong>{{ pengguna.role }}</strong></li>
+          		<li>Banned Hingga: <strong>{{ pengguna.banned_hingga}}</strong></li>
+          	</ul>
           </div>
-        </div>
-			<!-- Modal Structure -->
-	<form method="POST" action="{{ urlFor('penggunaupdate', {'npm' : pengguna.npm }) }}" id="modal-ubah-pengguna-{{pengguna.npm}}" class="modal">
-		<div class="modal-content">
-		  <h4>Ubah Pengguna {{pengguna.npm}}</h4>
-			<div class="row">
-				<div class="input-field col m12">
-					<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}">
-					<label for="npm-update-{{pengguna.npm}}">NPM</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col m12">
-					<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}">
-					<label for="role-update-{{pengguna.npm}}">Nama</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col m12">
-					<input id="status-update-{{pengguna.npm}}" name="role" type="text" value="{{pengguna.role}}">
-					<label for="status-update-{{pengguna.npm}}">Role</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col m12">
-					<label for="status-update-{{pengguna.npm}}">Banned Hingga</label>
-					<input id="status-update-{{pengguna.npm}}" name="bannedhingga" type="date" value="{{pengguna.banned_hingga}}" class="datepicker">
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-		  <button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
-		</div>
-	</form>
-			</div>
-			<!-- Modal Structure -->
-			<div id="modal-hapus-pengguna-{{pengguna.npm}}" class="modal">
-			<div class="modal-content">
-				<div class="col s2">
-					<i class="medium mdi-action-announcement"></i>
-				</div>
-				<div class="col s9">
-					<p>Hapus pengguna {{ pengguna.npm }}</p>
-				</div>
-			</div>
-			<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Batal</a>
-			<a href="{{ urlFor('penggunadelete', {'npm' : pengguna.npm }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Hapus</a>
-			</div>
-			</div>
-	</li>
-	{% endfor %}
-	</ul>
+      </div>
+  </div>
+  <!-- Modal Structure -->
+  <form method="POST" action="{{ urlFor('penggunaupdate', {'npm' : pengguna.npm }) }}" id="modal-ubah-pengguna-{{pengguna.npm}}" class="modal">
+  	<div class="modal-content">
+  		<h4>Ubah Pengguna {{pengguna.npm}}</h4>
+  		<div class="row">
+  			<div class="input-field col m12">
+  				<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}">
+  				<label for="npm-update-{{pengguna.npm}}">NPM</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="input-field col m12">
+  				<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}">
+  				<label for="role-update-{{pengguna.npm}}">Nama</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="input-field col m12">
+  				<input id="status-update-{{pengguna.npm}}" name="role" type="text" value="{{pengguna.role}}">
+  				<label for="status-update-{{pengguna.npm}}">Role</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="input-field col m12">
+  				<label for="status-update-{{pengguna.npm}}">Banned Hingga</label>
+  				<input id="status-update-{{pengguna.npm}}" name="bannedhingga" type="date" value="{{pengguna.banned_hingga}}" class="datepicker">
+  			</div>
+  		</div>
+  	</div>
+  	<div class="modal-footer">
+  		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+  	</div>
+  </form>
+  <!-- Modal Structure -->
+  <div id="modal-hapus-pengguna-{{pengguna.npm}}" class="modal">
+  	<div class="modal-content">
+  		<div class="col s2">
+  			<i class="medium mdi-action-announcement"></i>
+  		</div>
+  		<div class="col s9">
+  			<p>Hapus pengguna {{ pengguna.npm }}</p>
+  		</div>
+  	</div>
+  	<div class="modal-footer">
+  		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Batal</a>
+  		<a href="{{ urlFor('penggunadelete', {'npm' : pengguna.npm }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Hapus</a>
+  	</div>
+  </div>
+</li>
+{% endfor %}
+</ul>
 {% endblock %}

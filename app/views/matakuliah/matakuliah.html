@@ -29,11 +29,11 @@
               <h6 class="black-text"><strong>Dosen Pengajar:</strong></h6>
         </div>
         <div class="col s12 m4 l8">
-            	<span class="black-text valign-wrapper">
-                {% for dosen in matakuliah.dosens.get %} 
-                  <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}" class="valign-wrapper rd-left">
+            	<span class="black-text ">
+                {% for dosen in matakuliah.dosens.take(3).get %} 
+                  <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}" class=" rd-left">
                     <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
-                    <h6 class="valign">{{ dosen.nama }}, </h6>
+                    <h6 class="">{{ dosen.nama }}, </h6>
                   </a>
                 {% endfor %} 
 

@@ -1,0 +1,59 @@
+{% extends "admin.template.html" %}
+
+{% block title %}Kelola Komentar{% endblock %}
+
+{% block content %}
+<h2>Kelola Komentar</h2>
+<ul id="daftar-Komentar" class="row margin-nol">
+	{% for komentar in daftarKomentar %}
+	<li>
+		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light padding-20" href="#!">
+			<div class="row no-bottom-space">
+				<div class="col s12">
+					<a href="#modal-hapus-Komentar-{{komentar.id}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
+				</div>
+			</div>
+			<div class="row valign-wrapper modal-trigger" href="#modal-ubah-Komentar-{{komentar.id}}">
+				<div class="col s12">
+					<span class="black-text">
+						<h4>Komentar #{{komentar.id}} ({{komentar.created_at}})</h4>
+					</span>
+					<ul>
+						<li>dari: {{komentar.pengguna.first.npm}}</li>
+						<li>review: {{komentar.review.first.id}}</li>
+						<li>Isi: {{komentar.isi}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Structure -->
+		<form method="POST" action="{{ urlFor('komentarupdate', {'id' : komentar.id}) }}" id="modal-ubah-Komentar-{{komentar.id}}" class="modal">
+			<div class="modal-content">
+				<h4>Ubah Komentar</h4>
+				<div class="col m12">
+					<div class="row">
+						<div class="input-field col m12">
+							<textarea name="isi" class="materialize-textarea"></textarea>
+							<label for="isi">Isi</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+			</div>
+		</form>
+		<!-- Modal Structure -->
+		<div id="modal-hapus-Komentar-{{komentar.id}}" class="modal">
+			<div class="modal-content">
+				<p>Hapus Komentar #{{komentar.id}} ({{komentar.created_at}})?</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+				<a href="{{ urlFor('komentardelete', {'id' : komentar.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+			</div>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

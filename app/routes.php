@@ -33,7 +33,7 @@ $app->get('/admin/dosen/delete/:id', function ($id) use ($app) 		{ (new DosenCon
 $app->get('/admin/matakuliah/', function () use ($app) 		{ (new MataKuliahController())->tampilAdministrasiMataKuliah(); 		})->name('crudmatakuliah');
 $app->post('/admin/matakuliah/create/', 		function () use ($app)		{ (new MataKuliah())->createMataKuliah(); 						})->name('matakuliahcreate');
 $app->post('/admin/matakuliah/update/:kodemk', 		function ($kodemk) use ($app)		{ (new MataKuliah())->updateMataKuliah($kodemk); 		})->name('matakuliahupdate');
-$app->get('/admin/matakuliah/delete/:kodemk', function ($kodemk) use ($app) 		{ (new MataKuliah($kodemk))->deleteMataKuliah($kodemk); 	})->name('matakuliahdelete');
+$app->get('/admin/matakuliah/delete/:kodemk', function ($kodemk) use ($app) 		{ (new MataKuliah())->deleteMataKuliah($kodemk); 	})->name('matakuliahdelete');
 
 $app->get('/admin/review/', function () use ($app) 		{ (new ReviewController())->tampilAdministrasiReview(); 		})->name('rudreview');
 $app->get('/admin/review/delete/:id', function ($id) use ($app) 		{ (new ReviewController($id))->deleteReview($id); 		})->name('reviewdelete');
@@ -49,7 +49,7 @@ $app->post('/admin/pengguna/update/:npm', 		function ($npm) use ($app)		{ (new P
 $app->get('/admin/pengguna/delete/:npm', function ($npm) use ($app) 		{ (new PenggunaController())->deletePengguna($npm); 		})->name('penggunadelete');
 
 $app->get('/admin/feedback/', function () use ($app) 		{ (new FeedbackController())->tampilAdministrasiFeedback(); 		})->name('rdfeedback');
-$app->get('/admin/feedback/delete/:id', function ($id) use ($app) 		{ (new FeedbackController($id))->deleteAdministrasiFeedback($id); 		})->name('feedbackdelete');
+$app->get('/admin/feedback/delete/:id', function ($id) use ($app) 		{ (new FeedbackController($id))->deleteFeedback($id); 		})->name('feedbackdelete');
 
 $app->get('/admin/report/', function () use ($app) 		{ (new ReviewController())->tampilAdministrasiReport(); 		})->name('rreport');
 

@@ -19,6 +19,11 @@
 .side-nav {
 	padding-bottom: 50px;
 }
+
+.rd-report-btn {
+	padding: 0 .5rem;
+	margin: 0 0 0 .5rem;
+}
 /* ---------------------------------------- */
 /* ---------- NAVIGATION & PROFILE -------- */
 /* ---------------------------------------- */

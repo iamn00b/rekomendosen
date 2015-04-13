@@ -98,6 +98,7 @@
 						<a href="{{ urlFor('upvote', {'id': review.id }) }}"><i class="mdi-navigation-arrow-drop-up btn-vote-review"></i></a>
 						<span>{{ review.jumlahVoteAsString }}</span>
 						<a href="{{ urlFor('downvote', {'id': review.id }) }}"><i class="mdi-navigation-arrow-drop-down btn-vote-review"></i></a>
+						<a href="{{ urlFor('report', {'id' : review.id }) }}" class="red rd-report-btn waves-effect waves-light btn"><i class="mdi-action-report-problem"></i></a>
 					</div>
 					<div class="col m2">
 						<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img">

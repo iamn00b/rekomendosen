@@ -2,6 +2,8 @@
 
 class ReviewController extends _MainController {
 
+	const HALAMAN_ADMIN_REVIEW = 'admin/review.html';
+	const HALAMAN_ADMIN_KOMENTAR = 'admin/komentar.html';
 	const HALAMAN_ADMIN_REPORT = 'admin/report.html';
 	
 	
@@ -82,17 +84,17 @@ class ReviewController extends _MainController {
 	
 	/* ADMIN */
 	function tampilAdministrasiReview() {
-		$review = Review::all();
+		$review = Review::orderBy('created_at', 'desc')->get();
 
 		$data = array();
-		$data['review'] = $review;
-		$this->render('rudreview.html',$data);
+		$data['daftarReview'] = $review;
+		$this->render(self::HALAMAN_ADMIN_REVIEW, $data);
 	}
 	
 	function updateReview($id) {
 		$review = $this->app->request->post();
-		$jenis = $review['jenisrvw'];
-		$isi = $review['isirvw'];
+		$jenis = $review['jenis'];
+		$isi = $review['isi'];
 
 		$review1 = Review::find($id);
 		$review1->jenis = $jenis;
@@ -112,13 +114,13 @@ class ReviewController extends _MainController {
 		$komentar = Komentar::all();
 
 		$data = array();
-		$data['komentar'] = $komentar;
-		$this->render('rudkomentar.html',$data);
+		$data['daftarKomentar'] = $komentar;
+		$this->render(self::HALAMAN_ADMIN_KOMENTAR, $data);
 	}
 	
 	function updateKomentar($id) {
 		$komentar = $this->app->request->post();
-		$isi = $komentar['isikmntr'];
+		$isi = $komentar['isi'];
 
 		$komentar1 = Komentar::find($id);
 		$komentar1->isi = $isi;
