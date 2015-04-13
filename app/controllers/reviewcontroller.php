@@ -83,10 +83,12 @@ class ReviewController extends _MainController {
 	/* ADMIN */
 	function tampilAdministrasiReview() {
 		$review = Review::all();
+		$dosen = Dosen::all();
 
 		$data = array();
 		$data['review'] = $review;
-		$this->render('rudreview.html',$data);
+		$data['dosen'] = $dosen;
+		$this->render('/admin/admin-review.html',$data);
 	}
 	
 	function updateReview($id) {

@@ -5,18 +5,23 @@
 {% block content %}
 	<h2>Kelola Review</h2>
 	<ul id="daftar-review" class="row margin-nol">
+	{% for rvw in review %}
 	<li>
 		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light" href="#!">
 			<a href="#modal-hapus-review" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
           <div class="row valign-wrapper modal-trigger" href="#modal-ubah-review">
             <div class="col s10">
               <span class="black-text">
-                <h4>1206277350</h4>
+                <h4>{{ rvw.pengguna_npm }}</h4>
               </span>
 				<ul>
-					<li>Dosen: Arifin Suparjo</li>
-					<li>Jenis: Rekomendasi</li>
-					<li>Isi: Pak Arifin orangnya baik hati, tidak sombong, dan rajin menabung.</li>
+					<li>Jenis : {{ rvw.jenis }}</li>
+					<li>Isi : {{ rvw.isi }}</li>
+					{% for dsn in dosen %}
+					{% if rvw.dosen_id = dsn.id %}
+					<li>Dosen_: {{ dosen.nama }}</li>
+					{% endif %}
+					{% endfor %}
 				</ul>
 			</div>
             <div class="col s2">
@@ -73,5 +78,6 @@
 		</div>
 		</div>
 		</li>
+		{% endfor %}
 	</ul>
 {% endblock %}
