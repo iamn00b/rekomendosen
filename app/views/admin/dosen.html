@@ -18,25 +18,25 @@
 		<div class="col m9">
 			<div class="row">
 				<div class="input-field col m12">
-					<input type="text" id="nama-create" name="nama" class="validate">
+					<input type="text" id="nama-create" name="nama" class="validate" required/>
 					<label for="nama-create">Nama Dosen</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col m12">
-					<input type="text" id="nip-create" name="nip" class="validate">
+					<input type="text" id="nip-create" name="nip" class="validate" required/>
 					<label for="nip-create">NIP</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col m12">
-					<input type="text" id="jeniskelamin-create" name="jeniskelamin" class="validate">
+					<input type="text" id="jeniskelamin-create" name="jeniskelamin" class="validate" required/>
 					<label for="jeniskelamin-create">Jenis Kelamin</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col m12">
-					<input type="date" id="ttl-create" name="ttl" class="datepicker">
+					<input type="date" id="ttl-create" name="ttl" class="datepicker" required/>
 					<label for="ttl-create">TTL</label>
 				</div>
 			</div>
@@ -108,25 +108,25 @@
 				<div class="col m9">
 					<div class="row">
 						<div class="input-field col m12">
-							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}">
+							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" required/>
 							<label for="nama-update">Nama Dosen</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col m12">
-							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}">
+							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" required/>
 							<label for="nip-update">NIP</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col m12">
-							<input type="text" id="jeniskelamin-update" name="jeniskelamin" class="validate" value="{{dosen.jeniskelamin}}">
+							<input type="text" id="jeniskelamin-update" name="jeniskelamin" class="validate" value="{{dosen.jeniskelamin}}" required/>
 							<label for="jeniskelamin-update">Jenis Kelamin</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col m12">
-							<input type="date" id="ttl-update" name="ttl" class="datepicker" value="{{dosen.ttl}}">
+							<input type="date" id="ttl-update" name="ttl" class="datepicker" value="{{dosen.ttl}}" required/>
 							<label for="ttl-update">TTL</label>
 						</div>
 					</div>

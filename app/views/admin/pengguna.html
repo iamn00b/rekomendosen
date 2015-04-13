@@ -12,19 +12,19 @@
 		<h4>Tambah Pengguna</h4>
 		<div class="row">
 			<div class="input-field col m12">
-				<input id="npm-create" name="npm" type="text" class="validate">
+				<input id="npm-create" name="npm" type="text" class="validate" required/>
 				<label for="npm-create">NPM</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col m12">
-				<input id="role-create" name="nama" type="text" class="validate">
+				<input id="role-create" name="nama" type="text" class="validate" required/>
 				<label for="role-create">Nama</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col m12">
-				<input id="status-create" name="role" type="text" class="validate">
+				<input id="status-create" name="role" type="text" class="validate" required/>
 				<label for="status-create">Role</label>
 			</div>
 		</div>
@@ -61,26 +61,26 @@
   		<h4>Ubah Pengguna {{pengguna.npm}}</h4>
   		<div class="row">
   			<div class="input-field col m12">
-  				<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}">
+  				<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}" required/>
   				<label for="npm-update-{{pengguna.npm}}">NPM</label>
   			</div>
   		</div>
   		<div class="row">
   			<div class="input-field col m12">
-  				<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}">
+  				<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}" required/>
   				<label for="role-update-{{pengguna.npm}}">Nama</label>
   			</div>
   		</div>
   		<div class="row">
   			<div class="input-field col m12">
-  				<input id="status-update-{{pengguna.npm}}" name="role" type="text" value="{{pengguna.role}}">
+  				<input id="status-update-{{pengguna.npm}}" name="role" type="text" value="{{pengguna.role}}" required/>
   				<label for="status-update-{{pengguna.npm}}">Role</label>
   			</div>
   		</div>
   		<div class="row">
   			<div class="input-field col m12">
   				<label for="status-update-{{pengguna.npm}}">Banned Hingga</label>
-  				<input id="status-update-{{pengguna.npm}}" name="bannedhingga" type="date" value="{{pengguna.banned_hingga}}" class="datepicker">
+  				<input id="status-update-{{pengguna.npm}}" name="bannedhingga" type="date" value="{{pengguna.banned_hingga}}" class="datepicker" required/>
   			</div>
   		</div>
   	</div>
