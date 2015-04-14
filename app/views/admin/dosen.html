@@ -48,7 +48,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" class="modal-action waves-effect waves-green btn">Simpan</a>
+		<button type="submit" class="modal-action waves-effect waves-green btn" onclick="alert('Profil Dosen berhasil disimpan.');">Simpan</a>
 	</div>
 </form>
 
@@ -138,7 +138,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
+				<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Profil Dosen berhasil diubah.');">Simpan</a>
 			</div>
 		</form>
 		<!-- Modal Structure -->
@@ -153,7 +153,7 @@
 			</div>
 			<div class="modal-footer">
 				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-				<a href="{{ urlFor('dosendelete', {'id' : dosen.id }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+				<a href="{{ urlFor('dosendelete', {'id' : dosen.id }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit" onclick="alert('Profil Dosen berhasil dihapus.');">Ya</a>
 			</div>
 		</div>
 	</li>

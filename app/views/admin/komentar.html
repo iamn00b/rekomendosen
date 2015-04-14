@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+				<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Komentar Review berhasil diubah.');">Simpan</button>
 			</div>
 		</form>
 		<!-- Modal Structure -->
@@ -50,7 +50,7 @@
 			</div>
 			<div class="modal-footer">
 				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-				<a href="{{ urlFor('komentardelete', {'id' : komentar.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+				<a href="{{ urlFor('komentardelete', {'id' : komentar.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit" onclick="alert('Komentar Review berhasil dihapus.');">Ya</a>
 			</div>
 		</div>
 	</li>

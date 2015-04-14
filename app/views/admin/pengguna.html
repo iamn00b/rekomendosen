@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+		<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Pengguna berhasil disimpan.');">Simpan</button>
 	</div>
 </form>
 
@@ -85,7 +85,7 @@
   		</div>
   	</div>
   	<div class="modal-footer">
-  		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+  		<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Pengguna berhasil diubah.');">Simpan</button>
   	</div>
   </form>
   <!-- Modal Structure -->
@@ -100,7 +100,7 @@
   	</div>
   	<div class="modal-footer">
   		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Batal</a>
-  		<a href="{{ urlFor('penggunadelete', {'npm' : pengguna.npm }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Hapus</a>
+  		<a href="{{ urlFor('penggunadelete', {'npm' : pengguna.npm }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit" onclick="alert('Pengguna berhasil dihapus.');">Hapus</a>
   	</div>
   </div>
 </li>

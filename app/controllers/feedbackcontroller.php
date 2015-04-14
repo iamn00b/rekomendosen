@@ -16,7 +16,6 @@ class FeedbackController extends _MainController {
 		$feedback1->isi = $isi;
 		$feedback1->pengguna_npm = $npm;
 		$feedback1->save();
-
 		$this->app->response->redirect($this->app->urlFor('home'), 400);
 	}
 	

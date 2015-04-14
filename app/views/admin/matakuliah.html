@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
+		<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Mata Kuliah berhasil disimpan.');">Simpan</a>
 	</div>
 </form>
 <ul id="daftar-mata-kuliah">
@@ -138,7 +138,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
+					<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Mata Kuliah berhasil diubah.');">Simpan</a>
 				</div>
 			</form>
 			<!-- Modal Structure -->
@@ -148,7 +148,7 @@
 				</div>
 				<div class="modal-footer">
 					<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-					<a href="{{ urlFor('matakuliahdelete', {'kodemk' : matakuliah.kodemk}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+					<a href="{{ urlFor('matakuliahdelete', {'kodemk' : matakuliah.kodemk}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit" onclick="alert('Mata Kuliah berhasil dihapus.');">Ya</a>
 				</div>
 			</div>
 		</li>
