@@ -7,7 +7,7 @@
 <a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-pengguna">Tambah</a>
 
 <!-- Modal Structure -->
-<form method="POST" action="{{ urlFor('penggunacreate') }}" id="modal-tambah-pengguna" class="modal">
+<form method="POST" action="{{ urlFor('penggunacreate') }}" id="modal-tambah-pengguna" onsubmit="alert('Pengguna berhasil disimpan.');" class="modal">
 	<div class="modal-content">
 		<h4>Tambah Pengguna</h4>
 		<div class="row">
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Pengguna berhasil disimpan.');">Simpan</button>
+		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
 	</div>
 </form>
 
@@ -56,7 +56,7 @@
       </div>
   </div>
   <!-- Modal Structure -->
-  <form method="POST" action="{{ urlFor('penggunaupdate', {'npm' : pengguna.npm }) }}" id="modal-ubah-pengguna-{{pengguna.npm}}" class="modal">
+  <form method="POST" action="{{ urlFor('penggunaupdate', {'npm' : pengguna.npm }) }}" id="modal-ubah-pengguna-{{pengguna.npm}}" onsubmit="alert('Pengguna berhasil diubah.');" class="modal">
   	<div class="modal-content">
   		<h4>Ubah Pengguna {{pengguna.npm}}</h4>
   		<div class="row">
@@ -85,7 +85,7 @@
   		</div>
   	</div>
   	<div class="modal-footer">
-  		<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Pengguna berhasil diubah.');">Simpan</button>
+  		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
   	</div>
   </form>
   <!-- Modal Structure -->

@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<!-- Modal Structure -->
-		<form method="POST" action="{{ urlFor('komentarupdate', {'id' : komentar.id}) }}" id="modal-ubah-Komentar-{{komentar.id}}" class="modal">
+		<form method="POST" action="{{ urlFor('komentarupdate', {'id' : komentar.id}) }}" id="modal-ubah-Komentar-{{komentar.id}}" onsubmit="alert('Komentar Review berhasil diubah.');" class="modal">
 			<div class="modal-content">
 				<h4>Ubah Komentar</h4>
 				<div class="col m12">
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Komentar Review berhasil diubah.');">Simpan</button>
+				<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
 			</div>
 		</form>
 		<!-- Modal Structure -->

@@ -72,7 +72,7 @@
 	</div>
 
   <!-- Modal Feedback -->
-  <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
+  <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer" onsubmit="alert('Feedback berhasil terkirim.');">
     <div class="modal-content">
       <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
       <div class="input-field section">
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="green waves-effect waves-white btn" onclick="alert('Feedback berhasil terkirim.');">Kirim</button>
+      <button type="submit" class="green waves-effect waves-white btn" >Kirim</button>
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
     </div>
   </form>

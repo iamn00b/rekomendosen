@@ -36,7 +36,7 @@
 			</div>
 
 			<!-- Modal Structure -->
-			<form method="POST" action="{{ urlFor('reviewupdate', {'id' : review.id }) }}" id="modal-ubah-review-{{review.id}}" class="modal">
+			<form method="POST" action="{{ urlFor('reviewupdate', {'id' : review.id }) }}" id="modal-ubah-review-{{review.id}}" onsubmit="alert('Review berhasil diubah.');" class="modal">
 				<div class="modal-content">
 					<h4>Ubah Review #{{review.id}} ({{ review.created_at }})</h4>
 					<div class="col m12">
@@ -55,7 +55,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class=" modal-action waves-effect waves-green btn" onclick="alert('Review berhasil diubah.');">Simpan</a>
+					<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
 				</div>
 			</form>
 			<!-- Modal Structure -->
