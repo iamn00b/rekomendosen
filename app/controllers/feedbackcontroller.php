@@ -16,6 +16,7 @@ class FeedbackController extends _MainController {
 		$feedback1->isi = $isi;
 		$feedback1->pengguna_npm = $npm;
 		$feedback1->save();
+		$this->app->flash('notif', 'Terima kasih telah memberi feedback! Feedback anda akan sangat berguna untuk perkembangan rekomendosen kedepannya!');
 
 		$this->app->response->redirect($this->app->urlFor('home'), 400);
 	}
@@ -29,6 +30,7 @@ class FeedbackController extends _MainController {
 	
 	function deleteFeedback($id) {
 		$feedback = Feedback::where('id', '=', $id)->delete();
+		$this->app->flash('notif', 'Berhasil menghapus feedback id #' . $id);
 		$this->app->response->redirect($this->app->urlFor('rdfeedback'), 400);
 	}
 }

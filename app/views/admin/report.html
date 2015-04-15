@@ -3,6 +3,15 @@
 {% block title %}Kelola Report{% endblock %}
 
 {% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
 <h2>Kelola Report</h2>
 <ul id="daftar-Report" class="row margin-nol">
 	{% for report in daftarReport %}

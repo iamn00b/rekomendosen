@@ -3,6 +3,15 @@
 {% block title %}Kelola Profil Dosen{% endblock %}
 
 {% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
 <h2>Kelola Profil Dosen</h2>
 <a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-profil-dosen">Tambah</a>
 <!-- Modal Structure -->
@@ -17,27 +26,31 @@
 		</div>
 		<div class="col m9">
 			<div class="row">
-				<div class="input-field col m12">
-					<input type="text" id="nama-create" name="nama" class="validate" required/>
+				<div class="col m12">
 					<label for="nama-create">Nama Dosen</label>
+					<input type="text" id="nama-create" name="nama" class="validate" required/>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col m12">
-					<input type="text" id="nip-create" name="nip" class="validate" required/>
+				<div class="col m12">
 					<label for="nip-create">NIP</label>
+					<input type="text" id="nip-create" name="nip" class="validate" required/>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col m12">
-					<input type="text" id="jeniskelamin-create" name="jeniskelamin" class="validate" required/>
+				<div class="col m12">
 					<label for="jeniskelamin-create">Jenis Kelamin</label>
+					<select name="jeniskelamin">
+					  <option value="" disabled selected>Pilih jenis kelamin</option>
+					  <option value="Laki-Laki">Laki-Laki</option>
+					  <option value="Perempuan">Perempuan</option>
+					</select>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col m12">
-					<input type="date" id="ttl-create" name="ttl" class="datepicker" required/>
+				<div class="col m12">
 					<label for="ttl-create">TTL</label>
+					<input type="date" id="ttl-create" name="ttl" class="datepicker" required/>
 				</div>
 			</div>
 			<!-- <div class="row">
@@ -107,27 +120,31 @@
 				</div>
 				<div class="col m9">
 					<div class="row">
-						<div class="input-field col m12">
-							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" required/>
+						<div class="col m12">
 							<label for="nama-update">Nama Dosen</label>
+							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" required/>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col m12">
-							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" required/>
+						<div class="col m12">
 							<label for="nip-update">NIP</label>
+							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" required/>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col m12">
-							<input type="text" id="jeniskelamin-update" name="jeniskelamin" class="validate" value="{{dosen.jeniskelamin}}" required/>
+						<div class="col m12">
 							<label for="jeniskelamin-update">Jenis Kelamin</label>
+							<select name="jeniskelamin" required>
+							  <!-- <option value="" disabled selected>Pilih jenis kelamin</option> -->
+							  <option value="Laki-Laki" {% if dosen.jeniskelamin == 'Laki-Laki' %}selected="true"{% endif %}>Laki-Laki</option>
+							  <option value="Perempuan" {% if dosen.jeniskelamin == 'Perempuan' %}selected="true"{% endif %}>Perempuan</option>
+							</select>
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col m12">
-							<input type="date" id="ttl-update" name="ttl" class="datepicker" value="{{dosen.ttl}}" required/>
+						<div class="col m12">
 							<label for="ttl-update">TTL</label>
+							<input type="date" id="ttl-update" name="ttl" class="datepicker" value="{{dosen.ttl}}" required/>
 						</div>
 					</div>
 					<!-- <div class="row">

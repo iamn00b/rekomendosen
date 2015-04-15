@@ -20,6 +20,9 @@ class ReviewController extends _MainController {
 		$review1->pengguna_npm = $pengguna->npm;
 		$review1->save();
 
+		$tipeAsString = ($tipe == 'baik')? 'rekomendasi' : 'tidak rekomendasi';
+		$this->app->flash('notif', 'Berhasil memberi "'.$tipeAsString.'"');
+
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);
 	}
 
@@ -42,6 +45,7 @@ class ReviewController extends _MainController {
 		$komentar1->review_id = $id;
 		$komentar1->pengguna_npm = $pengguna->npm;
 		$komentar1->save();
+		$this->app->flash('notif', 'Berhasil menambah komentar pada review');
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
@@ -58,6 +62,7 @@ class ReviewController extends _MainController {
 			$vote->save();
 		// }
 		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
+		$this->app->flash('notif', 'Berhasil melakukan vote "'.$tipe.'" pada review');
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
@@ -77,6 +82,7 @@ class ReviewController extends _MainController {
 		$pengguna1 = Auth::getPengguna();
 		$report->pengguna_npm = $pengguna1->npm;
 		$report->save();
+		$this->app->flash('notif', 'Berhasil melakukan report review');
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
@@ -100,12 +106,14 @@ class ReviewController extends _MainController {
 		$review1->jenis = $jenis;
 		$review1->isi = $isi;
 		$review1->save();
+		$this->app->flash('notif', 'Berhasil mengupdate review id #' . $id);
 
 		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
 	}
 	
 	function deleteReview($id) {
 		$review = Review::find($id)->delete();
+		$this->app->flash('notif', 'Berhasil menghapus review id #' . $id);
 
 		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
 	}
@@ -125,12 +133,14 @@ class ReviewController extends _MainController {
 		$komentar1 = Komentar::find($id);
 		$komentar1->isi = $isi;
 		$komentar1->save();
+		$this->app->flash('notif', 'Berhasil mengupdate komentar id #' . $id);
 
 		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
 	}
 	
 	function deleteKomentar($id) {
 		$komentar = Komentar::find($id)->delete();
+		$this->app->flash('notif', 'Berhasil menghapus komentar id #' . $id);
 		
 		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
 	}

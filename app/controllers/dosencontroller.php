@@ -51,6 +51,7 @@ class DosenController extends _MainController {
 		$dosen1->jeniskelamin = $jeniskelamin;
 		$dosen1->ttl = $ttl;
 		$dosen1->save();
+		$this->app->flash('notif', 'Berhasil menambah dosen '.$nama.' dengan id #' . $dosen1->id);
 
 		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
 	}
@@ -69,12 +70,15 @@ class DosenController extends _MainController {
 		$dosen1->jeniskelamin = $jeniskelamin;
 		$dosen1->ttl = $ttl;
 		$dosen1->save();
+		$this->app->flash('notif', 'Berhasil mengubah dosen '.$nama.' dengan id #' . $id);
 
 		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
 	}
 	
 	function deleteDosen($id) {
-		$dosen = Dosen::find($id)->delete();
+		$dosen = Dosen::find($id);
+		$this->app->flash('notif', 'Berhasil menghapus dosen '.$dosen->nama.' dengan id #' . $id);
+		$dosen->delete();
 		
 		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
 	}

@@ -4,6 +4,9 @@ class Dosen extends Model {
 	
 	protected $table 		= 'dosen';
 	protected $primaryKey 	= 'id';
+
+	const LAKI = 'Laki-Laki';
+	const PEREMPUAN = 'Perempuan';
 	
 	public function matakuliahs() {
 		return $this->belongsToMany('MataKuliah', 'mengajar', 'dosen_nip', 'mk_kodemk');

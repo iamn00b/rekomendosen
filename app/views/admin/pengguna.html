@@ -3,6 +3,15 @@
 {% block title %}Kelola Pengguna{% endblock %}
 
 {% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
 <h2>Kelola Pengguna</h2>
 <a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-pengguna">Tambah</a>
 
@@ -11,21 +20,26 @@
 	<div class="modal-content">
 		<h4>Tambah Pengguna</h4>
 		<div class="row">
-			<div class="input-field col m12">
+			<div class="col m12">
+        <label for="npm-create">NPM</label>
 				<input id="npm-create" name="npm" type="text" class="validate" required/>
-				<label for="npm-create">NPM</label>
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col m12">
+			<div class="col m12">
+        <label for="role-create">Nama</label>
 				<input id="role-create" name="nama" type="text" class="validate" required/>
-				<label for="role-create">Nama</label>
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col m12">
-				<input id="status-create" name="role" type="text" class="validate" required/>
-				<label for="status-create">Role</label>
+			<div class="col m12">
+          <label for="jeniskelamin-update">Role</label>
+          <select name="role" required>
+            <option value="" disabled selected>Pilih Role</option>
+            <option value="dosen">Dosen</option>
+            <option value="mahasiswa">Mahasiswa</option>
+            <option value="administrator">Administrator</option>
+          </select>
 			</div>
 		</div>
 	</div>
@@ -60,25 +74,29 @@
   	<div class="modal-content">
   		<h4>Ubah Pengguna {{pengguna.npm}}</h4>
   		<div class="row">
-  			<div class="input-field col m12">
+  			<div class="col m12">
   				<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}" required/>
   				<label for="npm-update-{{pengguna.npm}}">NPM</label>
   			</div>
   		</div>
   		<div class="row">
-  			<div class="input-field col m12">
+  			<div class="col m12">
   				<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}" required/>
   				<label for="role-update-{{pengguna.npm}}">Nama</label>
   			</div>
   		</div>
   		<div class="row">
-  			<div class="input-field col m12">
-  				<input id="status-update-{{pengguna.npm}}" name="role" type="text" value="{{pengguna.role}}" required/>
-  				<label for="status-update-{{pengguna.npm}}">Role</label>
+  			<div class="col m12">
+          <label>Role</label>
+          <select name="role" required>
+            <option {% if pengguna.role == 'dosen' %}selected="true"{%endif%} value="dosen">Dosen</option>
+            <option {% if pengguna.role == 'mahasiswa' %}selected="true"{%endif%} value="mahasiswa">Mahasiswa</option>
+            <option {% if pengguna.role == 'administrator' %}selected="true"{%endif%} value="administrator">Administrator</option>
+          </select>
   			</div>
   		</div>
   		<div class="row">
-  			<div class="input-field col m12">
+  			<div class="col m12">
   				<label for="status-update-{{pengguna.npm}}">Banned Hingga</label>
   				<input id="status-update-{{pengguna.npm}}" name="bannedhingga" type="date" value="{{pengguna.banned_hingga}}" class="datepicker" required/>
   			</div>

@@ -3,6 +3,15 @@
 {% block title %}Daftar Mata Kuliah{% endblock %}
 
 {% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
 	<h2>Daftar Mata Kuliah</h2>
 	<h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6>     
   {% for matakuliah in daftarMataKuliah %}
@@ -25,22 +34,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m4 l2">
+        <div class="col s12 m2">
               <h6 class="black-text"><strong>Dosen Pengajar:</strong></h6>
         </div>
-        <div class="col s12 m4 l8">
-            	<span class="black-text ">
+        <div class="col s12 m8 black-text">
                 {% for dosen in matakuliah.dosens.take(3).get %} 
                   <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}" class=" rd-left">
                     <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
-                    <h6 class="">{{ dosen.nama }}, </h6>
+                    <h6 class="right">{{ dosen.nama }}, </h6>
                   </a>
                 {% endfor %} 
 
                 {% if matakuliah.dosens.count > 3 %}
                 <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}#daftardosen" class="lain teal-text text-lighten-3 valign"> lainnya...</a>
                 {% endif %}
-            	</span>
         </div>
       </div>
     </div>

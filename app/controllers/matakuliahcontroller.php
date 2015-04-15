@@ -48,6 +48,7 @@ class MataKuliahController extends _MainController {
 		$matkul1->prodi = $prodi;
 		$matkul1->semester = $semester;
 		$matkul1->save();
+		$this->app->flash('notif', 'Berhasil menambah mata kuliah '.$nama.' dengan Kode MK #' . $kodemk);
 
 		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
 	}
@@ -55,25 +56,28 @@ class MataKuliahController extends _MainController {
 	function updateMataKuliah($id) {
 		$matkul = $this->app->request->post();
 
-		$kodemk = $matkul['kodemk'];
+		// $kodemk = $matkul['kodemk'];
 		$nama = $matkul['nama'];
 		$sks = $matkul['sks'];
 		$prodi = $matkul['prodi'];
 		$semester = $matkul['semester'];
 
 		$matkul1 = MataKuliah::find($id);
-		$matkul1->kodemk = $kodemk;
+		// $matkul1->kodemk = $kodemk;
 		$matkul1->nama = $nama;
 		$matkul1->sks = $sks;
 		$matkul1->prodi = $prodi;
 		$matkul1->semester = $semester;
 		$matkul1->save();
+		$this->app->flash('notif', 'Berhasil mengubah mata kuliah '.$nama.' dengan Kode MK #' . $matkul1->kodemk);
 		
 		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
 	}
 	
 	function deleteMataKuliah($id) {
-		$matakuliah = MataKuliah::find($id)->delete();
+		$matakuliah = MataKuliah::find($id);
+		$this->app->flash('notif', 'Berhasil menghapus mata kuliah '.$matakuliah->nama.' dengan Kode MK #' . $matakuliah->kodemk);
+		$matakuliah->delete();
 
 		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
 	}
