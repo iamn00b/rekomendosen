@@ -54,13 +54,20 @@ class ReviewController extends _MainController {
 	function tambahVote($id, $tipe) {
 		$pengguna1 = Auth::getPengguna();
 
-		// if(UpvoteDownvote::all()->where('review_id' , '=' , $id)->count() < 1){
+		if(UpvoteDownvote::where('review_id' , '=' , $id)->count() < 1){
 			$vote = new UpvoteDownvote;
 			$vote->tipe = $tipe;
 			$vote->review_id = $id;
 			$vote->pengguna_npm = $pengguna1->npm;
 			$vote->save();
-		// }
+		} else {
+			$vote1 = UpvoteDownvote::where('review_id' , '=' , $id)->delete();
+			$vote = new UpvoteDownvote;
+			$vote->tipe = $tipe;
+			$vote->review_id = $id;
+			$vote->pengguna_npm = $pengguna1->npm;
+			$vote->save();
+		}
 		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
 		$this->app->flash('notif', 'Berhasil melakukan vote "'.$tipe.'" pada review');
 
