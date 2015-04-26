@@ -13,22 +13,26 @@
 </div>
 {% endif %}
 <h2>Kelola Report</h2>
-<ul id="daftar-Report" class="row margin-nol">
+<table class="responsive-table hoverable white centered">
+	 <thead>
+          <tr>
+              <th data-field="id">Report By</th>
+              <th data-field="name">Review ID</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for report in daftarReport %}
+          <tr>
+            <td>{{report.pengguna_npm}}</td>
+            <td>{{report.review_id}}</td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+
 	{% for report in daftarReport %}
-	<li>
-		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light padding-20" href="#!">
-			<!-- <a href="#modal-hapus-Report" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a> -->
-			<div class="row valign-wrapper">
-				<div class="col s12">
-					<span class="black-text">
-					<h4>Report By {{report.pengguna_npm}} </h4>
-					</span>
-					<ul>
-						<li>Review id {{report.review_id}}</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+	
 		<!-- Modal Structure -->
 		<!-- <div id="modal-hapus-Report" class="modal">
 			<div class="modal-content">
@@ -39,7 +43,7 @@
 				<a href="#!" class="modal-action modal-close waves-effect waves-green btn geser-kanan-dikit">Ya</a>
 			</div>
 		</div> -->
-	</li>
+
 	{% endfor %}
-</ul>
+
 {% endblock %}

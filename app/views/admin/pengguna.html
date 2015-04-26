@@ -48,27 +48,30 @@
 	</div>
 </form>
 
-<ul id="daftar-pengguna" class="row margin-nol">
+<table class="responsive-table hoverable white centered">
+   <thead>
+          <tr>
+              <th data-field="id">NPM</th>
+              <th data-field="name">Nama</th>
+              <th data-field="price">Role</th>
+              <th data-field="price">Banned Hingga</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for pengguna in daftarPengguna %}
+          <tr>
+            <td>{{ pengguna.npm }}</td>
+            <td>{{ pengguna.nama }}</td>
+            <td>{{ pengguna.role }}</td>
+            <td>{{ pengguna.banned_hingga}}</td>
+            <td><a href="#modal-ubah-pengguna-{{pengguna.npm}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-pengguna-{{pengguna.npm}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
 	{% for pengguna in daftarPengguna %}
-	<li>
-		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-			<a href="#modal-hapus-pengguna-{{pengguna.npm}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-			<div class="row section modal-trigger" href="#modal-ubah-pengguna-{{pengguna.npm}}">
-            <!-- <div class="col m2">
-              <img src="{{ BASE_URL }}img/grey.jpg" alt="" class=" activator circle responsive-img"> notice the "circle" class
-          </div> -->
-          <div class="col m10 offset-m2">
-          	<span class="black-text">
-          		<h4>{{ pengguna.npm }}</h4>
-          	</span>
-          	<ul>
-          		<li>Nama: <strong>{{ pengguna.nama }}</strong></li>
-          		<li>Role: <strong>{{ pengguna.role }}</strong></li>
-          		<li>Banned Hingga: <strong>{{ pengguna.banned_hingga}}</strong></li>
-          	</ul>
-          </div>
-      </div>
-  </div>
   <!-- Modal Structure -->
   <form method="POST" action="{{ urlFor('penggunaupdate', {'npm' : pengguna.npm }) }}" id="modal-ubah-pengguna-{{pengguna.npm}}" class="modal">
   	<div class="modal-content">
@@ -121,7 +124,6 @@
   		<a href="{{ urlFor('penggunadelete', {'npm' : pengguna.npm }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Hapus</a>
   	</div>
   </div>
-</li>
 {% endfor %}
-</ul>
+
 {% endblock %}

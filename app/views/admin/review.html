@@ -13,37 +13,36 @@
 </div>
 {% endif %}
 <h2>Kelola Review</h2>
-<ul id="daftar-review" class="row margin-nol">
-	<li>
+<table class="responsive-table hoverable white centered">
+	 <thead>
+          <tr>
+              <th data-field="id">ID Review</th>
+              <th data-field="name">Tanggal</th>
+              <th data-field="price">NPM</th>
+              <th data-field="price">Dosen</th>
+              <th data-field="price">Jenis Review</th>
+              <th data-field="price">Isi</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for review in daftarReview %}
+          <tr>
+            <td>{{review.id}}</td>
+            <td>({{review.created_at}})</td>
+            <td>{{review.pengguna.first.npm}}</td>
+            <td>{{review.dosen.first.nama}}</td>
+            <td>{{ review.jenisAsString}}</td>
+            <td>{{review.isi}}</td>
+            <td><a href="#modal-ubah-review-{{review.id}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-review-{{review.id}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+
 		{% for review in daftarReview %}
-		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-			<div class="row no-bottom-space">
-				<div class="col s12">
-					<a href="#modal-hapus-review-{{review.id}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-				</div>
-			</div>
-
-			<div class="row valign-wrapper modal-trigger" href="#modal-ubah-review-{{review.id}}">
-				<div class="col s10">
-					<span class="black-text">
-						<h4>Review #{{review.id}} ({{ review.created_at }})</h4>
-					</span>
-					<ul>
-						<li>Oleh : {{ review.pengguna.first.npm }}</li>
-						<li>Dosen: {{ review.dosen.first.nama}}</li>
-						<li>Jenis: {{ review.jenisAsString }}</li>
-						<li>Isi: {{ review.isi }}</li>
-					</ul>
-				</div>
-				<div class="col s2">
-					<span class="teal-text text-lighten-3 center-align">
-						<h5>Vote</h5>
-						<h1 style="line-height: 5px;"><strong>{{ review.jumlahVoteAsString }}</strong></h5>
-						</span>
-					</div>
-				</div>
-			</div>
-
+		
 			<!-- Modal Structure -->
 			<form method="POST" action="{{ urlFor('reviewupdate', {'id' : review.id }) }}" id="modal-ubah-review-{{review.id}}" class="modal">
 				<div class="modal-content">
@@ -81,7 +80,7 @@
 					<a href="{{ urlFor('reviewdelete', {'id' : review.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
 				</div>
 			</div>
-		</li>
+
 		{% endfor %}
-	</ul>
+
 	{% endblock %}

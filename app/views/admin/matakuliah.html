@@ -39,7 +39,7 @@
 			</div>
 			<div class="row">
 				<div class="col m12">
-					<label for="website">semester</label>
+					<label for="website">Semester</label>
 					<input type="number" name="semester" class="validate" required/>
 				</div>
 			</div>
@@ -66,48 +66,34 @@
 		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
 	</div>
 </form>
-<ul id="daftar-mata-kuliah">
-	{% for matakuliah in daftarMataKuliah %}
-	<li>
-		<div class=" card card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-			<div class="row no-bottom-space">
-				<div class="col s12">
-					<a href="#modal-hapus-mata-kuliah-{{matakuliah.kodemk}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-				</div>
-			</div>
+<table class="responsive-table hoverable white centered">
+	 <thead>
+          <tr>
+              <th data-field="id">Nama Mata Kuliah</th>
+              <th data-field="name">Total SKS</th>
+              <th data-field="price">Semester</th>
+              <th data-field="price">Dosen Pengajar</th>
+              <th data-field="price">Prodi</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
 
-			<div class="row valign-wrapper modal-trigger" href="#modal-ubah-mata-kuliah-{{matakuliah.kodemk}}">
-				<div class="col s2">
-					<img src="{{ BASE_URL }}/img/grey.jpg" alt="" class=" activator circle responsive-img"> <!-- notice the "circle" class -->
-				</div>
-				<div class="col s8">
-					<span class="black-text">
-						<h4>{{ matakuliah.nama }}</h4>
-					</span>
-					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-				</div>
-				<div class="col s2">
-					<span class="teal-text text-lighten-3 center-align">
-						<h5>Semester</h5>
-						<h1 style="line-height: 5px;"><strong>{{ matakuliah.semester }}</strong></h5>
-						</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s12 m4 l2">
-						<h6 class="black-text"><strong>Dosen Pengajar:</strong></h6>
-					</div>
-					<div class="col s12 m4 l8">
-						<span class="black-text valign-wrapper">
-		                {% for dosen in matakuliah.dosens.get %} 
-		                  <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}" class="valign-wrapper rd-left">
-		                    <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
-		                    <h6 class="valign">{{ dosen.nama }}, </h6>
-		                  </a>
-		                {% endfor %}
-					</div>
-				</div>
-			</div>
+        <tbody>
+       {% for matakuliah in daftarMataKuliah %}
+          <tr>
+            <td>{{ matakuliah.nama }}</td>
+            <td>{{ matakuliah.sks }}</td>
+            <td>{{ matakuliah.semester }}</td>
+            <td>{% for dosen in matakuliah.dosens.get %} 
+		        <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}">{{ dosen.nama }}</a>, 
+		        {% endfor %}</td>
+            <td>{{ matakuliah.prodi }}</td>
+            <td><a href="#modal-ubah-mata-kuliah-{{matakuliah.kodemk}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-mata-kuliah-{{matakuliah.kodemk}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+	{% for matakuliah in daftarMataKuliah %}
 			<!-- Modal Structure -->
 			<form method="POST" action="{{ urlFor('matakuliahupdate', {'kodemk' : matakuliah.kodemk}) }}" id="modal-ubah-mata-kuliah-{{matakuliah.kodemk}}" class="modal">
 				<div class="modal-content">
@@ -133,7 +119,7 @@
 						</div>
 						<div class="row">
 							<div class="col m12">
-								<label for="website">semester</label>
+								<label for="website">Semester</label>
 								<input type="number" name="semester" value="{{matakuliah.semester}}" class="validate" required/>
 							</div>
 						</div>
@@ -169,7 +155,5 @@
 					<a href="{{ urlFor('matakuliahdelete', {'kodemk' : matakuliah.kodemk}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
 				</div>
 			</div>
-		</li>
 		{% endfor %}
-	</ul>
 	{% endblock %}
