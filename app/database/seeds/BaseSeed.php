@@ -15,19 +15,22 @@ class BaseSeed {
 		$dosen1->nip = "1112";
 		$dosen1->nama = "Anto";
 		$dosen1->jeniskelamin = "Laki-Laki";
-		$dosen1->ttl = date("1995-07-22");
+		$dosen1->pendidikan = "S1";
+		$dosen1->foto = "1.jpg";
 		
 		$dosen2 = new Dosen;
 		$dosen2->nip = "1113";
 		$dosen2->nama = "Budi";
 		$dosen2->jeniskelamin = "Laki-Laki";
-		$dosen2->ttl = date("1999-07-22");
+		$dosen2->pendidikan = "S2";
+		$dosen2->foto = "2.jpg";
 		
 		$dosen3 = new Dosen;
 		$dosen3->nip = "1114";
 		$dosen3->nama = "Caca";
 		$dosen3->jeniskelamin = "Perempuan";
-		$dosen3->ttl = date("1994-07-22");
+		$dosen3->pendidikan = "S3";
+		$dosen3->foto = "3.jpg";
 		
 		$dosen1->save();
 		$dosen2->save();

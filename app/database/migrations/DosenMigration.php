@@ -14,7 +14,8 @@ class DosenMigration {
             $table->string('nip');
             $table->string('nama');
             $table->string('jeniskelamin');
-            $table->date('ttl');
+            $table->string('pendidikan');
+			$table->string('foto');
             $table->timestamps();
 
         });

@@ -49,8 +49,13 @@
 			</div>
 			<div class="row">
 				<div class="col m12">
-					<label for="ttl-create">TTL</label>
-					<input type="date" id="ttl-create" name="ttl" required/>
+					<label for="pendidikan-create">Pendidikan</label>
+					<select name="pendidikan">
+					  <option value="" disabled selected>Pilih pendidikan terakhir</option>
+					  <option value="S1">S1</option>
+					  <option value="S2">S2</option>
+					  <option value="S3">S3</option>
+					</select>
 				</div>
 			</div>
 			<!-- <div class="row">
@@ -71,7 +76,7 @@
               <th data-field="id">Nama Dosen</th>
               <th data-field="name">Nomor</th>
               <th data-field="price">Jenis Kelamin</th>
-              <th data-field="price">TTL</th>
+              <th data-field="price">Pendidikan</th>
               <th data-field="price">Action</th>
           </tr>
         </thead>
@@ -82,7 +87,7 @@
             <td>{{ dosen.nama }}</td>
             <td>{{dosen.nip}}</td>
             <td>{{ dosen.jeniskelamin }}</td>
-            <td>{{dosen.ttl}}</td>
+            <td>{{dosen.pendidikan}}</td>
             <td><a href="#modal-lihat-profil-dosen-{{dosen.id}}" class="modal-trigger"><i class="small mdi-image-remove-red-eye"></i></a>&nbsp;<a href="#modal-ubah-profil-dosen-{{dosen.id}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-profil-dosen-{{dosen.id}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
           </tr>
          {% endfor %}
@@ -125,8 +130,13 @@
 					</div>
 					<div class="row">
 						<div class="col m12">
-							<label for="ttl-update">TTL</label>
-							<input type="date" id="ttl-update" name="ttl" value="{{dosen.ttl}}" required/>
+							<label for="pendidikan-update">Pendidikan</label>
+							<select name="pendidikan" required>
+							  <!-- <option value="" disabled selected>Pilih pendidikan terakhir</option> -->
+							  <option value="S1" {% if dosen.pendidikan == 'S1' %}selected="true"{% endif %}>S1</option>
+							  <option value="S2" {% if dosen.pendidikan == 'S2' %}selected="true"{% endif %}>S2</option>
+							  <option value="S3" {% if dosen.pendidikan == 'S3' %}selected="true"{% endif %}>S3</option>
+							</select>
 						</div>
 					</div>
 					<!-- <div class="row">
@@ -171,8 +181,14 @@
 					</div>
 					<div class="row">
 						<div class="col m12">
-							<label for="ttl-update">TTL</label>
-							<input type="date" id="ttl-update" name="ttl" class="datepicker" value="{{dosen.ttl}}" disabled="" />
+							<label for="pendidikan-update">Pendidikan</label>
+							<input type="text" id="pendidikan-update" name="pendidikan" class="datepicker" value="{{dosen.pendidikan}}" disabled="" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="foto-update">Foto</label>
+							<input type="text" id="foto-update" name="foto" class="datepicker" value="{{dosen.foto}}" disabled="" />
 						</div>
 					</div>
 					<div class="row">
