@@ -22,13 +22,13 @@
 			<div class="row">
 				<div class="col m12">
 					<label for="nama_mata_kuliah">Kode MK</label>
-					<input type="text" name="kodemk" class="validate" required/>
+					<input type="text" name="kodemk" class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col m12">
 					<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
-					<input type="text" name="nama" class="validate" required/>
+					<input type="text" name="nama" class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 				</div>
 			</div>
 			<div class="row">
@@ -108,7 +108,7 @@
 						<div class="row">
 							<div class="col m12">
 								<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
-								<input type="text" name="nama" value="{{matakuliah.nama}}"class="validate" required/>
+								<input type="text" name="nama" value="{{matakuliah.nama}}"class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 							</div>
 						</div>
 						<div class="row">

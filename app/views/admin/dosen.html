@@ -28,13 +28,13 @@
 			<div class="row">
 				<div class="col m12">
 					<label for="nama-create">Nama Dosen</label>
-					<input type="text" id="nama-create" name="nama" class="validate" required/>
+					<input type="text" id="nama-create" name="nama" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' class="validate" required/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col m12">
 					<label for="nip-create">Nomor</label>
-					<input type="text" id="nip-create" name="nip" class="validate" required/>
+					<input type="text" id="nip-create" name="nip" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' class="validate" required/>
 				</div>
 			</div>
 			<div class="row">
@@ -104,13 +104,13 @@
 					<div class="row">
 						<div class="col m12">
 							<label for="nama-update">Nama Dosen</label>
-							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" required/>
+							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col m12">
 							<label for="nip-update">NIP</label>
-							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" required/>
+							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 						</div>
 					</div>
 					<div class="row">

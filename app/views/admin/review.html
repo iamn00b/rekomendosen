@@ -61,7 +61,7 @@
 						<div class="row">
 							<div class="col m12">
 								<label for="isi">Isi</label>
-								<textarea name="isi" class="materialize-textarea" required>{{review.isi}}</textarea>
+								<textarea name="isi" class="materialize-textarea" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required>{{review.isi}}</textarea>
 							</div>
 						</div>
 					</div>

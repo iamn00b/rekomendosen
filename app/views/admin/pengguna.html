@@ -22,13 +22,13 @@
 		<div class="row">
 			<div class="col m12">
         <label for="npm-create">Nomor</label>
-				<input id="npm-create" name="npm" type="text" class="validate" required/>
+				<input id="npm-create" name="npm" type="text" class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col m12">
         <label for="role-create">Nama</label>
-				<input id="role-create" name="nama" type="text" class="validate" required/>
+				<input id="role-create" name="nama" type="text" class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
 			</div>
 		</div>
 		<div class="row">
@@ -78,13 +78,13 @@
   		<h4>Ubah Pengguna {{pengguna.npm}}</h4>
   		<div class="row">
   			<div class="col m12">
-  				<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}" required/>
+  				<input id="npm-update-{{pengguna.npm}}" name="npm" type="text" value="{{pengguna.npm}}" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
   				<label for="npm-update-{{pengguna.npm}}">NPM</label>
   			</div>
   		</div>
   		<div class="row">
   			<div class="col m12">
-  				<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}" required/>
+  				<input id="role-update-{{pengguna.npm}}" name="nama" type="text" value="{{pengguna.nama}}" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
   				<label for="role-update-{{pengguna.npm}}">Nama</label>
   			</div>
   		</div>
