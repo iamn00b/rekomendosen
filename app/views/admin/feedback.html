@@ -16,7 +16,8 @@
 <table class="responsive-table hoverable white centered">
 	 <thead>
           <tr>
-              <th data-field="id">Feedback Oleh</th>
+              <th data-field="id">ID Feedback</th>
+			  <th data-field="id">Feedback Oleh</th>
               <th data-field="name">Nilai</th>
               <th data-field="price">Isi</th>
               <th data-field="price">Action</th>
@@ -26,6 +27,7 @@
         <tbody>
         {% for feedback in daftarFeedback %}
           <tr>
+			<td>{{feedback.id}}</td>
             <td>{{feedback.pengguna_npm}}</td>
             <td>{{feedback.rating}}</td>
             <td>{{feedback.isi}}</td>
@@ -40,7 +42,7 @@
 	<!-- Modal Structure -->
 	<div id="modal-hapus-feedback-{{feedback.id}}" class="modal">
 		<div class="modal-content">
-			<p>Hapus Feedback dari {{feedback.pengguna_npm}}?</p>
+			<p>Apakah anda yakin ingin hapus hapus Feedback #{{feedback.id}} dari {{feedback.pengguna_npm}}?</p>
 		</div>
 		<div class="modal-footer">
 			<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
