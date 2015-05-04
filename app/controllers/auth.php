@@ -20,9 +20,17 @@ class Auth extends Controller {
 		$pengguna->nama = $sso->name;
 		if (empty($pengguna->role))
 			$pengguna->setRole($sso->role); 
-
 		$pengguna->save();
+
 		return $pengguna;
 
+	}
+
+	static function harusAdministrator() {
+
+		$pengguna = self::getPengguna();
+
+		if ($pengguna->role != Pengguna::ADMINISTRATOR);
+			//redirect
 	}
 }

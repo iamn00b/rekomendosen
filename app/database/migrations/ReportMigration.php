@@ -12,6 +12,7 @@ class ReportMigration {
         Capsule::schema()->create('report', function($table) {
             $table->increments('id');
 			$table->integer('review_id');
+            $table->string('pengguna_npm');
             $table->timestamps();
         });
     }

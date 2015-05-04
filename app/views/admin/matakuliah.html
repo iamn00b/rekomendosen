@@ -1,0 +1,225 @@
+{% extends "admin.template.html" %}
+
+{% block title %}Kelola Mata Kuliah{% endblock %}
+
+{% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+<h2>Kelola Mata Kuliah</h2>
+<a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-mata-kuliah">Tambah</a>
+<!-- Modal Structure -->
+<form method="POST" action="{{ urlFor('matakuliahcreate') }}" id="modal-tambah-mata-kuliah" class="modal">
+	<div class="modal-content">
+		<h4>Tambah Mata Kuliah</h4>
+		<div class="col m12">
+			<div class="row">
+				<div class="col m12">
+					<label for="nama_mata_kuliah">Kode MK</label>
+					<input type="text" name="kodemk" class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
+					<input type="text" name="nama" class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="website">Total SKS</label>
+					<input type="number" name="sks" class="validate" required/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="website">Semester</label>
+					<input type="number" name="semester" class="validate" required/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="jeniskelamin-update">Prodi</label>
+					<select name="prodi" required>
+					  <option value="" disabled selected>Pilih Prodi</option>
+					  <option value="Fakultas">Fakultas</option>
+					  <option value="Ilmu Komputer">Ilmu Komputer</option>
+					  <option value="Sistem Informasi">Sistem Informasi</option>
+					</select>
+				</div>
+			</div>
+			<!-- <div class="row">
+				<div class="input-field col m12">
+					<input type="text" class="validate">
+					<label for="pernah_diajar_oleh">Pernah Diajar Oleh</label>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
+	</div>
+</form>
+<table class="responsive-table hoverable white centered">
+	 <thead>
+          <tr>
+              <th data-field="id">Nama Mata Kuliah</th>
+              <th data-field="name">Total SKS</th>
+              <th data-field="price">Semester</th>
+              <th data-field="price">Dosen Pengajar</th>
+              <th data-field="price">Prodi</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+       {% for matakuliah in daftarMataKuliah %}
+          <tr>
+            <td>{{ matakuliah.nama }}</td>
+            <td>{{ matakuliah.sks }}</td>
+            <td>{{ matakuliah.semester }}</td>
+            <td>{% for dosen in matakuliah.dosens.get %} 
+		        <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}">{{ dosen.nama }}</a>, 
+		        {% endfor %}</td>
+            <td>{{ matakuliah.prodi }}</td>
+            <td><a href="#modal-lihat-mata-kuliah-{{matakuliah.id}}" class="modal-trigger"><i class="small mdi-image-remove-red-eye"></i></a>&nbsp;<a href="#modal-ubah-mata-kuliah-{{matakuliah.id}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-mata-kuliah-{{matakuliah.id}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+	{% for matakuliah in daftarMataKuliah %}
+			<!-- Modal Structure -->
+			<form method="POST" action="{{ urlFor('matakuliahupdate', {'id' : matakuliah.id}) }}" id="modal-ubah-mata-kuliah-{{matakuliah.id}}" class="modal">
+				<div class="modal-content">
+					<h4>Ubah Mata Kuliah</h4>
+					<div class="col m12">
+						<div class="row">
+							<div class="col m12">
+								<label for="nama_mata_kuliah">Kode MK</label>
+								<input type="text" name="kodemk" value="{{matakuliah.kodemk}}" class="validate" required/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
+								<input type="text" name="nama" value="{{matakuliah.nama}}"class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Total SKS</label>
+								<input type="number" name="sks" value="{{matakuliah.sks}}" class="validate" required/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Semester</label>
+								<input type="number" name="semester" value="{{matakuliah.semester}}" class="validate" required/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="jeniskelamin-update">Prodi</label>
+								<select name="prodi" required>
+								  <option {% if matakuliah.prodi == 'Fakultas' %}selected="true"{%endif%} value="Fakultas">Fakultas</option>
+								  <option {% if matakuliah.prodi == 'Ilmu Komputer' %}selected="true"{%endif%} value="Ilmu Komputer">Ilmu Komputer</option>
+								  <option {% if matakuliah.prodi == 'Sistem Informasi' %}selected="true"{%endif%} value="Sistem Informasi">Sistem Informasi</option>
+								</select>
+							</div>
+						</div>
+						<!-- <div class="row">
+							<div class="input-field col m12">
+								<input type="text" class="validate">
+								<label for="pernah_diajar_oleh">Pernah Diajar Oleh</label>
+							</div>
+						</div> -->
+					</div>
+					</div>
+				</div>
+			</form>
+			
+			<!-- Modal Structure-->
+			<form method="POST" action="{{ urlFor('matakuliahupdate', {'id' : matakuliah.id }) }}" id="modal-lihat-mata-kuliah-{{matakuliah.id}}" class="modal">
+				<div class="modal-content">
+					<h4>Detil Profil Dosen</h4>
+					<div class="col m12">
+						<!-- <div class="row">
+							<div class="col m12">
+								<label for="nama_mata_kuliah">Kode MK</label>
+								<input type="text" name="kodemk" value="{{matakuliah.kodemk}}" class="validate" required/>
+							</div>
+						</div> -->
+						<div class="row">
+							<div class="col m12">
+								<label for="nama_mata_kuliah">Nama Mata Kuliah</label>
+								<input type="text" name="nama" value="{{matakuliah.nama}}"class="validate" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' disabled="">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Total SKS</label>
+								<input type="number" name="sks" value="{{matakuliah.sks}}" class="validate" disabled="">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Semester</label>
+								<input type="number" name="semester" value="{{matakuliah.semester}}" class="validate" disabled="">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="jeniskelamin-update">Prodi</label>
+								<select name="prodi" disabled="" >
+								  <option {% if matakuliah.prodi == 'Fakultas' %}selected="true"{%endif%} value="Fakultas">Fakultas</option>
+								  <option {% if matakuliah.prodi == 'Ilmu Komputer' %}selected="true"{%endif%} value="Ilmu Komputer">Ilmu Komputer</option>
+								  <option {% if matakuliah.prodi == 'Sistem Informasi' %}selected="true"{%endif%} value="Sistem Informasi">Sistem Informasi</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Jenis</label>
+								<input type="text" name="jenis" value="{{matakuliah.jenis}}" class="validate" disabled="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Singkatan Indonesia :</label>
+								<input type="text" name="singkatan_1" value="{{matakuliah.singkatan_1}}" class="validate" disabled="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Singkatan Inggris :</label>
+								<input type="text" name="singkatan_2" value="{{matakuliah.singkatan_2}}" class="validate" disabled="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col m12">
+								<label for="website">Deskripsi</label>
+								<input type="text" name="deskripsi" value="{{matakuliah.deskripsi}}" class="validate" disabled="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<!-- Modal Structure -->
+			<div id="modal-hapus-mata-kuliah-{{matakuliah.id}}" class="modal">
+				<div class="modal-content">
+					<p>Apakah anda yakin ingin hapus mata kuliah {{matakuliah.nama}}?</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+					<a href="{{ urlFor('matakuliahdelete', {'id' : matakuliah.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+				</div>
+			</div>
+		{% endfor %}
+	{% endblock %}

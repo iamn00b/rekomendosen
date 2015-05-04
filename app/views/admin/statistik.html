@@ -1,0 +1,14 @@
+{% extends "admin.template.html" %}
+
+{% block title %}Statistik{% endblock %}
+
+{% block content %}
+		<h3>Pengguna</h3>
+		<h5><strong>jumlah :</strong> {{ statpengguna.total }}</h5>
+		<p><strong>Bulan ini :</strong> {{ statpengguna.totalbulan }}</p>
+		<p><strong>Minggu ini :</strong> {{ statpengguna.totalminggu }}</p>
+
+		<h3>Review</h3>
+		<h5><strong>Jumlah Review :</strong> {{ statreview.total }}</p>
+		<h5><strong>Jumlah Komentar :</strong> {{ statkomentar.total }}</p>
+{% endblock %}

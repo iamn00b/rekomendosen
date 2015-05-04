@@ -13,7 +13,8 @@ class ReviewMigration {
             $table->increments('id');
             $table->string('jenis');
             $table->string('isi');
-			$table->string('dosen_nip');
+			$table->string('dosen_id');
+            $table->string('pengguna_npm');
             $table->timestamps();
         });
     }

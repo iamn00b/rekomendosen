@@ -8,37 +8,48 @@
     	</div>
 
     	<div class="left teal lighten-3 logo">
-	      <a href="#!" class="hide-on-small-only">Rd</a>
-	      <a href="#!" class="left teal lighten-3 rd-nav-logo center hide-on-med-and-up">Rekomendosen</a>
+	      <a href="{{ urlFor('home') }}" class="hide-on-small-only"><img src="{{ BASE_URL }}/img/logopendek.png"></a>
+	      <a href="{{ urlFor('home') }}" class="left teal lighten-3 rd-nav-logo center hide-on-med-and-up"><img src="{{ BASE_URL }}/img/logopanjang.png"></a>
 	    </div>
 
-      <form class="left teal lighten-1 pencarian hide-on-small-only">
-        <div class="input-field">
-          <input id="search" type="text" placeholder="pencarian" required>
+      <form method="GET" action="{{ urlFor('pencarian') }}" class="left teal lighten-1 pencarian hide-on-small-only">
+        <div class="input-field right">
+          <input id="search" type="text" name="query" placeholder="pencarian" required>
           <label for="search"><i class="mdi-action-search"></i></label>
         </div>
       </form>
 
       <ul class="right hide-on-small-only">
-        <li><a href="components.html">Dosen</a></li>
-        <li><a href="javascript.html">Mata Kuliah</a></li>
+        <li><a href="{{ urlFor('dosen') }}">Dosen</a></li>
+        <li><a href="{{ urlFor('matakuliah') }}">Mata Kuliah</a></li>
+        <li><a class="modal-trigger" href="#feedback-dialog" data-position="top" data-delay="50">Feedback</a></li>
+        <li><a class="modal-trigger" href="#tutorial-dialog" data-position="top" data-delay="50">Tutorial</a></li>
+		    <li><a href="{{ urlFor('logout') }}">Logout</a></li>
         <!-- <li><a href="mobile.html"><i class="mdi-navigation-more-vert"></i></a></li> -->
       </ul>
 
-      <ul id="sidebar" class="profil side-nav">
 
+      <ul id="sidebar" class="profil side-nav">
+      
       	<li class="logo">
-      		RDss
+      		<img src="{{ BASE_URL }}/img/logopanjang.png">
       	</li>
 
       	<li class="detail">
-	      	<p class="nama">Hai, <strong>{{ pengguna.nama }}</strong></p>
-	      	<p>NPM <strong>{{ pengguna.npm }}</strong></p>
+	      	<span class="nama">Hai, <strong>{{ pengguna.nama }}</strong>!</span><br/>
+	      	<span class="npm">NPM <strong>{{ pengguna.npm }}</strong></span>
       	</li>
 
-      	<!-- <li class="achievement-list">
-      		<p>Achievement</p>
-      	</li> -->
+		  {% block sidebar %}
+		    <li class="jumlahrekomendasi">
+	      	<span class="rekomendasi"><strong>{{ pengguna.jumlahReviewBaik }}</strong> Rekomendasi</span> | <span class="tidakrekomendasi"><strong>{{ pengguna.jumlahReviewBuruk }}</strong> Tidak Rekomendasi</span>
+      	</li>
+
+      	<li class="achievement-list">
+      		<span>Achievement</span><br/>
+    			<img src="http://placehold.it/87x15">
+    			<img src="http://placehold.it/87x15">
+      	</li>
 
       	<li class="action">
 		      <ul class="tabs">
@@ -48,7 +59,9 @@
 			    <div id="test1" class="col s12">Test 1</div>
 			    <div id="test2" class="col s12">Test 2</div>
       	</li>
+      {% endblock %}
 		  </ul>
+      
 		  
     </div>
   </nav>
@@ -57,10 +70,57 @@
 	{% block content %}
 	{% endblock %}
 	</div>
+
+  <!-- Modal Feedback -->
+  <form action="{{ urlFor('feedback') }}" method="post" id="feedback-dialog" class="modal modal-footer">
+    <div class="modal-content">
+      <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
+      <div class="input-field section">
+        <label class="black-text achievement-list">Rating</label>
+        
+        <p>
+          <input name="rating" type="radio" class="with-gap" value="1" id="rating-1"/>
+          <label for="rating-1">1</label>
+          <input name="rating" type="radio" class="with-gap" value="2" id="rating-2"/>
+          <label for="rating-2">2</label>
+          <input name="rating" type="radio" class="with-gap" value="3" id="rating-3"/>
+          <label for="rating-3">3</label>
+          <input name="rating" type="radio" class="with-gap" value="4" id="rating-4"/>
+          <label for="rating-4">4</label>
+          <input name="rating" type="radio" class="with-gap" value="5" id="rating-5" checked/>
+          <label for="rating-5">5</label>
+        </p>
+      </div>
+      <div class="input-field feedback">  
+        <textarea placeholder="feedback anda" name="feedback" class="materialize-textarea" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required></textarea> 
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="green waves-effect waves-white btn">Kirim</button>
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
+    </div>
+  </form>
+  <!-- Modal Tutorial -->
+  <div id="tutorial-dialog" class="modal modal-footer">
+    <div class="modal-content">
+      <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Tutorial</h4>
+      <p class="black-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui ante, tincidunt non tortor semper, mollis convallis magna. Curabitur ut sodales est, ultricies cursus enim. Maecenas sit amet tincidunt augue. Praesent aliquet a nisi in pellentesque. Morbi convallis, arcu ut faucibus dictum, elit sem auctor magna, et dictum mi est quis sem. Vestibulum mattis, justo id scelerisque pharetra, dolor augue blandit augue, ac tempus urna elit eget augue. In massa velit, aliquam nec convallis volutpat, eleifend sit amet sapien. Aenean nec vestibulum turpis. Duis ornare ultrices nisl, ut pellentesque eros aliquam commodo. Aliquam congue viverra consequat. Mauris sed tincidunt justo. Suspendisse vitae velit eget massa ullamcorper sagittis. Donec ut nunc eu dui consectetur vestibulum.</p>
+      <p class="black-text">
+      Phasellus lacus eros, auctor sit amet turpis ut, aliquet viverra justo. Fusce et nibh sapien. Donec bibendum, ex scelerisque commodo molestie, ante eros convallis ex, nec scelerisque odio leo nec urna. Sed egestas congue magna, id lacinia neque imperdiet scelerisque. In at quam nec justo viverra commodo. Nunc imperdiet lectus risus, vel efficitur ligula elementum ac. Ut vel dui vitae mauris fringilla interdum vel quis nunc. Donec ullamcorper bibendum odio ac accumsan. Vivamus hendrerit pellentesque leo, vitae sodales orci posuere sit amet. Nunc lacinia ligula at porttitor auctor. Integer placerat felis sed ligula consequat, at finibus tortor maximus. Integer felis lectus, sagittis non viverra nec, consequat vel sem. Curabitur lorem ex, commodo at iaculis quis, dictum varius nibh.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Tutup</a>
+    </div>
+  </div>
 {% endblock %}
 
-{% block js %}
-<script>
-	$(".rd-profil-collapse").sideNav();
-</script>
+{% block templatejs %}
+  <script>
+  	// $(".rd-profil-collapse").sideNav();
+   //  $('.datepicker').pickadate(); 
+   //  $('.modal-trigger').leanModal();
+   //  $('select').material_select();
+  </script>
 {% endblock %}

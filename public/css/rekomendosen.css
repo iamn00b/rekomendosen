@@ -1,13 +1,49 @@
+html {
+    font-family: Roboto Light, Calibri, Trebuchet, sans-serif;
+  }
+
+.container{
+	padding-top:30px;
+}
+
+.row.no-bottom-space {
+	margin-bottom: 0;
+}
+
+.rd-small-circle {
+	width: 1.5em;
+	height: 1.5em;
+}
+
+.rd-left {
+	float:left;
+	margin-right: 0rem;
+}
+
+.side-nav {
+	padding-bottom: 50px;
+}
+
+.rd-report-btn {
+	padding: 0 .5rem;
+	margin: 0 0 0 .5rem;
+}
 /* ---------------------------------------- */
 /* ---------- NAVIGATION & PROFILE -------- */
 /* ---------------------------------------- */
 .rd-nav .profil-button {
 	padding : 0 0 0 2rem;
 }
-.rd-nav .logo, 
+
 .rd-nav .pencarian {
-	padding: 0 2rem;
+	padding: 0 2rem 0 2rem;
+	
 }
+
+.rd-nav .logo{
+	padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
 
 /* warna teks placeholder di input, gak bisa digabung
    selectornya */ 
@@ -31,10 +67,248 @@
 .rd-nav .profil li.logo {
 	text-align: center;
 	margin-top: 32px;
-	margin-bottom: 16px;
+	margin-bottom: 40px;
 	border-bottom: 1px solid #ddd;
 }
 
-.rd-nav .profil .nama {
-	font-size: 20px;
+#sidebar{
+	font-size:18px;
+	overflow-y:auto;
+	padding-bottom: 100px;
 }
+
+.rd-nav .profil .detail{
+	line-height:30px;
+}
+
+.rd-nav .profil .nama {
+	font-size: 30px;
+}
+
+.jumlahrekomendasi{
+	line-height:40px;
+}
+
+.jumlahrekomendasi .rekomendasi{
+	color: #80cbc4;
+}
+
+.jumlahrekomendasi .tidakrekomendasi{
+	color: #f29292;
+}
+
+.achievement-list{
+	font-size:14px;
+	line-height:20px;
+}
+
+.rd-nav .profil .action{
+	margin-top:60px;
+}
+
+/*index*/
+footer.rd-footer{
+position: absolute;
+	bottom:0;
+	width:100%;
+	/* margin-top: 0;
+	padding-top: .5rem;
+	padding-bottom: 1.2rem; */
+}
+.rd-bottom{
+	padding-top: 235px;
+	position:relative;
+}
+.rd-bottom-org{
+	padding-top: 83px;
+	position:relative;
+}
+
+.rd-logo{
+	padding-top: 10px;
+}
+
+.rd-copyright.title {
+	font-size: 1.25rem;
+	margin-bottom: 0;
+	margin-top: .5rem;
+}
+.rd-copyright.sub {
+	font-size: .85rem;
+	margin-top: 0;
+}
+
+/*daftar dosen*/
+.cap{
+	padding-left: 0.3rem;
+	margin-top: -20px;
+	margin-bottom: 30px;
+}
+.matkul{
+	letter-spacing: -1pt;
+}
+.lain{
+	text-decoration: none;
+	text-transform: none;
+}
+
+/* detil dosen */
+.card .btn-rekomendasi{
+	margin-right:0;
+}
+.row-btn-rekomendasi{
+	width:170px;
+	margin:0 auto;
+}.detil-matkul{
+	margin-bottom: 30px;
+}
+#rekomendasi-anda{
+	margin-bottom:0;
+}
+.tab-rekomendasi{
+	width:100% !important;
+}
+.vote-review{
+	text-align:center;
+	font-size:40px;
+	line-height:34px;
+	padding-top:1% !important;
+}
+.btn-vote-review {
+	font-size:58px;
+	color:rgba(0,0,0,0.35) !important;
+
+	transition: .35s ease all;
+	-moz-transition: .35s ease all;
+	-ms-transition: .35s ease all;
+	-webkit-transition: .35s ease all;
+}
+.btn-vote-review:hover {
+	color:rgba(0,0,0,0.87) !important;
+}
+.card-review{
+	padding-top:35px;
+	padding-bottom:40px;
+}
+.teks-putih{
+	color:#ffffff !important;
+}
+.rata-kanan{
+	float:right;
+}
+.col-tab-rekomendasi-kiri{
+	padding: 0 0.25rem 0 0 !important;
+}
+.col-tab-rekomendasi-kanan{
+	padding: 0 0 0 0.25rem !important;
+}
+#review-tidak-rekomendasi{
+	display:none;
+}
+
+/* Hasil Pencarian */
+#hasil-pencarian-dosen{
+	margin-top:-10px;
+	margin-bottom:25px;
+}
+#hasil-pencarian-mata-kuliah{
+	margin-top:-10px;
+}
+
+.rd-pencarian-gagal {
+	font-style: italic;
+	font-weight: 200;
+	text-align: center;
+	margin: 2rem 0;
+	color: #333;
+}
+
+/* Admin Sidebar */
+#menu-admin{
+	margin: 0 -15px 100px;
+}
+.menu-admin-item a{
+	color:#ffffff !important;
+	font-size:1.3rem;
+}
+.menu-admin-item.active{
+	background-color:#26a69a !important;
+}
+
+/* Admin Profil Dosen */
+.hapus-profil-dosen{
+	color:#ef5350 !important;
+	font-size:1.4rem;
+	margin-top:-10px;
+}
+.teks-tengah{
+	text-align:center;
+}
+.geser-kanan-dikit{
+	margin-right:5px !important;
+}
+
+/* Admin Pengguna */
+#daftar-pengguna .card{
+	padding:20px !important;
+}
+.margin-nol{
+	margin:0 !important;
+}
+
+/* Admin Review */
+#daftar-review .card{
+	padding:20px !important;
+}
+
+/* Admin Komentar */
+.padding-20{
+	padding:20px !important;
+}
+
+/*home*/
+.geser-kanan-timeline{
+	margin-left: 150px;
+	margin-bottom:15px;
+}
+
+blockquote.rd-review-home {
+	min-height: 100px;
+}
+
+blockquote.rd-review-home.baik {
+	border-left: 5px solid #4DB6AC;
+}
+blockquote.rd-review-home.buruk {
+	border-left: 5px solid #EF9A9A;
+}
+
+/* feedback */
+/*.rating {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+}
+.rating-input {
+    float: right;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0 0 0 -16px;
+    opacity: 0;
+}
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+.rating-star,
+.rating:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+}*/

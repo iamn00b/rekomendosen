@@ -10,6 +10,26 @@ class Pengguna extends Model {
 	protected $fillable 	= ['nama', 'npm'];
 	protected $primaryKey 	= 'npm';
 	
+	// RELATION FUNC
+	
+	public function reviews() {
+		return $this->hasMany('Review', 'pengguna_npm');
+	}
+	
+	public function komentars() {
+		return $this->hasMany('Komentar');
+	}
+	
+	public function upvotedownvotes() {
+		return $this->hasMany('UpvoteDownvote');
+	}
+	
+	public function reports() {
+		return $this->hasMany('Report');
+	}
+
+	// MODEL FUNC
+	
 	function setAdmin() {
 		$this->role = self::ADMINISTRATOR;
 	}
@@ -41,6 +61,18 @@ class Pengguna extends Model {
 
 	function isBanned() {
 		return (time() - $this->banned_hingga < 0);
+	}
+	
+	public function feedbacks() {
+		return $this->hasMany('Feedback');
+	}
+
+	function jumlahReviewBaik() {
+		return $this->reviews()->where('jenis', '=', Review::BAIK)->count();
+	}
+
+	function jumlahReviewBuruk() {
+		return $this->reviews()->where('jenis', '=', Review::BURUK)->count();
 	}
 
 }

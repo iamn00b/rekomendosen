@@ -1,0 +1,65 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}{{ matakuliah.nama }}{% endblock %}
+
+{% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+<h2>{{ matakuliah.nama }}</h2>
+  <h6 class="cap">Fakultas Ilmu Komputer Universitas Indonesia</h6>      
+    <div class="col s12 m4 offset-m2 l6 offset-l3">
+      <div class="card-panel grey lighten-5">
+        <div class="row">
+          <div class="col s9">
+            <div class="black-text">
+                <h4>Deskripsi Singkat</h4>  
+                <p>{{matakuliah.deskripsi}}</p>
+            </div>
+            <div class="row">
+              <div class="black-text detil-matkul">
+                <div class="col s11 m6 l4">
+                    <h6 class="black-text"><strong>Nama lain: </strong>{{ matakuliah.singkatan_1 }} atau {{matakuliah.singkatan_2}}</h6>
+                </div>
+				<div class="col s11 m6 l4">
+                    <h6 class="black-text"><strong>Prodi: </strong>{{matakuliah.prodi}}</h6>
+                </div>
+				<div class="col s12 m6 l3">
+                    <h6 class="black-text"><strong>Jenis: </strong>{{ matakuliah.jenis}}</h6>
+                </div>
+				<div class="col s11 m6 l3">
+                    <h6 class="black-text"><strong>Bobot SKS: </strong>{{ matakuliah.sks }} sks</h6>
+                </div>
+              </div>
+            </div>
+            <a name="daftardosen"></a>
+            <div class="section black-text">
+              <h4>Pernah Diajar Oleh</h4> 
+              <div class="row"> 
+              {% for dosen in matakuliah.dosens.get %}
+                <div class="col s2">
+                  <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}">
+                    <img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="circle responsive-img small tooltipped" data-position="bottom" data-delay="10" data-tooltip="{{dosen.nama}}">
+                  </a>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          
+          <div class="col s3">
+            <div class="teal-text text-lighten-3 center-align">
+              <h4>Semester</h4>
+              <h1 style="line-height: 5px;"><strong>{{ matakuliah.semester }}</strong></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>     
+{% endblock %}

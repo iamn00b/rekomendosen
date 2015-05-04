@@ -1,0 +1,236 @@
+{% extends "admin.template.html" %}
+
+{% block title %}Kelola Profil Dosen{% endblock %}
+
+{% block content %}
+{% if flash.notif is defined %}
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel green lighten-1">
+      <span class="white-text">{{ flash.notif }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+<h2>Kelola Profil Dosen</h2>
+<a class="waves-effect waves-light btn rata-kanan modal-trigger" href="#modal-tambah-profil-dosen">Tambah</a>
+<!-- Modal Structure -->
+<form method="POST" action="{{ urlFor('dosencreate') }}" id="modal-tambah-profil-dosen" class="modal">
+	<div class="modal-content">
+		<h4>Tambah Profil Dosen</h4>
+		<div class="row">
+			<div class="col m3 teks-tengah">
+			<!-- img src="img/grey.jpg" alt="" class=" activator circle responsive-img">
+			<a href="#">Pilih Foto</a> -->
+			</div>
+		</div>
+		<div class="col m9">
+			<div class="row">
+				<div class="col m12">
+					<label for="nama-create">Nama Dosen</label>
+					<input type="text" id="nama-create" name="nama" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' class="validate" required/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="nip-create">Nomor</label>
+					<input type="text" id="nip-create" name="nip" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' class="validate" required/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="jeniskelamin-create">Jenis Kelamin</label>
+					<select name="jeniskelamin">
+					  <option value="" disabled selected>Pilih jenis kelamin</option>
+					  <option value="Laki-Laki">Laki-Laki</option>
+					  <option value="Perempuan">Perempuan</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<label for="pendidikan-create">Pendidikan</label>
+					<select name="pendidikan">
+					  <option value="" disabled selected>Pilih pendidikan terakhir</option>
+					  <option value="S1">S1</option>
+					  <option value="S2">S2</option>
+					  <option value="S3">S3</option>
+					</select>
+				</div>
+			</div>
+			<!-- <div class="row">
+			<div class="input-field col m12">
+			<textarea class="materialize-textarea"></textarea>
+			<label for="mengajar_mata_kuliah">Mengajar Mata Kuliah</label>
+			</div> -->
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="modal-action waves-effect waves-green btn">Simpan</a>
+	</div>
+</form>
+
+<table class="responsive-table hoverable white centered">
+	 <thead>
+          <tr>
+              <th data-field="id">Nama Dosen</th>
+              <th data-field="name">Nomor</th>
+              <th data-field="price">Jenis Kelamin</th>
+              <th data-field="price">Pendidikan</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for dosen in daftarDosen %}
+          <tr>
+            <td>{{ dosen.nama }}</td>
+            <td>{{dosen.nip}}</td>
+            <td>{{ dosen.jeniskelamin }}</td>
+            <td>{{dosen.pendidikan}}</td>
+            <td><a href="#modal-lihat-profil-dosen-{{dosen.id}}" class="modal-trigger"><i class="small mdi-image-remove-red-eye"></i></a>&nbsp;<a href="#modal-ubah-profil-dosen-{{dosen.id}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-profil-dosen-{{dosen.id}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+        {% for dosen in daftarDosen %}
+
+		<!-- Modal Structure -->
+		<form method="POST" action="{{ urlFor('dosenupdate', {'id' : dosen.id }) }}" id="modal-ubah-profil-dosen-{{dosen.id}}" class="modal">
+			<div class="modal-content">
+				<h4>Ubah Profil Dosen</h4>
+				<div class="row">
+					<div class="col m3 teks-tengah">
+					<!-- img src="img/grey.jpg" alt="" class=" activator circle responsive-img">
+					<a href="#">Pilih Foto</a> -->
+					</div>
+				</div>
+				<div class="col m9">
+					<div class="row">
+						<div class="col m12">
+							<label for="nama-update">Nama Dosen</label>
+							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="nip-update">NIP</label>
+							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="jeniskelamin-update">Jenis Kelamin</label>
+							<select name="jeniskelamin" required>
+							  <!-- <option value="" disabled selected>Pilih jenis kelamin</option> -->
+							  <option value="Laki-Laki" {% if dosen.jeniskelamin == 'Laki-Laki' %}selected="true"{% endif %}>Laki-Laki</option>
+							  <option value="Perempuan" {% if dosen.jeniskelamin == 'Perempuan' %}selected="true"{% endif %}>Perempuan</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="pendidikan-update">Pendidikan</label>
+							<select name="pendidikan" required>
+							  <!-- <option value="" disabled selected>Pilih pendidikan terakhir</option> -->
+							  <option value="S1" {% if dosen.pendidikan == 'S1' %}selected="true"{% endif %}>S1</option>
+							  <option value="S2" {% if dosen.pendidikan == 'S2' %}selected="true"{% endif %}>S2</option>
+							  <option value="S3" {% if dosen.pendidikan == 'S3' %}selected="true"{% endif %}>S3</option>
+							</select>
+						</div>
+					</div>
+					<!-- <div class="row">
+					<div class="input-field col m12">
+					<textarea class="materialize-textarea"></textarea>
+					<label for="mengajar_mata_kuliah">Mengajar Mata Kuliah</label>
+					</div> -->
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
+			</div>
+		</form>
+		<!-- Modal Structure-->
+		<form method="POST" action="{{ urlFor('dosenupdate', {'id' : dosen.id }) }}" id="modal-lihat-profil-dosen-{{dosen.id}}" class="modal">
+			<div class="modal-content">
+				<h4>Detil Profil Dosen</h4>
+				<!-- <div class="row">
+					<div class="col m3 teks-tengah">
+					<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class=" activator circle responsive-img">
+					</div>
+				</div> -->
+				<div class="col m9">
+					<div class="row">
+						<div class="col m12">
+							<label for="nama-update">Nama Dosen</label>
+							<input type="text" id="nama-update" name="nama" class="validate" value="{{dosen.nama}}" disabled="" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="nip-update">NIP</label>
+							<input type="text" id="nip-update" name="nip" class="validate" value="{{dosen.nip}}" disabled="" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="jeniskelamin-update">Jenis Kelamin</label>
+							<input type="text" id="jeniskelamin" name="nip" class="validate" value="{{dosen.jeniskelamin}}" disabled="" />
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="pendidikan-update">Pendidikan</label>
+							<input type="text" id="pendidikan-update" name="pendidikan" class="datepicker" value="{{dosen.pendidikan}}" disabled="" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="foto-update">Foto</label>
+							<input type="text" id="foto-update" name="foto" class="datepicker" value="{{dosen.foto}}" disabled="" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="ttl-update">Mengajar Mata Kuliah</label>
+							<ul>
+							{% for matakuliah in dosen.matakuliahs.get %}
+								<li><a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id}) }}">{{ matakuliah.nama }}</a></li>
+			                {% endfor %}
+			                </ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="ttl-update">Rating</label>
+							<input type="text" id="rating-update" name="rating" class="validate" value="{{ dosen.jumlahRatingAsString['depan'] }}.{{ dosen.jumlahRatingAsString['belakang'] }}" disabled="" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col m12">
+							<label for="ttl-update">Jumlah Review</label>
+							<input type="text" id="review-update" name="review" class="validate" value="{{ dosen.reviews.count }}" disabled="" />
+						</div>
+					</div>
+					<!-- <div class="row">
+					<div class="input-field col m12">
+					<textarea class="materialize-textarea"></textarea>
+					<label for="mengajar_mata_kuliah">Mengajar Mata Kuliah</label>
+					</div> -->
+				</div>
+			</div>
+		</form>
+
+		<!-- Modal Structure -->
+		<div id="modal-hapus-profil-dosen-{{dosen.id}}" class="modal">
+			<div class="modal-content">
+					<p>Apakah anda yakin ingin hapus profil dosen {{ dosen.nama }}?</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+				<a href="{{ urlFor('dosendelete', {'id' : dosen.id }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+			</div>
+		</div>
+		{% endfor %}
+{% endblock %}
