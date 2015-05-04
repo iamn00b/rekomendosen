@@ -16,21 +16,21 @@ class BaseSeed {
 		$dosen1->nama = "Anto";
 		$dosen1->jeniskelamin = "Laki-Laki";
 		$dosen1->pendidikan = "S1";
-		$dosen1->foto = "1.jpg";
+		$dosen1->foto = "tes.jpg";
 		
 		$dosen2 = new Dosen;
 		$dosen2->nip = "1113";
 		$dosen2->nama = "Budi";
 		$dosen2->jeniskelamin = "Laki-Laki";
 		$dosen2->pendidikan = "S2";
-		$dosen2->foto = "2.jpg";
+		$dosen2->foto = "tes.jpg";
 		
 		$dosen3 = new Dosen;
 		$dosen3->nip = "1114";
 		$dosen3->nama = "Caca";
 		$dosen3->jeniskelamin = "Perempuan";
 		$dosen3->pendidikan = "S3";
-		$dosen3->foto = "3.jpg";
+		$dosen3->foto = "tes.jpg";
 		
 		$dosen1->save();
 		$dosen2->save();
@@ -39,21 +39,33 @@ class BaseSeed {
 		/* MATA KULIAH */
 		$matkul1 = new MataKuliah;
 		$matkul1->kodemk = "IK00001";
-		$matkul1->nama = "PPL";
+		$matkul1->nama = "Proyek Perangkat Lunak";
 		$matkul1->sks = 6;
 		$matkul1->semester = 6;
 		$matkul1->prodi = "Ilmu Komputer";
+		$matkul1->jenis = "Wajib Studi";
+		$matkul1->singkatan_1 = "PPL";
+		$matkul1->singkatan_2 = "SE";
+		$matkul1->deskripsi = "Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika.";
+		$matkul1->save();
 		$matkul1->dosens()->attach($dosen1->id);
 		$matkul1->dosens()->attach($dosen3->id);
 		
+		
 		$matkul2 = new MataKuliah;
 		$matkul2->kodemk = "SI00001";
-		$matkul2->nama = "Propensi";
+		$matkul2->nama = "Proyek Pengembangan Sistem Informasi";
 		$matkul2->sks = 6;
 		$matkul2->semester = 6;
 		$matkul2->prodi = "Sistem Informasi";
+		$matkul2->jenis = "Wajib Studi";
+		$matkul2->singkatan_1 = "Propensi";
+		$matkul2->singkatan_2 = "SE";
+		$matkul2->deskripsi = "Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika.";
+		$matkul2->save();
 		$matkul2->dosens()->attach($dosen1->id);
 		$matkul2->dosens()->attach($dosen2->id);
+		
 
 		$matkul3 = new MataKuliah;
 		$matkul3->kodemk = "IK00003";
@@ -61,16 +73,29 @@ class BaseSeed {
 		$matkul3->sks = 3;
 		$matkul3->semester = 6;
 		$matkul3->prodi = "Ilmu Komputer";
+		$matkul3->jenis = "Wajib Studi";
+		$matkul3->singkatan_1 = "Anum";
+		$matkul3->singkatan_2 = "NA";
+		$matkul3->deskripsi = "Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika.";
+		$matkul3->save();
 		$matkul3->dosens()->attach($dosen1->id);
 		$matkul3->dosens()->attach($dosen2->id);
+		
 
 		$matkul4 = new MataKuliah;
 		$matkul4->kodemk = "IK00002";
 		$matkul4->nama = "Aljabar Linear";
 		$matkul4->sks = 3;
 		$matkul4->semester = 2;
-		$matkul4->prodi = "Ilmu Komputer";
+		$matkul4->prodi = "Fakultas";
+		$matkul4->jenis = "Wajib Studi";
+		$matkul4->singkatan_1 = "Alin";
+		$matkul4->singkatan_2 = "LA";
+		$matkul4->deskripsi = "Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika.";
+		$matkul4->save();
 		$matkul4->dosens()->attach($dosen1->id);
+		$matkul4->dosens()->attach($dosen2->id);
+		
 		
 		$matkulmatdas1 = new MataKuliah;
 		$matkulmatdas1->kodemk = "MAT10113";
@@ -230,11 +255,6 @@ class BaseSeed {
 		$review2->isi = "terlalu cepat ngajarnya";
 		$review2->dosen_id = $dosen1->id;
 		$review2->pengguna_npm = $pengguna1->npm;
-		
-		$matkul1->save();
-		$matkul2->save();
-		$matkul3->save();
-		$matkul4->save();
 
 		$review1->save();
 		$review2->save();

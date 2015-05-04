@@ -32,8 +32,8 @@ $app->get('/admin/dosen/delete/:id', function ($id) use ($app) 		{ (new DosenCon
 
 $app->get('/admin/matakuliah/', function () use ($app) 		{ (new MataKuliahController())->tampilAdministrasiMataKuliah(); 		})->name('crudmatakuliah');
 $app->post('/admin/matakuliah/create/', 		function () use ($app)		{ (new MataKuliahController())->createMataKuliah(); 						})->name('matakuliahcreate');
-$app->post('/admin/matakuliah/update/:kodemk', 		function ($kodemk) use ($app)		{ (new MataKuliahController())->updateMataKuliah($kodemk); 		})->name('matakuliahupdate');
-$app->get('/admin/matakuliah/delete/:kodemk', function ($kodemk) use ($app) 		{ (new MataKuliahController())->deleteMataKuliah($kodemk); 	})->name('matakuliahdelete');
+$app->post('/admin/matakuliah/update/:id', 		function ($id) use ($app)		{ (new MataKuliahController())->updateMataKuliah($id); 		})->name('matakuliahupdate');
+$app->get('/admin/matakuliah/delete/:id', function ($id) use ($app) 		{ (new MataKuliahController())->deleteMataKuliah($id); 	})->name('matakuliahdelete');
 
 $app->get('/admin/review/', function () use ($app) 		{ (new ReviewController())->tampilAdministrasiReview(); 		})->name('rudreview');
 $app->get('/admin/review/delete/:id', function ($id) use ($app) 		{ (new ReviewController($id))->deleteReview($id); 		})->name('reviewdelete');

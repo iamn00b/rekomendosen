@@ -20,15 +20,21 @@
           <div class="col s9">
             <div class="black-text">
                 <h4>Deskripsi Singkat</h4>  
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                <p>{{matakuliah.deskripsi}}</p>
             </div>
             <div class="row">
               <div class="black-text detil-matkul">
-                <div class="col s12 m6 l3">
-                    <h6 class="black-text"><strong>Bobot SKS: </strong>{{ matakuliah.sks }} sks</h6>
+                <div class="col s11 m6 l4">
+                    <h6 class="black-text"><strong>Nama lain: </strong>{{ matakuliah.singkatan_1 }} atau {{matakuliah.singkatan_2}}</h6>
                 </div>
-                <div class="col s12 m6 l6">
-                    <h6 class="black-text"><strong>Dibuka pada Semester:</strong> Genap</h6>
+				<div class="col s11 m6 l4">
+                    <h6 class="black-text"><strong>Prodi: </strong>{{matakuliah.prodi}}</h6>
+                </div>
+				<div class="col s12 m6 l3">
+                    <h6 class="black-text"><strong>Jenis: </strong>{{ matakuliah.jenis}}</h6>
+                </div>
+				<div class="col s11 m6 l3">
+                    <h6 class="black-text"><strong>Bobot SKS: </strong>{{ matakuliah.sks }} sks</h6>
                 </div>
               </div>
             </div>
@@ -39,7 +45,7 @@
               {% for dosen in matakuliah.dosens.get %}
                 <div class="col s2">
                   <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}">
-                    <img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="circle responsive-img small tooltipped" data-position="bottom" data-delay="10" data-tooltip="{{dosen.nama}}">
+                    <img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="circle responsive-img small tooltipped" data-position="bottom" data-delay="10" data-tooltip="{{dosen.nama}}">
                   </a>
                 </div>
               {% endfor %}

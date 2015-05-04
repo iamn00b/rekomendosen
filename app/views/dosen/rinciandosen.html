@@ -13,7 +13,7 @@
 </div>
 {% endif %}
 	<div class="row">
-		<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="col s2 activator circle responsive-img">
+		<img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="col s2 activator circle responsive-img">
 		<div class="col">
 			<h2>{{ dosen.nama }}</h2>
 			<h6 class="cap"><strong>NIP</strong> {{ dosen.nip }}</h6> 
@@ -40,8 +40,14 @@
 					  <h5>Pernah Mengajar</h5> 
 	                  <span class="black-text valign-wrapper">
 	                    {% for matakuliah in dosen.matakuliahs.get %} 
-	                      <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}" class="valign-wrapper rd-left">
-	                        <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
+	                      <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id}) }}" class="valign-wrapper rd-left">
+	                        {% if matakuliah.prodi == "Ilmu Komputer" %}
+							<img src="{{ BASE_URL }}/img/blue.jpg" alt="" class="circle rd-small-circle responsive-img"> 
+							{% elseif matakuliah.prodi == "Sistem Informasi" %}
+							<img src="{{ BASE_URL }}/img/red.jpg" alt="" class="circle rd-small-circle responsive-img"> 
+							{% else %}
+							<img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
+							{% endif %}
 	                        <h6 class="valign">{{ matakuliah.nama }}, </h6>
 	                      </a>
 	                    {% endfor %} 
@@ -112,7 +118,7 @@
 						<a href="#modal-report-{{review.id}}" class="red modal-trigger rd-report-btn waves-effect waves-light btn"><i class="mdi-action-report-problem"></i></a>
 					</div>
 					<div class="col m2">
-						<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img">
+						<img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="activator circle responsive-img">
 					</div>
 					<div class="col m9 rd-review">
 						<p>{{ review.isi }}</p>
@@ -122,7 +128,7 @@
 				{% for komentar in review.komentars.get %}
 				<div class="row">
 					<div class="col m9 offset-m3">
-						<div class="col m2"><img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+						<div class="col m2"><img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="activator circle responsive-img"></div>
 						<div class="col m10">
 							<p>{{ komentar.isi }}</p>
 						</div>

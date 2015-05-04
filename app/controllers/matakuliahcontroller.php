@@ -56,14 +56,14 @@ class MataKuliahController extends _MainController {
 	function updateMataKuliah($id) {
 		$matkul = $this->app->request->post();
 
-		// $kodemk = $matkul['kodemk'];
+		$kodemk = $matkul['kodemk'];
 		$nama = $matkul['nama'];
 		$sks = $matkul['sks'];
 		$prodi = $matkul['prodi'];
 		$semester = $matkul['semester'];
 
 		$matkul1 = MataKuliah::find($id);
-		// $matkul1->kodemk = $kodemk;
+		$matkul1->kodemk = $kodemk;
 		$matkul1->nama = $nama;
 		$matkul1->sks = $sks;
 		$matkul1->prodi = $prodi;

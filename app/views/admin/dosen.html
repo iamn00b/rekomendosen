@@ -196,7 +196,7 @@
 							<label for="ttl-update">Mengajar Mata Kuliah</label>
 							<ul>
 							{% for matakuliah in dosen.matakuliahs.get %}
-								<li><a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}">{{ matakuliah.nama }}</a></li>
+								<li><a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id}) }}">{{ matakuliah.nama }}</a></li>
 			                {% endfor %}
 			                </ul>
 						</div>
