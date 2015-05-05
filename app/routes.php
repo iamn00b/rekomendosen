@@ -10,7 +10,9 @@ $app->get('/dosen/:id',	function ($id) use ($app) 	{ (new DosenController())->ta
 
 $app->post('/review/baik/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahReviewBaik($id); 		})->name('reviewbaik');
 $app->post('/review/buruk/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahReviewBuruk($id); 		})->name('reviewburuk');
+$app->get('/review/hapus/:id', function ($id) use ($app) 		{ (new ReviewController())->hapusReview($id); 		})->name('hapusreview');
 $app->post('/komentar/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahKomentar($id); 		})->name('komentar');
+$app->get('/komentar/hapus/:id', function ($id) use ($app) 		{ (new ReviewController())->hapusKomentar($id); 		})->name('hapuskomentar');
 $app->get('/upvote/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahUpvote($id); 		})->name('upvote');
 $app->get('/downvote/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahDownvote($id); 		})->name('downvote');
 $app->get('/report/:id', function ($id) use ($app) 		{ (new ReviewController())->beriReport($id); 		})->name('report');

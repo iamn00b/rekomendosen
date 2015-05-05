@@ -34,6 +34,14 @@ class ReviewController extends _MainController {
 		$this->tambahReview($id, 'buruk');
 	}
 	
+	function hapusReview($id) {
+		$iddosen = Review::find($id)->dosen->id;
+		$review = Review::find($id)->delete();
+		$this->app->flash('notif', 'Berhasil menghapus review id #' . $id);
+
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
 	function tambahKomentar($id) {
 		$komentar = $this->app->request->post();
 
@@ -48,6 +56,15 @@ class ReviewController extends _MainController {
 		$this->app->flash('notif', 'Berhasil menambah komentar pada review');
 
 		$iddosen = Review::find($id)->dosen->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+	}
+	
+	function hapusKomentar($id) {
+		$idreview = Komentar::find($id)->review->id;
+		$iddosen = Review::find($idreview)->dosen->id;
+		$review = Komentar::find($id)->delete();
+		$this->app->flash('notif', 'Berhasil menghapus komentar id #' . $id);
+
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
 
