@@ -27,6 +27,10 @@ class Pengguna extends Model {
 	public function reports() {
 		return $this->hasMany('Report');
 	}
+	
+	public function dosens() {
+		return $this->belongsToMany('Dosen', 'subscribe', 'pengguna_nomor', 'dosen_nip');
+	}
 
 	// MODEL FUNC
 	

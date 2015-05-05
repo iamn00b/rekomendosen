@@ -34,6 +34,7 @@ class BaseSeed {
 		
 		$dosen1->save();
 		$dosen2->save();
+		$dosen2->penggunas()->attach($pengguna1->npm);
 		$dosen3->save();
 		
 		/* MATA KULIAH */

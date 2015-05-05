@@ -15,6 +15,7 @@ $app->post('/komentar/:id', function ($id) use ($app) 		{ (new ReviewController(
 $app->get('/komentar/hapus/:id', function ($id) use ($app) 		{ (new ReviewController())->hapusKomentar($id); 		})->name('hapuskomentar');
 $app->get('/upvote/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahUpvote($id); 		})->name('upvote');
 $app->get('/downvote/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahDownvote($id); 		})->name('downvote');
+$app->get('/subscribe/:id', function ($id) use ($app) 		{ (new DosenController())->subunsub($id); 		})->name('subscribe');
 $app->get('/report/:id', function ($id) use ($app) 		{ (new ReviewController())->beriReport($id); 		})->name('report');
 
 $app->get('/matakuliah/', 		function () use ($app) 		{ (new MataKuliahController())->tampilDaftarMataKuliah(); 		})->name('matakuliah');

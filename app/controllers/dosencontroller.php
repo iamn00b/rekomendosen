@@ -19,11 +19,27 @@ class DosenController extends _MainController {
 
 	function tampilRincianDosen($id) {
 		$dosen = Dosen::find($id);		//TODO : Handle Not Found (404)
-
 		$data = array();
 		$data['dosen'] = $dosen;
 
 		$this->render(self::HALAMAN_RINCIAN_DOSEN, $data);
+	}
+	
+	function subunsub($id) {
+		$pengguna1 = Auth::getPengguna();
+		$nomor = $pengguna1->npm;
+		if(Subscribe::where('pengguna_nomor' , '=' , $nomor)->count() < 1){
+			$dosen = Dosen::where('id', '=', $id)->get();
+			$pengguna = Pengguna::where('npm', '=', $nomor)->get();
+			$dosen->penggunas()->attach($pengguna->npm);
+		} else {
+			$sub1 = Subscribe::where('pengguna_nomor' , '=' , $nomor)->delete();
+		}
+		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
+		$this->app->flash('notif', 'Berhasil melakukan subscribe');
+
+		$iddosen = Review::find($id)->dosen->id;
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
 
 	/* ADMIN */

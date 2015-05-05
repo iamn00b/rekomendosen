@@ -23,6 +23,10 @@ class Dosen extends Model {
 	public function reviewBuruks() {
 		return $this->reviews()->where('jenis', "=", Review::BURUK);
 	}
+	
+	public function penggunas() {
+		return $this->belongsToMany('Pengguna', 'subscribe', 'dosen_nip', 'pengguna_nomor');
+	}
 
 	public function jumlahRating() {
 
