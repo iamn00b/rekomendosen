@@ -10,11 +10,22 @@ class BaseSeed {
     	$pengguna1->nama = 'Thirafi Dide';
     	$pengguna1->role = Pengguna::ADMINISTRATOR;
 		
+		$maintenance = new Maintenance;
+		$maintenance->status = 0;
+		$maintenance->save();
+		
 		$activity1 = new ActivityLog;
 		$activity1->activity = "memberi review";
 		$activity1->pengguna_npm = $pengguna1->npm;
-		$activity1->dosen_id = "1";
+		$activity1->dosen_id = 1;
 		$activity1->save();
+		
+		$notifikasi1 = new Notifikasi;
+		$notifikasi1->tipe = "memberi komentar review Anda";
+		$notifikasi1->pengguna_npm = $pengguna1->npm;
+		$notifikasi1->dosen_id = 1;
+		$notifikasi1->review_id = 1;
+		$notifikasi1->save();
 		
     	/* DOSEN */
 		$dosen1 = new Dosen;

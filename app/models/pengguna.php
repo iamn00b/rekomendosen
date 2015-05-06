@@ -16,6 +16,10 @@ class Pengguna extends Model {
 		return $this->hasMany('ActivityLog', 'pengguna_npm');
 	}
 	
+	public function notifikasis() {
+		return $this->hasMany('Notifikasi', 'pengguna_npm');
+	}
+	
 	public function reviews() {
 		return $this->hasMany('Review', 'pengguna_npm');
 	}

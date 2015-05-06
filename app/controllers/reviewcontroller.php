@@ -83,6 +83,13 @@ class ReviewController extends _MainController {
 		$activity1->pengguna_npm = $pengguna->npm;
 		$activity1->dosen_id = $iddsn;
 		$activity1->save();
+		
+		$notifikasi1 = new Notifikasi;
+		$notifikasi1->tipe = "memberi komentar review Anda";
+		$notifikasi1->pengguna_npm = $pengguna->npm;
+		$notifikasi1->dosen_id = $iddsn;
+		$notifikasi1->review_id = $id;
+		$notifikasi1->save();
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
@@ -131,13 +138,20 @@ class ReviewController extends _MainController {
 		$activity1 = new ActivityLog;
 		$activity1->pengguna_npm = $pengguna1->npm;
 		$activity1->dosen_id = $iddsn;
+		$notifikasi1 = new Notifikasi;
+		$notifikasi1->pengguna_npm = $pengguna->npm;
+		$notifikasi1->dosen_id = $iddsn;
+		$notifikasi1->review_id = $id;
 		if($tipe == 0) {
 			$activity1->activity = "memberi Downvote untuk dosen $namadsn";
+			$notifikasi1->tipe = "memberi downvote review Anda";
 		}
 		else {
 			$activity1->activity = "memberi Upvote untuk dosen $namadsn";
+			$notifikasi1->tipe = "memberi upvote review Anda";
 		}
 		$activity1->save();
+		$notifikasi1->save();
 		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
 		$this->app->flash('notif', 'Berhasil melakukan vote "'.$tipe.'" pada review');
 
@@ -173,6 +187,13 @@ class ReviewController extends _MainController {
 		$activity1->pengguna_npm = $pengguna->npm;
 		$activity1->dosen_id = $iddsn;
 		$activity1->save();
+		
+		$notifikasi1 = new Notifikasi;
+		$notifikasi1->tipe = "memberi report review Anda";
+		$notifikasi1->pengguna_npm = $pengguna->npm;
+		$notifikasi1->dosen_id = $iddsn;
+		$notifikasi1->review_id = $id;
+		$notifikasi1->save();
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
