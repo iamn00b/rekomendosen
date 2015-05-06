@@ -30,15 +30,25 @@ class DosenController extends _MainController {
 		$pengguna1 = Auth::getPengguna();
 		$nomor = $pengguna1->npm;
 		$sub = Dosen::find($id)->penggunas()->get();
+		
+		$dosen = Dosen::where('id', '=', $id)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->pengguna_npm = $pengguna1->npm;
+		$activity1->dosen_id = $id;
+		
 		if($sub->count() > 0){
 			if($sub->first()->pivot->where('pengguna_nomor' , '=' , $nomor)->where('dosen_nip', '=', $id)->count() < 1){
 				$dosen = Dosen::where('id', '=', $id)->first();
 				$pengguna = Pengguna::where('npm', '=', $nomor)->first();
 				$dosen->penggunas()->attach($pengguna->npm);
 				$this->app->flash('notif', 'Berhasil melakukan subscribe');
+				$activity1->activity = "melakukan Subscribe dosen $namadsn";
 			} else {
 				$sub1 = $sub->first()->pivot->where('pengguna_nomor' , '=' , $nomor)->where('dosen_nip', '=', $id)->delete();
 				$this->app->flash('notif', 'Berhasil melakukan unsubscribe');
+				$activity1->activity = "melakukan Unsubscribe dosen $namadsn";
 			}
 		}
 		else {
@@ -46,7 +56,9 @@ class DosenController extends _MainController {
 			$pengguna = Pengguna::where('npm', '=', $nomor)->first();
 			$dosen->penggunas()->attach($pengguna->npm);
 			$this->app->flash('notif', 'Berhasil melakukan subscribe');
+			$activity1->activity = "melakukan Subscribe dosen $namadsn";
 		}
+		$activity1->save();
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);
 	}
 

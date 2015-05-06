@@ -19,6 +19,15 @@ class ReviewController extends _MainController {
 		$review1->dosen_id = $id;
 		$review1->pengguna_npm = $pengguna->npm;
 		$review1->save();
+		
+		$dosen = Dosen::where('id', '=', $id)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->activity = "memberi Review untuk dosen $namadsn";
+		$activity1->pengguna_npm = $pengguna->npm;
+		$activity1->dosen_id = $id;
+		$activity1->save();
 
 		$tipeAsString = ($tipe == 'baik')? 'rekomendasi' : 'tidak rekomendasi';
 		$this->app->flash('notif', 'Berhasil memberi "'.$tipeAsString.'"');
@@ -38,6 +47,15 @@ class ReviewController extends _MainController {
 		$iddosen = Review::find($id)->dosen->id;
 		$review = Review::find($id)->delete();
 		$this->app->flash('notif', 'Berhasil menghapus review');
+		$pengguna = Auth::getPengguna();
+		$dosen = Dosen::where('id', '=', $iddosen)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->activity = "menghapus Review untuk dosen $namadsn";
+		$activity1->pengguna_npm = $pengguna->npm;
+		$activity1->dosen_id = $iddosen;
+		$activity1->save();
 
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
@@ -54,6 +72,17 @@ class ReviewController extends _MainController {
 		$komentar1->pengguna_npm = $pengguna->npm;
 		$komentar1->save();
 		$this->app->flash('notif', 'Berhasil menambah komentar pada review');
+		
+		$review = Review::where('id', '=', $id)->first();
+		$iddsn = $review->dosen_id;
+		$dosen = Dosen::where('id', '=', $iddsn)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->activity = "memberi Komentar Review untuk dosen $namadsn";
+		$activity1->pengguna_npm = $pengguna->npm;
+		$activity1->dosen_id = $iddsn;
+		$activity1->save();
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
@@ -64,6 +93,15 @@ class ReviewController extends _MainController {
 		$iddosen = Review::find($idreview)->dosen->id;
 		$review = Komentar::find($id)->delete();
 		$this->app->flash('notif', 'Berhasil menghapus komentar');
+		$pengguna = Auth::getPengguna();
+		$dosen = Dosen::where('id', '=', $iddosen)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->activity = "menghapus Komentar Review untuk dosen $namadsn";
+		$activity1->pengguna_npm = $pengguna->npm;
+		$activity1->dosen_id = $iddosen;
+		$activity1->save();
 
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
@@ -85,6 +123,21 @@ class ReviewController extends _MainController {
 			$vote->pengguna_npm = $pengguna1->npm;
 			$vote->save();
 		}
+		$review = Review::where('id', '=', $id)->first();
+		$iddsn = $review->dosen_id;
+		$dosen = Dosen::where('id', '=', $iddsn)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->pengguna_npm = $pengguna1->npm;
+		$activity1->dosen_id = $iddsn;
+		if($tipe == 0) {
+			$activity1->activity = "memberi Downvote untuk dosen $namadsn";
+		}
+		else {
+			$activity1->activity = "memberi Upvote untuk dosen $namadsn";
+		}
+		$activity1->save();
 		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
 		$this->app->flash('notif', 'Berhasil melakukan vote "'.$tipe.'" pada review');
 
@@ -107,6 +160,19 @@ class ReviewController extends _MainController {
 		$report->pengguna_npm = $pengguna1->npm;
 		$report->save();
 		$this->app->flash('notif', 'Berhasil melakukan report review');
+		
+		$pengguna = Auth::getPengguna();
+		
+		$review = Review::where('id', '=', $id)->first();
+		$iddsn = $review->dosen_id;
+		$dosen = Dosen::where('id', '=', $iddsn)->first();
+		$namadsn = $dosen->nama;
+		
+		$activity1 = new ActivityLog;
+		$activity1->activity = "memberi Report Review untuk dosen $namadsn";
+		$activity1->pengguna_npm = $pengguna->npm;
+		$activity1->dosen_id = $iddsn;
+		$activity1->save();
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);

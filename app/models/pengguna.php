@@ -12,6 +12,10 @@ class Pengguna extends Model {
 	
 	// RELATION FUNC
 	
+	public function activitylogs() {
+		return $this->hasMany('ActivityLog', 'pengguna_npm');
+	}
+	
 	public function reviews() {
 		return $this->hasMany('Review', 'pengguna_npm');
 	}

@@ -57,7 +57,11 @@
 		        <li class="tab col s6"><a href="#test2">Riwayat</a></li>
 		      </ul>
 			    <div id="test1" class="col s12">Test 1</div>
-			    <div id="test2" class="col s12">Test 2</div>
+			    <div id="test2" class="col s12">
+				{% for act in pengguna.activitylogs.get | reverse %}
+					<a href="{{ urlFor('rinciandosen', {'id': act.dosen_id }) }}">Anda {{ act.activity }} pada {{ act.updated_at }}</a><br>
+				{% endfor %}
+				</div>
       	</li>
       {% endblock %}
 		  </ul>

@@ -16,6 +16,13 @@ class FeedbackController extends _MainController {
 		$feedback1->isi = $isi;
 		$feedback1->pengguna_npm = $npm;
 		$feedback1->save();
+		
+		$activity1 = new ActivityLog;
+		$activity1->activity = "memberi Feedback";
+		$activity1->pengguna_npm = $pengguna->npm;
+		$activity1->dosen_id = 0;
+		$activity1->save();
+		
 		$this->app->flash('notif', 'Terima kasih telah memberi feedback! Feedback anda akan sangat berguna untuk perkembangan rekomendosen kedepannya!');
 
 		$this->app->response->redirect($this->app->urlFor('home'), 400);
