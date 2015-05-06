@@ -32,14 +32,22 @@
 		              <p>Pendidikan terakhir : {{dosen.pendidikan}}<br>
 					  Jenis Kelamin : {{dosen.jeniskelamin}}
 					  </p>
-					  {% for sub in dosen.penggunas.get %}
-						<p>masuk</p>
-						  {% if sub.pengguna_nomor == pengguna.npm %}
-						  <button>Unsubscribe</button>
-						  {% else %}
-						  <button>Subscribe</button>
+					  {% set check = true %}
+					  {% set check2 = true %}
+					  {% for sub in subscribe %}
+						  {% set check = false %}
+						  {% if sub.pivot.pengguna_nomor == pengguna.npm %}
+							{% set check2 = false %}
+							  {% if sub.pivot.dosen_nip == dosen.id %}
+							  <a href="{{ urlFor('subscribe', {'id': dosen.id }) }}" class="btn">Unsubscribe</a>
+							  {% else %}
+							  <a href="{{ urlFor('subscribe', {'id': dosen.id }) }}" class="btn">Subscribe</a>
+							  {% endif %}
 						  {% endif %}
-					  {% endfor %}
+					 {% endfor %}
+					 {% if check or check2 %}
+					 <a href="{{ urlFor('subscribe', {'id': dosen.id }) }}" class="btn">Subscribe</a>
+					 {% endif %}
 	            	</div>
 	            </div>
 	            <a name="daftarmatakuliah"></a>

@@ -21,25 +21,33 @@ class DosenController extends _MainController {
 		$dosen = Dosen::find($id);		//TODO : Handle Not Found (404)
 		$data = array();
 		$data['dosen'] = $dosen;
-
+		$subscribe = Dosen::find($id)->penggunas()->get();
+		$data['subscribe'] = $subscribe;
 		$this->render(self::HALAMAN_RINCIAN_DOSEN, $data);
 	}
 	
 	function subunsub($id) {
 		$pengguna1 = Auth::getPengguna();
 		$nomor = $pengguna1->npm;
-		if(Subscribe::where('pengguna_nomor' , '=' , $nomor)->count() < 1){
-			$dosen = Dosen::where('id', '=', $id)->get();
-			$pengguna = Pengguna::where('npm', '=', $nomor)->get();
-			$dosen->penggunas()->attach($pengguna->npm);
-		} else {
-			$sub1 = Subscribe::where('pengguna_nomor' , '=' , $nomor)->delete();
+		$sub = Dosen::find($id)->penggunas()->get();
+		if($sub->count() > 0){
+			if($sub->first()->pivot->where('pengguna_nomor' , '=' , $nomor)->where('dosen_nip', '=', $id)->count() < 1){
+				$dosen = Dosen::where('id', '=', $id)->first();
+				$pengguna = Pengguna::where('npm', '=', $nomor)->first();
+				$dosen->penggunas()->attach($pengguna->npm);
+				$this->app->flash('notif', 'Berhasil melakukan subscribe');
+			} else {
+				$sub1 = $sub->first()->pivot->where('pengguna_nomor' , '=' , $nomor)->where('dosen_nip', '=', $id)->delete();
+				$this->app->flash('notif', 'Berhasil melakukan unsubscribe');
+			}
 		}
-		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
-		$this->app->flash('notif', 'Berhasil melakukan subscribe');
-
-		$iddosen = Review::find($id)->dosen->id;
-		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
+		else {
+			$dosen = Dosen::where('id', '=', $id)->first();
+			$pengguna = Pengguna::where('npm', '=', $nomor)->first();
+			$dosen->penggunas()->attach($pengguna->npm);
+			$this->app->flash('notif', 'Berhasil melakukan subscribe');
+		}
+		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);
 	}
 
 	/* ADMIN */
