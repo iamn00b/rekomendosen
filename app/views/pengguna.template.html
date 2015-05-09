@@ -59,6 +59,9 @@
 			    <div id="test1" class="col s12">
 					{% for notif in pengguna.notifikasis.get %}
 						<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}">1 orang {{ notif.tipe }}</a><br>
+						{% if notif.updated_at > pengguna.updated_at %}
+						masuk
+						{% endif %}
 					{% endfor %}
 				</div>
 			    <div id="test2" class="col s12">

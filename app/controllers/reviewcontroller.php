@@ -12,6 +12,7 @@ class ReviewController extends _MainController {
 
 		$isi = $review['review'];
 		$pengguna = Auth::getPengguna();
+		$pengguna->touch();
 
 		$review1 = new Review;
 		$review1->jenis = $tipe;
