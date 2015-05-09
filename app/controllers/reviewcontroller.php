@@ -29,6 +29,7 @@ class ReviewController extends _MainController {
 				if($reward->count() != 0) {
 					if($reward->first()->pivot->where('pengguna_nomor', '=', $pengguna->npm)->count() < 1) {
 						$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
+						$pengguna1->touch();
 						$achiev->penggunas()->attach($pengguna1->npm);
 					}
 				}
@@ -36,6 +37,31 @@ class ReviewController extends _MainController {
 					$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
 					$achiev->penggunas()->attach($pengguna1->npm);
 				}
+				$notifikasi = Notifikasi::where('review_id', '=', 0)->where('pengguna_npm', '=', $pengguna->npm)->get();
+						if($notifikasi->count() > 0) {
+							$notifikasi->touch();
+							if($notifikasi->updated_at >= $pengguna->updated_at) {
+								$total = $notifikasi->total;
+								$notifikasi->total = $total+1;
+								$notifikasi->save();
+							}
+							else {
+								$notifikasi1 = new Notifikasi;
+								$notifikasi1->tipe = "achievment";
+								$notifikasi1->pengguna_npm = $pengguna->npm;
+								$notifikasi1->total = 1;
+								$notifikasi1->review_id = 0;
+								$notifikasi1->save();
+							}
+						}
+						else {
+								$notifikasi1 = new Notifikasi;
+								$notifikasi1->tipe = "achievment";
+								$notifikasi1->pengguna_npm = $pengguna->npm;
+								$notifikasi1->total = 1;
+								$notifikasi1->review_id = 0;
+								$notifikasi1->save();
+						}
 			}
 		}
 	}
@@ -102,6 +128,7 @@ class ReviewController extends _MainController {
 		$isi = $komentar['komentar'];
 		$gambar = $komentar['badgekomentar'];
 		$pengguna = Auth::getPengguna();
+		$pengguna->touch();
 
 		$komentar1 = new Komentar;
 		$komentar1->isi = $isi;
@@ -122,12 +149,31 @@ class ReviewController extends _MainController {
 		$activity1->dosen_id = $iddsn;
 		$activity1->save();
 		
-		$notifikasi1 = new Notifikasi;
-		$notifikasi1->tipe = "memberi komentar review Anda";
-		$notifikasi1->pengguna_npm = $pengguna->npm;
-		$notifikasi1->dosen_id = $iddsn;
-		$notifikasi1->review_id = $id;
-		$notifikasi1->save();
+		$notifikasi = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna)->get();
+		if($notifikasi->count() > 0) {
+			$notifikasi->touch();
+			if($notifikasi->updated_at >= $pengguna->updated_at) {
+				$total = $notifikasi->total;
+				$notifikasi->total = $total+1;
+				$notifikasi->save();
+			}
+			else {
+				$notifikasi1 = new Notifikasi;
+				$notifikasi1->tipe = "komentar";
+				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->total = 1;
+				$notifikasi1->review_id = $id;
+				$notifikasi1->save();
+			}
+		}
+		else {
+				$notifikasi1 = new Notifikasi;
+				$notifikasi1->tipe = "komentar";
+				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->total = 1;
+				$notifikasi1->review_id = $id;
+				$notifikasi1->save();
+		}
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->checkReward('komentar');
@@ -154,6 +200,7 @@ class ReviewController extends _MainController {
 
 	function tambahVote($id, $tipe) {
 		$pengguna1 = Auth::getPengguna();
+		$pengguna1->touch();
 
 		if(UpvoteDownvote::where('review_id' , '=' , $id)->count() < 1){
 			$vote = new UpvoteDownvote;
@@ -177,23 +224,44 @@ class ReviewController extends _MainController {
 		$activity1 = new ActivityLog;
 		$activity1->pengguna_npm = $pengguna1->npm;
 		$activity1->dosen_id = $iddsn;
-		$notifikasi1 = new Notifikasi;
-		$notifikasi1->pengguna_npm = $pengguna1->npm;
-		$notifikasi1->dosen_id = $iddsn;
-		$notifikasi1->review_id = $id;
+		if($tipe == 1) {
+			$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna1->npm)->where('tipe', '=', 'upvote')->get();
+		}
+		else{
+			$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna1->npm)->where('tipe', '=', 'downvote')->get();
+		}
+		if($notifikasi1->count() > 0) {
+			$notifikasi2 = $notifikasi1->last();
+			$notifikasi2->touch();
+			if($notifikasi2->updated_at >= $pengguna1->updated_at) {
+				$total = $notifikasi2->total;
+				$notifikasi2->total = $total+1;
+			}
+			else {
+				$notifikasi2 = new Notifikasi;
+				$notifikasi2->pengguna_npm = $pengguna1->npm;
+				$notifikasi2->total = 1;
+				$notifikasi2->review_id = $id;
+			}
+		}
+		else {
+				$notifikasi2 = new Notifikasi;
+				$notifikasi2->pengguna_npm = $pengguna1->npm;
+				$notifikasi2->total = 1;
+				$notifikasi2->review_id = $id;
+		}
 		if($tipe == 0) {
 			$activity1->activity = "memberi Downvote untuk dosen $namadsn";
-			$notifikasi1->tipe = "memberi downvote review Anda";
+			$notifikasi2->tipe = "downvote";
 			$this->checkReward('downvote');
 		}
 		else {
 			$activity1->activity = "memberi Upvote untuk dosen $namadsn";
-			$notifikasi1->tipe = "memberi upvote review Anda";
+			$notifikasi2->tipe = "upvote";
 			$this->checkReward('upvote');
 		}
 		$activity1->save();
-		$notifikasi1->save();
-		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
+		$notifikasi2->save();
 		$this->app->flash('notif', 'Berhasil melakukan vote "'.$tipe.'" pada review');
 
 		$iddosen = Review::find($id)->dosen->id;
@@ -217,6 +285,7 @@ class ReviewController extends _MainController {
 		$this->app->flash('notif', 'Berhasil melakukan report review');
 		
 		$pengguna = Auth::getPengguna();
+		$pengguna->touch();
 		
 		$review = Review::where('id', '=', $id)->first();
 		$iddsn = $review->dosen_id;
@@ -229,12 +298,31 @@ class ReviewController extends _MainController {
 		$activity1->dosen_id = $iddsn;
 		$activity1->save();
 		
-		$notifikasi1 = new Notifikasi;
-		$notifikasi1->tipe = "memberi report review Anda";
-		$notifikasi1->pengguna_npm = $pengguna->npm;
-		$notifikasi1->dosen_id = $iddsn;
-		$notifikasi1->review_id = $id;
-		$notifikasi1->save();
+		$notifikasi = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna)->get();
+		if($notifikasi->count() > 0) {
+			$notifikasi->touch();
+			if($notifikasi->updated_at >= $pengguna->updated_at) {
+				$total = $notifikasi->total;
+				$notifikasi->total = $total+1;
+				$notifikasi->save();
+			}
+			else {
+				$notifikasi1 = new Notifikasi;
+				$notifikasi1->tipe = "report";
+				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->total = 1;
+				$notifikasi1->review_id = $id;
+				$notifikasi1->save();
+			}
+		}
+		else {
+				$notifikasi1 = new Notifikasi;
+				$notifikasi1->tipe = "report";
+				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->total = 1;
+				$notifikasi1->review_id = $id;
+				$notifikasi1->save();
+		}
 
 		$iddosen = Review::find($id)->dosen->id;
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);

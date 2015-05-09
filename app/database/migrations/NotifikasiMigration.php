@@ -13,8 +13,8 @@ class NotifikasiMigration {
             $table->increments('id');
             $table->string('tipe');
 			$table->string('pengguna_npm');
-			$table->string('dosen_id');
 			$table->string('review_id');
+			$table->integer('total');
             $table->timestamps();
         });
     }

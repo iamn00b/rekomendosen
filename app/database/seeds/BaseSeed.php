@@ -21,9 +21,9 @@ class BaseSeed {
 		$activity1->save();
 		
 		$notifikasi1 = new Notifikasi;
-		$notifikasi1->tipe = "memberi komentar review Anda";
+		$notifikasi1->tipe = "komentar";
 		$notifikasi1->pengguna_npm = $pengguna1->npm;
-		$notifikasi1->dosen_id = 1;
+		$notifikasi1->total = 1;
 		$notifikasi1->review_id = 1;
 		$notifikasi1->save();
 		
