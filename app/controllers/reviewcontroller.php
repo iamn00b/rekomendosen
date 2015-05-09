@@ -6,11 +6,45 @@ class ReviewController extends _MainController {
 	const HALAMAN_ADMIN_KOMENTAR = 'admin/komentar.html';
 	const HALAMAN_ADMIN_REPORT = 'admin/report.html';
 	
+	function checkReward($tipe) {
+		$pengguna = Auth::getPengguna();
+		if($tipe == "review") {
+			$model = Review::where('pengguna_npm', '=', $pengguna->npm);
+		}
+		if($tipe == "komentar") {
+			$model = Komentar::where('pengguna_npm', '=', $pengguna->npm);
+		}
+		if($tipe == "upvote") {
+			$vote = UpvoteDownvote::where('pengguna_npm', '=', $pengguna->npm);
+			$model = $vote->where('tipe', '=', 1);
+		}
+		if($tipe == "downvote") {
+			$vote = UpvoteDownvote::where('pengguna_npm', '=', $pengguna->npm);
+			$model = $vote->where('tipe', '=', 0);
+		}
+		$total = $model->count();
+		foreach (Achievment::where('tipe', '=', $tipe)->get() as $achiev) {
+			if($achiev->target <= $total) {
+				$reward = $achiev->penggunas()->get();
+				if($reward->count() != 0) {
+					if($reward->first()->pivot->where('pengguna_nomor', '=', $pengguna->npm)->count() < 1) {
+						$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
+						$achiev->penggunas()->attach($pengguna1->npm);
+					}
+				}
+				else {
+					$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
+					$achiev->penggunas()->attach($pengguna1->npm);
+				}
+			}
+		}
+	}
 	
 	function tambahReview($id, $tipe) {
 		$review = $this->app->request->post();
 
 		$isi = $review['review'];
+		$gambar = $review['badge'];
 		$pengguna = Auth::getPengguna();
 		$pengguna->touch();
 
@@ -19,6 +53,7 @@ class ReviewController extends _MainController {
 		$review1->isi = $isi;
 		$review1->dosen_id = $id;
 		$review1->pengguna_npm = $pengguna->npm;
+		$review1->gambar = $gambar;
 		$review1->save();
 		
 		$dosen = Dosen::where('id', '=', $id)->first();
@@ -32,7 +67,7 @@ class ReviewController extends _MainController {
 
 		$tipeAsString = ($tipe == 'baik')? 'rekomendasi' : 'tidak rekomendasi';
 		$this->app->flash('notif', 'Berhasil memberi "'.$tipeAsString.'"');
-
+		$this->checkReward('review');
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);
 	}
 
@@ -65,12 +100,14 @@ class ReviewController extends _MainController {
 		$komentar = $this->app->request->post();
 
 		$isi = $komentar['komentar'];
+		$gambar = $komentar['badgekomentar'];
 		$pengguna = Auth::getPengguna();
 
 		$komentar1 = new Komentar;
 		$komentar1->isi = $isi;
 		$komentar1->review_id = $id;
 		$komentar1->pengguna_npm = $pengguna->npm;
+		$komentar1->gambar = $gambar;
 		$komentar1->save();
 		$this->app->flash('notif', 'Berhasil menambah komentar pada review');
 		
@@ -93,6 +130,7 @@ class ReviewController extends _MainController {
 		$notifikasi1->save();
 
 		$iddosen = Review::find($id)->dosen->id;
+		$this->checkReward('komentar');
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $iddosen)), 400);
 	}
 	
@@ -140,16 +178,18 @@ class ReviewController extends _MainController {
 		$activity1->pengguna_npm = $pengguna1->npm;
 		$activity1->dosen_id = $iddsn;
 		$notifikasi1 = new Notifikasi;
-		$notifikasi1->pengguna_npm = $pengguna->npm;
+		$notifikasi1->pengguna_npm = $pengguna1->npm;
 		$notifikasi1->dosen_id = $iddsn;
 		$notifikasi1->review_id = $id;
 		if($tipe == 0) {
 			$activity1->activity = "memberi Downvote untuk dosen $namadsn";
 			$notifikasi1->tipe = "memberi downvote review Anda";
+			$this->checkReward('downvote');
 		}
 		else {
 			$activity1->activity = "memberi Upvote untuk dosen $namadsn";
 			$notifikasi1->tipe = "memberi upvote review Anda";
+			$this->checkReward('upvote');
 		}
 		$activity1->save();
 		$notifikasi1->save();

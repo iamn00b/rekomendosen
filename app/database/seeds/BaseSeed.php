@@ -27,6 +27,48 @@ class BaseSeed {
 		$notifikasi1->review_id = 1;
 		$notifikasi1->save();
 		
+		$achievment1 = new Achievment;
+		$achievment1->nama = "ambulance";
+		$achievment1->tipe = "review";
+		$achievment1->target = 3;
+		$achievment1->save();
+		
+		$achievment2 = new Achievment;
+		$achievment2->nama = "basket";
+		$achievment2->tipe = "review";
+		$achievment2->target = 5;
+		$achievment2->save();
+		
+		$achievment3 = new Achievment;
+		$achievment3->nama = "barbell";
+		$achievment3->tipe = "feedback";
+		$achievment3->target = 1;
+		$achievment3->save();
+		
+		$achievment4 = new Achievment;
+		$achievment4->nama = "bandaid";
+		$achievment4->tipe = "komentar";
+		$achievment4->target = 3;
+		$achievment4->save();
+		
+		$achievment5 = new Achievment;
+		$achievment5->nama = "balls";
+		$achievment5->tipe = "subscribe";
+		$achievment5->target = 1;
+		$achievment5->save();
+		
+		$achievment6 = new Achievment;
+		$achievment6->nama = "rabbit";
+		$achievment6->tipe = "upvote";
+		$achievment6->target = 3;
+		$achievment6->save();
+		
+		$achievment7 = new Achievment;
+		$achievment7->nama = "cock";
+		$achievment7->tipe = "downvote";
+		$achievment7->target = 3;
+		$achievment7->save();
+		
     	/* DOSEN */
 		$dosen1 = new Dosen;
 		$dosen1->nip = "1112";
@@ -267,12 +309,14 @@ class BaseSeed {
 		$review1->isi = "sangat direkomendasikan";
 		$review1->dosen_id = $dosen1->id;
 		$review1->pengguna_npm = $pengguna1->npm;
+		$review1->gambar = "tes.jpg";
 		
 		$review2 = new Review;
 		$review2->jenis = "buruk";
 		$review2->isi = "terlalu cepat ngajarnya";
 		$review2->dosen_id = $dosen1->id;
 		$review2->pengguna_npm = $pengguna1->npm;
+		$review2->gambar = "tes.jpg";
 
 		$review1->save();
 		$review2->save();
@@ -281,16 +325,19 @@ class BaseSeed {
 		$komentar1->isi = "saya setuju";
 		$komentar1->review_id = $review1->id;
 		$komentar1->pengguna_npm = $pengguna1->npm;
+		$komentar1->gambar = "tes.jpg";
 		
 		$komentar2 = new Komentar;
 		$komentar2->isi = "saya tidak setuju";
 		$komentar2->review_id = $review1->id;
 		$komentar2->pengguna_npm = $pengguna1->npm;
+		$komentar2->gambar = "tes.jpg";
 		
 		$komentar3 = new Komentar;
 		$komentar3->isi = "mantap!";
 		$komentar3->review_id = $review2->id;
 		$komentar3->pengguna_npm = $pengguna1->npm;
+		$komentar3->gambar = "tes.jpg";
 		
 		$vote1 = new UpvoteDownvote;
 		$vote1->tipe = 1;

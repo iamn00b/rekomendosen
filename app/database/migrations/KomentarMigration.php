@@ -14,6 +14,7 @@ class KomentarMigration {
             $table->string('isi');
 			$table->integer('review_id');
             $table->string('pengguna_npm');
+			$table->string('gambar');
             $table->timestamps();
         });
     }

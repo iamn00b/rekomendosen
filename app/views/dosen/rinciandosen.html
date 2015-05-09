@@ -82,6 +82,15 @@
 				<form method="POST" action="{{ urlFor('reviewbaik', {'id' : dosen.id}) }}" id="modal1" class="modal">
 					<div class="modal-content">
 						<h4><i class="mdi-content-add-circle"></i> Beri 'Rekomendasi'</h4>
+						<div class="row">
+							<div class="col m12">
+								  <input type="hidden" name="badge" id="tes" value="tes.jpg" style="display:none"><label for="tes"></label>
+								  {% for achiev in pengguna.achievments.get %}
+								  <input type="radio" name="badge" id="{{achiev.nama}}" value="{{achiev.nama}}.png"><label for="{{achiev.nama}}"><img src="{{ BASE_URL }}/img/icon/{{achiev.nama}}.png" height="15" width="15"></label>
+								  {% endfor %}
+								
+							</div>
+						</div>
 						<div class="input-field">
 							<textarea id="textarea-baik" name="review" class="materialize-textarea" required></textarea>
 							<label for="textarea-baik">Tulis rekomendasi</label>
@@ -134,7 +143,7 @@
 						<a href="#modal-report-{{review.id}}" class="red modal-trigger rd-report-btn waves-effect waves-light btn"><i class="mdi-action-report-problem"></i></a>
 					</div>
 					<div class="col m2">
-						<img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="activator circle responsive-img">
+						<img src="{{ BASE_URL }}/img/icon/{{review.gambar}}" alt="" class="activator circle responsive-img">
 					</div>
 					<div class="col m9 rd-review">
 						<p>{{ review.isi }}</p>
@@ -147,7 +156,7 @@
 				{% for komentar in review.komentars.get %}
 				<div class="row">
 					<div class="col m9 offset-m3">
-						<div class="col m2"><img src="{{ BASE_URL }}/img/{{dosen.foto}}" alt="" class="activator circle responsive-img"></div>
+						<div class="col m2"><img src="{{ BASE_URL }}/img/icon/{{komentar.gambar}}" alt="" class="activator circle responsive-img"></div>
 						<div class="col m10">
 							<p>{{ komentar.isi }}</p>
 							{% if komentar.pengguna_npm == pengguna.npm %}
@@ -171,6 +180,12 @@
 					<div class="input-field col m9 offset-m3">
 						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea" required></textarea>
 						<label for="komentar-{{review.id}}">Komentar</label>
+						<div class="col m12">
+								  <input type="hidden" name="badgekomentar" id="tes-komentar" value="tes.jpg" style="display:none"><label for="tes-komentar"></label>
+								  {% for achiev in pengguna.achievments.get %}
+								  <input type="radio" name="badgekomentar" id="{{achiev.nama}}-komentar" value="{{achiev.nama}}.png"><label for="{{achiev.nama}}-komentar"><img src="{{ BASE_URL }}/img/icon/{{achiev.nama}}.png" height="15" width="15"></label>
+								  {% endfor %}
+						</div>
 						<button type="submit" class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</button>
 					</div>
 				</form>
@@ -211,7 +226,7 @@
 						<a href="#modal-report-{{review.id}}" class="red modal-trigger rd-report-btn waves-effect waves-light btn"><i class="mdi-action-report-problem"></i></a>
 					</div>
 					<div class="col m2">
-						<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img">
+						<img src="{{ BASE_URL }}/img/icon/{{review.gambar}}" alt="" class="activator circle responsive-img">
 					</div>
 					<div class="col m9 rd-review">
 						<p>{{ review.isi }}</p>
@@ -224,7 +239,7 @@
 				{% for komentar in review.komentars.get %}
 				<div class="row">
 					<div class="col m9 offset-m3">
-						<div class="col m2"><img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img"></div>
+						<div class="col m2"><img src="{{ BASE_URL }}/img/icon/{{komentar.gambar}}" alt="" class="activator circle responsive-img"></div>
 						<div class="col m10">
 							<p>{{ komentar.isi }}</p>
 							{% if komentar.pengguna_npm == pengguna.npm %}
@@ -248,6 +263,12 @@
 					<div class="input-field col m9 offset-m3">
 						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea"></textarea>
 						<label for="komentar-{{review.id}}">Komentar</label>
+						<div class="col m12">
+								  <input type="hidden" name="badgekomentar" id="tes-komentar" value="tes.jpg" style="display:none"><label for="tes-komentar"></label>
+								  {% for achiev in pengguna.achievments.get %}
+								  <input type="radio" name="badgekomentar" id="{{achiev.nama}}-komentar" value="{{achiev.nama}}.png"><label for="{{achiev.nama}}-komentar"><img src="{{ BASE_URL }}/img/icon/{{achiev.nama}}.png" height="15" width="15"></label>
+								  {% endfor %}
+						</div>
 						<button type="submit" class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</button>
 					</div>
 				</form>

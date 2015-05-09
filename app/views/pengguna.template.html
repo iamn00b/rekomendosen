@@ -46,9 +46,17 @@
       	</li>
 
       	<li class="achievement-list">
-      		<span>Achievement</span><br/>
-    			<img src="http://placehold.it/87x15">
-    			<img src="http://placehold.it/87x15">
+      		<span>Achievement</span><br/><br>
+				{% set count = 0 %}
+				{% for achievment in pengguna.achievments.get %}
+					{% if count < 3 %}
+						<img src="{{ BASE_URL }}/img/icon/{{achievment.nama}}.png" height="42" width="60">
+					{% endif %}
+					{% set count = count + 1 %}
+				{% endfor %}
+				{% if count > 3 %}
+					<a href="{{ urlFor('achievment', {'nomor': pengguna.npm }) }}">Lainnya</a>
+				{% endif %}
       	</li>
 
       	<li class="action">

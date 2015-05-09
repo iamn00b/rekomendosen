@@ -1,0 +1,30 @@
+{% extends "pengguna.template.html" %}
+
+{% block title %}Daftar Achievment{% endblock %}
+
+{% block content %}
+	<h2>Daftar Achievments</h2>
+	{% for achiev in daftarAchievment %}
+		<img src="{{ BASE_URL }}/img/icon/{{achiev.nama}}.png" height="60" width="60">
+		{% set flag = false %}
+		{% for rwd in pengguna.achievments.get %}
+			{% if rwd.id == achiev.id %}
+				{% set flag = true %}
+			{% endif %}
+		{% endfor %}
+		{% if flag %}
+			unlocked
+		{% else %}
+			locked
+		{% endif %}
+	{% endfor %}
+
+{% endblock %}	
+
+{% block js %}
+<script type="text/javascript">
+  $('.rd-card').click(function() {
+    window.location = $(this).attr('href');
+  })
+</script>
+{% endblock %}

@@ -15,6 +15,7 @@ class ReviewMigration {
             $table->string('isi');
 			$table->string('dosen_id');
             $table->string('pengguna_npm');
+			$table->string('gambar');
             $table->timestamps();
         });
     }

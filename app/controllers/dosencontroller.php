@@ -6,6 +6,27 @@ class DosenController extends _MainController {
 	const HALAMAN_RINCIAN_DOSEN = 'dosen/rinciandosen.html';
 
 	const HALAMAN_ADMIN_DOSEN = 'admin/dosen.html';
+	
+	function checkReward($tipe) {
+		$pengguna = Auth::getPengguna();
+		$model = $pengguna->dosens()->get();
+		$total = $model->count();
+		foreach (Achievment::where('tipe', '=', $tipe)->get() as $achiev) {
+			if($achiev->target <= $total) {
+				$reward = $achiev->penggunas()->get();
+				if($reward->count() != 0) {
+					if($reward->first()->pivot->where('pengguna_nomor', '=', $pengguna->npm)->count() < 1) {
+						$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
+						$achiev->penggunas()->attach($pengguna1->npm);
+					}
+				}
+				else {
+					$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
+					$achiev->penggunas()->attach($pengguna1->npm);
+				}
+			}
+		}
+	}
 
 
 	function tampilDaftarDosen() {
@@ -45,6 +66,7 @@ class DosenController extends _MainController {
 				$dosen->penggunas()->attach($pengguna->npm);
 				$this->app->flash('notif', 'Berhasil melakukan subscribe');
 				$activity1->activity = "melakukan Subscribe dosen $namadsn";
+				$this->checkReward('subscribe');
 			} else {
 				$sub1 = $sub->first()->pivot->where('pengguna_nomor' , '=' , $nomor)->where('dosen_nip', '=', $id)->delete();
 				$this->app->flash('notif', 'Berhasil melakukan unsubscribe');
@@ -57,6 +79,7 @@ class DosenController extends _MainController {
 			$dosen->penggunas()->attach($pengguna->npm);
 			$this->app->flash('notif', 'Berhasil melakukan subscribe');
 			$activity1->activity = "melakukan Subscribe dosen $namadsn";
+			$this->checkReward('subscribe');
 		}
 		$activity1->save();
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);

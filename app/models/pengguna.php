@@ -39,6 +39,10 @@ class Pengguna extends Model {
 	public function dosens() {
 		return $this->belongsToMany('Dosen', 'subscribe', 'pengguna_nomor', 'dosen_nip');
 	}
+	
+	public function achievments() {
+		return $this->belongsToMany('Achievment', 'reward', 'pengguna_nomor', 'achievment_id');
+	}
 
 	// MODEL FUNC
 	
