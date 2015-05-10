@@ -7,6 +7,35 @@ class DosenController extends _MainController {
 
 	const HALAMAN_ADMIN_DOSEN = 'admin/dosen.html';
 	
+	function checkNotifikasi($id, $tipe) {
+		$pengguna = Auth::getPengguna();
+		$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna->npm)->where('tipe', '=', $tipe)->get();
+		if($notifikasi1->count() > 0) {
+			$notifikasi = $notifikasi1->last();
+			if($notifikasi->updated_at >= $pengguna->updated_at) {
+				$total = $notifikasi->total;
+				$notifikasi->total = $total+1;
+				$notifikasi->save();
+			}
+			else {
+				$notifikasi1 = new Notifikasi;
+				$notifikasi1->tipe = $tipe;
+				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->total = 1;
+				$notifikasi1->review_id = $id;
+				$notifikasi1->save();
+			}
+		}
+		else {
+				$notifikasi1 = new Notifikasi;
+				$notifikasi1->tipe = $tipe;
+				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->total = 1;
+				$notifikasi1->review_id = $id;
+				$notifikasi1->save();
+		}
+	}
+	
 	function checkReward($tipe) {
 		$pengguna = Auth::getPengguna();
 		$model = $pengguna->dosens()->get();
@@ -24,6 +53,7 @@ class DosenController extends _MainController {
 					$pengguna1 = Pengguna::where('npm', '=', $pengguna->npm)->first();
 					$achiev->penggunas()->attach($pengguna1->npm);
 				}
+				$this->checkNotifikasi(0, 'achievment');
 			}
 		}
 	}
