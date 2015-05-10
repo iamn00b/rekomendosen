@@ -23,6 +23,7 @@ class DosenController extends _MainController {
 				$notifikasi1->pengguna_npm = $pengguna->npm;
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
+				$notifikasi1->dosen_id = 0;
 				$notifikasi1->save();
 			}
 		}
@@ -32,6 +33,7 @@ class DosenController extends _MainController {
 				$notifikasi1->pengguna_npm = $pengguna->npm;
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
+				$notifikasi1->dosen_id = 0;
 				$notifikasi1->save();
 		}
 	}

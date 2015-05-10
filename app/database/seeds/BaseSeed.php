@@ -25,6 +25,7 @@ class BaseSeed {
 		$notifikasi1->pengguna_npm = $pengguna1->npm;
 		$notifikasi1->total = 1;
 		$notifikasi1->review_id = 1;
+		$notifikasi1->dosen_id = 1;
 		$notifikasi1->save();
 		
 		$achievment1 = new Achievment;

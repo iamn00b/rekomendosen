@@ -66,7 +66,11 @@
 		      </ul>
 			    <div id="test1" class="col s12">
 					{% for notif in pengguna.notifikasis.get | reverse %}
-						<a href="">Ada {{notif.total}} {{ notif.tipe }} baru</a><br>
+						{% if notif.tipe == "achievment" %}
+							<a href="{{ urlFor('achievment', {'nomor': pengguna.npm }) }}">Ada {{notif.total}} {{ notif.tipe }} baru</a><br>
+						{% else %}
+							<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#review-rekomendasi">Ada {{notif.total}} {{ notif.tipe }} baru</a><br>
+						{% endif %}
 					{% endfor %}
 				</div>
 			    <div id="test2" class="col s12">

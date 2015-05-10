@@ -8,6 +8,13 @@ class ReviewController extends _MainController {
 	
 	function checkNotifikasi($id, $tipe) {
 		$pengguna = Auth::getPengguna();
+		if($id == 0) {
+			$iddsn = 0;
+		}
+		else {
+			$review = Review::where('id', '=', $id)->first();
+			$iddsn = $review->dosen_id;
+		}
 		$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna->npm)->where('tipe', '=', $tipe)->get();
 		if($notifikasi1->count() > 0) {
 			$notifikasi = $notifikasi1->last();
@@ -22,6 +29,7 @@ class ReviewController extends _MainController {
 				$notifikasi1->pengguna_npm = $pengguna->npm;
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
+				$notifikasi1->dosen_id = $iddsn;
 				$notifikasi1->save();
 			}
 		}
@@ -31,6 +39,7 @@ class ReviewController extends _MainController {
 				$notifikasi1->pengguna_npm = $pengguna->npm;
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
+				$notifikasi1->dosen_id = $iddsn;
 				$notifikasi1->save();
 		}
 	}
