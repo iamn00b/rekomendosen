@@ -61,19 +61,25 @@
 
       	<li class="action">
 		      <ul class="tabs">
-		        <li class="tab col s6"><a href="#test1" class="active">Notifikasi</a></li>
-		        <li class="tab col s6"><a href="#test2">Riwayat</a></li>
+				{% set totalnotif = 0 %}
+				{% for notif in pengguna.notifikasis.get %}
+					{% if notif.read == 0 %}
+						{% set totalnotif = totalnotif+1 %}
+					{% endif %}
+				{% endfor %}
+		        <li class="tab col s6"><a href="#notifikasi" class="active">Notifikasi({{totalnotif}})</a></li>
+		        <li class="tab col s6"><a href="#riwayat">Riwayat</a></li>
 		      </ul>
-			    <div id="test1" class="col s12">
+			    <div id="notifikasi" class="col s12">
 					{% for notif in pengguna.notifikasis.get | reverse %}
 						{% if notif.tipe == "achievment" %}
-							<a href="{{ urlFor('achievment', {'nomor': pengguna.npm }) }}">Ada {{notif.total}} {{ notif.tipe }} baru</a><br>
+							<a href="{{ urlFor('achievment', {'nomor': pengguna.npm }) }}">Ada {{notif.total}} {{ notif.tipe }} baru {{notif.read}}</a><br>
 						{% else %}
-							<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#review-rekomendasi">Ada {{notif.total}} {{ notif.tipe }} baru</a><br>
+							<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#review-rekomendasi">Ada {{notif.total}} {{ notif.tipe }} baru {{notif.read}}</a><br>
 						{% endif %}
 					{% endfor %}
 				</div>
-			    <div id="test2" class="col s12">
+			    <div id="riwayat" class="col s12">
 				{% for act in pengguna.activitylogs.get | reverse %}
 					{% if act.dosen_id == 0 %}
 						<a href="#!">Anda {{ act.activity }} pada {{ act.updated_at }}</a><br>
