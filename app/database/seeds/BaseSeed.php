@@ -18,7 +18,7 @@ class MainSeed {
 		$dosenbela->nip = "030603001";
 		$dosenbela->nama = "Prof. Belawati H. Widjaja, Dra, M.Sc., Ph.D.";
 		$dosenbela->jeniskelamin = Dosen::PEREMPUAN;
-		$dosen1->pendidikan = 'S3';
+		$dosenbela->pendidikan = 'S3';
 		
 		$dosen2 = new Dosen;
 		$dosen2->nip = "1113";
@@ -37,6 +37,20 @@ class MainSeed {
 		$dosen3->save();
 		
 		/* MATA KULIAH */
+		$matkul_matdas1 = new MataKuliah;
+		$matkul_matdas1->kodemk = "MAT10113";
+		$matkul_matdas1->nama = "Matematika Dasar 1";
+		$matkul_matdas1->singkatan_1 = "Matdas1";
+		$matkul_matdas1->singkatan_2 = "Calculus1";
+		$matkul_matdas1->sks = 2;
+		$matkul_matdas1->jenis = MataKuliah::JURUSAN;
+		$matkul_matdas1->prodi = "Fakultas";
+		$matkul_matdas1->dosens()->attach($dosenkas->nip);
+		$matkul_matdas1->dosens()->attach($dosenlia->nip);
+		$matkul_matdas1->dosens()->attach($dosenrah->nip);
+		
+		$matkul_ppl->dosen()->attach($dosen1->id);
+		
 		$matkul_ppl = new MataKuliah;
 		$matkul_ppl->kodemk = "IK00001";
 		$matkul_ppl->nama = "Proyek Perangkat Lunak";
@@ -684,14 +698,7 @@ class BaseSeed {
 		$dosenhisyam ->jeniskelamin = "Laki-Laki";
 		$dosenhisyam ->ttl = date("19xx-xx-xx");
 		
-		$matkulmatdas1 = new MataKuliah;
-		$matkulmatdas1->kodemk = "MAT10113";
-		$matkulmatdas1->nama = "Matematika Dasar 1";
-		$matkulmatdas1->sks = 2;
-		$matkulmatdas1->prodi = "Fakultas";
-		$matkulmatdas1->dosens()->attach($dosenkas->nip);
-		$matkulmatdas1->dosens()->attach($dosenlia->nip);
-		$matkulmatdas1->dosens()->attach($dosenrah->nip);
+		
 		
 		$matkulfisdas1 = new MataKuliah;
 		$matkulfisdas1->kodemk = "FSK10111";
