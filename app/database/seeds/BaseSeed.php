@@ -18,23 +18,623 @@ class MainSeed {
 		$dosenbela->nip = "030603001";
 		$dosenbela->nama = "Prof. Belawati H. Widjaja, Dra, M.Sc., Ph.D.";
 		$dosenbela->jeniskelamin = Dosen::PEREMPUAN;
-		$dosen1->pendidikan = 'S3';
+		$dosenbela->pendidikan = 'S3';
+        $dosenbela->save();
+        
+        $dosenani = new Dosen;
+		$dosenani->nip = "194805291975012001";
+		$dosenani->nama = "Prof. Aniati Murni Arymurthy , Ir, M.Sc, Dr.";
+		$dosenani->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenani->pendidikan = 'S3';
+        $dosenani->save();
+        
+        $dosenherus = new Dosen;
+		$dosenherus ->nip = "196104191992031001";
+		$dosenherus ->nama = "Prof. Heru Suhartanto, Drs, M.Sc , Ph.D.";
+		$dosenherus ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenherus ->pendidikan = 'S3';
+        $dosenherus ->save();
 		
-		$dosen2 = new Dosen;
-		$dosen2->nip = "1113";
-		$dosen2->nama = "Budi";
-		$dosen2->jeniskelamin = Dosen::LAKI_LAKI; 
-		$dosen2->pendidikan = 'S3';
+		$dosencan = new Dosen;
+		$dosencan ->nip = "196111251992031001";
+		$dosencan ->nama = "Prof. T. Basaruddin,Drs, M.Sc, PhD";
+		$dosencan ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosencan ->pendidikan = 'S3';
+        $dosencan ->save();
+        
+        $dosentoem = new Dosen;
+		$dosentoem ->nip = "196111251992031001";
+		$dosentoem ->nama = "Prof. Toemin A. Masoem,M.Sc, Dr.";
+		$dosentoem ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosentoem ->pendidikan = 'S3';
+        $dosentoem ->save();
 		
-		$dosen3 = new Dosen;
-		$dosen3->nip = "1114";
-		$dosen3->nama = "Caca";
-		$dosen3->jeniskelamin = Dosen::PEREMPUAN;
-		$dosen3->pendidikan = 'S2';
+		$dosenzain = new Dosen;
+		$dosenzain ->nip = "195912241995121001";
+		$dosenzain ->nama = "Prof. Zainal Arifin Hasibuan, Ir.,MLS, PhD.";
+		$dosenzain ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenzain ->pendidikan = 'S3';
+		$dosenzain ->save();
+            
+		$dosennizar = new Dosen;
+		$dosennizar ->nip = "197607242000121001";
+		$dosennizar ->nama = "Achmad Nizar Hidayanto, S.Kom, M.Kom. Dr.";
+		$dosennizar ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosennizar ->pendidikan = 'S3';
+        $dosennizar ->save();
+        
+        $dosenade = new Dosen;
+		$dosenade ->nip = "197612122010121001";
+		$dosenade ->nama = "Ade Azurat, S.Kom., Dr.";
+		$dosenade ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenade ->save();
 		
-		$dosen1->save();
-		$dosen2->save();
-		$dosen3->save();
+		$dosenadhi = new Dosen;
+		$dosenadhi ->nip = "195906231997021001";
+		$dosenadhi ->nama = "Adhi Yuniarto L.Y., Ir, M.Kom.";
+		$dosenadhi ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenadhi ->pendidikan = 'S2';
+        $dosenadhi ->save();
+		
+		$dosenalfan = new Dosen;
+		$dosenalfan ->nip = "121303009";
+		$dosenalfan ->nama = "Alfan Farizki Wicaksono, ST., M.Sc.";
+		$dosenalfan ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenalfan ->pendidikan = 'S2';
+        $dosenalfan ->save();
+		
+		$dosenamril = new Dosen;
+		$dosenamril ->nip = "120703001";
+		$dosenamril ->nama = "Amril Syalim, S.Kom. M.Eng.";
+		$dosenamril ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenamril ->pendidikan = 'S2';
+        $dosenamril ->save();
+		
+		$dosenamril = new Dosen;
+		$dosenamril ->nip = "130517315";
+		$dosenamril ->nama = "Bagyo Y. Moeliodihardjo, Ir, M.Sc.";
+		$dosenamril ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenamril ->pendidikan = 'S2';
+        $dosenamril ->save();
+		
+		$dosenbayu = new Dosen;
+		$dosenbayu ->nip = "198704262012121002";
+		$dosenbayu ->nama = "Bayu Distiawan Trisedya, M.Kom";
+		$dosenbayu ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenbayu ->pendidikan = 'S2';
+        $dosenbayu ->save();
+		
+		$dosenbetty = new Dosen;
+		$dosenbetty ->nip = "197006301997032001";
+		$dosenbetty ->nama = "Betty Purwandari, S.Kom., M.Sc., PhD.";
+		$dosenbetty ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenbetty ->pendidikan = 'S3';
+        $dosenbetty ->save();
+		
+		$dosenbob = new Dosen;
+		$dosenbob ->nip = "196604261997021001";
+		$dosenbob ->nama = "Bob Hardian Syahbuddin, Ir, Ph.D.";
+		$dosenbob ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenbob ->pendidikan = 'S3';
+        $dosenbob ->save();
+		
+		$dosenbobby = new Dosen;
+		$dosenbobby ->nip = "1207050178";
+		$dosenbobby ->nama = "Bobby A. Nazief, Drs., M.Sc., Ph.D.";
+		$dosenbobby ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenbobby ->pendidikan = 'S3';
+        $dosenbobby ->save();
+		
+		$dosendadan = new Dosen;
+		$dosendadan ->nip = "196901161997031003";
+		$dosendadan ->nama = "Dadan Hardianto, S.Kom, M.Kom.";
+		$dosendadan ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosendadan ->pendidikan = 'S2';
+        $dosendadan ->save();
+		
+		$dosendana = new Dosen;
+		$dosendana ->nip = "196110221995031001";
+		$dosendana ->nama = "Dana Indra Sensuse, Ir, MLIS, PhD.";
+		$dosendana ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosendana ->pendidikan = 'S3';
+        $dosendana ->save();
+		
+		$dosendenny = new Dosen;
+		$dosendenny ->nip = "197704182012121003";
+		$dosendenny ->nama = "Denny, S.Kom, MIT, PhD.";
+		$dosendenny ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosendenny ->pendidikan = 'S3';
+        $dosendenny ->save();
+		
+		$dosendina = new Dosen;
+		$dosendina ->nip = "197705022000122001";
+		$dosendina ->nama = "Dina Chahyati, S.Kom., M.Kom.";
+		$dosendina ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosendina ->pendidikan = 'S3';
+        $dosendina ->save();
+		
+		$doseneko = new Dosen;
+		$doseneko ->nip = "195911031992031002";
+		$doseneko ->nama = "Eko Kuswardono Budiardjo, Ir, M.Sc.Dr.";
+		$doseneko ->jeniskelamin = Dosen::LAKI_LAKI;
+        $doseneko ->save();
+		
+
+		$dosenefi = new Dosen;
+		$dosenefi ->nip = "	195906171985032000";
+		$dosenefi ->nama = "Erdefi Rakun, Ir., M.Sc .";
+		$dosenefi ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenefi ->pendidikan = 'S2';
+        $dosenefi ->save();
+		
+		$dosenglad = new Dosen;
+		$dosenglad ->nip = "1408150029";
+		$dosenglad ->nama = "Gladhi Guarddin, S.Kom., M.Kom.";
+		$dosenglad ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenglad ->pendidikan = 'S2';
+        $dosenglad ->save();
+		
+		$dosenharry = new Dosen;
+		$dosenharry ->nip = "120803003";
+		$dosenharry ->nama = "Harry Budi Santoso, S.Kom., M.Kom., Ph.D.";
+		$dosenharry ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenharry ->pendidikan = 'S3';
+        $dosenharry ->save();
+		
+		$dosenheri = new Dosen;
+		$dosenheri ->nip = "198005192010121003";
+		$dosenheri ->nama = "Heri Kurniawan, S.Kom, M.Kom.";
+		$dosenheri ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenheri ->pendidikan = 'S2';
+        $dosenheri ->save();
+		
+		$dosenruli = new Dosen;
+		$dosenruli ->nip = "1208050380";
+		$dosenruli ->nama = "Hisar Maruli Manurung, S.Kom., Ph.D.";
+		$dosenruli ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenruli ->pendidikan = 'S3';
+        $dosenruli ->save();
+		
+		$doseniik = new Dosen;
+		$doseniik ->nip = "195304201989031002";
+		$doseniik ->nama = "Iik Wilarso, dr, MTI";
+		$doseniik ->jeniskelamin = Dosen::LAKI_LAKI;
+		$doseniik ->pendidikan = 'S2';
+        $doseniik ->save();
+		
+		$dosenika = new Dosen;
+		$dosenika ->nip = "197512202009122003";
+		$dosenika ->nama = "Ika Alfina, S.Kom., M.Kom.";
+		$dosenika ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenika ->pendidikan = 'S2';
+        $dosenika ->save();
+		
+		$dosenindra = new Dosen;
+		$dosenindra ->nip = "197603012008121001";
+		$dosenindra ->nama = "Indra Budi, S.Kom, M.Kom, Dr";
+		$dosenindra ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenindra ->pendidikan = 'S3';
+        $dosenindra ->save();
+		
+		$dosenito = new Dosen;
+		$dosenito ->nip = "120903013";
+		$dosenito ->nama = "Ito Wasito, Ph.D";
+		$dosenito ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenito ->pendidikan = 'S3';
+        $dosenito ->save();
+		
+		$dosenkas = new Dosen;
+		$dosenkas ->nip = "196105101987032001";
+		$dosenkas ->nama = "Kasiyah, Dra, M.Sc.";
+		$dosenkas ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenkas ->pendidikan = 'S2';
+        $dosenkas ->save();
+        
+        $dosenstef = new Dosen;
+		$dosenstef ->nip = "195903251993111001";
+		$dosenstef ->nama = "Lim Yohanes Stefanus, Drs, M.Math, Ph.D.";
+		$dosenstef ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenstef ->pendidikan = 'S3';
+        $dosenstef ->save();
+		
+		$dosenivan = new Dosen;
+		$dosenivan  ->nip = "121003005";
+		$dosenivan  ->nama = "M. Ivan Fanany, S.Si, M.Kom, Ph.D.	";
+		$dosenivan  ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenivan  ->pendidikan = 'S3';
+        $dosenivan  ->save();
+
+		$dosenmirna = new Dosen;
+		$dosenmirna ->nip = "1207050179";
+		$dosenmirna ->nama = "Mirna Adriani, Dra, Ph.D.";
+		$dosenmirna ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenmirna ->pendidikan = 'S3';
+        $dosenmirna ->save();
+
+		$dosenhilman- = new Dosen;
+		$dosenhilman ->nip = "121203003";
+		$dosenhilman ->nama = "Muhammad Hafizhuddin Hilman, S.Kom., M.Kom.";
+		$dosenhilman ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenhilman ->pendidikan = 'S2';
+        $dosenhilman ->save();
+		
+		$dosenrah = new Dosen;
+		$dosenrah ->nip = "197511261999031001";
+		$dosenrah ->nama = "Muhammad Rahmat Widyanto, SKom., M.Eng.Dr. Eng.";
+		$dosenrah ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenrah ->pendidikan = 'S3';
+        $dosenrah ->save();
+		
+		$dosenrifki= new Dosen;
+		$dosenrifki ->nip = "120503001";
+		$dosenrifki->nama = "Muhammad Rifki Shihab, B.B.A., M.Sc.";
+		$dosenrifki ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenrifki ->pendidikan = 'S2';
+        $dosenrifki ->save();
+		
+        $dosenpetrus = new Dosen;
+		$dosenpetrus ->nip = "196706252000031002";
+		$dosenpetrus->nama = "Petrus Mursanto, Ir, M.Sc.Dr";
+		$dosenpetrus->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenpetrus ->pendidikan = 'S3';
+        $dosenpetrus ->save();
+		
+		$dosenpuspa = new Dosen;
+		$dosenpuspa ->nip = "121103004";
+		$dosenpuspa ->nama = "Puspa Indahati Sandhyaduhita S.T., M.Sc";
+		$dosenpuspa ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenpuspa ->pendidikan = 'S2';
+        $dosenpuspa ->save();
+		
+		$dosenputu = new Dosen;
+		$dosenputu ->nip = "120803007";
+		$dosenputu ->nama = "Putu Wuri Handayani, S.Kom., MSc";
+		$dosenputu ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenputu ->pendidikan = 'S2';
+        $dosenputu ->save();
+		
+		$dosenyugo = new Dosen;
+		$dosenyugo ->nip = "196201021992031003";
+		$dosenyugo ->nama = "R. Yugo Kartono Isal, Drs, M.Sc., Dr.";
+		$dosenyugo ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenyugo ->pendidikan = 'S3';
+        $dosenyugo ->save();
+		
+		$dosenibam = new Dosen;
+		$dosenibam->nip = "196012311992031010";
+		$dosenibam ->nama = "Rahmat M. Samik-Ibrahim, M. Kom.";
+		$dosenibam ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenibam ->pendidikan = 'S2';
+        $dosenibam ->save();
+		
+		$dosenrizal = new Dosen;
+		$dosenrizal ->nip = "198202242010121002";
+		$dosenrizal ->nama = "Rizal Fathoni Aji, S.Kom., M.Kom";
+		$dosenrizal ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenrizal ->pendidikan = 'S2';
+        $dosenrizal ->save();
+		
+		$dosensby = new Dosen;
+		$dosensby ->nip = "198305122010121004";
+		$dosensby ->nama = "Satrio Baskoro Yudhoatmojo, S.Kom, MTI";
+		$dosensby ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosensby ->pendidikan = 'S2';
+        $dosensby ->save();
+        
+        $dosenyazid = new Dosen;
+        $dosenyazid ->nip = "120703004";
+		$dosenyazid ->nama = "Setiadi Yazid, Ph.D.";
+		$dosenyazid ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenyazid ->pendidikan = 'S3';
+        $dosenyazid ->save();
+		
+		$dosenaminah = new Dosen;
+		$dosenaminah ->nip = "197801212008122001";
+		$dosenaminah ->nama = "Siti Aminah, S.Kom., M.Kom.";
+		$dosenaminah ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenaminah ->pendidikan = 'S2';
+        $dosenaminah ->save();
+		
+		$dosensuryana = new Dosen;
+		$dosensuryana ->nip = "196210311995031001";
+		$dosensuryana ->nama = "Suryana Setiawan, Ir, M.Sc.";
+		$dosensuryana ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosensuryana ->pendidikan = 'S2';
+        $dosensuryana ->save();
+		
+		$dosenwcw = new Dosen;
+		$dosenwcw ->nip = "196312061995031001";
+		$dosenwcw ->nama = "Wahyu Catur Wibowo, Ir., M.Sc., Ph.D.";
+		$dosenwcw ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenwcw ->pendidikan = 'S3';
+        $dosenwcw ->save();
+		
+		$dosenwidi = new Dosen;
+		$dosenwidi->nip = "1207050180";
+		$dosenwidi ->nama = "Widijanto Satyo Nugroho, Drs., M.Math., Ph.D.";
+		$dosenwidi ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenwidi ->pendidikan = 'S3';
+        $dosenwidi ->save();
+		
+		$dosenwisnu = new Dosen;
+		$dosenwisnu ->nip = "1208050382";
+		$dosenwisnu ->nama = "Wisnu Jatmiko, Ir.,M.Kom, Dr.Eng.";
+		$dosenwisnu ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenwisnu ->pendidikan = 'S3';
+        $dosenwisnu ->save();
+		
+		$dosenyova = new Dosen;
+		$dosenyova ->nip = "197209201998022001";
+		$dosenyova ->nama = "Yova Ruldeviyani, S.Kom., M.Kom.";
+		$dosenyova ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenyova ->pendidikan = 'S2';
+        $dosenyova ->save();
+		
+		$dosenyudho = new Dosen;
+		$dosenyudho ->nip = "197204271997031002";
+		$dosenyudho ->nama = "Yudho Giri Sucahyo, S.Kom., M.Kom., PhD.";
+		$dosenyudho->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenyudho ->pendidikan ='S3';
+        $dosenyudho ->save();
+		
+		$dosenadila = new Dosen;
+		$dosenadila->nip = "198009062008121003";
+		$dosenadila->nama = "Adila Alfa Krisnadhi, S.Kom., M.Sc.";
+		$dosenadila->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenadila->pendidikan = 'S2';
+        $dosenadila ->save();
+		
+		$dosenagus = new Dosen;
+		$dosenagus ->nip = "197708132010121001";
+		$dosenagus ->nama = "Agus Kurniawan, ST. M.Si";
+		$dosenagus ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenagus ->pendidikan = 'S2';
+        $dosenagus ->save();
+		
+		$dosenaris = new Dosen;
+		$dosenaris ->nip = "197609262010121001";
+		$dosenaris ->nama = "Ari Saptawijaya, S.Kom., M.C.S.";
+		$dosenaris ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenaris ->pendidikan = 'S2';
+        $dosenaris ->save();
+			
+		$dosenclara = new Dosen;
+		$dosenclara ->nip = "121103002";
+		$dosenclara ->nama = "Clara Vania, M.Kom.";
+		$dosenclara ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenclara ->pendidikan = 'S2';
+        $dosenclara ->save();
+		
+		$dosendewi = new Dosen;
+		$dosendewi ->nip = "1206050119";
+		$dosendewi ->nama = "Dewi Mairiza, S.Kom.M.Kom.";
+		$dosendewi	 ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosendewi ->pendidikan = 'S2';
+        $dosendewi ->save();
+		
+		$dosenherry = new Dosen;
+		$dosenherry ->nip = "120903005";
+		$dosenherry ->nama = "Herry, S.Kom, M.Kom";
+		$dosenherry ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenherry ->pendidikan = 'S2';
+        $dosenherry ->save();
+				
+		$dosenpertami = new Dosen;
+		$dosenpertami ->nip = "121103009";
+		$dosenpertami ->nama = "Pertami Junia Hayuningtyas, M.Sc";
+		$dosenpertami ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenpertami ->pendidikan = 'S2';
+        $dosenpertami ->save();
+		
+		$dosentisha = new Dosen;
+		$dosentisha ->nip = "121003004";
+		$dosentisha ->nama = "Tisha Melia, B.Sc, M,Sc.";
+		$dosentisha ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosentisha ->pendidikan = 'S2';
+        $dosentisha ->save();
+		
+		$dosensam = new Dosen;
+		$dosensam  ->nip = "121003006";
+		$dosensam  ->nama = "Samuel Louvan, S.Kom, M.Sc";
+		$dosensam  ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosensam ->pendidikan = 'S2';
+        $dosensam ->save();
+		
+		$dosenaritonang = new Dosen;
+		$dosenaritonang ->nip = "120903002";
+		$dosenaritonang->nama = "Dr. Drs. Manusun Gala Sebulon Aritonang, S.E., MBA";
+		$dosenaritonang ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenaritonang ->pendidikan = 'S3';
+        $dosenaritonang ->save();
+		
+		$dosenkasfu = new Dosen;
+		$dosenkasfu ->nip = "120513901";
+		$dosenkasfu ->nama = "Muhammad Kasfu Hammi S.Kom., M.T.I.";
+		$dosenkasfu ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenkasfu ->pendidikan = 'S2';
+        $dosenkasfu ->save();
+			
+		$dosenimairi = new Dosen;
+		$dosenimairi ->nip = "121203001";
+		$dosenimairi ->nama = "Imairi Eitiveni M.Kom.";
+		$dosenimairi ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenimairi ->pendidikan = 'S2';
+        $dosenimairi ->save();
+		
+		$dosenbilih = new Dosen;
+		$dosenbilih ->nama = "Bilih Priyogi S.Kom., M.Kom.";
+		$dosenbilih->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenbilih ->pendidikan = 'S2';
+        $dosenbilih ->save();
+				
+		$dosenqorib = new Dosen;
+		$dosenqorib  ->nip = "xxxxxxxx";
+		$dosenqorib  ->nama = "Qorib Munajat S.Kom.";
+		$dosenqorib ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenqorib  ->pendidikan = 'S1';
+        $dosenqorib ->save();
+		
+		$dosenherup = new Dosen;
+		$dosenherup ->nip = "121303013";
+		$dosenherup ->nama = "Nursidik Heru Praptono, S.Kom, M.Kom";
+		$dosenherup ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenherup ->pendidikan = 'S2';
+        $dosenherup ->save();
+		
+		$dosenave = new Dosen;
+		$dosenave ->nama = "Ave Adriana Pinem S.Kom.";
+		$dosenave ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenave ->pendidikan = 'S2';
+        $dosenave ->save();
+		
+		$dosenhaya = new Dosen;
+		$dosennhaya ->nama = "Haya Rizqi Fajrina S.Kom.";
+		$dosennhaya ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosennhaya ->pendidikan = 'S1';
+        $dosenhaya ->save();
+			
+		$dosenarlisa = new Dosen;
+		$dosenarlisa ->nip = "121303010";
+		$dosenarlisa ->nama = "Arlisa Yuliawati S.Kom, M.Kom.";
+		$dosenarlisa ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenarlisa ->pendidikan = 'S2';
+        $dosenarlisa ->save();
+	
+		$dosenikac = new Dosen;
+		$dosenikac ->nama = "Ika Chandra Hapsari S.Kom.";
+		$dosenikac ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenikac ->pendidikan = 'S1';
+        $dosenikac ->save();
+		
+		$dosenarief = new Dosen;
+		$dosenarief ->nip = "121303006";
+		$dosenarief ->nama = "Dr. Arief Ramadhan S.Kom.";
+		$dosenarief ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenarief ->pendidikan = 'S3';
+        $dosenarief ->save();
+		
+		$doseniis = new Dosen;
+		$doseniis ->nip = "121203008";
+		$doseniis ->nama = "Iis Solichah S.Kom., M.Kom.";
+		$doseniis ->jeniskelamin = Dosen::PEREMPUAN;
+		$doseniis ->pendidikan = 'S2';
+        $doseniis ->save();
+		
+		$dosenari = new Dosen;
+		$dosenari ->nip = "121303007";
+		$dosenari ->nama = "Ari Wibisono M.Kom.";
+		$dosenari ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenari ->pendidikan = 'S2';
+        $dosenari ->save();
+		
+		$dosenherdi = new Dosen;
+		$dosenherdi ->nama = "Herdiansyah Rhamadan S.Kom.";
+		$dosenherdi ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenherdi ->pendidikan = 'S1';
+        $dosenherdi ->save();
+		
+		$dosenmega = new Dosen;
+		$dosenmega ->nama = "Meganingrum Arista Jiwanggi S.Kom., M.Kom.";
+		$dosenmega ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenmega ->pendidikan = 'S2';
+        $dosenmega ->save();
+		
+		$dosenhadaiq = new Dosen;
+		$dosenhadaiq  ->nip = "121203004";
+		$dosenhadaiq  ->nama = "Hadaiq Rolis Sanabila S.Kom., M.Kom.";
+		$dosenhadaiq  ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenhadaiq ->pendidikan = 'S2';
+        $dosenhadaiq ->save();
+		
+		$dosennurul = new Dosen;
+		$dosennurul ->nama = "Nurul Qomariyah S.Kom., M.Kom.";
+		$dosennurul ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosennurul->pendidikan = 'S2';
+        $dosennurul ->save();
+		
+		$dosenedy = new Dosen;
+		$dosenedy ->nip = "121303004";
+		$dosenedy ->nama = "I Putu Edy Suardiyana Putra S.Kom., M.Kom.";
+		$dosenedy ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenedy ->pendidikan 'S2';
+        $dosenedy ->save();
+
+		$dosengilang = new Dosen;
+		$dosengilang ->nip = "121303003";
+		$dosengilang ->nama = "Gilang Kusuma Jati S.T., M.Kom.";
+		$dosengilang ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosengilang ->pendidikan = 'S2';
+        $dosengilang ->save();
+		
+		$dosenhanif = new Dosen;
+		$dosenhanif ->nip = "121203009";
+		$dosenhanif ->nama = "Hanif Rasyidi M.Kom.";
+		$dosenhanif ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenhanif ->pendidikan = 'S2';
+        $dosenhanif ->save();
+		
+		$dosenmaya = new Dosen;
+		$dosenmaya ->nip = "121403002";
+		$dosenmaya ->nama = "Maya Retno Ayu Setyautami S.Kom., M.Kom.";
+		$dosenmaya ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenmaya ->pendidikan = 'S2';
+        $dosenmaya ->save();
+		
+		$dosenrahmad = new Dosen;
+		$dosenrahmad ->nip = "121403001";
+		$dosenrahmad ->nama = "Rahmad Mahendra S.Kom., M.Sc.";
+		$dosenrahmad ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenrahmad->pendidikan = 'S2';
+        $dosenrahmad ->save();
+		
+		$dosenevi = new Dosen;
+		$dosenevi ->nip = "121303008";
+		$dosenevi ->nama = "Evi Yulianti S.Kom.";
+		$dosenevi ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenevi ->pendidikan = 'S1';
+        $dosenevi ->save();
+
+		$dosenary = new Dosen;
+		$dosenary ->nip = "121303002";
+		$dosenary ->nama = "Ary Noviyanto S.Kom., M.Kom.";
+		$dosenary ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenary ->pendidikan = 'S2';
+        $dosenary ->save();
+		
+		$dosenangga = new Dosen;
+		$dosenangga ->nip = "121203006";
+		$dosenangga ->nama = "Anggha Satya Nugraha S.Si., M.Kom.	";
+		$dosenangga ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenangga ->pendidikan = 'S2';
+        $dosenangga ->save();
+		
+		$dosentieta = new Dosen;
+		$dosentieta ->nip = "121303001";
+		$dosentieta ->nama = "Tieta Antaresti Riska Putri S.Kom., M.Kom.";
+		$dosentieta ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosentieta ->pendidikan = 'S2';
+        $dosentieta ->save();
+		
+		$dosenlia = new Dosen;
+		$dosenlia ->nip = "121403003";
+		$dosenlia ->nama = "Lia Sadita S.Kom.";
+		$dosenlia ->jeniskelamin = Dosen::PEREMPUAN;
+		$dosenlia ->pendidikan = 'S1';
+        $dosenlia ->save();
+		
+		$dosenyayan = new Dosen;
+		$dosenyayan ->nip = "xxxxxxxxx";
+		$dosenyayan ->nama = "Yulistiyan Wardhana S.Kom.";
+		$dosenyayan ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenyayan ->pendidikan = 'S1';
+        $dosenyayan ->save();
+		
+		$dosenhisyam = new Dosen;
+		$dosenhisyam ->nip = "121303012";
+		$dosenhisyam ->nama = "Hisyam Fahmi S.Kom, M.Kom.";
+		$dosenhisyam ->jeniskelamin = Dosen::LAKI_LAKI;
+		$dosenhisyam ->pendidikan = 'S2';
+        $dosenhisyam ->save();
 		
 		/* MATA KULIAH */
 		$matkul_ppl = new MataKuliah;
@@ -155,534 +755,15 @@ class BaseSeed {
     {
 		
 		
-		$dosenani = new Dosen;
-		$dosenani->nip = "194805291975012001";
-		$dosenani->nama = "Prof. Aniati Murni Arymurthy , Ir, M.Sc, Dr.";
-		$dosenani->jeniskelamin = "Perempuan";
-		$dosenani->ttl = date("1948-05-29");
-		
-		$dosenherus = new Dosen;
-		$dosenherus ->nip = "196104191992031001";
-		$dosenherus ->nama = "Prof. Heru Suhartanto, Drs, M.Sc , Ph.D.";
-		$dosenherus ->jeniskelamin = "Laki-Laki";
-		$dosenherus ->ttl = date("1961-04-19");
-		
-		$dosencan = new Dosen;
-		$dosencan ->nip = "196111251992031001";
-		$dosencan ->nama = "Prof. T. Basaruddin,Drs, M.Sc, PhD";
-		$dosencan ->jeniskelamin = "Laki-Laki";
-		$dosencan ->ttl = date("1961-11-25");
-		
-		$dosenzain = new Dosen;
-		$dosenzain ->nip = "195912241995121001";
-		$dosenzain ->nama = "Prof. Zainal Arifin Hasibuan, Ir.,MLS, PhD.";
-		$dosenzain ->jeniskelamin = "Laki-Laki";
-		$dosenzain ->ttl = date("1959-12-24");
-		
-		$dosennizar = new Dosen;
-		$dosennizar ->nip = "197607242000121001";
-		$dosennizar ->nama = "Achmad Nizar Hidayanto, S.Kom, M.Kom. Dr.";
-		$dosennizar ->jeniskelamin = "Laki-Laki";
-		$dosennizar ->ttl = date("1976-07-24");
-		
-		$dosenade = new Dosen;
-		$dosenade ->nip = "197612122010121001";
-		$dosenade ->nama = "Ade Azurat, S.Kom., Dr.";
-		$dosenade ->jeniskelamin = "Laki-Laki";
-		$dosenade ->ttl = date("1976-12-12");
-		
-		$dosenadhi = new Dosen;
-		$dosenadhi ->nip = "195906231997021001";
-		$dosenadhi ->nama = "Adhi Yuniarto L.Y., Ir, M.Kom.";
-		$dosenadhi ->jeniskelamin = "Laki-Laki";
-		$dosenadhi ->ttl = date("xxxx-06-23");
-		
-		$dosenalfan = new Dosen;
-		$dosenalfan ->nip = "121303009";
-		$dosenalfan ->nama = "Alfan Farizki Wicaksono, ST., M.Sc.";
-		$dosenalfan ->jeniskelamin = "Laki-Laki";
-		$dosenalfan ->ttl = date("xxxx-xx-xx");
-		
-		$dosenamril = new Dosen;
-		$dosenamril ->nip = "120703001";
-		$dosenamril ->nama = "Amril Syalim, S.Kom. M.Eng.";
-		$dosenamril ->jeniskelamin = "Laki-Laki";
-		$dosenamril ->ttl = date("xxxx-xx-xx");
-		
-		$dosenamril = new Dosen;
-		$dosenamril ->nip = "130517315";
-		$dosenamril ->nama = "Bagyo Y. Moeliodihardjo, Ir, M.Sc.";
-		$dosenamril ->jeniskelamin = "Laki-Laki";
-		$dosenamril ->ttl = date("xxxx-xx-xx");
-		
-		$dosenbayu = new Dosen;
-		$dosenbayu ->nip = "198704262012121002";
-		$dosenbayu ->nama = "Bayu Distiawan Trisedya, M.Kom";
-		$dosenbayu ->jeniskelamin = "Laki-Laki";
-		$dosenbayu ->ttl = date("xxxx-xx-xx");
-		
-		$dosenbetty = new Dosen;
-		$dosenbetty ->nip = "197006301997032001";
-		$dosenbetty ->nama = "Betty Purwandari, S.Kom., M.Sc., PhD.";
-		$dosenbetty ->jeniskelamin = "Perempuan";
-		$dosenbetty ->ttl = date("1970-06-23-30");
-		
-		$dosenbob = new Dosen;
-		$dosenbob ->nip = "196604261997021001";
-		$dosenbob ->nama = "Bob Hardian Syahbuddin, Ir, Ph.D.";
-		$dosenbob ->jeniskelamin = "Laki-Laki";
-		$dosenbob ->ttl = date("xxxx-xx-xx");
-		
-		$dosenbobby = new Dosen;
-		$dosenbobby ->nip = "1207050178";
-		$dosenbobby ->nama = "Bobby A. Nazief, Drs., M.Sc., Ph.D.";
-		$dosenbobby ->jeniskelamin = "Laki-Laki";
-		$dosenbobby ->ttl = date("1959-11-01");
-		
-		$dosenbobby = new Dosen;
-		$dosenbobby ->nip = "196901161997031003";
-		$dosenbobby ->nama = "Dadan Hardianto, S.Kom, M.Kom.";
-		$dosenbobby ->jeniskelamin = "Laki-Laki";
-		$dosenbobby ->ttl = date("xxxx-xx-xx");
-		
-		$dosendana = new Dosen;
-		$dosendana ->nip = "196110221995031001";
-		$dosendana ->nama = "Dana Indra Sensuse, Ir, MLIS, PhD.";
-		$dosendana ->jeniskelamin = "Laki-Laki";
-		$dosendana ->ttl = date("1961-10-22");
-		
-		$dosendenny = new Dosen;
-		$dosendenny ->nip = "197704182012121003";
-		$dosendenny ->nama = "Denny, S.Kom, MIT, PhD.";
-		$dosendenny ->jeniskelamin = "Laki-Laki";
-		$dosendenny ->ttl = date("xxxx-xx-xx");
-		
-		$dosendina = new Dosen;
-		$dosendina ->nip = "197705022000122001";
-		$dosendina ->nama = "Dina Chahyati, S.Kom., M.Kom.";
-		$dosendina ->jeniskelamin = "Perempuan";
-		$dosendina ->ttl = date("xxxx-xx-xx");
-		
-		$doseneko = new Dosen;
-		$doseneko ->nip = "195911031992031002";
-		$doseneko ->nama = "Eko Kuswardono Budiardjo, Ir, M.Sc.Dr.";
-		$doseneko ->jeniskelamin = "Laki-Laki";
-		$doseneko ->ttl = date("xxxx-xx-xx");
-		
-
-		$doseneko = new Dosen;
-		$doseneko ->nip = "	195906171985032000";
-		$doseneko ->nama = "Erdefi Rakun, Ir., M.Sc .";
-		$doseneko ->jeniskelamin = "Perempuan";
-		$doseneko ->ttl = date("xxxx-xx-xx");
-		
-		$dosenglad = new Dosen;
-		$dosenglad ->nip = "1408150029";
-		$dosenglad ->nama = "Gladhi Guarddin, S.Kom., M.Kom.";
-		$dosenglad ->jeniskelamin = "Laki-Laki";
-		$dosenglad ->ttl = date("xxxx-xx-xx");
-		
-		$dosenefi = new Dosen;
-		$dosenefi ->nip = "120803003";
-		$dosenefi ->nama = "Harry Budi Santoso, S.Kom., M.Kom., Ph.D.";
-		$dosenefi ->jeniskelamin = "Laki-Laki";
-		$dosenefi ->ttl = date("xxxx-xx-xx");
-		
-		$dosenheri = new Dosen;
-		$dosenheri ->nip = "198005192010121003";
-		$dosenheri ->nama = "Heri Kurniawan, S.Kom, M.Kom.";
-		$dosenheri ->jeniskelamin = "Laki-Laki";
-		$dosenheri ->ttl = date("xxxx-xx-xx");
-		
-		$dosenruli = new Dosen;
-		$dosenruli ->nip = "1208050380";
-		$dosenruli ->nama = "Hisar Maruli Manurung, S.Kom., Ph.D.";
-		$dosenruli ->jeniskelamin = "Laki-Laki";
-		$dosenruli ->ttl = date("1974-11-09");
-		
-		$doseniik = new Dosen;
-		$doseniik ->nip = "195304201989031002";
-		$doseniik ->nama = "Iik Wilarso, dr, MTI";
-		$doseniik ->jeniskelamin = "Laki-Laki";
-		$doseniik ->ttl = date("xxxx-xx-xx");
-		
-		$dosenika = new Dosen;
-		$dosenika ->nip = "197512202009122003";
-		$dosenika ->nama = "Ika Alfina, S.Kom., M.Kom.";
-		$dosenika ->jeniskelamin = "Laki-Laki";
-		$dosenika ->ttl = date("xxxx-xx-xx");
-		
-		$dosenindra = new Dosen;
-		$dosenindra ->nip = "197603012008121001";
-		$dosenindra ->nama = "Indra Budi, S.Kom, M.Kom, Dr";
-		$dosenindra ->jeniskelamin = "Laki-Laki";
-		$dosenindra ->ttl = date("19xx-03-01");
-		
-		$dosenito = new Dosen;
-		$dosenito ->nip = "120903013";
-		$dosenito ->nama = "Ito Wasito, Ph.D";
-		$dosenito->jeniskelamin = "Laki-Laki";
-		$dosenito ->ttl = date("xxxx-xx-xx");
-		
-		$dosenkas = new Dosen;
-		$dosenkas ->nip = "196105101987032001";
-		$dosenkas ->nama = "Kasiyah, Dra, M.Sc.";
-		$dosenkas ->jeniskelamin = "Perempuan";
-		$dosenkas ->ttl = date("19xx-05-10");
-		
-		$dosenstef = new Dosen;
-		$dosenstef ->nip = "195903251993111001";
-		$dosenstef ->nama = "Lim Yohanes Stefanus, Drs, M.Math, Ph.D.";
-		$dosenstef ->jeniskelamin = "Laki-Laki";
-		$dosenstef ->ttl = date("19xx-xx-xx");
-		
-		$dosenivan = new Dosen;
-		$dosenivan  ->nip = "121003005";
-		$dosenivan  ->nama = "M. Ivan Fanany, S.Si, M.Kom, Ph.D.	";
-		$dosenivan  ->jeniskelamin = "Laki-Laki";
-		$dosenivan  ->ttl = date("19xx-xx-xx");
-
-		$dosenmirna = new Dosen;
-		$dosenmirna ->nip = "1207050179";
-		$dosenmirna ->nama = "Mirna Adriani, Dra, Ph.D.";
-		$dosenmirna ->jeniskelamin = "Perempuan";
-		$dosenmirna ->ttl = date("1961-12-23");
-
-		$dosenhilman- = new Dosen;
-		$dosenhilman ->nip = "121203003";
-		$dosenhilman ->nama = "Muhammad Hafizhuddin Hilman, S.Kom., M.Kom.";
-		$dosenhilman ->jeniskelamin = "Laki-Laki";
-		$dosenhilman ->ttl = date("1987-04-21"); 
-		
-		$dosenrah = new Dosen;
-		$dosenrah ->nip = "197511261999031001";
-		$dosenrah ->nama = "Muhammad Rahmat Widyanto, SKom., M.Eng.Dr. Eng.";
-		$dosenrah ->jeniskelamin = "Laki-Laki";
-		$dosenrah ->ttl = date("1975-11-26");
-		
-		$dosenrifki= new Dosen;
-		$dosenrifki ->nip = "120503001";
-		$dosenrifki->nama = "Muhammad Rifki Shihab, B.B.A., M.Sc.";
-		$dosenrifki ->jeniskelamin = "Laki-Laki";
-		$dosenrifki ->ttl = date("19xx-01-23");
 		
 		
-		$dosenpetrus = new Dosen;
-		$dosenpetrus ->nip = "196706252000031002";
-		$dosenpetrus->nama = "Petrus Mursanto, Ir, M.Sc.Dr";
-		$dosenpetrus->jeniskelamin = "Laki-Laki";
-		$dosenpetrus ->ttl = date("1967-06-25");
 		
-		$dosenpuspa = new Dosen;
-		$dosenpuspa ->nip = "121103004";
-		$dosenpuspa ->nama = "Puspa Indahati Sandhyaduhita S.T., M.Sc";
-		$dosenpuspa ->jeniskelamin = "Perempuan";
-		$dosenpuspa ->ttl = date("19xx-xx-xx");
 		
-		$dosenputu = new Dosen;
-		$dosenputu ->nip = "120803007";
-		$dosenputu ->nama = "Putu Wuri Handayani, S.Kom., MSc";
-		$dosenputu ->jeniskelamin = "Perempuan";
-		$dosenputu ->ttl = date("19xx-xx-xx");
 		
-		$dosenyugo = new Dosen;
-		$dosenyugo ->nip = "196201021992031003";
-		$dosenyugo ->nama = "R. Yugo Kartono Isal, Drs, M.Sc., Dr.";
-		$dosenyugo ->jeniskelamin = "Laki-Laki";
-		$dosenyugo ->ttl = date("19xx-01-02");
 		
-		$dosenibam = new Dosen;
-		$dosenibam->nip = "196012311992031010";
-		$dosenibam ->nama = "Rahmat M. Samik-Ibrahim, M. Kom.";
-		$dosenibam ->jeniskelamin = "Laki-Laki";
-		$dosenibam ->ttl = date("1960-12-31");
 		
-		$dosenrizal = new Dosen;
-		$dosenrizal ->nip = "198202242010121002";
-		$dosenrizal ->nama = "Rizal Fathoni Aji, S.Kom., M.Kom";
-		$dosenrizal ->jeniskelamin = "Laki-Laki";
-		$dosenrizal ->ttl = date("19xx-xx-xx");//
 		
-		$dosensby = new Dosen;
-		$dosensby ->nip = "198305122010121004";
-		$dosensby ->nama = "Satrio Baskoro Yudhoatmojo, S.Kom, MTI";
-		$dosensby ->jeniskelamin = "Laki-Laki";
-		$dosenruli ->ttl = date("119xx-xx-xx");
 		 
-		$dosenyazid = new Dosen;
-		$dosenyazid ->nama = "Setiadi Yazid, Ph.D.";
-		$dosenyazid ->jeniskelamin = "Laki-Laki";
-		$dosenyazid ->ttl = date("1954-08-15");
-		
-		$dosenaminah = new Dosen;
-		$dosenaminah ->nip = "197801212008122001";
-		$dosenaminah ->nama = "Siti Aminah, S.Kom., M.Kom.";
-		$dosenaminah ->jeniskelamin = "Perempuan";
-		$dosenaminah ->ttl = date("19xx-xx-xx");
-		
-		$dosensuryana = new Dosen;
-		$dosensuryana ->nip = "196210311995031001";
-		$dosensuryana ->nama = "Suryana Setiawan, Ir, M.Sc.";
-		$dosensuryana ->jeniskelamin = "Laki-Laki";
-		$dosensuryana ->ttl = date("1962-01-01");
-		
-		$dosenwcw = new Dosen;
-		$dosenwcw ->nip = "196312061995031001";
-		$dosenwcw ->nama = "Wahyu Catur Wibowo, Ir., M.Sc., Ph.D.";
-		$dosenwcw ->jeniskelamin = "Laki-Laki";
-		$dosenwcw ->ttl = date("1963-12-06");
-		
-		$dosenwidi = new Dosen;
-		$dosenwidi->nip = "1207050180";
-		$dosenwidi ->nama = "Widijanto Satyo Nugroho, Drs., M.Math., Ph.D.";
-		$dosenwidi ->jeniskelamin = "Laki-Laki";
-		$dosenwidi ->ttl = date("1960-05-24");
-		
-		$dosenwisnu = new Dosen;
-		$dosenwisnu ->nip = "1208050382";
-		$dosenwisnu ->nama = "Wisnu Jatmiko, Ir.,M.Kom, Dr.Eng.";
-		$dosenwisnu ->jeniskelamin = "Laki-Laki";
-		$dosenwisnu ->ttl = date("1973-12-16");
-		
-		$dosenyova = new Dosen;
-		$dosenyova ->nip = "197209201998022001";
-		$dosenyova ->nama = "Yova Ruldeviyani, S.Kom., M.Kom.";
-		$dosenyova ->jeniskelamin = "Perempuan";
-		$dosenyova ->ttl = date("19xx-09-20"); 20 September
-		
-		$dosenyudho = new Dosen;
-		$dosenyudho ->nip = "197204271997031002";
-		$dosenyudho ->nama = "Yudho Giri Sucahyo, S.Kom., M.Kom., PhD.";
-		$dosenyudho->jeniskelamin = "Laki-Laki";
-		$dosenyudho ->ttl = date("1972-04-27");
-		
-		$dosenadila = new Dosen;
-		$dosenadila->nip = "198009062008121003";
-		$dosenadila->nama = "Adila Alfa Krisnadhi, S.Kom., M.Sc.";
-		$dosenadila->jeniskelamin = "Perempuan";
-		$dosenadila->ttl = date("19xx-xx-xx");
-		
-		$dosenagus = new Dosen;
-		$dosenagus ->nip = "197708132010121001";
-		$dosenagus ->nama = "Agus Kurniawan, ST. M.Si";
-		$dosenagus ->jeniskelamin = "Laki-Laki";
-		$dosenagus ->ttl = date("19xx-08-13");
-		
-		$dosenaris = new Dosen;
-		$dosenaris ->nip = "197609262010121001";
-		$dosenaris ->nama = "Ari Saptawijaya, S.Kom., M.C.S.";
-		$dosenaris ->jeniskelamin = "Laki-Laki";
-		$dosenaris ->ttl = date("19xx-xx-xx");
-			
-		$dosenclara = new Dosen;
-		$dosenclara ->nip = "121103002";
-		$dosenclara ->nama = "Clara Vania, M.Kom.";
-		$dosenclara ->jeniskelamin = "Perempuan";
-		$dosenclara ->ttl = date("19xx-xx-xx");
-		
-		$dosendewi = new Dosen;
-		$dosendewi ->nip = "1206050119";
-		$dosendewi ->nama = "Dewi Mairiza, S.Kom.M.Kom.";
-		$dosendewi	 ->jeniskelamin = "Perempuan";
-		$dosendewi ->ttl = date("19xx-xx-xx");
-		
-		$dosenherry = new Dosen;
-		$dosenherry ->nip = "120903005";
-		$dosenherry ->nama = "Herry, S.Kom, M.Kom";
-		$dosenherry ->jeniskelamin = "Laki-Laki";
-		$dosenherry ->ttl = date("19xx-xx-xx");
-				
-		$dosenpertami = new Dosen;
-		$dosenpertami ->nip = "121103009";
-		$dosenpertami ->nama = "Pertami Junia Hayuningtyas, M.Sc";
-		$dosenpertami ->jeniskelamin = "Perempuan";
-		$dosenpertami ->ttl = date("19xx-xx-xx");
-		
-		$dosentisha = new Dosen;
-		$dosentisha ->nip = "121003004";
-		$dosentisha ->nama = "Tisha Melia, B.Sc, M,Sc.";
-		$dosentisha ->jeniskelamin = "Perempuan";
-		$dosentisha ->ttl = date("19xx-xx-xx");
-		
-		$dosensam = new Dosen;
-		$dosensam  ->nip = "121003006";
-		$dosensam  ->nama = "Samuel Louvan, S.Kom, M.Sc";
-		$dosensam  ->jeniskelamin = "Laki-Laki";
-		$dosensam ->ttl = date("19xx-xx-xx");
-		
-		$dosenaritonang = new Dosen;
-		$dosenaritonang ->nip = "120903002";
-		$dosenaritonang->nama = "Dr. Drs. Manusun Gala Sebulon Aritonang, S.E., MBA";
-		$dosenaritonang ->jeniskelamin = "Laki-Laki";
-		$dosenaritonang ->ttl = date("19xx-xx-xx");
-		
-		$dosenkasfu = new Dosen;
-		$dosenkasfu ->nip = "120513901";
-		$dosenkasfu ->nama = "Muhammad Kasfu Hammi S.Kom., M.T.I.";
-		$dosenkasfu ->jeniskelamin = "Laki-Laki";
-		$dosenkasfu ->ttl = date("19xx-xx-xx");
-			
-		$dosenimairi = new Dosen;
-		$dosenimairi ->nip = "121203001";
-		$dosenimairi ->nama = "Imairi Eitiveni M.Kom.";
-		$dosenimairi ->jeniskelamin = "Perempuan";
-		$dosenimairi ->ttl = date("19xx-xx-xx");
-		
-		$dosenbilih = new Dosen;
-		$dosenbilih ->nip = "xxxxxxxx";
-		$dosenbilih ->nama = "	Bilih Priyogi S.Kom., M.Kom.";
-		$dosenbilih->jeniskelamin = "Laki-Laki";
-		$dosenbilih ->ttl = date("1990-xx-xx");
-				
-		$dosenqorib = new Dosen;
-		$dosenqorib  ->nip = "xxxxxxxx";
-		$dosenqorib  ->nama = "Qorib Munajat S.Kom.";
-		$dosenqorib ->jeniskelamin = "Laki-Laki";
-		$dosenqorib  ->ttl = date("19xx-xx-xx");
-		
-		$dosenherup = new Dosen;
-		$dosenherup ->nip = "121303013";
-		$dosenherup ->nama = "Nursidik Heru Praptono, S.Kom, M.Kom";
-		$dosenherup ->jeniskelamin = "Laki-Laki";
-		$dosenherup ->ttl = date("1988-05-08");
-		
-		$dosenave = new Dosen;
-		$dosenave ->nip = "xxxxxxxx";
-		$dosenave ->nama = "Ave Adriana Pinem S.Kom.";
-		$dosenave ->jeniskelamin = "Perempuan";
-		$dosenave ->ttl = date("19xx-xx-xx");
-		
-		$dosenhaya = new Dosen;
-		$dosennhaya ->nip = "xxxxxxxx";
-		$dosennhaya ->nama = "Haya Rizqi Fajrina S.Kom.";
-		$dosennhaya ->jeniskelamin = "Perempuan";
-		$dosennhaya ->ttl = date("19xx-xx-xx");
-			
-		$dosenarlisa = new Dosen;
-		$dosenarlisa ->nip = "121303010";
-		$dosenarlisa ->nama = "Arlisa Yuliawati S.Kom, M.Kom.	";
-		$dosenarlisa ->jeniskelamin = "Perempuan";
-		$dosenarlisa ->ttl = date("19xx-xx-xx");
-	
-		$dosenika = new Dosen;
-		$dosenika ->nip = "xxxxxxx";
-		$dosenika ->nama = "Ika Chandra Hapsari S.Kom..";
-		$dosenika ->jeniskelamin = "Perempuan";
-		$dosenika ->ttl = date("1990-05-24");
-		
-		$dosenarief = new Dosen;
-		$dosenarief ->nip = "121303006";
-		$dosenarief ->nama = "Dr. Arief Ramadhan S.Kom.";
-		$dosenarief ->jeniskelamin = "Laki-Laki";
-		$dosenarief ->ttl = date("19xx-xx-xx");
-		
-		$doseniis = new Dosen;
-		$doseniis ->nip = "121203008";
-		$doseniis ->nama = "Iis Solichah S.Kom., M.Kom.";
-		$doseniis ->jeniskelamin = "Perempuan";
-		$doseniis ->ttl = date("19xx-xx-xx");
-		
-		$dosenari = new Dosen;
-		$dosenari ->nip = "121303007";
-		$dosenari ->nama = "Ari Wibisono M.Kom.";
-		$dosenari ->jeniskelamin = "Laki-Laki";
-		$dosenari ->ttl = date("19xx-xx-xx");
-		
-		$dosenherdi = new Dosen;
-		$dosenherdi ->nip = "xxxxxxx";
-		$dosenherdi ->nama = "Herdiansyah Rhamadan S.Kom.";
-		$dosenherdi ->jeniskelamin = "Laki-Laki";
-		$dosenherdi ->ttl = date("19xx-03-14");
-		
-		$dosenmega = new Dosen;
-		$dosenmega ->nip = "xxxxxxx";
-		$dosenmega ->nama = "Meganingrum Arista Jiwanggi S.Kom., M.Kom.";
-		$dosenmega ->jeniskelamin = "Perempuan";
-		$dosenmega ->ttl = date("1990-03-15");
-		
-		$dosenhadaiq = new Dosen;
-		$dosenhadaiq  ->nip = "121203004";
-		$dosenhadaiq  ->nama = "Hadaiq Rolis Sanabila S.Kom., M.Kom.";
-		$dosenhadaiq  ->jeniskelamin = "Laki-Laki";
-		$dosenhadaiq ->ttl = date("19xx-xx-xx");
-		
-		$dosennurul = new Dosen;
-		$dosennurul ->nip = "xxxxxxxxx";
-		$dosennurul ->nama = "Nurul Qomariyah S.Kom., M.Kom.	";
-		$dosennurul ->jeniskelamin = "Perempuan";
-		$dosennurul->ttl = date("19xx-xx-xx");
-		
-		$dosenedy = new Dosen;
-		$dosenedy ->nip = "121303004";
-		$dosenedy ->nama = "I Putu Edy Suardiyana Putra S.Kom., M.Kom.";
-		$dosenedy ->jeniskelamin = "Laki-Laki";
-		$dosenedy ->ttl = date("19xx-xx-xx");
-
-		$dosengilang = new Dosen;
-		$dosengilang ->nip = "121303003";
-		$dosengilang ->nama = "Gilang Kusuma Jati S.T., M.Kom.";
-		$dosengilang ->jeniskelamin = "Laki-Laki";
-		$dosengilang ->ttl = date("1990-01-02");
-		
-		$dosenhanif = new Dosen;
-		$dosenhanif ->nip = "121203009";
-		$dosenhanif ->nama = "Hanif Rasyidi M.Kom.";
-		$dosenhanif ->jeniskelamin = "Laki-Laki";
-		$dosenhanif ->ttl = date("1986-08-12");
-		
-		$dosenmaya = new Dosen;
-		$dosenmaya ->nip = "121403002";
-		$dosenmaya ->nama = "Maya Retno Ayu Setyautami S.Kom., M.Kom.	";
-		$dosenmaya ->jeniskelamin = "Perempuan";
-		$dosenmaya ->ttl = date("19xx-xx-xx");
-		
-		$dosenrahmad = new Dosen;
-		$dosenrahmad ->nip = "121403001";
-		$dosenrahmad ->nama = "Rahmad Mahendra S.Kom., M.Sc.";
-		$dosenrahmad ->jeniskelamin = "Laki-Laki";
-		$dosenrahmad->ttl = date("19xx-xx-xx");
-		
-		$dosenevi = new Dosen;
-		$dosenevi ->nip = "121303008";
-		$dosenevi ->nama = "Evi Yulianti S.Kom.";
-		$dosenevi ->jeniskelamin = "Perempuan";
-		$dosenevi ->ttl = date("19xx-xx-xx");
-
-		$dosenary = new Dosen;
-		$dosenary ->nip = "121303002";
-		$dosenary ->nama = "Ary Noviyanto S.Kom., M.Kom.";
-		$dosenary ->jeniskelamin = "Laki-Laki";
-		$dosenary ->ttl = date("19xx-xx-xx");
-		
-		$dosenangga = new Dosen;
-		$dosenangga ->nip = "121203006";
-		$dosenangga ->nama = "Anggha Satya Nugraha S.Si., M.Kom.	";
-		$dosenangga ->jeniskelamin = "Laki-Laki";
-		$dosenangga ->ttl = date("1988-05-14");
-		
-		$dosentieta = new Dosen;
-		$dosentieta ->nip = "121303001";
-		$dosentieta ->nama = "Tieta Antaresti Riska Putri S.Kom.";
-		$dosentieta ->jeniskelamin = "Perempuan";
-		$dosentieta ->ttl = date("1992-01-15");
-		
-		$dosenlia = new Dosen;
-		$dosenlia ->nip = "121403003";
-		$dosenlia ->nama = "Lia Sadita S.Kom.";
-		$dosenlia ->jeniskelamin = "Perempuan";
-		$dosenlia ->ttl = date("19xx-xx-xx");
-		
-		$dosenyayan = new Dosen;
-		$dosenyayan ->nip = "xxxxxxxxx";
-		$dosenyayan ->nama = "Yulistiyan Wardhana S.Kom.";
-		$dosenyayan ->jeniskelamin = "Laki-Laki";
-		$dosenyayan ->ttl = date("1991-07-25");
-		
-		$dosenhisyam = new Dosen;
-		$dosenhisyam ->nip = "121303012";
-		$dosenhisyam ->nama = "Hisyam Fahmi S.Kom, M.Kom.";
-		$dosenhisyam ->jeniskelamin = "Laki-Laki";
-		$dosenhisyam ->ttl = date("19xx-xx-xx");
 		
 		$matkulmatdas1 = new MataKuliah;
 		$matkulmatdas1->kodemk = "MAT10113";
