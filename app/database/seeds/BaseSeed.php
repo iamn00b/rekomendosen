@@ -48,6 +48,7 @@ class MainSeed {
 		$matkul_matdas1->dosens()->attach($dosenkas->nip);
 		$matkul_matdas1->dosens()->attach($dosenlia->nip);
 		$matkul_matdas1->dosens()->attach($dosenrah->nip);
+		$matkul_matdas1->save();
 		
 		$matkul_fisdas1 = new MataKuliah;
 		$matkul_fisdas1->kodemk = "FSK10111";
@@ -58,18 +59,22 @@ class MainSeed {
 		$matkul_fisdas1->prodi = "Fakultas";
 		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
 		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
+		$matkul_fisdas1->save();
 		
 	
-		$matkulmatdis1 = new MataKuliah;
-		$matkulmatdis1->kodemk = "IKI10100";
-		$matkulmatdis1->nama = "Matematika Diskret 1";
-		$matkul_matdas1->singkatan_1 = "Matdis1";
-		$matkul_matdas1->singkatan_2 = "MD1";
-		$matkulmatdis1->sks = 3;
-		$matkulmatdis1->prodi = "Fakultas";
-		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
-		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdis1 = new MataKuliah;
+		$matkul_matdis1->kodemk = "IKI10100";
+		$matkul_matdis1->nama = "Matematika Diskret 1";
+		$matkul_matdis1->singkatan_1 = "Matdis1";
+		$matkul_matdis1->singkatan_2 = "MD1";
+		$matkul_matdis1->sks = 3;
+		$matkul_matdis1->prodi = "Fakultas";
+		$matkul_matdis1->jenis = MataKuliah::RUMPUN;
+		$matkul_matdis1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdis1->save();
 		//gada didata
+		
+		
 		
 		
 		///////////////////////////////////
@@ -79,7 +84,6 @@ class MainSeed {
 		$matkul_ppl->kodemk = "IK00001";
 		$matkul_ppl->nama = "Proyek Perangkat Lunak";
 		$matkul_ppl->singkatan_1 = "PPL";
-		$matkul_ppl->singkatan_2 = "RPL Lanjut";
 		$matkul_ppl->sks = 6;
 		$matkul_ppl->semester = 6;
 		$matkul_ppl->jenis = MataKuliah::JURUSAN;
@@ -96,25 +100,9 @@ class MainSeed {
 		$matkul_propensi->prodi = MataKuliah::SISTEM_INFORMASI;
 		$matkul_propensi->save();
 
-		$matkul_anum = new MataKuliah;
-		$matkul_anum->kodemk = "IK00003";
-		$matkul_anum->nama = "Analisis Numerik";
-		$matkul_anum->singkatan_1 = "Anum";
-		$matkul_anum->sks = 3;
-		$matkul_anum->semester = 6;
-		$matkul_anum->jenis = MataKuliah::JURUSAN;
-		$matkul_anum->prodi = MataKuliah::ILMU_KOMPUTER;
-		$matkul_anum->save();
-
-		$matkul_matdas2 = new MataKuliah;
-		$matkul_matdas2->kodemk = "IK00002";
-		$matkul_matdas2->nama = "Matematika Dasar 2";
-		$matkul_matdas2->singkatan_1 = "Matdas 2";
-		$matkul_matdas2->sks = 3;
-		$matkul_matdas2->semester = 2;
-		$matkul_matdas2->jenis = MataKuliah::JURUSAN;
-		$matkul_matdas2->prodi = MataKuliah::ILMU_KOMPUTER;
-		$matkul_matdas2->save();
+	
+	
+	
 
 		$matkul_ppl->dosen()->attach($dosen1->id);
 		$matkul_ppl->dosen()->attach($dosen3->id);
