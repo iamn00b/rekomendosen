@@ -13,11 +13,12 @@ class MainSeed {
     	$pengguna1->save();
 
     	/* DOSEN */
-		$dosen1 = new Dosen;
-		$dosen1->nip = "1112";
-		$dosen1->nama = "Anto";
-		$dosen1->jeniskelamin = Dosen::LAKI_LAKI;
-		$dosen1->pendidikan = 'S2';
+		
+		$dosenbela = new Dosen;
+		$dosenbela->nip = "030603001";
+		$dosenbela->nama = "Prof. Belawati H. Widjaja, Dra, M.Sc., Ph.D.";
+		$dosenbela->jeniskelamin = Dosen::PEREMPUAN;
+		$dosen1->pendidikan = 'S3';
 		
 		$dosen2 = new Dosen;
 		$dosen2->nip = "1113";
@@ -142,31 +143,6 @@ class MainSeed {
 		$vote1->save();
 		$vote2->save();	
 			
-		// $report1 = new Report;
-		// $report1->review_id = $review1->id;
-		// $report1->pengguna_npm = $pengguna1->npm;
-		
-		// $report2 = new Report;
-		// $report2->review_id = $review1->id;
-		// $report2->pengguna_npm = $pengguna1->npm;
-		
-		// $report3 = new Report;
-		// $report3->review_id = $review2->id;
-		// $report3->pengguna_npm = $pengguna1->npm;
-
-
-		// $vote3->save();
-
-		// $report1->save();
-		// $report2->save();
-		// $report3->save();
-		
-  //   	$pengguna1->save();
-
-        // $dosen = new Dosen;
-        // $dosen->nik = "0089645";
-        // $dosen->nama = "Budi Gugun";
-        // $dosen->save();
     }
 }
 //////////////////////////////////////////////////////////////////////////
@@ -177,11 +153,7 @@ class BaseSeed {
 
     function run()
     {
-		$dosenbela = new Dosen;
-		$dosenbela->nip = "030603001";
-		$dosenbela->nama = "Prof. Belawati H. Widjaja, Dra, M.Sc., Ph.D.";
-		$dosenbela->jeniskelamin = "Perempuan";
-		$dosenbela->ttl = date("1938-12-27");
+		
 		
 		$dosenani = new Dosen;
 		$dosenani->nip = "194805291975012001";
