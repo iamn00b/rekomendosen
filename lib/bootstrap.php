@@ -42,12 +42,14 @@ $view->parserExtensions = $config['twig']['extensions'];
  * INCLUDES
  */
 
-// Include default routes
-require_once APP_PATH . 'routes.php';
-
 // Include models
 foreach (glob(APP_PATH . 'models/*.php') as $model) {
   require_once $model;
+}
+
+// Include middlewares
+foreach (glob(APP_PATH . 'middlewares/*.php') as $middleware) {
+  require_once $middleware;
 }
 
 // Include controllers
@@ -55,7 +57,5 @@ foreach (glob(APP_PATH . 'controllers/*.php') as $controller) {
   require_once $controller;
 }
 
-// Include middlewares
-foreach (glob(APP_PATH . 'middlewares/*.php') as $middleware) {
-  require_once $middleware;
-}
+// Include default routes
+require_once APP_PATH . 'routes.php';

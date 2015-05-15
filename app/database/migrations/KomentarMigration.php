@@ -11,9 +11,11 @@ class KomentarMigration {
         Capsule::schema()->dropIfExists('komentar');
         Capsule::schema()->create('komentar', function($table) {
             $table->increments('id');
+
             $table->string('isi');
 			$table->integer('review_id');
-            $table->string('pengguna_npm');
+            $table->string('pengguna_id');
+
             $table->timestamps();
         });
     }

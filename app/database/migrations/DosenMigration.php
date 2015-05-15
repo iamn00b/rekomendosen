@@ -11,10 +11,13 @@ class DosenMigration {
         Capsule::schema()->dropIfExists('dosen');
         Capsule::schema()->create('dosen', function($table) {
             $table->increments('id');
+
             $table->string('nip');
             $table->string('nama');
-            $table->string('jeniskelamin');
-            $table->date('ttl');
+            $table->enum('jeniskelamin', array('L', 'P'))->default('L');
+            $table->string('foto')->default('placeholder.gif');
+            $table->string('pendidikan')->default('S1');
+
             $table->timestamps();
 
         });

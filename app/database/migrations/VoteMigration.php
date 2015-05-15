@@ -5,15 +5,17 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 /**
  * Example migration for use with "novice"
  */
-class UpvoteDownvoteMigration {
+class VoteMigration {
     function run()
     {
-        Capsule::schema()->dropIfExists('upvotedownvote');
-        Capsule::schema()->create('upvotedownvote', function($table) {
+        Capsule::schema()->dropIfExists('vote');
+        Capsule::schema()->create('vote', function($table) {
             $table->increments('id');
-            $table->integer('tipe');
+
+            $table->enum('tipe', array('up', 'down'))->default('up');
 			$table->integer('review_id');
-            $table->string('pengguna_npm');
+            $table->string('pengguna_id');
+
             $table->timestamps();
         });
     }

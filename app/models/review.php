@@ -1,39 +1,35 @@
 <?php
 
 class Review extends Model {
-
-	const BAIK = 'baik';
-	const BURUK = 'buruk';
 	
 	protected $table 		= 'review';
-	protected $primaryKey 	= 'id';
 	
 	public function dosen() {
 		return $this->belongsTo('Dosen');
 	}
 	
-	public function komentars() {
+	public function pengguna() {
+		return $this->belongsTo('Pengguna');
+	}
+	
+	public function komentar() {
 		return $this->hasMany('Komentar');
 	}
 	
-	public function upvotedownvotes() {
-		return $this->hasMany('UpvoteDownvote');
+	public function vote() {
+		return $this->hasMany('Vote');
 	}
 	
-	public function reports() {
+	public function report() {
 		return $this->hasMany('Report');
-	}
-	
-	public function pengguna() {
-		return $this->belongsTo('Pengguna', 'pengguna_npm');
 	}
 
 	public function jumlahUpvote() {
-		return $this->upvotedownvotes()->where('tipe', '=', UpvoteDownvote::UPVOTE)->count();
+		return $this->vote()->where('tipe', '=', Vote::UP)->count();
 	}
 
 	public function jumlahDownvote() {
-		return $this->upvotedownvotes()->where('tipe', '=', UpvoteDownvote::DOWNVOTE)->count();
+		return $this->vote()->where('tipe', '=', Vote::DOWN)->count();
 	}
 
 	public function jumlahVoteAsString() {
@@ -47,13 +43,5 @@ class Review extends Model {
 
 	public function jumlahReport() {
 		return $this->reports()->count();
-	}
-
-	public function isBaik() {
-		return $this->jenis == self::BAIK;
-	}
-
-	public function jenisAsString() {
-		return ($this->isBaik()) ? 'Rekomendasi' : 'Tidak Rekomendasi';
 	}
 }

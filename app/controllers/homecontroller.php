@@ -6,11 +6,14 @@ use SSO\SSO;
 
 class HomeController extends _MainController {
 
+	const HALAMAN_WELCOME = 'welcome.html';
+	const HALAMAN_BERANDA = 'home.html';
+
 	function welcome() {
-		// if (Auth::check()) 
-		// 	$this->app->response->redirect($this->app->urlFor('home'), 400);
+		if (Auth::check()) 
+			$this->app->response->redirect($this->app->urlFor('home'), 200);
 		
-		$this->render('index.html', array(), false);
+		$this->renderTanpaLogin(self::HALAMAN_WELCOME, array());
 	}
 
 	function index() {

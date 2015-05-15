@@ -7,31 +7,68 @@ class ReviewController extends _MainController {
 	const HALAMAN_ADMIN_REPORT = 'admin/report.html';
 	
 	
-	function tambahReview($id, $tipe) {
-		$review = $this->app->request->post();
+	function tambahReview($id) {
 
-		$isi = $review['review'];
-		$pengguna = Auth::getPengguna();
+		try {
+			$data = array();
 
-		$review1 = new Review;
-		$review1->jenis = $tipe;
-		$review1->isi = $isi;
-		$review1->dosen_id = $id;
-		$review1->pengguna_npm = $pengguna->npm;
-		$review1->save();
+			// VALIDATION
+			$validator = new GUMP();
 
-		$tipeAsString = ($tipe == 'baik')? 'rekomendasi' : 'tidak rekomendasi';
-		$this->app->flash('notif', 'Berhasil memberi "'.$tipeAsString.'"');
+			$validator->validation_rules(array(
+			    'rating'    => 'required|integer|min_numeric,1|max_numeric,6',
+			    'review'    => 'required',
+			));
 
-		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);
-	}
+			$validator->filter_rules(array(
+			    'rating' => 'trim',
+			    'review' => 'trim|sanitize_string',
+			));
 
-	function tambahReviewBaik($id) {
-		$this->tambahReview($id, 'baik');
-	}
+			$postData = $validator->sanitize($this->app->request->post());
+			$validated_data = $validator->run($postData);
 
-	function tambahReviewBuruk($id) {
-		$this->tambahReview($id, 'buruk');
+			// Validation Fail
+			if($validated_data === false) {
+				$data['status'] = 'invalid';
+			    $data['message'] =  $validator->get_readable_errors(true);
+
+			// Validation Success
+			} else {
+				$isi = $validated_data['review'];
+				$rating = $validated_data['rating'];
+
+				$pengguna = Auth::getPengguna();
+				$dosen = Dosen::find($id);
+
+				$review = new Review;
+				$review->isi = $isi;
+				$review->rating = $rating;
+				$review->dosen_id = $id;
+				$review->pengguna_id = $pengguna->id;
+				$review->save();
+				
+				$data['status'] = 'success';
+				$data['review'] = $validated_data;
+			}
+
+			$this->renderAPI($data);
+
+		// 404
+		} catch (ModelNotFoundException $e) {
+			$data = array();
+			$data['status'] = 'invalid';
+			$data['message'] = 'Dosen tidak ditemukan';
+
+			$this->renderAPI($data);
+
+		// Other Error
+		} catch (Exception $e) {
+			$data = array();
+			$data['status'] = 'failed';
+
+			$this->renderAPI($data);
+		}
 	}
 	
 	function tambahKomentar($id) {
@@ -43,7 +80,7 @@ class ReviewController extends _MainController {
 		$komentar1 = new Komentar;
 		$komentar1->isi = $isi;
 		$komentar1->review_id = $id;
-		$komentar1->pengguna_npm = $pengguna->npm;
+		$komentar1->pengguna_id = $pengguna->id;
 		$komentar1->save();
 		$this->app->flash('notif', 'Berhasil menambah komentar pada review');
 

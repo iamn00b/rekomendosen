@@ -4,7 +4,8 @@
         "slim/views": "*",
         "twig/twig": "*",
         "illuminate/database": "*",
-        "ristek/sso": "*"
+        "ristek/sso": "*",
+        "wixel/gump": "dev-master"
     },
     "autoload": {
         "files": [ "app/config/database.php" ],

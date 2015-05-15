@@ -10,7 +10,7 @@ class Komentar extends Model {
 	}
 	
 	public function pengguna() {
-		return $this->belongsTo('Pengguna', 'pengguna_npm');
+		return $this->belongsTo('Pengguna');
 	}
 
 }

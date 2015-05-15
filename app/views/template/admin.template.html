@@ -1,0 +1,38 @@
+{% extends "template/inside.template.html" %}
+
+{% set warnaTopbar = 'blue-grey' %}
+{% block modeinfo %}Mode Administrator{% endblock %}
+
+{% block sidebar %}
+<li>
+	<h5>ADMINISTRATOR TOOLS</h5>
+</li>
+
+<!-- Switch -->
+<li id="maintenance-mode-switch">
+  <div class="switch">
+    <label>
+      Maintenance Mode &nbsp;&nbsp;&nbsp;Off
+      <input type="checkbox">
+      <span class="lever"></span>
+      On
+    </label>
+  </div>
+</li>
+
+<li class="menu-admin">
+	<ul>
+		<a href="{{ urlFor('statistik') }}"><li class="menu-admin-item">Statistik Website</li></a>
+		<a href="{{ urlFor('cruddosen') }}"><li class="menu-admin-item">Kelola Profil Dosen</li></a>
+		<a href="{{ urlFor('crudmatakuliah') }}"><li class="menu-admin-item">Kelola Mata Kuliah</li></a>
+		<a href="{{ urlFor('crudpengguna') }}"><li class="menu-admin-item">Kelola Pengguna</li></a>
+		<a href="{{ urlFor('rudreview') }}"><li class="menu-admin-item">Kelola Review</li></a>
+		<a href="{{ urlFor('rudkomentar') }}"><li class="menu-admin-item">Kelola Komentar</li></a>
+		<a href="{{ urlFor('rreport') }}"><li class="menu-admin-item">Kelola Report</li></a>
+		<a href="{{ urlFor('rdfeedback') }}"><li class="menu-admin-item">Kelola Feedback</li></a>
+	</ul>
+</li>
+{% endblock %}
+
+{% block additional %}
+{% endblock %}

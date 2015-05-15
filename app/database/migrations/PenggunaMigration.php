@@ -2,21 +2,19 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-/**
- * Example migration for use with "novice"
- */
 class PenggunaMigration {
     function run()
     {
         Capsule::schema()->dropIfExists('pengguna');
         Capsule::schema()->create('pengguna', function($table) {
-            $table->string('npm');
-            $table->string('nama');
-            $table->string('role');
-            $table->date('banned_hingga');
-            $table->timestamps();
+            $table->increments('id');
 
-            $table->primary('npm');
+            $table->string('nomor');
+            $table->string('nama');
+            $table->enum('role', array('dosen', 'mahasiswa', 'administrator'))->default('dosen');
+            $table->date('banned_hingga');
+
+            $table->timestamps();
         });
     }
 }

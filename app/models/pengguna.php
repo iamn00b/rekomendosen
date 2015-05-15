@@ -7,26 +7,33 @@ class Pengguna extends Model {
 	const DOSEN			= 'dosen';
 	
 	protected $table 		= 'pengguna';
-	protected $fillable 	= ['nama', 'npm'];
-	protected $primaryKey 	= 'npm';
 	
 	// RELATION FUNC
 	
-	public function reviews() {
-		return $this->hasMany('Review', 'pengguna_npm');
+	public function review() {
+		return $this->hasMany('Review');
 	}
 	
-	public function komentars() {
+	public function komentar() {
 		return $this->hasMany('Komentar');
 	}
 	
-	public function upvotedownvotes() {
-		return $this->hasMany('UpvoteDownvote');
+	public function vote() {
+		return $this->hasMany('Vote');
 	}
 	
-	public function reports() {
+	public function report() {
 		return $this->hasMany('Report');
 	}
+	
+	public function feedback() {
+		return $this->hasMany('Feedback');
+	}
+
+	public function subscribe() {
+		return $this->belongsToMany('Dosen', 'subscribe');
+	}
+	
 
 	// MODEL FUNC
 	
@@ -44,12 +51,12 @@ class Pengguna extends Model {
 
 	function setRole($role) {
 		if ($role == self::MAHASISWA)
-			$this->role = self::MAHASISWA;
+			$this->setAktif();
 		else
-			$this->role = self::DOSEN;
+			$this->setPasif();
 	}
 
-	function isAdmin() {
+	function isAdministrator() {
 		return ($this->role == self::ADMINISTRATOR);
 	}
 
@@ -62,17 +69,25 @@ class Pengguna extends Model {
 	function isBanned() {
 		return (time() - $this->banned_hingga < 0);
 	}
-	
-	public function feedbacks() {
-		return $this->hasMany('Feedback');
+
+	function isGivingUpvote($review_id) {
+		try {
+			return $this->vote()->where('review_id', '=', $review_id)->firstOrFail()->isUpvote();
+		} catch (Exception $e) {
+			return false;
+		}
 	}
 
-	function jumlahReviewBaik() {
-		return $this->reviews()->where('jenis', '=', Review::BAIK)->count();
+	function isGivingDownvote($review_id) {
+		try {
+			return $this->vote()->where('review_id', '=', $review_id)->firstOrFail()->isDownvote();
+		} catch (Exception $e) {
+			return false;
+		}
 	}
 
-	function jumlahReviewBuruk() {
-		return $this->reviews()->where('jenis', '=', Review::BURUK)->count();
+	function isSubscribe($dosen_id) {
+		return ($this->subscribe()->where('dosen_id', '=', $dosen_id)->count() > 0);
 	}
 
 }

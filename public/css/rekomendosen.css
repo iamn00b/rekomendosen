@@ -1,310 +1,343 @@
-.container{
-	padding-top:30px;
+.no-margin {
+	margin : 0;
 }
 
-.row.no-bottom-space {
-	margin-bottom: 0;
+/* ---------------------------------------- */
+/* ------------------ FORM ---------------- */
+/* ---------------------------------------- */
+.rd-form input, .rd-form textarea {
+	padding-top: 0;
 }
 
-.rd-small-circle {
-	width: 1.5em;
-	height: 1.5em;
+/* clearfix */
+.input-field:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
 }
 
-.rd-left {
-	float:left;
-	margin-right: 0rem;
+.input-field .star {
+	cursor: pointer;
 }
 
-.side-nav {
-	padding-bottom: 50px;
-}
-
-.rd-report-btn {
-	padding: 0 .5rem;
-	margin: 0 0 0 .5rem;
-}
 /* ---------------------------------------- */
 /* ---------- NAVIGATION & PROFILE -------- */
 /* ---------------------------------------- */
+.rd-body.container {
+	padding-top: 2rem;
+}
+
 .rd-nav .profil-button {
 	padding : 0 0 0 2rem;
 }
 
 .rd-nav .pencarian {
 	padding: 0 2rem 0 2rem;
-	
 }
 
-.rd-nav .logo{
+.rd-nav .logo {
 	padding: 0.5rem 2rem 0.5rem 2rem;
+	height: 100%;
+	overflow: hidden;
+}
+
+.rd-nav .topbar-flash {
+	padding: 1rem;
+	height: 100%;
 }
 
 
-/* warna teks placeholder di input, gak bisa digabung
-   selectornya */ 
+/* warna teks placeholder di input, gak bisa digabung selectornya */ 
 .rd-nav .pencarian ::-webkit-input-placeholder 	{ color: rgba(255, 255, 255, 0.4); }
 .rd-nav .pencarian :-moz-placeholder 			{ color: rgba(255, 255, 255, 0.4); }
 .rd-nav .pencarian ::-moz-placeholder 			{ color: rgba(255, 255, 255, 0.4); }
 .rd-nav .pencarian :-ms-input-placeholder 		{ color: rgba(255, 255, 255, 0.4); }
 
-.rd-nav .profil li {
-	color: #333;
-}
-
-.rd-nav .profil li:hover{
-	background: inherit;
-}
-
-.rd-nav .profil li p {
-	line-height: 100%;
-}
-
-.rd-nav .profil li.logo {
-	text-align: center;
-	margin-top: 32px;
-	margin-bottom: 40px;
-	border-bottom: 1px solid #ddd;
-}
-
-#sidebar{
+#sidebar {
 	font-size:18px;
 	overflow-y:auto;
 	padding-bottom: 100px;
 }
 
-.rd-nav .profil .detail{
-	line-height:30px;
+#sidebar.profil li {
+	color: #333;
 }
 
-.rd-nav .profil .nama {
+#sidebar.profil li:hover {
+	background: inherit;
+}
+
+#sidebar.profil li p {
+	line-height: 100%;
+}
+
+#sidebar.profil .detail{
+	border-bottom: 1px solid #ddd;
+	padding-top: 100px;
+}
+
+#sidebar.profil .nama {
 	font-size: 30px;
+	font-weight: 200;
 }
 
-.jumlahrekomendasi{
+#sidebar.profil .role {
+	line-height: 1rem;
+}
+
+#sidebar.profil .action {
+	margin-top:60px;
+}
+
+#sidebar .jumlahrekomendasi {
 	line-height:40px;
 }
 
-.jumlahrekomendasi .rekomendasi{
-	color: #80cbc4;
-}
-
-.jumlahrekomendasi .tidakrekomendasi{
-	color: #f29292;
-}
-
-.achievement-list{
+#sidebar .achievement-list {
 	font-size:14px;
 	line-height:20px;
 }
 
-.rd-nav .profil .action{
-	margin-top:60px;
+#sidebar #maintenance-mode-switch {
+	padding: 1rem;
 }
 
-/*index*/
-footer.rd-footer{
-/*	position: absolute;
-	bottom:0;
-	width:100%;*/
-	margin-top: 0;
-	padding-top: .5rem;
-	padding-bottom: 1.2rem;
-}
-.rd-bottom{
-	padding-top: 215px;
-	position:relative;
-}
-.rd-bottom-org{
-	padding-top: 53px;
-	position:relative;
+#sidebar .menu-admin {
+	padding: 0;
 }
 
-.rd-logo{
-	padding-top: 10px;
-}
+#sidebar .menu-admin .menu-admin-item {
+	padding: .5rem 0 .5rem 1.8rem;
+	background-color: #607d8b;
 
-.rd-copyright.title {
-	font-size: 1.25rem;
-	margin-bottom: 0;
-	margin-top: .5rem;
-}
-.rd-copyright.sub {
-	font-size: .85rem;
-	margin-top: 0;
-}
-
-/*daftar dosen*/
-.cap{
-	padding-left: 0.3rem;
-	margin-top: -20px;
-	margin-bottom: 30px;
-}
-.matkul{
-	letter-spacing: -1pt;
-}
-.lain{
-	text-decoration: none;
-	text-transform: none;
-}
-
-/* detil dosen */
-.card .btn-rekomendasi{
-	margin-right:0;
-}
-.row-btn-rekomendasi{
-	width:170px;
-	margin:0 auto;
-}.detil-matkul{
-	margin-bottom: 30px;
-}
-#rekomendasi-anda{
-	margin-bottom:0;
-}
-.tab-rekomendasi{
-	width:100% !important;
-}
-.vote-review{
-	text-align:center;
-	font-size:40px;
-	line-height:34px;
-	padding-top:1% !important;
-}
-.btn-vote-review {
-	font-size:58px;
-	color:rgba(0,0,0,0.35) !important;
-
-	transition: .35s ease all;
-	-moz-transition: .35s ease all;
-	-ms-transition: .35s ease all;
-	-webkit-transition: .35s ease all;
-}
-.btn-vote-review:hover {
-	color:rgba(0,0,0,0.87) !important;
-}
-.card-review{
-	padding-top:35px;
-	padding-bottom:40px;
-}
-.teks-putih{
-	color:#ffffff !important;
-}
-.rata-kanan{
-	float:right;
-}
-.col-tab-rekomendasi-kiri{
-	padding: 0 0.25rem 0 0 !important;
-}
-.col-tab-rekomendasi-kanan{
-	padding: 0 0 0 0.25rem !important;
-}
-#review-tidak-rekomendasi{
-	display:none;
-}
-
-/* Hasil Pencarian */
-#hasil-pencarian-dosen{
-	margin-top:-10px;
-	margin-bottom:25px;
-}
-#hasil-pencarian-mata-kuliah{
-	margin-top:-10px;
-}
-
-.rd-pencarian-gagal {
-	font-style: italic;
+	color: white;
 	font-weight: 200;
-	text-align: center;
-	margin: 2rem 0;
-	color: #333;
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
 }
 
-/* Admin Sidebar */
-#menu-admin{
-	margin: 0 -15px 100px;
-}
-.menu-admin-item a{
-	color:#ffffff !important;
-	font-size:1.3rem;
-}
-.menu-admin-item.active{
-	background-color:#26a69a !important;
+#sidebar .menu-admin .menu-admin-item:hover {
+	padding-left: 3.8rem;
+	background-color: #455a64;
 }
 
-/* Admin Profil Dosen */
-.hapus-profil-dosen{
-	color:#ef5350 !important;
-	font-size:1.4rem;
-	margin-top:-10px;
-}
-.teks-tengah{
-	text-align:center;
-}
-.geser-kanan-dikit{
-	margin-right:5px !important;
+/* ---------------------------------------- */
+/* ---------------- FEEDBACK -------------- */
+/* ---------------------------------------- */
+.rd-feedback {
+	position: fixed;
+	z-index: 998;		/* 999 dipake buat overlay modals */
+	bottom: -18px;
+	right: 0;
 }
 
-/* Admin Pengguna */
-#daftar-pengguna .card{
-	padding:20px !important;
-}
-.margin-nol{
-	margin:0 !important;
+/* ---------------------------------------- */
+/* ---------------- CIRCLES --------------- */
+/* ---------------------------------------- */
+.rd-small-circle {
+	width: 20px;
+	height: 20px;
+	margin: 5px;
+
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	background-clip:padding-box;
 }
 
-/* Admin Review */
-#daftar-review .card{
-	padding:20px !important;
+.rd-circle {
+	width: 120px;
+	height: 120px;
+
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	background-clip:padding-box;
 }
 
-/* Admin Komentar */
-.padding-20{
-	padding:20px !important;
+/* ---------------------------------------- */
+/* ----------------- CARD ----------------- */
+/* ---------------------------------------- */
+/*.rd-card-thumb {
+	margin: .5rem 0;
+	padding: 0;
+
+	height: 300px;
+	overflow: hidden;
+
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); 
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
 }
 
-/*home*/
-.geser-kanan-timeline{
-	margin-left: 150px;
-	margin-bottom:15px;
-}
-
-blockquote.rd-review-home {
-	min-height: 100px;
-}
-
-blockquote.rd-review-home.baik {
-	border-left: 5px solid #4DB6AC;
-}
-blockquote.rd-review-home.buruk {
-	border-left: 5px solid #EF9A9A;
-}
-
-/* feedback */
-/*.rating {
-    overflow: hidden;
-    display: inline-block;
-    font-size: 0;
-    position: relative;
-}
-.rating-input {
-    float: right;
-    width: 16px;
-    height: 16px;
-    padding: 0;
-    margin: 0 0 0 -16px;
-    opacity: 0;
-}
-.rating:hover .rating-star:hover,
-.rating:hover .rating-star:hover ~ .rating-star,
-.rating-input:checked ~ .rating-star {
-    background-position: 0 0;
-}
-.rating-star,
-.rating:hover .rating-star {
-    position: relative;
-    float: right;
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+.rd-card-thumb.link:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }*/
+
+.rd-card {
+	margin: .5rem 0;
+	padding: 2rem;
+	width: 100%;
+
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); 
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
+}
+
+/* clearfix */
+.rd-card:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.rd-card.link:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rd-card a.flat {
+	color: rgba(3, 155, 229, 1);
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
+}
+
+.rd-card a.flat:hover {
+	color: rgba(3, 155, 299, .45);
+}
+
+/* ---------------------------------------- */
+/* ---------- REVIEW COLLAPSIBLE ---------- */
+/* ---------------------------------------- */
+
+.rd-review.collapsible {
+	background: none;
+	box-shadow: none;
+	border: none;
+}
+
+.rd-review.collapsible li.rd-review-item {
+	margin-bottom: .8rem;
+	border: none;
+
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); 
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
+}
+
+.rd-review.collapsible li.rd-review-item:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rd-review.collapsible li.rd-review-rating-6 { border-left : 5px solid #4caf50; }
+.rd-review.collapsible li.rd-review-rating-5 { border-left : 5px solid #8bc34a; }
+.rd-review.collapsible li.rd-review-rating-4 { border-left : 5px solid #aed581; }
+.rd-review.collapsible li.rd-review-rating-3 { border-left : 5px solid #ffeb3b; }
+.rd-review.collapsible li.rd-review-rating-2 { border-left : 5px solid #ff9800; }
+.rd-review.collapsible li.rd-review-rating-1 { border-left : 5px solid #f44336; }
+
+.star {
+	font-size: 1.6rem;
+}
+
+.star.rd-review-rating-6 { color : #4caf50; }
+.star.rd-review-rating-5 { color : #8bc34a; }
+.star.rd-review-rating-4 { color : #aed581; }
+.star.rd-review-rating-3 { color : #ffeb3b; }
+.star.rd-review-rating-2 { color : #ff9800; }
+.star.rd-review-rating-1 { color : #f44336; }
+.star.rd-review-rating-0 { color : #bdbdbd; }
+
+.rd-review.collapsible .collapsible-header {
+	height: auto;
+	padding: 1rem;
+	line-height: 1.85rem;
+}
+
+.rd-review.collapsible .collapsible-header p,
+.rd-review.collapsible .collapsible-body p {
+	margin: 0;
+	padding: 0
+}
+
+.rd-review.collapsible .collapsible-header > .row {
+	margin-bottom: 0;
+}
+
+.rd-review.collapsible .collapsible-body {
+	padding: 1rem 1rem 0;
+	line-height: 1.85rem;
+	border: none;
+	background: white;
+}
+
+.rd-review .dropdown-content {
+	width: 200px !important;
+}
+
+/* ---------------------------------------- */
+/* ---------------- VOTE ------------------ */
+/* ---------------------------------------- */
+
+.rd-vote h5 {
+	text-align: center;
+	margin: 0;
+}
+
+.rd-vote h5.active {
+	font-weight: 700;
+}
+
+.rd-vote a {
+	color: rgba(0, 0, 0, .3);
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
+}
+
+.rd-vote a:hover {
+	color: rgba(0, 0, 0, .85);
+}
+
+.rd-vote a.active {
+	color: rgba(0, 0, 0, .9);
+}
+
+.rd-vote .btn-vote {
+	font-size: 3.5rem;
+}
+

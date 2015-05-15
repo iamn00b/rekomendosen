@@ -10,14 +10,20 @@ class MataKuliahMigration {
     {
         Capsule::schema()->dropIfExists('matakuliah');
         Capsule::schema()->create('matakuliah', function($table) {
-            $table->string('kodemk');
-            $table->string('nama');
-            $table->integer('sks');
-            $table->integer('semester');
-            $table->string('prodi');
-            $table->timestamps();
+            $table->increments('id');
 
-            $table->primary('kodemk');
+            $table->string('kodemk');
+            $table->string('singkatan_1');
+            $table->string('singkatan_2');
+            $table->string('nama');
+            $table->integer('sks')->default(3);
+            
+            $table->integer('semester')->default(1);
+            $table->enum('jenis', array('universitas', 'fakultas', 'jurusan', 'peminatan'))->default('fakultas');
+            $table->enum('prodi', array('universitas', 'fakultas', 'ilkom', 'si'))->default('fakultas');
+            $table->string('deskripsi')->default('Lorem ipsum dolor sit amet');
+
+            $table->timestamps();
         });
     }
 }

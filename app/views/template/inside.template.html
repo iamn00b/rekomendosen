@@ -1,0 +1,95 @@
+{% extends "template/global.template.html" %}
+
+{% block body %}
+<!-- Navbar -->
+<div class="navbar-fixed">
+	<nav class="rd-nav {{ warnaTopbar }} lighten-2">
+		<div class="nav-wrapper">
+			<div class="left {{ warnaTopbar }} lighten-3 profil-button">
+				<a href="#" data-activates="sidebar" class="rd-profil-collapse"><i class="mdi-navigation-menu"></i></a>
+			</div>
+
+			<div class="left {{ warnaTopbar }} lighten-3 logo">
+				<a href="{{ urlFor('home') }}" class="hide-on-small-only"><img src="{{ BASE_URL }}/images/logopendek.png"></a>
+				<a href="{{ urlFor('home') }}" class="left {{ warnaTopbar }} lighten-3 rd-nav-logo center hide-on-med-and-up"><img src="{{ BASE_URL }}/images/logopanjang.png"></a>
+			</div>
+
+			<form method="GET" action="{{ urlFor('pencarian') }}" class="left {{ warnaTopbar }} lighten-1 pencarian hide-on-small-only">
+				<div class="input-field right">
+					<input id="search" type="text" name="query" placeholder="pencarian" required>
+					<label for="search"><i class="mdi-action-search"></i></label>
+				</div>
+			</form>
+
+			<div class="hide-on-med-and-down topbar-flash left"><strong>{% block modeinfo %}{% endblock %}</strong></div>
+
+			<ul class="right hide-on-small-only">
+				{% block topbar %}
+				{% endblock %}
+				<li><a href="#!" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Logout"><i class="mdi-content-clear"></i></a></li>
+
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<!-- Sidebar -->
+<ul id="sidebar" class="profil side-nav">
+
+	<li class="{{ warnaTopbar }} white-text detail">
+		<div class="role"><strong>{{ pengguna.role | title }}</strong></div>
+		<div class="nama">{{ pengguna.nama | title }}</div>
+	</li>
+
+	{% block sidebar %}
+	{% endblock %}
+</ul>
+<!-- END Sidebar -->
+
+<!-- Content -->
+<div class="rd-body container">
+	{% if flash.notif is defined %}
+	<div class="row">
+	  <div class="col s12">
+	    <div class="card-panel green lighten-1">
+	      <span class="white-text">{{ flash.notif }}</span>
+	    </div>
+	  </div>
+	</div>
+	{% endif %}
+
+	{% block content %}
+	{% endblock %}
+</div>
+<!-- END Content -->
+
+<!-- Additional -->
+{% block additional %}
+{% endblock %}
+<!-- END Additional -->
+
+{% endblock %}
+
+{% block templatejs %}
+<script>
+	// Activate Sidebar
+	$(".rd-profil-collapse").sideNav({
+      menuWidth: 310, // Default is 240
+    });
+
+	// Activate material design Datepicker
+	$('.datepicker').pickadate(); 
+
+	// Activate material design Select Dropdown
+	$('select').material_select();
+
+	// Activate modal
+	$('.modal-trigger').leanModal();
+
+
+	// rd-card activation
+	$('.rd-card.link').click(function() {
+	  window.location = $(this).attr('href');
+	})
+</script>
+{% endblock %}

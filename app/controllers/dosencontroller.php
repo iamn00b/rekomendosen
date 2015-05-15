@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\ModelNotFoundException; 
+
 class DosenController extends _MainController { 
 
 	const HALAMAN_DAFTAR_DOSEN = 'dosen/dosen.html';
@@ -24,6 +26,41 @@ class DosenController extends _MainController {
 		$data['dosen'] = $dosen;
 
 		$this->render(self::HALAMAN_RINCIAN_DOSEN, $data);
+	}
+
+	function subscribe($id) {
+		try {
+			$dosen = Dosen::findOrFail($id);
+			$pengguna = Auth::getPengguna();
+
+			$data = array();
+			$data['status'] = 'success';
+
+			if (!$pengguna->isSubscribe($dosen->id)) {
+				$pengguna->subscribe()->attach($dosen->id);
+				$data['subscribe'] = true;
+			} else {
+				$pengguna->subscribe()->detach($dosen->id);
+				$data['subscribe'] = false;
+			}
+
+			$this->renderAPI($data);
+
+		// 404
+		} catch (ModelNotFoundException $e) {
+			$data = array();
+			$data['status'] = 'invalid';
+			$data['message'] = 'Dosen tidak ditemukan';
+
+			$this->renderAPI($data);
+
+		// Other Error
+		} catch (Exception $e) {
+			$data = array();
+			$data['status'] = 'failed';
+
+			$this->renderAPI($data);
+		}
 	}
 
 	/* ADMIN */

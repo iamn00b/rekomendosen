@@ -2,12 +2,25 @@
 
 class _MainController extends Controller {
 
-	function render($page, $pass_var = array(), $auth=true) {
+	public function render($page, $pass_var = array()) {
 
 		$pass_var['BASE_URL'] = BASE_URL;
-		if ($auth) 
-			$pass_var['pengguna'] = Auth::getPengguna();
+		$pass_var['pengguna'] = Auth::getPengguna();
 
 		parent::render($page, $pass_var);
+	}
+
+	public function renderTanpaLogin($page, $pass_var = array()) {
+
+		$pass_var['BASE_URL'] = BASE_URL;
+		parent::render($page, $pass_var);
+
+	}
+
+	public function renderAPI($pass_var = array()) {
+
+		header('Content-Type: application/json');
+		echo json_encode($pass_var);
+		
 	}
 }

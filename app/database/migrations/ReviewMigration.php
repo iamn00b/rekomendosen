@@ -11,10 +11,12 @@ class ReviewMigration {
         Capsule::schema()->dropIfExists('review');
         Capsule::schema()->create('review', function($table) {
             $table->increments('id');
-            $table->string('jenis');
+
+            $table->integer('rating')->default(6);
             $table->string('isi');
 			$table->string('dosen_id');
-            $table->string('pengguna_npm');
+            $table->string('pengguna_id');
+
             $table->timestamps();
         });
     }
