@@ -45,6 +45,7 @@ class MainSeed {
 		$matkul_matdas1->sks = 2;
 		$matkul_matdas1->jenis = MataKuliah::RUMPUN;
 		$matkul_matdas1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdas1->deskripsi = "Mata kuliah ini mengajarkan topik-topik berikut: sistem bilangan riil dan bilangan kompleks, pertidaksamaan dan harga mutlak, fungsi satu peubah, grafik (kartesian, polar, parameter), operasi pada fungsi, teorema limit, kekontinuan, rumus-rumus dasar, aturan rantai, turunan tingkat tinggi, turunan implisit, aplikasi turunan, integral tak tentu dan tentu, teorema dasar kalkulus, sifat dasar integral, teknik integrasi";
 		$matkul_matdas1->dosens()->attach($dosenkas->nip);
 		$matkul_matdas1->dosens()->attach($dosenlia->nip);
 		$matkul_matdas1->dosens()->attach($dosenrah->nip);
@@ -53,12 +54,11 @@ class MainSeed {
 		$matkul_fisdas1 = new MataKuliah;
 		$matkul_fisdas1->kodemk = "FSK10111";
 		$matkul_fisdas1->nama = "Fisika Dasar 1";
-		$matkul_matdas1->singkatan_1 = "Fisdas1";
-		$matkul_matdas1->singkatan_2 = "";
+		$matkul_fisdas1->singkatan_1 = "Fisdas1";
 		$matkul_fisdas1->sks = 3;
-		$matkul_fisdas1->prodi = "Fakultas";
 		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
 		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdas1->deskripsi ="Mata kuliah ini mengajarkan topik-topik berikut:Besaran Fisis dan Vektor, Gerak dalam satu, dua, dan tiga dimensi, Hukum Newton, Aplikasi Hukum Newton, Kerja dan Energi Kinetik, Energi Potensial dan Kekekalan Energi, Momentum, Impuls dan Tumbukan, Gravitasi, Benda Tegar dan Rotasi Benda Tegar, Dinamika Gerak Rotasi, Statika dan Elastisitas, Mekanika Fluida, Gerak Periodik, Temperatur, Kalor dan Hukum, Termodinamika"
 		$matkul_fisdas1->save();
 		
 	
@@ -68,11 +68,89 @@ class MainSeed {
 		$matkul_matdis1->singkatan_1 = "Matdis1";
 		$matkul_matdis1->singkatan_2 = "MD1";
 		$matkul_matdis1->sks = 3;
-		$matkul_matdis1->prodi = "Fakultas";
-		$matkul_matdis1->jenis = MataKuliah::RUMPUN;
+		$matkul_matdis1->jenis = MataKuliah::FAKULTAS;
 		$matkul_matdis1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdas1->deskripsi ="Dalam mata kuliah ini, mahasiswa akan memperoleh pemahaman tentang matematika diskret yang sesuai untuk aplikasi komputer. Topik yang dibahas meliputi logika proposisional, logika predikat, teori himpunan, fungsi, teori bilangan, metode pembuktian, induksi matematika, prinsip pigeonhole, permutasi, dan kombinasi"
 		$matkul_matdis1->save();
-		//gada didata
+		
+		
+		$matkul_ddp = new MataKuliah;
+		$matkul_ddp->kodemk = "IKI10200";
+		$matkul_ddp->nama = "Dasar-Dasar Pemrograman";
+		$matkul_ddp->singkatan_1 = "DDP";
+		$matkul_ddp->sks = 6;
+		$matkul_ddp->jenis = MataKuliah::FAKULTAS;
+		$matkul_ddp->prodi = MataKuliah::FAKULTAS;
+		$matkul_ddp->deskripsi ="Mata kuliah ini bertujuan untuk mengajarkan konsep-konsep dasar serta teknik untuk membuat program komputer menggunakan paradigma berorientasi obyek pada bahasa pemrograman Java. Mata kuliah ini diajarkan melalui kombinasi kuliah tatap muka serta sesi latihan pemrograman di mana setiap peserta kuliah mengakses PC yang tersambung ke Internet. Mata kuliah ini memraktekkan prinsip di mana pemrograman tidak bisa diajarkan dalam cara yang sepenuhnya linier, namun topik-topik awal tetap dibahas lagi di belakang dengan tingkat kedalaman yang lebih canggih"
+		$matkul_ddp->dosens()->attach($dosengilang->nip);
+		$matkul_ddp->dosens()->attach($dosenbayu->nip);
+		$matkul_ddp->dosens()->attach($dosendenny->nip);
+		$matkul_ddp->dosens()->attach($deosenalfan->nip);
+		$matkul_ddp->dosens()->attach($dosenclara->nip);
+		$matkul_ddp->dosens()->attach($dosenhanif->nip);
+		$matkul_ddp->save();
+		
+		$matkul_sda = new MataKuliah;
+		$matkul_sda->kodemk = "IKI10400";
+		$matkul_sda->nama = "Struktur Data & Algoritma";
+		$matkul_sda->singkatan_1 = "SDA";
+		$matkul_sda->sks = 4;
+		$matkul_sda->jenis = MataKuliah::FAKULTAS;
+		$matkul_sda->prodi = MataKuliah::FAKULTAS;
+		$matkul_sda->deskripsi ="Mata kuliah ini bertujuan untuk mengajarkan konsep-konsep dasar serta teknik untuk membuat program komputer menggunakan paradigma berorientasi obyek pada bahasa pemrograman Java. Mata kuliah ini diajarkan melalui kombinasi kuliah tatap muka serta sesi latihan pemrograman di mana setiap peserta kuliah mengakses PC yang tersambung ke Internet. Mata kuliah ini memraktekkan prinsip di mana pemrograman tidak bisa diajarkan dalam cara yang sepenuhnya linier, namun topik-topik awal tetap dibahas lagi di belakang dengan tingkat kedalaman yang lebih canggih"
+		$matkul_sda->dosens()->attach($dosengilang->nip);
+		$matkul_sda->dosens()->attach($dosenbayu->nip);
+		$matkul_sda->dosens()->attach($dosendenny->nip);
+		$matkul_sda->dosens()->attach($dosenhadaiq->nip);
+		$matkul_sda->prasyarat()->attach($matkul_ddp->nip);
+		$matkul_sda->save();
+		
+		$matkul_alin = new MataKuliah;
+		$matkul_alin->kodemk = "IKI10103";
+		$matkul_alin->nama = "Aljabar Linier";
+		$matkul_alin->singkatan_1 = "Alin";
+		$matkul_alin->sks = 3;
+		$matkul_alin->jenis = MataKuliah::FAKULTAS;
+		$matkul_alin->prodi = MataKuliah::FAKULTAS;
+		$matkul_alin->deskripsi ="Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika."
+		$matkul_alin->dosens()->attach($dosenlia->nip);
+		$matkul_alin->dosens()->attach($dosennizar->nip);
+		$matkul_alin->dosens()->attach($dosenhadaiq->nip);
+		$matkul_alin->dosens()->attach($dosenkas->nip);
+		//anwar masum knp gada
+		
+		$matkul_matdis2 = new MataKuliah;
+		$matkul_matdis2->kodemk = "IKI20101";
+		$matkul_matdis2->nama = "Matematika Diskret 2";
+		$matkul_matdis2->singkatan_1 = "Matdis2";
+		$matkul_matdis1->singkatan_2 = "MD2";
+		$matkul_matdis2->sks = 3;
+		$matkul_matdis2->jenis = MataKuliah::FAKULTAS;
+		$matkul_matdis2->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdis2->deskripsi ="Mata kuliah ini merupakan kelanjutan dari mata kuliah Matematika Diskret 1 dan memberikan landasan yang lebih teoritis untuk ilmu komputer. Mata kuliah ini mencakup teori kombinatorik, relasi, dan graph"
+		$matkul_matdis2->dosens()->attach($dosentieta->nip);
+		$matkul_matdis2->dosens()->attach($dosendina->nip);
+		$matkul_matdis2->dosens()->attach($dosenevi->nip);
+		
+		$matkulstatprob = new MataKuliah;
+		$matkulstatprob->kodemk = "IKI20102";
+		$matkulstatprob->nama = "Statistika & Probabilitas";
+		$matkulstatprob->sks = 4;
+		$matkulstatprob->prodi = "Fakultas";
+		$matkulstatprob->dosens()->attach($dosenika->nip);
+		$matkulstatprob->dosens()->attach($dosenary->nip);
+		$matkulstatprob->dosens()->attach($dosenalfan->nip);
+		
+		$matkulppw = new MataKuliah;
+		$matkulppw->kodemk = "IKI20201";
+		$matkulppw->nama = "Perancangan & Pemrograman Web";
+		$matkulppw->sks = 3;
+		$matkulppw->prodi = "Fakultas";
+		$matkulppw->dosens()->attach($dosenherup->nip);
+		$matkulppw->dosens()->attach($dosengilang->nip);
+		$matkulppw->dosens()->attach($dosenhisyam->nip);
+		$matkulppw->dosens()->attach($dosenrizal->nip);
+		
 		
 		
 		
@@ -99,10 +177,6 @@ class MainSeed {
 		$matkul_propensi->jenis = MataKuliah::JURUSAN;
 		$matkul_propensi->prodi = MataKuliah::SISTEM_INFORMASI;
 		$matkul_propensi->save();
-
-	
-	
-	
 
 		$matkul_ppl->dosen()->attach($dosen1->id);
 		$matkul_ppl->dosen()->attach($dosen3->id);
@@ -714,66 +788,7 @@ class BaseSeed {
 		
 		
 		
-		$matkulddp = new MataKuliah;
-		$matkulddp->kodemk = "IKI10200";
-		$matkulddp->nama = "Dasar-Dasar Pemrograman";
-		$matkulddp->sks = 6;
-		$matkulddp->prodi = "Fakultas";
-		$matkulddp->dosens()->attach($dosengilang->nip);
-		$matkulddp->dosens()->attach($dosenbayu->nip);
-		$matkulddp->dosens()->attach($dosendenny->nip);
-		$matkulddp->dosens()->attach($deosenalfan->nip);
-		$matkulddp->dosens()->attach($dosenclara->nip);
-		$matkulddp->dosens()->attach($dosenhanif->nip);
 		
-		$matkulsda = new MataKuliah;
-		$matkulsda->kodemk = "IKI10400";
-		$matkulsda->nama = "Struktur Data & Algoritma";
-		$matkulsda->sks = 4;
-		$matkulsda->prodi = "Fakultas";
-		$matkulsda->dosens()->attach($dosengilang->nip);
-		$matkulsda->dosens()->attach($dosenbayu->nip);
-		$matkulsda->dosens()->attach($dosendenny->nip);
-		$matkulsda->dosens()->attach($dosenhadaiq->nip);
-		
-		$matkulalin = new MataKuliah;
-		$matkulalin->kodemk = "IKI10103";
-		$matkulalin->nama = "Aljabar Linier";
-		$matkulalin->sks = 3;
-		$matkulalin->prodi = "Fakultas";
-		$matkulalin->dosens()->attach($dosenlia->nip);
-		$matkulalin->dosens()->attach($dosennizar->nip);
-		$matkulalin->dosens()->attach($dosenhadaiq->nip);
-		$matkulalin->dosens()->attach($dosenkas->nip);
-		//anwar masum knp gada
-		
-		$matkulmatdis2 = new MataKuliah;
-		$matkulmatdis2->kodemk = "IKI20101";
-		$matkulmatdis2->nama = "Matematika Diskret 2";
-		$matkulmatdis2->sks = 3;
-		$matkulmatdis2->prodi = "Fakultas";
-		$matkulmatdis2->dosens()->attach($dosentieta->nip);
-		$matkulmatdis2->dosens()->attach($dosendina->nip);
-		$matkulmatdis2->dosens()->attach($dosenevi->nip);
-		
-		$matkulstatprob = new MataKuliah;
-		$matkulstatprob->kodemk = "IKI20102";
-		$matkulstatprob->nama = "Statistika & Probabilitas";
-		$matkulstatprob->sks = 4;
-		$matkulstatprob->prodi = "Fakultas";
-		$matkulstatprob->dosens()->attach($dosenika->nip);
-		$matkulstatprob->dosens()->attach($dosenary->nip);
-		$matkulstatprob->dosens()->attach($dosenalfan->nip);
-		
-		$matkulppw = new MataKuliah;
-		$matkulppw->kodemk = "IKI20201";
-		$matkulppw->nama = "Perancangan & Pemrograman Web";
-		$matkulppw->sks = 3;
-		$matkulppw->prodi = "Fakultas";
-		$matkulppw->dosens()->attach($dosenherup->nip);
-		$matkulppw->dosens()->attach($dosengilang->nip);
-		$matkulppw->dosens()->attach($dosenhisyam->nip);
-		$matkulppw->dosens()->attach($dosenrizal->nip);
 		
 		$matkulsistemoperasi = new MataKuliah;
 		$matkulsistemoperasi->kodemk = "IKI20505";
