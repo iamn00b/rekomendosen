@@ -15,7 +15,15 @@ class ReviewController extends _MainController {
 			$review = Review::where('id', '=', $id)->first();
 			$iddsn = $review->dosen_id;
 		}
-		$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna->npm)->where('tipe', '=', $tipe)->get();
+		if($tipe == "achievment") {
+			$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna->npm)->where('tipe', '=', $tipe)->get();
+		}
+		else {
+			$review = Review::where('id', '=', $id)->where('pengguna_npm', '=', $pengguna)->get;
+			if($review->count() > 0) {
+				$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('tipe', '=', $tipe)->get();
+			}
+		}
 		if($notifikasi1->count() > 0) {
 			$notifikasi = $notifikasi1->last();
 			if($notifikasi->updated_at >= $pengguna->updated_at) {
