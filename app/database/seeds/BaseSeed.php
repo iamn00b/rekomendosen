@@ -43,14 +43,38 @@ class MainSeed {
 		$matkul_matdas1->singkatan_1 = "Matdas1";
 		$matkul_matdas1->singkatan_2 = "Calculus1";
 		$matkul_matdas1->sks = 2;
-		$matkul_matdas1->jenis = MataKuliah::JURUSAN;
-		$matkul_matdas1->prodi = "Fakultas";
+		$matkul_matdas1->jenis = MataKuliah::RUMPUN;
+		$matkul_matdas1->prodi = MataKuliah::FAKULTAS;
 		$matkul_matdas1->dosens()->attach($dosenkas->nip);
 		$matkul_matdas1->dosens()->attach($dosenlia->nip);
 		$matkul_matdas1->dosens()->attach($dosenrah->nip);
 		
-		$matkul_ppl->dosen()->attach($dosen1->id);
+		$matkul_fisdas1 = new MataKuliah;
+		$matkul_fisdas1->kodemk = "FSK10111";
+		$matkul_fisdas1->nama = "Fisika Dasar 1";
+		$matkul_matdas1->singkatan_1 = "Fisdas1";
+		$matkul_matdas1->singkatan_2 = "";
+		$matkul_fisdas1->sks = 3;
+		$matkul_fisdas1->prodi = "Fakultas";
+		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
+		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
 		
+	
+		$matkulmatdis1 = new MataKuliah;
+		$matkulmatdis1->kodemk = "IKI10100";
+		$matkulmatdis1->nama = "Matematika Diskret 1";
+		$matkul_matdas1->singkatan_1 = "Matdis1";
+		$matkul_matdas1->singkatan_2 = "MD1";
+		$matkulmatdis1->sks = 3;
+		$matkulmatdis1->prodi = "Fakultas";
+		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
+		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
+		//gada didata
+		
+		
+		///////////////////////////////////
+		$matkul_anum->prasyarat()->attach($matkul_matdas2->id);
+			
 		$matkul_ppl = new MataKuliah;
 		$matkul_ppl->kodemk = "IK00001";
 		$matkul_ppl->nama = "Proyek Perangkat Lunak";
@@ -697,22 +721,10 @@ class BaseSeed {
 		$dosenhisyam ->nama = "Hisyam Fahmi S.Kom, M.Kom.";
 		$dosenhisyam ->jeniskelamin = "Laki-Laki";
 		$dosenhisyam ->ttl = date("19xx-xx-xx");
+		////////////////////////////
 		
 		
 		
-		$matkulfisdas1 = new MataKuliah;
-		$matkulfisdas1->kodemk = "FSK10111";
-		$matkulfisdas1->nama = "Fisika Dasar 1";
-		$matkulfisdas1->sks = 3;
-		$matkulfisdas1->prodi = "Fakultas";
-		//gada yang dari pacil
-
-		$matkulmatdis1 = new MataKuliah;
-		$matkulmatdis1->kodemk = "IKI10100";
-		$matkulmatdis1->nama = "Matematika Diskret 1";
-		$matkulmatdis1->sks = 3;
-		$matkulmatdis1->prodi = "Fakultas";
-		//gada didata
 		
 		$matkulddp = new MataKuliah;
 		$matkulddp->kodemk = "IKI10200";
