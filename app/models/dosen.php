@@ -4,7 +4,7 @@ class Dosen extends Model {
 
 	const LAKI_LAKI = 'L';
 	const PEREMPUAN = 'P';
-	const FOTO_URL = BASE_URL . '/images/dosen/';
+	const FOTO_URL = "/images/dosen/";
 	
 	protected $table = 'dosen';
 	
@@ -17,7 +17,7 @@ class Dosen extends Model {
 	}
 
 	public function getFoto() {
-		return self::FOTO_URL . $this->foto;
+		return BASE_URL . self::FOTO_URL . $this->foto;
 	}
 
 	public function jenisKelaminAsString() {

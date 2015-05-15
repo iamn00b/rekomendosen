@@ -7,6 +7,7 @@ class Pengguna extends Model {
 	const DOSEN			= 'dosen';
 	
 	protected $table 		= 'pengguna';
+	protected $fillable		= ['nomor'];
 	
 	// RELATION FUNC
 	
@@ -68,6 +69,14 @@ class Pengguna extends Model {
 
 	function isBanned() {
 		return (time() - $this->banned_hingga < 0);
+	}
+
+	function isGivingVote($review_id) {
+		try {
+			return $this->vote()->where('review_id', '=', $review_id)->firstOrFail();
+		} catch (Exception $e) {
+			return false;
+		}
 	}
 
 	function isGivingUpvote($review_id) {

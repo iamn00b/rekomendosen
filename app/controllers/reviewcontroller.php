@@ -91,8 +91,8 @@ class ReviewController extends _MainController {
 	function tambahVote($id, $tipe) {
 		$pengguna1 = Auth::getPengguna();
 
-		if(UpvoteDownvote::where('review_id' , '=' , $id)->count() < 1){
-			$vote = new UpvoteDownvote;
+		if(!$pengguna->isGivingVote($id)){
+			$vote = new Vote;
 			$vote->tipe = $tipe;
 			$vote->review_id = $id;
 			$vote->pengguna_npm = $pengguna1->npm;
@@ -105,7 +105,7 @@ class ReviewController extends _MainController {
 			$vote->pengguna_npm = $pengguna1->npm;
 			$vote->save();
 		}
-		// echo UpvoteDownvote::all()->where('review_id' , '=' , $id)->count();
+		
 		$this->app->flash('notif', 'Berhasil melakukan vote "'.$tipe.'" pada review');
 
 		$iddosen = Review::find($id)->dosen->id;
@@ -113,11 +113,11 @@ class ReviewController extends _MainController {
 	}
 
 	function tambahUpvote($id) {
-		$this->tambahVote($id, UpvoteDownvote::UPVOTE);
+		$this->tambahVote($id, Vote::UPVOTE);
 	}
 	
 	function tambahDownvote($id) {
-		$this->tambahVote($id, UpvoteDownvote::DOWNVOTE);
+		$this->tambahVote($id, Vote::DOWNVOTE);
 	}
 
 	function beriReport($id) {

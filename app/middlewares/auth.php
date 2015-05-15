@@ -27,7 +27,7 @@ class Auth {
 		self::login();
 
 		$sso = SSO::getUser();
-		$pengguna = Pengguna::firstOrCreate(array('nomor' => ($sso->role == Pengguna::DOSEN) ? ($sso->nip) : ($sso->npm)));
+		$pengguna = Pengguna::firstOrCreate(['nomor' => ($sso->role == Pengguna::DOSEN) ? ($sso->nip) : ($sso->npm)]);
 
 		$pengguna->nama = $sso->name;
 		if (empty($pengguna->role))
