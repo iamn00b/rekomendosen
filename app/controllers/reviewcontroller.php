@@ -10,47 +10,74 @@ class ReviewController extends _MainController {
 		$pengguna = Auth::getPengguna();
 		if($id == 0) {
 			$iddsn = 0;
+			$penggunareview = $pengguna->npm;
 		}
 		else {
 			$review = Review::where('id', '=', $id)->first();
 			$iddsn = $review->dosen_id;
+			$penggunareview = $review->pengguna_npm;
 		}
 		if($tipe == "achievment") {
 			$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('pengguna_npm', '=', $pengguna->npm)->where('tipe', '=', $tipe)->get();
 		}
 		else {
-			$review = Review::where('id', '=', $id)->where('pengguna_npm', '=', $pengguna)->get;
-			if($review->count() > 0) {
-				$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('tipe', '=', $tipe)->get();
+			$notifikasi1 = Notifikasi::where('review_id', '=', $id)->where('tipe', '=', $tipe)->get();
+			$sub = Dosen::find($iddsn)->penggunas()->get();
+			if($tipe == "komentar") {
+				foreach ($sub as $dosensub) {
+					$notifikasi3 = new Notifikasi;
+					$notifikasi3->tipe = "suscribe komentar";
+					$notifikasi3->pengguna_npm = $dosensub->pivot->pengguna_nomor;
+					$notifikasi3->total = 1;
+					$notifikasi3->review_id = $id;
+					$notifikasi3->dosen_id = $iddsn;
+					$notifikasi3->read = 0;
+					$notifikasi3->save();
+				}
 			}
 		}
 		if($notifikasi1->count() > 0) {
-			$notifikasi = $notifikasi1->last();
-			if($notifikasi->updated_at >= $pengguna->updated_at) {
-				$total = $notifikasi->total;
-				$notifikasi->total = $total+1;
-				$notifikasi->save();
-			}
-			else {
-				$notifikasi1 = new Notifikasi;
-				$notifikasi1->tipe = $tipe;
-				$notifikasi1->pengguna_npm = $pengguna->npm;
-				$notifikasi1->total = 1;
-				$notifikasi1->review_id = $id;
-				$notifikasi1->dosen_id = $iddsn;
-				$notifikasi1->read = 0;
-				$notifikasi1->save();
+			foreach ($notifikasi1 as $notif) {
+				$penggunanotif = Pengguna::where('npm', '=', $notif->pengguna_npm)->first();
+				if($notif->updated_at >= $penggunanotif->updated_at) {
+					$total = $notif->total;
+					$notif->total = $total+1;
+					$notif->save();
+				}
+				else {
+					$notif = new Notifikasi;
+					$notif->tipe = $tipe;
+					$notif->pengguna_npm = $penggunanotif->npm;
+					$notif->total = 1;
+					$notif->review_id = $id;
+					$notif->dosen_id = $iddsn;
+					$notif->read = 0;
+					$notif->save();
+				}
 			}
 		}
 		else {
 				$notifikasi1 = new Notifikasi;
 				$notifikasi1->tipe = $tipe;
-				$notifikasi1->pengguna_npm = $pengguna->npm;
+				$notifikasi1->pengguna_npm = $penggunareview;
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
 				$notifikasi1->dosen_id = $iddsn;
 				$notifikasi1->read = 0;
 				$notifikasi1->save();
+				if($tipe == "komentar") {
+					$notifcek = Notifikasi::where('review_id', '=', $id)->where('tipe', '=', $tipe)->where('pengguna_npm', '=', $pengguna->npm)->get();
+					if($notifcek->count() == 0) {
+						$notifikasi2 = new Notifikasi;
+						$notifikasi2->tipe = $tipe;
+						$notifikasi2->pengguna_npm = $pengguna->npm;
+						$notifikasi2->total = 0;
+						$notifikasi2->review_id = $id;
+						$notifikasi2->dosen_id = $iddsn;
+						$notifikasi2->read = 0;
+						$notifikasi2->save();
+					}
+				}
 		}
 	}
 	
@@ -72,7 +99,7 @@ class ReviewController extends _MainController {
 		}
 		$total = $model->count();
 		foreach (Achievment::where('tipe', '=', $tipe)->get() as $achiev) {
-			if($achiev->target <= $total) {
+			if($achiev->target == $total) {
 				$reward = $achiev->penggunas()->get();
 				if($reward->count() != 0) {
 					if($reward->first()->pivot->where('pengguna_nomor', '=', $pengguna->npm)->count() < 1) {
