@@ -15,6 +15,7 @@ class NotifikasiMigration {
 			$table->string('pengguna_npm');
 			$table->string('review_id');
 			$table->string('dosen_id');
+			$table->string('namadosen');
 			$table->integer('total');
 			$table->integer('read');
             $table->timestamps();

@@ -63,19 +63,31 @@
 		      <ul class="tabs">
 				{% set totalnotif = 0 %}
 				{% for notif in pengguna.notifikasis.get %}
-					{% if notif.read == 0 %}
-						{% set totalnotif = totalnotif+1 %}
+					{% if notif.total > 0 %}
+						{% if notif.read == 0 %}
+							{% set totalnotif = totalnotif+1 %}
+						{% endif %}
 					{% endif %}
 				{% endfor %}
-		        <li class="tab col s6"><a href="#notifikasi" class="active">Notifikasi({{totalnotif}})</a></li>
+				{% if totalnotif > 0 %}
+					<li class="tab col s6"><a href="#notifikasi" class="active">Notifikasi({{totalnotif}})</a></li>
+				{% else %}
+					<li class="tab col s6"><a href="#notifikasi" class="active">Notifikasi</a></li>
+				{% endif %}
 		        <li class="tab col s6"><a href="#riwayat">Riwayat</a></li>
 		      </ul>
 			    <div id="notifikasi" class="col s12">
 					{% for notif in pengguna.notifikasis.get | reverse %}
-						{% if notif.tipe == "achievment" %}
-							<a href="{{ urlFor('achievment', {'nomor': pengguna.npm }) }}">Ada {{notif.total}} {{ notif.tipe }} baru {{notif.read}}</a><br>
-						{% else %}
-							<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#review-rekomendasi">Ada {{notif.total}} {{ notif.tipe }} baru {{notif.read}}</a><br>
+						{% if notif.total > 0 %}
+							{% if notif.tipe == "achievment" %}
+								<a href="{{ urlFor('achievment', {'nomor': pengguna.npm }) }}">Ada {{notif.total}} {{ notif.tipe }} baru {{notif.read}}</a><br>
+							{% elseif notif.tipe == "subscribe review" %}
+								<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#{{notif.review_id}}">Ada {{notif.total}} buah review baru untuk dosen {{notif.namadosen}} {{notif.read}}</a><br>
+							{% elseif notif.tipe == "subscribe komentar" %}
+								<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#{{notif.review_id}}">Ada {{notif.total}} buah komentar baru untuk dosen {{notif.namadosen}} {{notif.read}}</a><br>
+							{% else %}
+								<a href="{{ urlFor('rinciandosen', {'id': notif.dosen_id }) }}#{{notif.review_id}}">Ada {{notif.total}} buah {{ notif.tipe }} baru {{notif.read}}</a><br>
+							{% endif %}
 						{% endif %}
 					{% endfor %}
 				</div>

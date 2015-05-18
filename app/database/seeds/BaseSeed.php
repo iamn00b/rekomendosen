@@ -20,15 +20,6 @@ class BaseSeed {
 		$activity1->dosen_id = 1;
 		$activity1->save();
 		
-		$notifikasi1 = new Notifikasi;
-		$notifikasi1->tipe = "komentar";
-		$notifikasi1->pengguna_npm = $pengguna1->npm;
-		$notifikasi1->total = 1;
-		$notifikasi1->review_id = 1;
-		$notifikasi1->dosen_id = 1;
-		$notifikasi1->read = 0;
-		$notifikasi1->save();
-		
 		$achievment1 = new Achievment;
 		$achievment1->nama = "ambulance";
 		$achievment1->tipe = "review";

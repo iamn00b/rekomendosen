@@ -133,7 +133,7 @@
 	<ul id="review-rekomendasi">
 
 	{% for review in dosen.reviewBaiks.get %}
-		<li class="row">
+		<li class="row" id="{{review.id}}">
 			<div class="card card-panel grey lighten-5 card-review">
 				<div class="row">
 					<div class="col m1 vote-review">

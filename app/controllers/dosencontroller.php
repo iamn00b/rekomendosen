@@ -24,6 +24,7 @@ class DosenController extends _MainController {
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
 				$notifikasi1->dosen_id = 0;
+				$notifikasi1->namadosen = "";
 				$notifikasi1->read = 0;
 				$notifikasi1->save();
 			}
@@ -35,6 +36,7 @@ class DosenController extends _MainController {
 				$notifikasi1->total = 1;
 				$notifikasi1->review_id = $id;
 				$notifikasi1->dosen_id = 0;
+				$notifikasi1->namadosen = "";
 				$notifikasi1->read = 0;
 				$notifikasi1->save();
 		}
@@ -115,6 +117,17 @@ class DosenController extends _MainController {
 			$activity1->activity = "melakukan Subscribe dosen $namadsn";
 			$this->checkReward('subscribe');
 		}
+		
+		$notifikasi1 = new Notifikasi;
+		$notifikasi1->tipe = "subscribe review";
+		$notifikasi1->pengguna_npm = $pengguna->npm;
+		$notifikasi1->total = 0;
+		$notifikasi1->review_id = 0;
+		$notifikasi1->dosen_id = $id;
+		$notifikasi1->namadosen = $namadsn;
+		$notifikasi1->read = 0;
+		$notifikasi1->save();
+		
 		$activity1->save();
 		$this->app->response->redirect($this->app->urlFor('rinciandosen', array('id' => $id)), 400);
 	}
