@@ -35,225 +35,7 @@ class MainSeed {
 		$dosen1->save();
 		$dosen2->save();
 		$dosen3->save();
-		
-		/* MATA KULIAH */
-		$matkul_matdas1 = new MataKuliah;
-		$matkul_matdas1->kodemk = "MAT10113";
-		$matkul_matdas1->nama = "Matematika Dasar 1";
-		$matkul_matdas1->singkatan_1 = "Matdas1";
-		$matkul_matdas1->singkatan_2 = "Calculus1";
-		$matkul_matdas1->sks = 2;
-		$matkul_matdas1->jenis = MataKuliah::RUMPUN;
-		$matkul_matdas1->prodi = MataKuliah::FAKULTAS;
-		$matkul_matdas1->deskripsi = "Mata kuliah ini mengajarkan topik-topik berikut: sistem bilangan riil dan bilangan kompleks, pertidaksamaan dan harga mutlak, fungsi satu peubah, grafik (kartesian, polar, parameter), operasi pada fungsi, teorema limit, kekontinuan, rumus-rumus dasar, aturan rantai, turunan tingkat tinggi, turunan implisit, aplikasi turunan, integral tak tentu dan tentu, teorema dasar kalkulus, sifat dasar integral, teknik integrasi";
-		$matkul_matdas1->dosens()->attach($dosenkas->nip);
-		$matkul_matdas1->dosens()->attach($dosenlia->nip);
-		$matkul_matdas1->dosens()->attach($dosenrah->nip);
-		$matkul_matdas1->save();
-		
-		$matkul_fisdas1 = new MataKuliah;
-		$matkul_fisdas1->kodemk = "FSK10111";
-		$matkul_fisdas1->nama = "Fisika Dasar 1";
-		$matkul_fisdas1->singkatan_1 = "Fisdas1";
-		$matkul_fisdas1->sks = 3;
-		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
-		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
-		$matkul_matdas1->deskripsi ="Mata kuliah ini mengajarkan topik-topik berikut:Besaran Fisis dan Vektor, Gerak dalam satu, dua, dan tiga dimensi, Hukum Newton, Aplikasi Hukum Newton, Kerja dan Energi Kinetik, Energi Potensial dan Kekekalan Energi, Momentum, Impuls dan Tumbukan, Gravitasi, Benda Tegar dan Rotasi Benda Tegar, Dinamika Gerak Rotasi, Statika dan Elastisitas, Mekanika Fluida, Gerak Periodik, Temperatur, Kalor dan Hukum, Termodinamika"
-		$matkul_fisdas1->save();
-		
-	
-		$matkul_matdis1 = new MataKuliah;
-		$matkul_matdis1->kodemk = "IKI10100";
-		$matkul_matdis1->nama = "Matematika Diskret 1";
-		$matkul_matdis1->singkatan_1 = "Matdis1";
-		$matkul_matdis1->singkatan_2 = "MD1";
-		$matkul_matdis1->sks = 3;
-		$matkul_matdis1->jenis = MataKuliah::FAKULTAS;
-		$matkul_matdis1->prodi = MataKuliah::FAKULTAS;
-		$matkul_matdas1->deskripsi ="Dalam mata kuliah ini, mahasiswa akan memperoleh pemahaman tentang matematika diskret yang sesuai untuk aplikasi komputer. Topik yang dibahas meliputi logika proposisional, logika predikat, teori himpunan, fungsi, teori bilangan, metode pembuktian, induksi matematika, prinsip pigeonhole, permutasi, dan kombinasi"
-		$matkul_matdis1->save();
-		
-		
-		$matkul_ddp = new MataKuliah;
-		$matkul_ddp->kodemk = "IKI10200";
-		$matkul_ddp->nama = "Dasar-Dasar Pemrograman";
-		$matkul_ddp->singkatan_1 = "DDP";
-		$matkul_ddp->sks = 6;
-		$matkul_ddp->jenis = MataKuliah::FAKULTAS;
-		$matkul_ddp->prodi = MataKuliah::FAKULTAS;
-		$matkul_ddp->deskripsi ="Mata kuliah ini bertujuan untuk mengajarkan konsep-konsep dasar serta teknik untuk membuat program komputer menggunakan paradigma berorientasi obyek pada bahasa pemrograman Java. Mata kuliah ini diajarkan melalui kombinasi kuliah tatap muka serta sesi latihan pemrograman di mana setiap peserta kuliah mengakses PC yang tersambung ke Internet. Mata kuliah ini memraktekkan prinsip di mana pemrograman tidak bisa diajarkan dalam cara yang sepenuhnya linier, namun topik-topik awal tetap dibahas lagi di belakang dengan tingkat kedalaman yang lebih canggih"
-		$matkul_ddp->dosens()->attach($dosengilang->nip);
-		$matkul_ddp->dosens()->attach($dosenbayu->nip);
-		$matkul_ddp->dosens()->attach($dosendenny->nip);
-		$matkul_ddp->dosens()->attach($deosenalfan->nip);
-		$matkul_ddp->dosens()->attach($dosenclara->nip);
-		$matkul_ddp->dosens()->attach($dosenhanif->nip);
-		$matkul_ddp->save();
-		
-		$matkul_sda = new MataKuliah;
-		$matkul_sda->kodemk = "IKI10400";
-		$matkul_sda->nama = "Struktur Data & Algoritma";
-		$matkul_sda->singkatan_1 = "SDA";
-		$matkul_sda->sks = 4;
-		$matkul_sda->jenis = MataKuliah::FAKULTAS;
-		$matkul_sda->prodi = MataKuliah::FAKULTAS;
-		$matkul_sda->deskripsi ="Mata kuliah ini bertujuan untuk mengajarkan konsep-konsep dasar serta teknik untuk membuat program komputer menggunakan paradigma berorientasi obyek pada bahasa pemrograman Java. Mata kuliah ini diajarkan melalui kombinasi kuliah tatap muka serta sesi latihan pemrograman di mana setiap peserta kuliah mengakses PC yang tersambung ke Internet. Mata kuliah ini memraktekkan prinsip di mana pemrograman tidak bisa diajarkan dalam cara yang sepenuhnya linier, namun topik-topik awal tetap dibahas lagi di belakang dengan tingkat kedalaman yang lebih canggih"
-		$matkul_sda->dosens()->attach($dosengilang->nip);
-		$matkul_sda->dosens()->attach($dosenbayu->nip);
-		$matkul_sda->dosens()->attach($dosendenny->nip);
-		$matkul_sda->dosens()->attach($dosenhadaiq->nip);
-		$matkul_sda->prasyarat()->attach($matkul_ddp->nip);
-		$matkul_sda->save();
-		
-		$matkul_alin = new MataKuliah;
-		$matkul_alin->kodemk = "IKI10103";
-		$matkul_alin->nama = "Aljabar Linier";
-		$matkul_alin->singkatan_1 = "Alin";
-		$matkul_alin->sks = 3;
-		$matkul_alin->jenis = MataKuliah::FAKULTAS;
-		$matkul_alin->prodi = MataKuliah::FAKULTAS;
-		$matkul_alin->deskripsi ="Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika."
-		$matkul_alin->dosens()->attach($dosenlia->nip);
-		$matkul_alin->dosens()->attach($dosennizar->nip);
-		$matkul_alin->dosens()->attach($dosenhadaiq->nip);
-		$matkul_alin->dosens()->attach($dosenkas->nip);
-		//anwar masum knp gada
-		
-		$matkul_matdis2 = new MataKuliah;
-		$matkul_matdis2->kodemk = "IKI20101";
-		$matkul_matdis2->nama = "Matematika Diskret 2";
-		$matkul_matdis2->singkatan_1 = "Matdis2";
-		$matkul_matdis1->singkatan_2 = "MD2";
-		$matkul_matdis2->sks = 3;
-		$matkul_matdis2->jenis = MataKuliah::FAKULTAS;
-		$matkul_matdis2->prodi = MataKuliah::FAKULTAS;
-		$matkul_matdis2->deskripsi ="Mata kuliah ini merupakan kelanjutan dari mata kuliah Matematika Diskret 1 dan memberikan landasan yang lebih teoritis untuk ilmu komputer. Mata kuliah ini mencakup teori kombinatorik, relasi, dan graph"
-		$matkul_matdis2->dosens()->attach($dosentieta->nip);
-		$matkul_matdis2->dosens()->attach($dosendina->nip);
-		$matkul_matdis2->dosens()->attach($dosenevi->nip);
-		
-		$matkulstatprob = new MataKuliah;
-		$matkulstatprob->kodemk = "IKI20102";
-		$matkulstatprob->nama = "Statistika & Probabilitas";
-		$matkulstatprob->sks = 4;
-		$matkulstatprob->prodi = "Fakultas";
-		$matkulstatprob->dosens()->attach($dosenika->nip);
-		$matkulstatprob->dosens()->attach($dosenary->nip);
-		$matkulstatprob->dosens()->attach($dosenalfan->nip);
-		
-		$matkulppw = new MataKuliah;
-		$matkulppw->kodemk = "IKI20201";
-		$matkulppw->nama = "Perancangan & Pemrograman Web";
-		$matkulppw->sks = 3;
-		$matkulppw->prodi = "Fakultas";
-		$matkulppw->dosens()->attach($dosenherup->nip);
-		$matkulppw->dosens()->attach($dosengilang->nip);
-		$matkulppw->dosens()->attach($dosenhisyam->nip);
-		$matkulppw->dosens()->attach($dosenrizal->nip);
-		
-		
-		
-		
-		
-		///////////////////////////////////
-		$matkul_anum->prasyarat()->attach($matkul_matdas2->id);
-			
-		$matkul_ppl = new MataKuliah;
-		$matkul_ppl->kodemk = "IK00001";
-		$matkul_ppl->nama = "Proyek Perangkat Lunak";
-		$matkul_ppl->singkatan_1 = "PPL";
-		$matkul_ppl->sks = 6;
-		$matkul_ppl->semester = 6;
-		$matkul_ppl->jenis = MataKuliah::JURUSAN;
-		$matkul_ppl->prodi = MataKuliah::ILMU_KOMPUTER;
-		$matkul_ppl->save();
-		
-		$matkul_propensi = new MataKuliah;
-		$matkul_propensi->kodemk = "SI00001";
-		$matkul_propensi->nama = "Proyek Pengembangan Sistem Informasi";
-		$matkul_propensi->singkatan_1 = "Propensi";
-		$matkul_propensi->sks = 6;
-		$matkul_propensi->semester = 6;
-		$matkul_propensi->jenis = MataKuliah::JURUSAN;
-		$matkul_propensi->prodi = MataKuliah::SISTEM_INFORMASI;
-		$matkul_propensi->save();
-
-		$matkul_ppl->dosen()->attach($dosen1->id);
-		$matkul_ppl->dosen()->attach($dosen3->id);
-		$matkul_ppl->save();
-
-		$matkul_propensi->dosen()->attach($dosen1->id);
-		$matkul_propensi->dosen()->attach($dosen2->id);
-		$matkul_propensi->save();
-
-		$matkul_matdas2->dosen()->attach($dosen1->id);
-		$matkul_matdas2->save();
-
-		$matkul_anum->dosen()->attach($dosen1->id);
-		$matkul_anum->dosen()->attach($dosen2->id);
-		$matkul_anum->prasyarat()->attach($matkul_matdas2->id);
-		$matkul_anum->save();
-		
-		
-		/* REVIEW */
-		$review1 = new Review;
-		$review1->rating = 5;
-		$review1->isi = "sangat direkomendasikan";
-		$review1->dosen_id = $dosen1->id;
-		$review1->pengguna_id = $pengguna1->id;
-		
-		$review2 = new Review;
-		$review2->rating = 2;
-		$review2->isi = "terlalu cepat ngajarnya";
-		$review2->dosen_id = $dosen1->id;
-		$review2->pengguna_id = $pengguna1->id;
-
-		$review1->save();
-		$review2->save();
-		
-		$komentar1 = new Komentar;
-		$komentar1->isi = "saya setuju";
-		$komentar1->review_id = $review1->id;
-		$komentar1->pengguna_id = $pengguna1->id;
-		
-		$komentar2 = new Komentar;
-		$komentar2->isi = "saya tidak setuju";
-		$komentar2->review_id = $review1->id;
-		$komentar2->pengguna_id = $pengguna1->id;
-		
-		$komentar3 = new Komentar;
-		$komentar3->isi = "mantap!";
-		$komentar3->review_id = $review2->id;
-		$komentar3->pengguna_id = $pengguna1->id;
-		
-		$komentar1->save();
-		$komentar2->save();
-		$komentar3->save();
-		
-		$vote1 = new Vote;
-		$vote1->tipe = Vote::UP;
-		$vote1->review_id = $review1->id;
-		$vote1->pengguna_id = $pengguna1->id;
-		
-		$vote2 = new Vote;
-		$vote2->tipe = Vote::DOWN;
-		$vote2->review_id = $review2->id;
-		$vote2->pengguna_id = $pengguna1->id;
-
-		$vote1->save();
-		$vote2->save();	
-			
-    }
-}
-//////////////////////////////////////////////////////////////////////////
-
-<?php
-
-class BaseSeed {
-
-    function run()
-    {
-		
+		//////
 		
 		$dosenani = new Dosen;
 		$dosenani->nip = "194805291975012001";
@@ -376,11 +158,11 @@ class BaseSeed {
 		$doseneko ->jeniskelamin = "Perempuan";
 		$doseneko ->ttl = date("xxxx-xx-xx");
 		
-		$dosenglad = new Dosen;
-		$dosenglad ->nip = "1408150029";
-		$dosenglad ->nama = "Gladhi Guarddin, S.Kom., M.Kom.";
-		$dosenglad ->jeniskelamin = "Laki-Laki";
-		$dosenglad ->ttl = date("xxxx-xx-xx");
+		$dosengladhi = new Dosen;
+		$dosengladhi ->nip = "1408150029";
+		$dosengladhi ->nama = "Gladhi Guarddin, S.Kom., M.Kom.";
+		$dosengladhi ->jeniskelamin = "Laki-Laki";
+		$dosengladhi ->ttl = date("xxxx-xx-xx");
 		
 		$dosenefi = new Dosen;
 		$dosenefi ->nip = "120803003";
@@ -783,389 +565,1066 @@ class BaseSeed {
 		$dosenhisyam ->nama = "Hisyam Fahmi S.Kom, M.Kom.";
 		$dosenhisyam ->jeniskelamin = "Laki-Laki";
 		$dosenhisyam ->ttl = date("19xx-xx-xx");
-		////////////////////////////
 		
+		/* MATA KULIAH */
+		$matkul_matdas1 = new MataKuliah;
+		$matkul_matdas1->kodemk = "MAT10113";
+		$matkul_matdas1->nama = "Matematika Dasar 1";
+		$matkul_matdas1->singkatan_1 = "Matdas1";
+		$matkul_matdas1->singkatan_2 = "Calculus1";
+		$matkul_matdas1->sks = 2;
+		$matkul_matdas1->semester = 1;
+		$matkul_matdas1->jenis = MataKuliah::RUMPUN;
+		$matkul_matdas1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdas1->deskripsi = "Mata kuliah ini mengajarkan topik-topik berikut: sistem bilangan riil dan bilangan kompleks, pertidaksamaan dan harga mutlak, fungsi satu peubah, grafik (kartesian, polar, parameter), operasi pada fungsi, teorema limit, kekontinuan, rumus-rumus dasar, aturan rantai, turunan tingkat tinggi, turunan implisit, aplikasi turunan, integral tak tentu dan tentu, teorema dasar kalkulus, sifat dasar integral, teknik integrasi";
+		$matkul_matdas1->dosen()->attach($dosenkas->nip);
+		$matkul_matdas1->dosen()->attach($dosenlia->nip);
+		$matkul_matdas1->dosen()->attach($dosenrah->nip);
+		$matkul_matdas1->save();
+		
+		$matkul_fisdas1 = new MataKuliah;
+		$matkul_fisdas1->kodemk = "FSK10111";
+		$matkul_fisdas1->nama = "Fisika Dasar 1";
+		$matkul_fisdas1->singkatan_1 = "Fisdas1";
+		$matkul_fisdas1->sks = 3;
+		$matkul_fisdas1->semester = 1;
+		$matkul_fisdas1->jenis = MataKuliah::RUMPUN;
+		$matkul_fisdas1->prodi = MataKuliah::FAKULTAS;
+		$matkul_fisdas1->deskripsi ="Mata kuliah ini mengajarkan topik-topik berikut:Besaran Fisis dan Vektor, Gerak dalam satu, dua, dan tiga dimensi, Hukum Newton, Aplikasi Hukum Newton, Kerja dan Energi Kinetik, Energi Potensial dan Kekekalan Energi, Momentum, Impuls dan Tumbukan, Gravitasi, Benda Tegar dan Rotasi Benda Tegar, Dinamika Gerak Rotasi, Statika dan Elastisitas, Mekanika Fluida, Gerak Periodik, Temperatur, Kalor dan Hukum, Termodinamika";
+		$matkul_fisdas1->save();
 		
-		
-		
-		
-		
-		$matkulsistemoperasi = new MataKuliah;
-		$matkulsistemoperasi->kodemk = "IKI20505";
-		$matkulsistemoperasi->nama = "Sistem Operasi";
-		$matkulsistemoperasi->sks = 4;
-		$matkulsistemoperasi->prodi = "Fakultas";
-		$matkulsistemoperasi->dosens()->attach($dosenibam->nip);
-		$matkulsistemoperasi->dosens()->attach($dosenamril->nip);
-		$matkulsistemoperasi->dosens()->attach($dosenhilman->nip); 
-		
-		$matkulbasdat = new MataKuliah;
-		$matkulbasdat->kodemk = "IKI20700";
-		$matkulbasdat->nama = "Basis Data";
-		$matkulbasdat->sks = 4;
-		$matkulbasdat->prodi = "Fakultas";
-		Yova Ruldeviyani S.Kom., M.Kom., Yulistiyan Wardhana S.Kom., Maya Retno Ayu Setyautami S.Kom., M.Kom., Ika Alfina S.Kom., M.Kom., Clara Vania S.Kom., M.Kom, Evi Yulianti S.Kom.
-		
-		$matkulppw = new MataKuliah;
-		$matkulppw->kodemk = "IKI30202";
-		$matkulppw->nama = "Rekayasa Perangkat Lunak";
-		$matkulppw->sks = 3;
-		$matkulppw->prodi = "Fakultas";
-		Satrio Baskoro Yudhoatmojo S.Kom., M.T.I., Nursidik Heru Praptono S.Kom, M.Kom., Iis Solichah S.Kom., M.Kom., Ika Alfina S.Kom., M.Kom.
-		
-		$matkulkp = new MataKuliah;
-		$matkulkp->kodemk = "IKI40902";
-		$matkulkp->nama = "Kerja Praktik";
-		$matkulkp->sks = 3;
-		$matkulkp->prodi = "Fakultas";
-		Iis Solichah S.Kom., M.Kom., Imairi Eitiveni M.Kom., Nursidik Heru Praptono S.Kom, M.Kom. , Ave Adriana Pinem S.Kom., Satrio Baskoro Yudhoatmojo S.Kom., M.T.I., Bilih 
-		
-		$matkulkomas = new MataKuliah;
-		$matkulkomas->kodemk = "IKI40903";
-		$matkulkomas->nama = "Komputer & Masyarakat";
-		$matkulkomas->sks = 3;
-		$matkulkomas->prodi = "Fakultas";
-		Drs. Widijanto Satyo Nugroho M.Math., Ph.D., Dr. Drs. R. Yugo Kartono Isal M.Sc.
-		
-		$matkulfisdas2 = new MataKuliah;
-		$matkulfisdas2->kodemk = "|IKO12106";
-		$matkulfisdas2->nama = "Fisika Dasar 2";
-		$matkulfisdas2->sks = 3;
-		$matkulfisdas2->prodi = "Ilmu Komputer";
-		Dr. Eng. Supriyanto M.Sc, Dr. Vivi Fauzia S.Si., M.Si., Arief Syarifuddin Fitrianto M.Si.
-		
-		$matkulpsd = new MataKuliah;
-		$matkulpsd->kodemk = "IKO12500";
-		$matkulpsd->nama = "Pengantar Sistem Dijital";
-		$matkulpsd->sks = 4;
-		$matkulpsd->prodi = "Ilmu Komputer";
-		Ir. Erdefi Rakun M.Sc., Ari Wibisono M.Kom.
-		
-		$matkulpok = new MataKuliah;
-		$matkulpok->kodemk = "IKO21502";
-		$matkulpok->nama = "Pengantar Organisasi Komputer";
-		$matkulpok->sks = 3;
-		$matkulpok->prodi = "Ilmu Komputer";
-		
-		$matkulmatdas2 = new MataKuliah;
-		$matkulmatdas2->kodemk = "IKO21105";
-		$matkulmatdas2->nama = "Matematika Dasar 2";
-		$matkulmatdas2->sks = 4;
-		$matkulmatdas2->prodi = "Ilmu Komputer";
-		
-		$matkultba = new MataKuliah;
-		$matkultba->kodemk = "IKO22401";
-		$matkultba->nama = "Teori Bahasa dan Automata";
-		$matkultba->sks = 4;
-		$matkultba->prodi = "Ilmu Komputer";
-		
-		$matkulpemdek = new MataKuliah;
-		$matkulpemdek->kodemk = "IKO22203";
-		$matkulpemdek->nama = "Pemrograman Deklaratif";
-		$matkulpemdek->sks = 3;
-		$matkulpemdek->prodi = "Ilmu Komputer";
-		
-		$matkulsisprog = new MataKuliah;
-		$matkulsisprog ->kodemk = "IKO31204";
-		$matkulsisprog ->nama = "Pemrograman Sistem";
-		$matkulsisprog ->sks = 3;
-		$matkulsisprog ->prodi = "Ilmu Komputer";
-		
-		$matkulsc = new MataKuliah;
-		$matkulsc->kodemk = "IKO31300";
-		$matkulsc->nama = "Sistem Cerdas";
-		$matkulsc->sks = 4;
-		$matkulsc->prodi = "Ilmu Komputer";
-		
-		
-		$matkulpi = new MataKuliah;
-		$matkulpi->kodemk = "IKO31900";
-		$matkulpi->nama = "Penulisan Ilmiah";
-		$matkulpi->sks = 2;
-		$matkulpi->prodi = "Ilmu Komputer";
-		
-		$matkuljarkom = new MataKuliah;
-		$matkuljarkom->kodemk = "IKO31503";
-		$matkuljarkom->nama = "Jaringan Komputer";
-		$matkuljarkom->sks = 4;
-		$matkuljarkom->prodi = "Ilmu Komputer";
-		
-		$matkulanum = new MataKuliah;
-		$matkulanum->kodemk = "IKO32104";
-		$matkulanum->nama = "Analisis Numerik";
-		$matkulanum->sks = 3;
-		$matkulanum->prodi = "Ilmu Komputer";
-		
-		$matkuldaa = new MataKuliah;
-		$matkuldaa->kodemk = "IKO32402";
-		$matkuldaa->nama = "Desain & Analisis Algoritma";
-		$matkuldaa->sks = 4;
-		$matkuldaa->prodi = "Ilmu Komputer";
-		
-		$matkulppl = new MataKuliah;
-		$matkulppl->kodemk = "IKO32205";
-		$matkulppl->nama = "Proyek Perangkat Lunak";
-		$matkulppl->sks = 6;
-		$matkulppl->prodi = "Ilmu Komputer";
-		
-		$matkulpkp = new MataKuliah;
-		$matkulpkp->kodemk = "IKO31258";
-		$matkulpkp->nama = "Pemrograman Konkuren & Paralel";
-		$matkulpkp->sks = 4;
-		$matkulpkp->prodi = "Ilmu Komputer";
-		
-		$matkulosk = new MataKuliah;
-		$matkulosk->kodemk = "IKO31550";
-		$matkulosk->nama = "Organisasi Sistem Komputer";
-		$matkulosk->sks = 3;
-		$matkulosk->prodi = "Ilmu Komputer";
-		
-		$matkulembed = new MataKuliah;
-		$matkulembed->kodemk = "IIKO31551";
-		$matkulembed->nama = "Embedded Systems";
-		$matkulembed->sks = 3;
-		$matkulembed->prodi = "Ilmu Komputer";
-		
-		$matkulti = new MataKuliah;
-		$matkulti->kodemk = "IKO32150";
-		$matkulti->nama = "Teori Informasi";
-		$matkulti->sks = 3;
-		$matkulti->prodi = "Ilmu Komputer";
-		
-		$matkultk = new MataKuliah;
-		$matkultk->kodemk = "IKO32257";
-		$matkultk->nama = "Teknik Kompilator";
-		$matkultk->sks = 4;
-		$matkultk->prodi = "Ilmu Komputer";
-		
-		$matkulcis = new MataKuliah;
-		$matkulcis->kodemk = "IKO32453";
-		$matkulcis->nama = "Kriptografi & Keamanan Informasi";
-		$matkulcis->sks = 4;
-		$matkulcis->prodi = "Ilmu Komputer";
-		
-		$matkullaw = new MataKuliah;
-		$matkullaw->kodemk = "IKO32751";
-		$matkullaw->nama = "Layanan & Aplikasi Web";
-		$matkullaw->sks = 3;
-		$matkullaw->prodi = "Ilmu Komputer";
-		
-		$matkulsp = new MataKuliah;
-		$matkulsp->kodemk = "IKO41151";
-		$matkulsp->nama = "Simulasi & Pemodelan";
-		$matkulsp->sks = 3;
-		$matkulsp->prodi = "Ilmu Komputer";
-		
-		$matkulpsd2 = new MataKuliah;
-		$matkulpsd2->kodemk = "IKO41552";
-		$matkulpsd2->nama = "Pengolahan Sinyal Dijital";
-		$matkulpsd2->sks = 3;
-		$matkulpsd2->prodi = "Ilmu Komputer";
-		
-		$matkulst = new MataKuliah;
-		$matkulst->kodemk = "IKO41554";
-		$matkulst->nama = "Sistem Terdistribusi";
-		$matkulst->sks = 3;
-		$matkulst->prodi = "Ilmu Komputer";
-		
-		$matkulubi = new MataKuliah;
-		$matkulubi->kodemk = "IKO41557";
-		$matkulubi->nama = "Ubiquitous & Net-centric Computing";
-		$matkulubi->sks = 3;
-		$matkulubi->prodi = "Ilmu Komputer";
-		
-		$matkulrobotik = new MataKuliah;
-		$matkulrobotik->kodemk = "IKO42360";
-		$matkulrobotik->nama = "Robotika";
-		$matkulrobotik->sks = 3;
-		$matkulrobotik->prodi = "Ilmu Komputer";
-		
-		$matkulrsd = new MataKuliah;
-		$matkulrsd->kodemk = "IKO42553";
-		$matkulrsd->nama = "Rancangan Sistem Dijital";
-		$matkulrsd->sks = 3;
-		$matkulrsd->prodi = "Ilmu Komputer";
-		
-		$matkultka = new MataKuliah;
-		$matkultka->kodemk = "IKO42555";
-		$matkultka->nama = "Topik Khusus Arsitektur & Infrastuktur";
-		$matkultka->sks = 3;
-		$matkultka->prodi = "Ilmu Komputer";
-		
-		$matkulta = new MataKuliah;
-		$matkulta->kodemk = "IKI40999";
-		$matkulta->nama = "Tugas Akhir";
-		$matkulta->sks = 6;
-		$matkulta->prodi = "Fakultas";
-		
-		$matkulsister = new MataKuliah;
-		$matkulsister->kodemk = "IKO31250";
-		$matkulsister->nama = "Sistem Interaksi";
-		$matkulsister->sks = 4;
-		$matkulsister->prodi = "Ilmu Komputer";
-		
-		$matkulbanjut = new MataKuliah;
-		$matkulbanjut->kodemk = "IKO31754";
-		$matkultbanjut->nama = "Basis Data Lanjut";
-		$matkulbanjut->sks = 3;
-		$matkulbanjut->prodi = "Ilmu Komputer";
-		
-		$matkulgraf = new MataKuliah;
-		$matkulgraf->kodemk = "IKO32450";
-		$matkulgraf->nama = "Grafika Komputer";
-		$matkulgraf->sks = 3;
-		$matkulgraf->prodi = "Ilmu Komputer";
-		
-		$matkulgame = new MataKuliah;
-		$matkulgaeme->kodemk = "IKO41251";
-		$matkulgame->nama = "Game Development";
-		$matkulgame->sks = 3;
-		$matkulgame->prodi = "Ilmu Komputer";
-		
-		$matkulpl = new MataKuliah;
-		$matkulpl->kodemk = "IKO41253";
-		$matkulpl->nama = "Pemrograman Logika";
-		$matkulpl->sks = 4;
-		$matkulpl->prodi = "Ilmu Komputer";
-		
-		$matkulpmpl = new MataKuliah;
-		$matkulpmpl->kodemk = "IKO41254";
-		$matkulpmpl->nama = "Penjaminan Mutu Perangkat Lunak";
-		$matkulpmpl->sks = 4;
-		$matkulpmpl->prodi = "Ilmu Komputer";
-		
-		$matkulsw = new MataKuliah;
-		$matkulsw->kodemk = "IKO41361";
-		$matkulsw->nama = "Semantic Web";
-		$matkulsw->sks = 3;
-		$matkulsw->prodi = "Ilmu Komputer";
-		
-		$matkulpbk = new MataKuliah;
-		$matkulpbk->kodemk = "IKO41853";
-		$matkulpbk->nama = "Pengajaran Berbantuan Komputer";
-		$matkulpbk->sks = 3;
-		$matkulpbk->prodi = "Ilmu Komputer";
-		
-		$matkulmetfor = new MataKuliah;
-		$matkulmetfor->kodemk = "IKO42252";
-		$matkulmetfor->nama = "Metode Formal";
-		$matkulmetfor->sks = 4;
-		$matkulmetfor->prodi = "Ilmu Komputer";
-		
-		$matkultkt = new MataKuliah;
-		$matkultkt->kodemk = "IKO42256";
-		$matkultkt->nama = "Topik Khusus Teknologi Perangkat Lunak";
-		$matkultkt->sks = 3;
-		$matkultkt->prodi = "Ilmu Komputer";
-		
-		$matkuldm = new MataKuliah;
-		$matkuldm->kodemk = "IKO42351";
-		$matkuldm->nama = "Data Mining";
-		$matkuldm->sks = 3;
-		$matkuldm->prodi = "Ilmu Komputer";
-		
-		$matkulpc = new MataKuliah;
-		$matkulpc->kodemk = "IKO31355";
-		$matkulpc->nama = "Pengolahan Citra";
-		$matkulpc->sks = 3;
-		$matkulpc->prodi = "Ilmu Komputer";
-		
-		$matkulpm = new MataKuliah;
-		$matkulpm->kodemk = "IKO32353";
-		$matkulpm->nama = "Pemelajaran Mesin";
-		$matkulpm->sks = 3;
-		$matkulpm->prodi = "Ilmu Komputer";
-		
-		$matkulpbm = new MataKuliah;
-		$matkulpbm->kodemk = "IKO32354";
-		$matkulpbm->nama = "Pengolahan Bahasa Manusia";
-		$matkulpbm->sks = 3;
-		$matkulpbm->prodi = "Ilmu Komputer";
-		
-		$matkulpengmul = new MataKuliah;
-		$matkulpengmul->kodemk = "IKO41356";
-		$matkupengmul->nama = "Pengolahan Multimedia";
-		$matkulpengmul->sks = 3;
-		$matkulpengmul->prodi = "Ilmu Komputer";
-		
-		$matkulperin = new MataKuliah;
-		$matkulperin->kodemk = "IKO41357";
-		$matkulperin->nama = "Perolehan Informasi";
-		$matkulperin->sks = 3;
-		$matkulperin->prodi = "Ilmu Komputer";
-		
-		$matkulgm = new MataKuliah;
-		$matkulgm->kodemk = "IKO41452";
-		$matkulgm->nama = "Geometric Modelling";
-		$matkulgm->sks = 4;
-		$matkulgm->prodi = "Ilmu Komputer";
-		
-		$matkulsig = new MataKuliah;
-		$matkulsig->kodemk = "IKO41854";
-		$matkulsig->nama = "Sistem Informasi Geografis";
-		$matkulsig->sks = 3;
-		$matkulsig->prodi = "Ilmu Komputer";
-		
-		$matkultkpim = new MataKuliah;
-		$matkultkpim->kodemk = "IKO42359";
-		$matkultkpim->nama = "Topik Khusus Pengolahan Informasi Multimedia";
-		$matkultkpim->sks = 3;
-		$matkultkpim->prodi = "Ilmu Komputer";
-		
-		$matkulcg = new MataKuliah;
-		$matkulcg->kodemk = "IKO42451";
-		$matkulcg->nama = "Computational Geometry";
-		$matkulcg->sks = 4;
-		$matkulcg->prodi = "Ilmu Komputer";
-		
-		$matkulbio = new MataKuliah;
-		$matkulbio->kodemk = "IKO31350";
-		$matkulbio->nama = "Bioinformatika";
-		$matkulbio->sks = 3;
-		$matkulbio->prodi = "Ilmu Komputer";
-		
-		$matkulpd = new MataKuliah;
-		$matkulpd->kodemk = "IKO32152";
-		$matkulpd->nama = "Persamaan Diferensial";
-		$matkulpd->sks = 3;
-		$matkulpd->prodi = "Ilmu Komputer";
-		
-		$matkulasn = new MataKuliah;
-		$matkulasn->kodemk = "IKO41153";
-		$matkulasn->nama = "Aproksimasi & Sistem Nonlinier";
-		$matkulasn->sks = 3;
-		$matkulasn->prodi = "Ilmu Komputer";
-		
-		$matkulalinn = new MataKuliah;
-		$matkulalinn->kodemk = "IKO41154";
-		$matkulalinn->nama = "Aljabar Linier Numerik";
-		$matkulalinn->sks = 3;
-		$matkulalinn->prodi = "Ilmu Komputer";
-			
-		$matkulkl = new MataKuliah;
-		$matkulkl->kodemk = "IKO41352";
-		$matkulkl->nama = "Komputasi Lunak";
-		$matkulkl->sks = 3;
-		$matkulkl->prodi = "Ilmu Komputer";
-		
-		$matkullk = new MataKuliah;
-		$matkullk->kodemk = "IKO41454";
-		$matkullk->nama = "Logika Komputasional";
-		$matkullk->sks = 3;
-		$matkullk->prodi = "Ilmu Komputer";
-		
-		$matkultkkk = new MataKuliah;
-		$matkultkkk->kodemk = "IKO42358";
-		$matkultkkk->nama = "Topik Khusus Kecerdasan Komputasional";
-		$matkultkkk->sks = 3;
-		$matkultkkk->prodi = "Ilmu Komputer";
-		
-		$matkultkl = new MataKuliah;
-		$matkultkl->kodemk = "IKO61480";
-		$matkultkl->nama = "Teori Komputasi Lanjut";
-		$matkultkl->sks = 4;
-		$matkultkl->prodi = "Ilmu Komputer";
 	
+		$matkul_matdis1 = new MataKuliah;
+		$matkul_matdis1->kodemk = "IKI10100";
+		$matkul_matdis1->nama = "Matematika Diskret 1";
+		$matkul_matdis1->singkatan_1 = "Matdis1";
+		$matkul_matdis1->singkatan_2 = "MD1";
+		$matkul_matdis1->sks = 3;
+		$matkul_matdis1->semester = 1;
+		$matkul_matdis1->jenis = MataKuliah::FAKULTAS;
+		$matkul_matdis1->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdas1->deskripsi ="Dalam mata kuliah ini, mahasiswa akan memperoleh pemahaman tentang matematika diskret yang sesuai untuk aplikasi komputer. Topik yang dibahas meliputi logika proposisional, logika predikat, teori himpunan, fungsi, teori bilangan, metode pembuktian, induksi matematika, prinsip pigeonhole, permutasi, dan kombinasi";
+		$matkul_matdis1->save();
+		
+		
+		$matkul_ddp = new MataKuliah;
+		$matkul_ddp->kodemk = "IKI10200";
+		$matkul_ddp->nama = "Dasar-Dasar Pemrograman";
+		$matkul_ddp->singkatan_1 = "DDP";
+		$matkul_ddp->sks = 6;
+		$matkul_ddp->semester = 1;
+		$matkul_ddp->jenis = MataKuliah::FAKULTAS;
+		$matkul_ddp->prodi = MataKuliah::FAKULTAS;
+		$matkul_ddp->deskripsi ="Mata kuliah ini bertujuan untuk mengajarkan konsep-konsep dasar serta teknik untuk membuat program komputer menggunakan paradigma berorientasi obyek pada bahasa pemrograman Java. Mata kuliah ini diajarkan melalui kombinasi kuliah tatap muka serta sesi latihan pemrograman di mana setiap peserta kuliah mengakses PC yang tersambung ke Internet. Mata kuliah ini memraktekkan prinsip di mana pemrograman tidak bisa diajarkan dalam cara yang sepenuhnya linier, namun topik-topik awal tetap dibahas lagi di belakang dengan tingkat kedalaman yang lebih canggih";
+		$matkul_ddp->dosen()->attach($dosengilang->nip);
+		$matkul_ddp->dosen()->attach($dosenbayu->nip);
+		$matkul_ddp->dosen()->attach($dosendenny->nip);
+		$matkul_ddp->dosen()->attach($deosenalfan->nip);
+		$matkul_ddp->dosen()->attach($dosenclara->nip);
+		$matkul_ddp->dosen()->attach($dosenhanif->nip);
+		$matkul_ddp->save();
+		
+		$matkul_sda = new MataKuliah;
+		$matkul_sda->kodemk = "IKI10400";
+		$matkul_sda->nama = "Struktur Data & Algoritma";
+		$matkul_sda->singkatan_1 = "SDA";
+		$matkul_sda->sks = 4;
+		$matkul_sda->semester = 2;
+		$matkul_sda->jenis = MataKuliah::FAKULTAS;
+		$matkul_sda->prodi = MataKuliah::FAKULTAS;
+		$matkul_sda->deskripsi ="Mata kuliah ini bertujuan untuk mengajarkan konsep-konsep dasar serta teknik untuk membuat program komputer menggunakan paradigma berorientasi obyek pada bahasa pemrograman Java. Mata kuliah ini diajarkan melalui kombinasi kuliah tatap muka serta sesi latihan pemrograman di mana setiap peserta kuliah mengakses PC yang tersambung ke Internet. Mata kuliah ini memraktekkan prinsip di mana pemrograman tidak bisa diajarkan dalam cara yang sepenuhnya linier, namun topik-topik awal tetap dibahas lagi di belakang dengan tingkat kedalaman yang lebih canggih";
+		$matkul_sda->dosen()->attach($dosengilang->nip);
+		$matkul_sda->dosen()->attach($dosenbayu->nip);
+		$matkul_sda->dosen()->attach($dosendenny->nip);
+		$matkul_sda->dosen()->attach($dosenhadaiq->nip);
+		$matkul_sda->prasyarat()->attach($matkul_ddp->nip);
+		$matkul_sda->save();
+		
+		$matkul_alin = new MataKuliah;
+		$matkul_alin->kodemk = "IKI10103";
+		$matkul_alin->nama = "Aljabar Linier";
+		$matkul_alin->singkatan_1 = "Alin";
+		$matkul_alin->sks = 3;
+		$matkul_alin->semester = 2;
+		$matkul_alin->jenis = MataKuliah::FAKULTAS;
+		$matkul_alin->prodi = MataKuliah::FAKULTAS;
+		$matkul_alin->deskripsi ="Mata kuliah ini mempersiapkan mahasiswa untuk dapat menyelesaikan masalah yang terkait dengan aljabar matriks dan konsep ruang vektor. Mata kuliah ini membekali mahasiswa dengan logical reasoning dan abstraksi matematika.";
+		$matkul_alin->dosen()->attach($dosenlia->nip);
+		$matkul_alin->dosen()->attach($dosennizar->nip);
+		$matkul_alin->dosen()->attach($dosenhadaiq->nip);
+		$matkul_alin->dosen()->attach($dosenkas->nip);
+		$matkul_alin->save();
+		//anwar masum knp gada
+		
+		$matkul_matdis2 = new MataKuliah;
+		$matkul_matdis2->kodemk = "IKI20101";
+		$matkul_matdis2->nama = "Matematika Diskret 2";
+		$matkul_matdis2->singkatan_1 = "Matdis2";
+		$matkul_matdis2->singkatan_2 = "MD2";
+		$matkul_matdis2->sks = 3;
+		$matkul_matdis2->semester = 3;
+		$matkul_matdis2->jenis = MataKuliah::FAKULTAS;
+		$matkul_matdis2->prodi = MataKuliah::FAKULTAS;
+		$matkul_matdis2->deskripsi ="Mata kuliah ini merupakan kelanjutan dari mata kuliah Matematika Diskret 1 dan memberikan landasan yang lebih teoritis untuk ilmu komputer. Mata kuliah ini mencakup teori kombinatorik, relasi, dan graph";		$matkul_matdis2->dosen()->attach($dosentieta->nip);
+		$matkul_matdis2->dosen()->attach($dosendina->nip);
+		$matkul_matdis2->dosen()->attach($dosenevi->nip);
+		$matkul_matdis2->save();
+		
+		$matkul_statprob = new MataKuliah;
+		$matkul_statprob->kodemk = "IKI20102";
+		$matkul_statprob->nama = "Statistika & Probabilitas";
+		$matkul_statprob->singkatan_1 = "Matdis2";
+		$matkul_statprob->singkatan_2 = "MD2";
+		$matkul_statprob->sks = 4;
+		$matkul_statprob->semester = 3;
+		$matkul_statprob->jenis = MataKuliah::FAKULTAS;
+		$matkul_statprob->prodi = MataKuliah::FAKULTAS;
+		$matkul_statprob->deskripsi ="Mata kuliah ini memberikan penguasaan tentang pokok bahasan mengenai konsep peluang dan peubah acak, statistika deskriptif dan uji hipotesis, simulasi dan pemodelan non-deterministik, estimasi parameter dan regresi, serta teori antrian";
+		$matkul_statprob->dosen()->attach($dosenika->nip);
+		$matkul_statprob->dosen()->attach($dosenary->nip);
+		$matkul_statprob->dosen()->attach($dosenalfan->nip);
+		$matkul_statprob->save();
+		
+		$matkul_ppw = new MataKuliah;
+		$matkul_ppw->kodemk = "IKI20201";
+		$matkul_ppw->nama = "Perancangan & Pemrograman Web";
+		$matkul_ppw->singkatan_1 = "PPW";
+		$matkul_ppw->sks = 3;
+		$matkul_ppw->semester = 3;
+		$matkul_ppw->jenis = MataKuliah::FAKULTAS;
+		$matkul_ppw->prodi = MataKuliah::FAKULTAS;
+		$matkul_ppw->deskripsi ="HTML dan CSS, yang merupakan komponen dasar dari halaman web, merupakan dua topik pertama yang dibahas dalam mata kuliah ini. Mata kuliah ini kemudian membahas penampilan web secara dinamis menggunakan Javascript. Javascript juga merupakan dasar pemrograman Ajax yang juga akan diperkenalkan pada akhir kuliah ini. Pemrograman dari sisi server juga akan dibahas dengan menggunakan bahasa PHP dan ASP. Untuk memperkaya presentasi web, topik ini juga membahas pembuatan gambar untuk halaman web dan presentasi dinamis";		$matkul_ppw->dosen()->attach($dosenherup->nip);
+		$matkul_ppw->dosen()->attach($dosengilang->nip);
+		$matkul_ppw->dosen()->attach($dosenhisyam->nip);
+		$matkul_ppw->dosen()->attach($dosenrizal->nip);
+		$matkul_ppw->prasyarat()->attach($matkul_ddp->nip);
+		$matkul_ppw->save();
+			
+		$matkul_os = new MataKuliah;
+		$matkul_os->kodemk = "IKI20505";
+		$matkul_os->nama = "Sistem Operasi";
+		$matkul_os->singkatan_1 = "OS";
+		$matkul_os->sks = 4;
+		$matkul_os->semester = 4;
+		$matkul_os->jenis = MataKuliah::FAKULTAS;
+		$matkul_os->prodi = MataKuliah::FAKULTAS;
+		$matkul_os->deskripsi ="Mata kuliah ini akan dimulai dengan pengenalan singkat dari sistem operasi, hubungan antara hardware dan sistem operasi, dan beberapa komponen utama dari sebagian besar sistem operasi. Mata kuliah ini membahas trade-off yang mungkin muncul antara kinerja dan fungsionalitas dalam perancangan dan implementasi sistem operasi. Penekanan khusus akan diberikan kepada subsistem utama sebuah sistem operasi, yaitu manajemen proses (proses, thread, penjadwalan CPU, sinkronisasi, dan deadlock), manajemen memori (segmentasi, paging, swapping), sistem file, penyimpanan sekunder dan dukungan sistem operasi untuk sistem terdistribus";
+		$matkul_os->dosen()->attach($dosenibam->nip);
+		$matkul_os->dosen()->attach($dosenamril->nip);
+		$matkul_os->dosen()->attach($dosenhilman->nip); 
+		$matkul_os->prasyarat()->attach($matkul_ddak->nip);
+		$matkul_os->prasyarat()->attach($matkul_pok->nip);
+		$matkul_os->save();
+		
+		$matkul_basdat = new MataKuliah;
+		$matkul_basdat->kodemk = "IKI20700";
+		$matkul_basdat->nama = "Basis Data";
+		$matkul_basdat->singkatan_1 = "basdat";
+		$matkul_basdat->sks = 4;
+		$matkul_basdat->semester = 4;
+		$matkul_basdat->jenis = MataKuliah::FAKULTAS;
+		$matkul_basdat->prodi = MataKuliah::FAKULTAS;
+		$matkul_basdat->deskripsi ="Mata kuliah ini membahas konsep dasar dari manajemen database yang mencakup aspek pemodelan dan desain, bahasa dan fasilitas, implementasi dan penggunaan database. Topik yang diajarkan meliputi: arsitektur dan konsep sistem manajemen basis data (DBMS), struktur dan organisasi file, indexing, pemodelan data menggunakan model entity-relationship, pemodelan data menggunakan model relasional, bahasa kueri formal, aljabar relasional, basisdata berorientasi obyek, SQL dan QBE, functional dependency, normalisasi basis data relasional, algoritma dan proses desain basis data relasional, pemrosesan serta optimasi kueri, transaksi, kendali konkurensi, pemulihan basis data serta basis data client-server";
+		$matkul_basdat->dosen()->attach($dosenyova->nip);
+		$matkul_basdat->dosen()->attach($dosenmaya->nip);
+		$matkul_basdat->dosen()->attach($dosenika->nip);
+		$matkul_basdat->dosen()->attach($dosenevi->nip);
+		$matkul_basdat->dosen()->attach($dosenclara->nip);
+		$matkul_basdat->dosen()->attach($dosenyayan->nip);
+		$matkul_basdat->prasyarat()->attach($matkul_sda->nip);
+		$matkul_basdat->save();
+		
+		$matkul_rpl = new MataKuliah;
+		$matkul_rpl->kodemk = "IKI30202";
+		$matkul_rpl->nama = "Rekayasa Perangkat Lunak";
+		$matkul_rpl->singkatan_1 = "RPL";
+		$matkul_rpl->sks = 3;
+		$matkul_rpl->semester = 5;
+		$matkul_rpl->jenis = MataKuliah::FAKULTAS;
+		$matkul_rpl->prodi = MataKuliah::FAKULTAS;
+		$matkul_rpl->deskripsi ="Mata kuliah ini mencakup siklus pengembangan perangkat lunak, yang terdiri dari perencanaan, analisis, desain, coding, pengujian dan pemeliharaan. Pada mata kuliah ini, mahasiswa membentuk sebuah kelompok dan mengembangkan proyek yang akan dilakukan selama satu semester. Topik yang tercakup dalam mata kuliah ini adalah: metodologi pengembangan perangkat lunak, rekayasa perangkat lunak berbantuan komputer (CASE tool); perencanaan proyek pengembangan perangkat lunak, analisis permasalahan dan kebutuhan pengguna; pengorganisasian spesifikasi perangkat lunak; prinsip dasar perancangan perangkat lunak; masalah-masalah dalam pengkodean, penjaminan kualitas perangkat lunak; pengukuran kualitas perangkat lunak; pengujian perangkat lunak, pemeliharaan perangkat lunak";
+		$matkul_rpl->dosen()->attach($dosensby->nip);
+		$matkul_rpl->dosen()->attach($dosenherup->nip);
+		$matkul_rpl->dosen()->attach($doseniis->nip);
+		$matkul_rpl->dosen()->attach($dosenika->nip);
+		$matkul_rpl->prasyarat()->attach($matkul_ddp->nip);
+		$matkul_rpl->save();
+		
+		$matkul_kp = new MataKuliah;
+		$matkul_kp->kodemk = "IKI40902";
+		$matkul_kp->nama = "Kerja Praktik";
+		$matkul_kp->singkatan_1 = "KP";
+		$matkul_kp->sks = 3;
+		$matkul_kp->semester = 7;
+		$matkul_kp->jenis = MataKuliah::FAKULTAS;
+		$matkul_kp->prodi = MataKuliah::FAKULTAS;
+		$matkul_kp->deskripsi ="Mata kuliah ini memberikan kesempatan kepada mahasiswa untuk memperoleh pengalaman dalam penyelesaian permasalahan yang terdapat pada sebuah organisasi menggunakan Teknologi Informasi dan Komunikasi (TIK) dengan cara terjun secara langsung ke dunia kerja";
+		$matkul_kp->dosen()->attach($dosenherup->nip);
+		$matkul_kp->dosen()->attach($dosenimairi->nip);
+		$matkul_kp->dosen()->attach($doseave-->nip);
+		$matkul_kp->dosen()->attach($dosensby->nip);
+		$matkul_kp->dosen()->attach($dosenbilih->nip);
+		$matkul_kp->save();
+		
+		$matkul_komas = new MataKuliah;
+		$matkul_komas->kodemk = "IKI40903";
+		$matkul_komas->nama = "Komputer & Masyarakat";
+		$matkul_komas->singkatan_1 = "Komas";
+		$matkul_komas->sks = 3;
+		$matkul_komas->semester = 7;
+		$matkul_komas->jenis = MataKuliah::FAKULTAS;
+		$matkul_komas->prodi = MataKuliah::FAKULTAS;
+		$matkul_komas->deskripsi ="Mata kuliah ini menimbulkan kesadaran dan kepekaan mahasiswa terhadap berbagai persoalan sosial dan ekonomi terkait penerapan teknologi komputer dalam kehidupan sehari-hari. Mahasiswa diharapkan mampu merespon positif terhadap masalah-masalah sosial yang ada dalam konteks disiplin ilmu komputer. Mahasiswa akan dihadapkan pada isu-isu yang berkaitan dengan IT, dan diharapkan mampu menganalisa isu tersebut dan memberikan solusi dari sudut pandang mereka sebagai mahasiswa ilmu komputer";
+		$matkul_komas->dosen()->attach($dosenwidi->nip);
+		$matkul_komas->dosen()->attach($dosenyugo->nip);
+		$matkul_komas->dosen()->attach($dosen->nip);//pa pbk
+		$matkul_komas->save();
+		
+		$matkul_fisdas2 = new MataKuliah;
+		$matkul_fisdas2->kodemk = "IKO12106";
+		$matkul_fisdas2->nama = "Fisika Dasar 2";
+		$matkul_fisdas2->singkatan_1 = "fisdas2";
+		$matkul_fisdas2->sks = 3;
+		$matkul_fisdas2->semester = 2;
+		$matkul_fisdas2->jenis = MataKuliah::JURUSAN;
+		$matkul_fisdas2->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_fisdas2->deskripsi ="Mata kuliah ini mengajarkan topik-topik berikut: Muatan Listrik, Hukum Coulomb dan Medan Listrik, Hukum Gauss, Potensial Listrik, Kapasitansi dan Dielektrik, Arus Listrik Searah, Resistansi dan Rangkaian Arus Searah, Medan Magnetik dan Gaya Magnetik, Sumber Medan Magnetik dan Hukum Ampere, Induksi Elektro-magnetik, Induktansi, Arus Bolak-Balik, Gelombang (umum, mekanik & e.m.), Bunyi, Gelombang Elektro-magnetik, Sifat dasar & Perambatan Cahaya, Polarisasi Cahaya, Interferensi Gelombang Cahaya";
+		$matkul_fisdas2->save();	
+		
+		$matkul_psd = new MataKuliah;
+		$matkul_psd->kodemk = "IKO12500";
+		$matkul_psd->nama = "Pengantar Sistem Dijital";
+		$matkul_psd->singkatan_1 = "PSD";
+		$matkul_psd->sks = 4;
+		$matkul_psd->semester = 2;
+		$matkul_psd->jenis = MataKuliah::JURUSAN;
+		$matkul_psd->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_psd->deskripsi ="Mata kuliah ini memberikan pemahaman dasar dan pengalaman praktis dalam merancang sistem dijital yang menjadi dasar sebuah komputer. Peserta akan mempelajari konsep-konsep dalam operasi rangkaian digital dan cara merancang dan mensimulasikan rangkaian digital dengan alat bantu dan teknik yang mutakhir. Topik yang dibahas meliputi: sistem bilangan biner; dasar rangkaian digital: logika biner, gerbang logika, aljabar Boolean, bentuk standar fungsi Boolean, representasi, penyederhanaan dan manipulasi fungsi Boolean dengan Karnaugh-Map; rangkaian kombinasi: prosedur analisis & perancangan rangkaian kombinasi, rangkaian aritmatika, decoder, multiplexer; rangkaian sekuensial: latch, flip-flop, characteristic table, excitation table, state table, state diagram, propagation delay, analisis dan perancangan rangkaian sekuensial; rangkaian register dan counter; memori & programmable logic";
+		$matkul_psd->dosen()->attach($dosenefi->nip);
+		$matkul_psd->dosen()->attach($dosenari->nip);
+		$matkul_psd->dosen()->attach($dosenwisnu->nip);
+		$matkul_psd->save();
+		
+		$matkul_pok = new MataKuliah;
+		$matkul_pok->kodemk = "IKO21502";
+		$matkul_pok->nama = "Pengantar Organisasi Komputer";
+		$matkul_pok->singkatan_1 = "POK";
+		$matkul_pok->sks = 3;
+		$matkul_pok->semester = 3;
+		$matkul_pok->jenis = MataKuliah::JURUSAN;
+		$matkul_pok->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pok->deskripsi ="Mata kuliah ini mengajarkan dasar-dasar organisasi komputer sekuensial, yang terdiri dari komponen- komponen: input, output, memori, dan prosesor (kontrol dan datapath). Pemahaman akan konsep-konsep ini juga akan disampaikan melalui latihan pemrograman dengan bahasa tingkat rendah (low-level language) seperti bahasa rakitan (assembly language).";
+		$matkul_pok->dosen()->attach($dosenhanif->nip);
+		$matkul_pok->dosen()->attach($dosenari->nip);
+		$matkul_pok->dosen()->attach($dosenwisnu->nip);
+		$matkul_pok->prasyarat()->attach($matkul_psd->nip);
+		$matkul_pok->prasyarat()->attach($matkul_ddp->nip);
+		$matkul_pok->save();
+		
+		
+		$matkul_matdas2 = new MataKuliah;
+		$matkul_matdas2->kodemk = "IKO21105";
+		$matkul_matdas2->nama = "Matematika Dasar 2";
+		$matkul_matdas2->singkatan_1 = "MatDas2";
+		$matkul_matdas2->singkatan_2 = "Calculus2";
+		$matkul_matdas2->sks = 4;
+		$matkul_matdas2->semester = 3;
+		$matkul_matdas2->jenis = MataKuliah::JURUSAN;
+		$matkul_matdas2->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_matdas2->deskripsi ="Mata kuliah ini mengajarkan topik-topik lanjut dari Kalkulus sebagai berikut: aplikasi integral, bentuk tak tentu dan integral tak wajar, barisan dan deret tak hingga, geometri dalam ruang dan vektor, fungsi peubah banyak, integral lipat";
+		$matkul_matdas2->dosen()->attach($dosenangga->nip);
+		$matkul_matdas2->save();
+	
+		
+		
+		$matkul_tba = new MataKuliah;
+		$matkul_tba->kodemk = "IKO22401";
+		$matkul_tba->nama = "Teori Bahasa dan Automata";
+		$matkul_tba->singkatan_1 = "TBA";
+		$matkul_tba->sks = 4;
+		$matkul_tba->semester = 4;
+		$matkul_tba->jenis = MataKuliah::JURUSAN;
+		$matkul_tba->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tba->deskripsi ="Mata kuliah ini membahas model teoritis tentang komputasi serta bahasa formal yang melandasi semua sistem komputer. Topik-topik yang dibahas meliputi: finite state automata dan bahasa reguler, pushdown automata dan bahasa context-free, mesin Turing dan bahasa recursively enumerable, masalah decision dan (un)decidability";
+		$matkul_tba->dosen()->attach($dosendina->nip);
+		$matkul_tba->dosen()->attach($dosenstef->nip);
+		$matkul_tba->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tba->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tba->save();
+		
+		$matkul_pemdek = new MataKuliah;
+		$matkul_pemdek->kodemk = "IKO22203";
+		$matkul_pemdek->nama = "Pemrograman Deklaratif";
+		$matkul_pemdek->singkatan_1 = "PemDek";
+		$matkul_pemdek->sks = 3;
+		$matkul_pemdek->semester = 4;
+		$matkul_pemdek->jenis = MataKuliah::JURUSAN;
+		$matkul_pemdek->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pemdek->deskripsi ="Tujuan dari mata kuliah ini adalah untuk memperkenalkan prinsip-prinsip pemrograman deklaratif, dalam hal ini dengan paradigma pemrograman fungsional, menggunakan bahasa pemrograman ML. Mata kuliah ini mengilustrasikan prinsip-prinsip deklaratif menggunakan fitur-fitur utama dari ML seperti tipe data terstruktur, fungsi orde tinggi, serta pemeriksaan tipe. Aplikasi dan penerapan aspek-aspek ini akan didemonstrasikan melalui serangkaian studi kasus";
+		$matkul_pemdek->dosen()->attach($dosenade->nip);
+		$matkul_pemdek->dosen()->attach($dosenalfan->nip);
+		$matkul_pemdek->dosen()->attach($dosenevi->nip);
+		$matkul_pemdek->prasyarat()->attach($matkul_sda->nip);
+		$matkul_pemdek->save();
+		
+		$matkul_sisprog = new MataKuliah;
+		$matkul_sisprog ->kodemk = "IKO31204";
+		$matkul_sisprog ->nama = "Pemrograman Sistem";
+		$matkul_sisprog->singkatan_1 = "SisProg";
+		$matkul_sisprog ->sks = 3;
+		$matkul_sisprog->semester = 5;
+		$matkul_sisprog->jenis = MataKuliah::JURUSAN;
+		$matkul_sisprog->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_sisprog->deskripsi ="Mata kuliah ini akan mendalami konsep-konsep sebuah sistem operasi, khususnya GNU/Linux, dengan penekanan khusus pada kemampuan praktis untuk mengimplementasikan dan memodifikasi program di bawah lapisan aplikasi. Para peserta akan diperkenalkan pada berbagai lapisan implementasi dari sebuah sistem operasi,  seperti pengelolaan proses, sistem berkas, IPC, soket jaringan, dan struktur kernel. Latihan dan tugas akan menggunakan bahasa C/C++, serta beberapa perangkat scripting untuk memanipulasi berkas";
+		$matkul_sisprog->dosen()->attach($dosengladhi->nip);
+		$matkul_sisprog->dosen()->attach($dosenari->nip);
+		$matkul_sisprog->prasyarat()->attach($matkul_sda->nip);
+		$matkul_sisprog->prasyarat()->attach($matkul_os->nip);
+		$matkul_sisprog->save();
+		
+		$matkul_sc = new MataKuliah;
+		$matkul_sc->kodemk = "IKO31300";
+		$matkul_sc->nama = "Sistem Cerdas";
+		$matkul_sc->singkatan_1 = "SC";
+		$matkul_sc->singkatan_2 = "SisCer";
+		$matkul_sc->sks = 4;
+		$matkul_sc->semester = 5;
+		$matkul_sc->jenis = MataKuliah::JURUSAN;
+		$matkul_sc->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_sc->deskripsi ="Mata kuliah ini memperkenalkan berbagai jenis teknik dan sub-bidang kecerdasan buatan (Artificial Intelligence). Peserta akan dibekali dengan pemahaman teoritis mengenai isu-isu yang dihadapi dalam pengembangan agen (dan sistem multi-agen) yang cerdas dan otonom, serta pengetahuan praktis dalam membangun dan memrogram agen-agen tersebut. Topik kuliah ini meliputi konsep state-space search (termasuk heuristic dan local search), pendekatan logika terhadap representasi pengetahuan serta penalaran, serta pendekatan probabilistik terhadap kecerdasan buatan, misalnya jaringan Bayesian dan pemelajaran mesin";
+		$matkul_sc->dosen()->attach($dosenruli->nip);
+		$matkul_sc->dosen()->attach($dosenhanif->nip);
+		$matkul_sc->prasyarat()->attach($matkul_statprob->nip);
+		$matkul_sc->prasyarat()->attach($matkul_sda->nip);
+		$matkul_sc->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_sc->save();
+		
+		$matkul_pi = new MataKuliah;
+		$matkul_pi->kodemk = "IKO31900";
+		$matkul_pi->nama = "Penulisan Ilmiah";
+		$matkul_pi->singkatan_1 = "PI";
+		$matkul_pi->sks = 2;
+		$matkul_pi->semester = 5;
+		$matkul_pi->jenis = MataKuliah::JURUSAN;
+		$matkul_pi->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pi->deskripsi ="Mata kuliah ini dirancang untuk memperkaya pemahaman peserta kuliah akan struktur dan penulisan paper ilmiah. Penulisan ilmiah mencakup pemahaman proses menulis, teknik-teknik yang digunakan dalam menulis, dan kegiatan menulis itu sendiri. Pengembangan penulisan seharusnya merupakan pendekatan yang terpadu antara manusia, data, informasi, pengetahuan, dan alat bantu yang menghasilkan tulisan ilmiah yang benar dan mudah dibaca";
+		$matkul_pi->dosen()->attach($dosenarief->nip);
+		$matkul_pi->dosen()->attach($dosenzain->nip);
+		$matkul_pi->dosen()->attach($dosenyugo->nip);
+		$matkul_pi->prasyarat()->attach($matkul_mpkta->nip);
+		$matkul_pi->save();
+		
+		$matkul_jarkom = new MataKuliah;
+		$matkul_jarkom->kodemk = "IKO31503";
+		$matkul_jarkom->nama = "Jaringan Komputer";
+		$matkul_jarkom->singkatan_1 = "Jarkom";
+		$matkul_jarkom->sks = 4;
+		$matkul_jarkom->semester = 5;
+		$matkul_jarkom->jenis = MataKuliah::JURUSAN;
+		$matkul_jarkom->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_jarkom->deskripsi ="Mata kuliah ini memperkenalkan jaringan komputer, dan membekali peserta dengan pemahaman terhadap aplikasi-aplikasi jaringan komputer serta bagaimana cara kerjanya pada lapisan-lapisan bawah";
+		$matkul_jarkom->dosen()->attach($dosenheri->nip);
+		$matkul_jarkom->dosen()->attach($dosenari->nip);
+		$matkul_jarkom->prasyarat()->attach($matkul_os->nip);
+		$matkul_jarkom->save();
+		
+		$matkul_anum = new MataKuliah;
+		$matkul_anum->kodemk = "IKO32104";
+		$matkul_anum->nama = "Analisis Numerik";
+		$matkul_anum->singkatan_1 = "Anum";
+		$matkul_anum->sks = 3;
+		$matkul_anum->semester = 6;
+		$matkul_anum->jenis = MataKuliah::JURUSAN;
+		$matkul_anum->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_anum->deskripsi ="Mata kuliah ini membahas dasar-dasar penerapan komputasi ilmiah untuk ilmu komputer. Topik yang dibahas meliputi prinsip-prinsip matematika dasar serta algoritma analisa numerik sampai pada isu-isu praktis seperti reliabilitas perangkat lunak dan kinerja pada perangkat keras mutakhir. Peserta dilatih membuat program dengan bahasa C atau Matlab melalui tugas-tugas pemrograman";
+		$matkul_anum->dosen()->attach($dosencan->nip);
+		$matkul_anum->dosen()->attach($dosenherus->nip);
+		$matkul_anum->dosen()->attach($dosenmega->nip);
+		$matkul_anum->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_anum->prasyarat()->attach($matkul_matdas1->nip);
+		$matkul_anum->save();
+		
+		
+		$matkul_daa = new MataKuliah;
+		$matkul_daa->kodemk = "IKO32402";
+		$matkul_daa->nama = "Desain & Analisis Algoritma";
+		$matkul_jarkom->singkatan_1 = "DAA";
+		$matkul_daa->sks = 4;
+		$matkul_daa->semester = 6;
+		$matkul_daa->jenis = MataKuliah::JURUSAN;
+		$matkul_daa->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_daa->deskripsi ="Kuliah ini mengajarkan bagaimana merancang dan menganalisa sebuah algoritma dalam menyelesaikan persoalan-persoalan yang membutuhkan pemrograman. Dua isu utama yang ditekankan dalam merancang dan menganalisa algoritma tersebut adalah aspek kebenaran (correctness) dan kompleksitas (complexity). Berbagai teknik dan pendekatan akan dibahas, antara lain dynamic programming, greedy algorithm, backtracking, graph algorithms, approximation algorithms, dan lain-lain";
+		$matkul_daa->dosen()->attach($dosenyugo->nip);
+		$matkul_daa->dosen()->attach($dosenarlisa->nip);
+		$matkul_daa->dosen()->attach($dosenbilih->nip);
+		$matkul_daa->prasyarat()->attach($matkul_sda->nip);
+		$matkul_daa->save();
+		
+		$matkul_ppl = new MataKuliah;
+		$matkul_ppl->kodemk = "IKO32205";
+		$matkul_ppl->nama = "Proyek Perangkat Lunak";
+		$matkul_ppl->singkatan_1 = "PPL";
+		$matkul_ppl->sks = 6;
+		$matkul_ppl->semester = 6;
+		$matkul_ppl->jenis = MataKuliah::JURUSAN;
+		$matkul_ppl->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_ppl->deskripsi ="Mata kuliah ini memberikan pengalaman kepada peserta kuliah untuk terlibat secara aktif dalam sebuah proyek IT selama satu semester. Peserta diharapkan dapat mensintesa dan mengimplementasikan ilmu yang sudah didapatkan dari mata kuliah-mata kuliah terkait untuk membangun sebuah proyek IT. Peserta akan bekerja dalam tim yang terdiri dari 4 sampai dengan 5 anggota. Setiap anggota harus berpartisipasi aktif dalam setiap peran proyek IT, yaitu manajemen proyek, analisa kebutuhan, rancangan, implementasi, serta pengujian. Setiap anggota juga harus berpartisipasi pada setiap tahap pengembangan perangkat lunak, yakni komunikasi, perencanaan, pemodelan, pembangunan, serta operasionalisasi. Sebuah proyek IT selama satu semester diberikan kepada satu atau lebih tim, tergantung dari ruang lingkup serta tingkat kompleksitas proyek tersebut. Masalah proyek yang diberikan akan berupa masalah nyata, dengan pengguna yang nyata juga. Selama pengembangan proyek, setiap tim akan bertemu beberapa kali dengan pengguna, selain pertemuan internal tim. Setiap pertemuan tercatat melalui Minutes of Meetings (MoMs), yang akan menjadi bahan pertimbangan untuk penilaian. Setiap tim harus mempresentasikan kemajuan secara mingguan kepada dosen dan/atau asisten dosen mata kuliah. Masalah yang dihadapi selama proses pengembangan akan dibahas pada pertemuan mingguan. Pada akhir semester, semua tim harus mendemokan proyeknya di hadapan pengguna, dosen, serta asisten dosen mata kuliah. Selain itu, akan ada juga sesi kuliah tamu dengan praktisi IT ternama yang akan membagikan ilmu dan pengalaman dalam manajemen dan pengembangan proyek IT";
+		$matkul_ppl->dosen()->attach($dosenhadaiq->nip);
+		$matkul_ppl->dosen()->attach($dosensby->nip);
+		$matkul_ppl->dosen()->attach($dosenputu->nip);
+		$matkul_ppl->dosen()->attach($doseneko->nip);
+		$matkul_ppl->prasyarat()->attach($matkul_rpl->nip);
+		$matkul_ppl->save();
+		
+		$matkul_pkp = new MataKuliah;
+		$matkul_pkp->kodemk = "IKO31258";
+		$matkul_pkp->nama = "Pemrograman Konkuren & Paralel";
+		$matkul_pkp->singkatan_1 = "Jarkom";
+		$matkul_pkp->sks = 4;
+		$matkul_pkp->semester = 4;
+		$matkul_pkp->jenis = MataKuliah::PEMINATAN;
+		$matkul_pkp->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pkp->deskripsi ="";
+		$matkul_pkp->dosen()->attach($dosendina->nip);
+		$matkul_pkp->dosen()->attach($dosenstef->nip);
+		$matkul_pkp->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pkp->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pkp->save();
+		
+		$matkul_osk = new MataKuliah;
+		$matkul_osk->kodemk = "IKO31550";
+		$matkul_osk->nama = "Organisasi Sistem Komputer";
+		$matkul_osk->singkatan_1 = "Jarkom";
+		$matkul_osk->sks = 3;
+		$matkul_osk->semester = 4;
+		$matkul_osk->jenis = MataKuliah::PEMINATAN;
+		$matkul_osk->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_osk->deskripsi ="";
+		$matkul_osk->dosen()->attach($dosendina->nip);
+		$matkul_osk->dosen()->attach($dosenstef->nip);
+		$matkul_osk->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_osk->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_osk->save();
+		
+		$matkul_embed = new MataKuliah;
+		$matkul_embed->kodemk = "IIKO31551";
+		$matkul_embed->nama = "Embedded Systems";
+		$matkul_embed->singkatan_1 = "Jarkom";
+		$matkul_embed->sks = 3;  
+		$matkul_embed->semester = 4;
+		$matkul_embed->jenis = MataKuliah::PEMINATAN;
+		$matkul_embed->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_embed->deskripsi ="";
+		$matkul_embed->dosen()->attach($dosendina->nip);
+		$matkul_embed->dosen()->attach($dosenstef->nip);
+		$matkul_embed->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_embed->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_embed->save();
+		
+		$matkul_ti = new MataKuliah;
+		$matkul_ti->kodemk = "IKO32150";
+		$matkul_ti->nama = "Teori Informasi";
+		$matkul_ti->singkatan_1 = "Jarkom";
+		$matkul_ti->sks = 3;
+		$matkul_ti->semester = 4;
+		$matkul_ti->jenis = MataKuliah::PEMINATAN;
+		$matkul_ti->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_ti->deskripsi ="";
+		$matkul_ti->dosen()->attach($dosendina->nip);
+		$matkul_ti->dosen()->attach($dosenstef->nip);
+		$matkul_ti->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_ti->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_ti->save();
+		
+		$matkul_tk = new MataKuliah;
+		$matkul_tk->kodemk = "IKO32257";
+		$matkul_tk->nama = "Teknik Kompilator";
+		$matkul_tk->singkatan_1 = "Jarkom";
+		$matkul_tk->sks = 4;
+		$matkul_tk->semester = 4;
+		$matkul_tk->jenis = MataKuliah::PEMINATAN;
+		$matkul_tk->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tk->deskripsi ="";
+		$matkul_tk->dosen()->attach($dosendina->nip);
+		$matkul_tk->dosen()->attach($dosenstef->nip);
+		$matkul_tk->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tk->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tk->save();
+		
+		$matkul_cis = new MataKuliah;
+		$matkul_cis->kodemk = "IKO32453";
+		$matkul_cis->nama = "Kriptografi & Keamanan Informasi";
+		$matkul_cis->singkatan_1 = "Jarkom";
+		$matkul_cis->sks = 4;
+		$matkul_cis->semester = 4;
+		$matkul_cis->jenis = MataKuliah::PEMINATAN;
+		$matkul_cis->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_cis->deskripsi ="";
+		$matkul_cis->dosen()->attach($dosendina->nip);
+		$matkul_cis->dosen()->attach($dosenstef->nip);
+		$matkul_cis->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_cis->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_cis->save();
+		
+		$matkul_law = new MataKuliah;
+		$matkul_law->kodemk = "IKO32751";
+		$matkul_law->nama = "Layanan & Aplikasi Web";
+		$matkul_law->singkatan_1 = "Jarkom";
+		$matkul_law->sks = 3;
+		$matkul_law->semester = 4;
+		$matkul_law->jenis = MataKuliah::PEMINATAN;
+		$matkul_law->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_law->deskripsi ="";
+		$matkul_law->dosen()->attach($dosendina->nip);
+		$matkul_law->dosen()->attach($dosenstef->nip);
+		$matkul_law->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_law->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_law->save();
+		
+		$matkul_sp = new MataKuliah;
+		$matkul_sp->kodemk = "IKO41151";
+		$matkul_sp->nama = "Simulasi & Pemodelan";
+		$matkul_sp->singkatan_1 = "Jarkom";
+		$matkul_sp->sks = 3;
+		$matkul_sp->semester = 4;
+		$matkul_sp->jenis = MataKuliah::PEMINATAN;
+		$matkul_sp->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_sp->deskripsi ="";
+		$matkul_sp->dosen()->attach($dosendina->nip);
+		$matkul_sp->dosen()->attach($dosenstef->nip);
+		$matkul_sp->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_sp->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_sp->save();
+		
+		$matkul_psd2 = new MataKuliah;
+		$matkul_psd2->kodemk = "IKO41552";
+		$matkul_psd2->nama = "Pengolahan Sinyal Dijital";
+		$matkul_psd2->singkatan_1 = "Jarkom";
+		$matkul_psd2->sks = 3;
+		$matkul_psd2->semester = 4;
+		$matkul_psd2->jenis = MataKuliah::PEMINATAN;
+		$matkul_psd2->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_psd2->deskripsi ="";
+		$matkul_psd2->dosen()->attach($dosendina->nip);
+		$matkul_psd2->dosen()->attach($dosenstef->nip);
+		$matkul_psd2->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_psd2->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_psd2->save();
+		
+		$matkul_st = new MataKuliah;
+		$matkul_st->kodemk = "IKO41554";
+		$matkul_st->nama = "Sistem Terdistribusi";
+		$matkul_st->singkatan_1 = "Jarkom";
+		$matkul_st->sks = 3;
+		$matkul_st->semester = 4;
+		$matkul_st->jenis = MataKuliah::PEMINATAN;
+		$matkul_st->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_st->deskripsi ="";
+		$matkul_st->dosen()->attach($dosendina->nip);
+		$matkul_st->dosen()->attach($dosenstef->nip);
+		$matkul_st->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_st->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_st->save();
+		
+		$matkul_ubi = new MataKuliah;
+		$matkul_ubi->kodemk = "IKO41557";
+		$matkul_ubi->nama = "Ubiquitous & Net-centric Computing";
+		$matkul_jarkom->singkatan_1 = "Jarkom";
+		$matkul_ubi->sks = 3;
+		$matkul_ubi->semester = 4;
+		$matkul_ubi->jenis = MataKuliah::PEMINATAN;
+		$matkul_ubi->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_ubi->deskripsi ="";
+		$matkul_ubi->dosen()->attach($dosendina->nip);
+		$matkul_ubi->dosen()->attach($dosenstef->nip);
+		$matkul_ubi->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_ubi->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_ubi->save();
+		
+		$matkul_robotik = new MataKuliah;
+		$matkul_robotik->kodemk = "IKO42360";
+		$matkul_robotik->nama = "Robotika";
+		$matkul_jarkom->singkatan_1 = "Jarkom";
+		$matkul_robotik->sks = 3;
+		$matkul_robotik->semester = 4;
+		$matkul_robotik->jenis = MataKuliah::PEMINATAN;
+		$matkul_robotik->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_robotik->deskripsi ="";
+		$matkul_robotik->dosen()->attach($dosendina->nip);
+		$matkul_robotik->dosen()->attach($dosenstef->nip);
+		$matkul_robotik->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_robotik->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_robotik->save();
+		
+		$matkul_rsd = new MataKuliah;
+		$matkul_rsd->kodemk = "IKO42553";
+		$matkul_rsd->nama = "Rancangan Sistem Dijital";
+		$matkul_jarkom->singkatan_1 = "RSD";
+		$matkul_rsd->sks = 3;
+		$matkul_rsd->semester = 4;
+		$matkul_rsd->jenis = MataKuliah::PEMINATAN;
+		$matkul_rsd->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_rsd->deskripsi ="";
+		$matkul_rsd->dosen()->attach($dosendina->nip);
+		$matkul_rsd->dosen()->attach($dosenstef->nip);
+		$matkul_rsd->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_rsd->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_rsd->save();
+		
+		$matkul_tka = new MataKuliah;
+		$matkul_tka->kodemk = "IKO42555";
+		$matkul_tka->nama = "Topik Khusus Arsitektur & Infrastuktur";
+		$matkul_tka->singkatan_1 = "tkai";
+		$matkul_tka->sks = 3;
+		$matkul_tka->semester = 4;
+		$matkul_tka->jenis = MataKuliah::PEMINATAN;
+		$matkul_tka->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tka->deskripsi ="";
+		$matkul_tka->dosen()->attach($dosendina->nip);
+		$matkul_tka->dosen()->attach($dosenstef->nip);
+		$matkul_tka->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tka->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tka->save();
+		
+		$matkul_ta = new MataKuliah;
+		$matkul_ta->kodemk = "IKI40999";
+		$matkul_ta->nama = "Tugas Akhir";
+		$matkul_ta->singkatan_1 = "TA";
+		$matkul_ta->sks = 6;
+		$matkul_ta->semester = 4;
+		$matkul_ta->jenis = MataKuliah::PEMINATAN;
+		$matkul_ta->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_ta->deskripsi ="";
+		$matkul_ta->dosen()->attach($dosendina->nip);
+		$matkul_ta->dosen()->attach($dosenstef->nip);
+		$matkul_ta->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_ta->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_ta->save();
+		
+		$matkul_sister = new MataKuliah;
+		$matkul_sister->kodemk = "IKO31250";
+		$matkul_sister->nama = "Sistem Interaksi";
+		$matkul_sister->singkatan_1 = "Sister";
+		$matkul_sister->sks = 4;
+		$matkul_sister->semester = 4;
+		$matkul_sister->jenis = MataKuliah::PEMINATAN;
+		$matkul_sister->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_sister->deskripsi ="";
+		$matkul_sister->dosen()->attach($dosendina->nip);
+		$matkul_sister->dosen()->attach($dosenstef->nip);
+		$matkul_sister->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_sister->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_sister->save();
+		
+		$matkul_banjut = new MataKuliah;
+		$matkul_banjut->kodemk = "IKO31754";
+		$matkul_banjut->nama = "Basis Data Lanjut";
+		$matkul_banjut->singkatan_1 = "Banjut";
+		$matkul_banjut->sks = 3;
+		$matkul_banjut->semester = 4;
+		$matkul_banjut->jenis = MataKuliah::PEMINATAN;
+		$matkul_banjut->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_banjut->deskripsi ="";
+		$matkul_banjut->dosen()->attach($dosendina->nip);
+		$matkul_banjut->dosen()->attach($dosenstef->nip);
+		$matkul_banjut->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_banjut->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_banjut->save();
+		
+		
+		$matkul_grafkom = new MataKuliah;
+		$matkul_grafkom->kodemk = "IKO32450";
+		$matkul_grafkom->nama = "Grafika Komputer";
+		$matkul_grafkom->singkatan_1 = "Jarkom";
+		$matkul_grafkom->sks = 3;
+		$matkul_grafkom->semester = 4;
+		$matkul_grafkom->jenis = MataKuliah::PEMINATAN;
+		$matkul_grafkom->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_grafkom->deskripsi ="";
+		$matkul_grafkom->dosen()->attach($dosendina->nip);
+		$matkul_grafkom->dosen()->attach($dosenstef->nip);
+		$matkul_grafkom->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_grafkom->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_grafkom->save();
+		
+		$matkul_gamedev = new MataKuliah;
+		$matkul_gamedev->kodemk = "IKO41251";
+		$matkul_gamedev->nama = "Game Development";
+		$matkul_gamedev->singkatan_1 = "Jarkom";
+		$matkul_gamedev->sks = 3;
+		$matkul_gamedev->semester = 4;
+		$matkul_gamedev->jenis = MataKuliah::PEMINATAN;
+		$matkul_gamedev->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_gamedev->deskripsi ="";
+		$matkul_gamedev->dosen()->attach($dosendina->nip);
+		$matkul_gamedev->dosen()->attach($dosenstef->nip);
+		$matkul_gamedev->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_gamedev->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_gamedev->save();
+		
+		$matkul_pemlog = new MataKuliah;
+		$matkul_pemlog->kodemk = "IKO41253";
+		$matkul_pemlog->nama = "Pemrograman Logika";
+		$matkul_pemlog->singkatan_1 = "Jarkom";
+		$matkul_pemlog->sks = 4;
+		$matkul_pemlog->semester = 4;
+		$matkul_pemlog->jenis = MataKuliah::PEMINATAN;
+		$matkul_pemlog->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pemlog->deskripsi ="";
+		$matkul_pemlog->dosen()->attach($dosendina->nip);
+		$matkul_pemlog->dosen()->attach($dosenstef->nip);
+		$matkul_pemlog->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pemlog->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pemlog->save();
+		
+		$matkul_pmpl = new MataKuliah;
+		$matkul_pmpl->kodemk = "IKO41254";
+		$matkul_pmpl->nama = "Penjaminan Mutu Perangkat Lunak";
+		$matkul_pmpl->singkatan_1 = "Jarkom";
+		$matkul_pmpl->sks = 4;
+		$matkul_pmpl->semester = 4;
+		$matkul_pmpl->jenis = MataKuliah::PEMINATAN;
+		$matkul_pmpl->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pmpl->deskripsi ="";
+		$matkul_pmpl->dosen()->attach($dosendina->nip);
+		$matkul_pmpl->dosen()->attach($dosenstef->nip);
+		$matkul_pmpl->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pmpl->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pmpl->save();
+		
+		$matkul_sw = new MataKuliah;
+		$matkul_sw->kodemk = "IKO41361";
+		$matkul_sw->nama = "Semantic Web";
+		$matkul_sw->singkatan_1 = "Jarkom";
+		$matkul_sw->sks = 3;
+		$matkul_sw->semester = 4;
+		$matkul_sw->jenis = MataKuliah::PEMINATAN;
+		$matkul_sw->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_sw->deskripsi ="";
+		$matkul_sw->dosen()->attach($dosendina->nip);
+		$matkul_sw->dosen()->attach($dosenstef->nip);
+		$matkul_sw->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_sw->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_sw->save();
+		
+		$matkul_pbk = new MataKuliah;
+		$matkul_pbk->kodemk = "IKO41853";
+		$matkul_pbk->nama = "Pengajaran Berbantuan Komputer";
+		$matkul_pbk->singkatan_1 = "Jarkom";
+		$matkul_pbk->sks = 3;
+		$matkul_pbk->semester = 4;
+		$matkul_pbk->jenis = MataKuliah::PEMINATAN;
+		$matkul_pbk->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pbk->deskripsi ="";
+		$matkul_pbk->dosen()->attach($dosendina->nip);
+		$matkul_pbk->dosen()->attach($dosenstef->nip);
+		$matkul_pbk->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pbk->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pbk->save();
+		
+		$matkul_metfor = new MataKuliah;
+		$matkul_metfor->kodemk = "IKO42252";
+		$matkul_metfor->nama = "Metode Formal";
+		$matkul_metfor->singkatan_1 = "Jarkom";
+		$matkul_metfor->sks = 4;
+		$matkul_metfor->semester = 4;
+		$matkul_metfor->jenis = MataKuliah::PEMINATAN;
+		$matkul_metfor->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_metfor->deskripsi ="";
+		$matkul_metfor->dosen()->attach($dosendina->nip);
+		$matkul_metfor->dosen()->attach($dosenstef->nip);
+		$matkul_metfor->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_metfor->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_metfor->save();
+		
+		$matkul_tkt = new MataKuliah;
+		$matkul_tkt->kodemk = "IKO42256";
+		$matkul_tkt->nama = "Topik Khusus Teknologi Perangkat Lunak";
+		$matkul_tkt->singkatan_1 = "Jarkom";
+		$matkul_tkt->sks = 3;
+		$matkul_tkt->semester = 4;
+		$matkul_tkt->jenis = MataKuliah::PEMINATAN;
+		$matkul_tkt->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tkt->deskripsi ="";
+		$matkul_tkt->dosen()->attach($dosendina->nip);
+		$matkul_tkt->dosen()->attach($dosenstef->nip);
+		$matkul_tkt->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tkt->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tkt->save();
+		
+		$matkul_dm = new MataKuliah;
+		$matkul_dm->kodemk = "IKO42351";
+		$matkul_dm->nama = "Data Mining";
+		$matkul_dm->singkatan_1 = "Jarkom";
+		$matkul_dm->sks = 3;
+		$matkul_dm->semester = 4;
+		$matkul_dm->jenis = MataKuliah::PEMINATAN;
+		$matkul_dm->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_dm->deskripsi ="";
+		$matkul_dm->dosen()->attach($dosendina->nip);
+		$matkul_dm->dosen()->attach($dosenstef->nip);
+		$matkul_dm->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_dm->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_dm->save();
+		
+		$matkul_pengcit = new MataKuliah;
+		$matkul_pengcit->kodemk = "IKO31355";
+		$matkul_pengcit->nama = "Pengolahan Citra";
+		$matkul_pengcit->singkatan_1 = "Jarkom";
+		$matkul_pengcit->sks = 3;
+		$matkul_pengcit->semester = 4;
+		$matkul_pengcit->jenis = MataKuliah::PEMINATAN;
+		$matkul_pengcit->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pengcit->deskripsi ="";
+		$matkul_pengcit->dosen()->attach($dosendina->nip);
+		$matkul_pengcit->dosen()->attach($dosenstef->nip);
+		$matkul_pengcit->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pengcit->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pengcit->save();
+		
+		$matkul_pm = new MataKuliah;
+		$matkul_pm->kodemk = "IKO32353";
+		$matkul_pm->nama = "Pemelajaran Mesin";
+		$matkul_pm->singkatan_1 = "Jarkom";
+		$matkul_pm->sks = 3;
+		$matkul_pm->semester = 4;
+		$matkul_pm->jenis = MataKuliah::PEMINATAN;
+		$matkul_pm->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pm->deskripsi ="";
+		$matkul_pm->dosen()->attach($dosendina->nip);
+		$matkul_pm->dosen()->attach($dosenstef->nip);
+		$matkul_pm->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pm->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pm->save();
+		
+		$matkul_pbm = new MataKuliah;
+		$matkul_pbm->kodemk = "IKO32354";
+		$matkul_pbm->nama = "Pengolahan Bahasa Manusia";
+		$matkul_pbm->singkatan_1 = "Jarkom";
+		$matkul_pbm->sks = 3;
+		$matkul_pbm->semester = 4;
+		$matkul_pbm->jenis = MataKuliah::PEMINATAN;
+		$matkul_pbm->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pbm->deskripsi ="";
+		$matkul_pbm->dosen()->attach($dosendina->nip);
+		$matkul_pbm->dosen()->attach($dosenstef->nip);
+		$matkul_pbm->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pbm->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pbm->save();
+		
+		$matkul_pengmul = new MataKuliah;
+		$matkul_pengmul->kodemk = "IKO41356";
+		$matkul_pengmul->nama = "Pengolahan Multimedia";
+		$matkul_pengmul->singkatan_1 = "Jarkom";
+		$matkul_pengmul->sks = 3;
+		$matkul_pengmul->semester = 4;
+		$matkul_pengmul->jenis = MataKuliah::PEMINATAN;
+		$matkul_pengmul->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pengmul->deskripsi ="";
+		$matkul_pengmul->dosen()->attach($dosendina->nip);
+		$matkul_pengmul->dosen()->attach($dosenstef->nip);
+		$matkul_pengmul->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pengmul->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pengmul->save();
+		
+		$matkul_perin = new MataKuliah;
+		$matkul_perin->kodemk = "IKO41357";
+		$matkul_perin->nama = "Perolehan Informasi";
+		$matkul_perin->singkatan_1 = "Jarkom";
+		$matkul_perin->sks = 3;
+		$matkul_perin->semester = 4;
+		$matkul_perin->jenis = MataKuliah::PEMINATAN;
+		$matkul_perin->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_perin->deskripsi ="";
+		$matkul_perin->dosen()->attach($dosendina->nip);
+		$matkul_perin->dosen()->attach($dosenstef->nip);
+		$matkul_perin->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_perin->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_perin->save();
+		
+		$matkul_gm = new MataKuliah;
+		$matkul_gm->kodemk = "IKO41452";
+		$matkul_gm->nama = "Geometric Modelling";
+		$matkul_gm->singkatan_1 = "Jarkom";
+		$matkul_gm->sks = 4;
+		$matkul_gm->semester = 4;
+		$matkul_gm->jenis = MataKuliah::PEMINATAN;
+		$matkul_gm->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_gm->deskripsi ="";
+		$matkul_gm->dosen()->attach($dosendina->nip);
+		$matkul_gm->dosen()->attach($dosenstef->nip);
+		$matkul_gm->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_gm->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_gm->save();
+		
+		$matkul_sig = new MataKuliah;
+		$matkul_sig->kodemk = "IKO41854";
+		$matkul_sig->nama = "Sistem Informasi Geografis";
+		$matkul_sig->singkatan_1 = "Jarkom";
+		$matkul_sig->sks = 3;
+		$matkul_sig->semester = 4;
+		$matkul_sig->jenis = MataKuliah::PEMINATAN;
+		$matkul_sig->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_sig->deskripsi ="";
+		$matkul_sig->dosen()->attach($dosendina->nip);
+		$matkul_sig->dosen()->attach($dosenstef->nip);
+		$matkul_sig->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_sig->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_sig->save();
+		
+		$matkul_tkpim = new MataKuliah;
+		$matkul_tkpim->kodemk = "IKO42359";
+		$matkul_tkpim->nama = "Topik Khusus Pengolahan Informasi Multimedia";
+		$matkul_tkpim->singkatan_1 = "Jarkom";
+		$matkul_tkpim->sks = 3;
+		$matkul_tkpim->semester = 4;
+		$matkul_tkpim->jenis = MataKuliah::PEMINATAN;
+		$matkul_tkpim->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tkpim->deskripsi ="";
+		$matkul_tkpim->dosen()->attach($dosendina->nip);
+		$matkul_tkpim->dosen()->attach($dosenstef->nip);
+		$matkul_tkpim->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tkpim->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tkpim->save();
+		
+		$matkul_cg = new MataKuliah;
+		$matkul_cg->kodemk = "IKO42451";
+		$matkul_cg->nama = "Computational Geometry";
+		$matkul_cg->singkatan_1 = "Jarkom";
+		$matkul_cg->sks = 4;
+		$matkul_cg->semester = 4;
+		$matkul_cg->jenis = MataKuliah::PEMINATAN;
+		$matkul_cg->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_cg->deskripsi ="";
+		$matkul_cg->dosen()->attach($dosendina->nip);
+		$matkul_cg->dosen()->attach($dosenstef->nip);
+		$matkul_cg->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_cg->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_cg->save();
+		
+		$matkul_bio = new MataKuliah;
+		$matkul_bio->kodemk = "IKO31350";
+		$matkul_bio->nama = "Bioinformatika";
+		$matkul_bio->singkatan_1 = "Jarkom";
+		$matkul_bio->sks = 3;
+		$matkul_bio->semester = 4;
+		$matkul_bio->jenis = MataKuliah::PEMINATAN;
+		$matkul_bio->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_bio->deskripsi ="";
+		$matkul_bio->dosen()->attach($dosendina->nip);
+		$matkul_bio->dosen()->attach($dosenstef->nip);
+		$matkul_bio->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_bio->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_bio->save();
+		
+		$matkul_pd = new MataKuliah;
+		$matkul_pd->kodemk = "IKO32152";
+		$matkul_pd->nama = "Persamaan Diferensial";
+		$matkul_pd->singkatan_1 = "Jarkom";
+		$matkul_pd->sks = 3;
+		$matkul_pd->semester = 4;
+		$matkul_pd->jenis = MataKuliah::PEMINATAN;
+		$matkul_pd->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_pd->deskripsi ="";
+		$matkul_pd->dosen()->attach($dosendina->nip);
+		$matkul_pd->dosen()->attach($dosenstef->nip);
+		$matkul_pd->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_pd->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_pd->save();
+		
+		$matkul_asn = new MataKuliah;
+		$matkul_asn->kodemk = "IKO41153";
+		$matkul_asn->nama = "Aproksimasi & Sistem Nonlinier";
+		$matkul_asn->singkatan_1 = "Jarkom";
+		$matkul_asn->sks = 3;
+		$matkul_asn->semester = 4;
+		$matkul_asn->jenis = MataKuliah::PEMINATAN;
+		$matkul_asn->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_asn->deskripsi ="";
+		$matkul_asn->dosen()->attach($dosendina->nip);
+		$matkul_asn->dosen()->attach($dosenstef->nip);
+		$matkul_asn->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_asn->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_asn->save();
+		
+		$matkul_alinn = new MataKuliah;
+		$matkul_alinn->kodemk = "IKO41154";
+		$matkulalinn->nama = "Aljabar Linier Numerik";
+		$matkul_alinn->singkatan_1 = "Jarkom";
+		$matkul_alinn->sks = 3;
+		$matkul_alinn->semester = 4;
+		$matkul_alinn->jenis = MataKuliah::PEMINATAN;
+		$matkul_alinn->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_alinn->deskripsi ="";
+		$matkul_alinn->dosen()->attach($dosendina->nip);
+		$matkul_alinn->dosen()->attach($dosenstef->nip);
+		$matkul_alinn->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_alinn->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_alinn->save();
+			
+		$matkul_komnak = new MataKuliah;
+		$matkul_komnak->kodemk = "IKO41352";
+		$matkul_komnak->nama = "Komputasi Lunak";
+		$matkul_komnak->singkatan_1 = "Jarkom";
+		$matkul_komnak->sks = 3;
+		$matkul_komnak->semester = 4;
+		$matkul_komnak->jenis = MataKuliah::PEMINATAN;
+		$matkul_komnak->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_komnak->deskripsi ="";
+		$matkul_komnak->dosen()->attach($dosendina->nip);
+		$matkul_komnak->dosen()->attach($dosenstef->nip);
+		$matkul_komnak->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_komnak->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_komnak->save();
+		
+		$matkul_lk = new MataKuliah;
+		$matkul_lk->kodemk = "IKO41454";
+		$matkul_lk->nama = "Logika Komputasional";
+		$matkul_lk->singkatan_1 = "Jarkom";
+		$matkul_lk->sks = 3;
+		$matkul_lk->semester = 4;
+		$matkul_lk->jenis = MataKuliah::PEMINATAN;
+		$matkul_lk->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_lk->deskripsi ="";
+		$matkul_lk->dosen()->attach($dosendina->nip);
+		$matkul_lk->dosen()->attach($dosenstef->nip);
+		$matkul_lk->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_lk->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_lk->save();
+		
+		$matkul_tkkk = new MataKuliah;
+		$matkul_tkkk->kodemk = "IKO42358";
+		$matkul_tkkk->nama = "Topik Khusus Kecerdasan Komputasional";
+		$matkul_tkkk->singkatan_1 = "Jarkom";
+		$matkul_tkkk->sks = 3;
+		$matkul_tkkk->semester = 4;
+		$matkul_tkkk->jenis = MataKuliah::PEMINATAN;
+		$matkul_tkkk->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tkkk->deskripsi ="";
+		$matkul_tkkk->dosen()->attach($dosendina->nip);
+		$matkul_tkkk->dosen()->attach($dosenstef->nip);
+		$matkul_tkkk->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tkkk->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tkkk->save();
+		
+		$matkul_tkl = new MataKuliah;
+		$matkul_tkl->kodemk = "IKO61480";
+		$matkul_tkl->nama = "Teori Komputasi Lanjut";
+		$matkul_tkl->sks = 4;
+		$matkul_tkl->singkatan_1 = "Jarkom";
+		$matkul_tkl->sks = 3;
+		$matkul_tkl->semester = 4;
+		$matkul_tkl->jenis = MataKuliah::PEMINATAN;
+		$matkul_tkl->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_tkl->deskripsi ="";
+		$matkul_tkl->dosen()->attach($dosendina->nip);
+		$matkul_tkl->dosen()->attach($dosenstef->nip);
+		$matkul_tkl->prasyarat()->attach($matkul_matdis1->nip);
+		$matkul_tkl->prasyarat()->attach($matkul_matdis2->nip);
+		$matkul_tkl->save();
+		///
+		
+		
 		//SI
 		
 		
@@ -1374,73 +1833,96 @@ class BaseSeed {
 		$matkuleai>sks = 3;
 		$matkuleai->prodi = "Sistem Informasi";
 		
-		//
+		
+		///////////////////////////////////
+		
+		$matkul_anum->prasyarat()->attach($matkul_matdas2->id);
+			
+		$matkul_ppl = new MataKuliah;
+		$matkul_ppl->kodemk = "IK00001";
+		$matkul_ppl->nama = "Proyek Perangkat Lunak";
+		
+		$matkul_ppl->singkatan_1 = "PPL";
+		$matkul_ppl->sks = 6;
+		$matkul_ppl->semester = 6;
+		$matkul_ppl->jenis = MataKuliah::JURUSAN;
+		$matkul_ppl->prodi = MataKuliah::ILMU_KOMPUTER;
+		$matkul_ppl->save();
+		
+		$matkul_propensi = new MataKuliah;
+		$matkul_propensi->kodemk = "SI00001";
+		$matkul_propensi->nama = "Proyek Pengembangan Sistem Informasi";
+		$matkul_propensi->singkatan_1 = "Propensi";
+		$matkul_propensi->sks = 6;
+		$matkul_propensi->semester = 6;
+		$matkul_propensi->jenis = MataKuliah::JURUSAN;
+		$matkul_propensi->prodi = MataKuliah::SISTEM_INFORMASI;
+		$matkul_propensi->save();
+
+		$matkul_ppl->dosen()->attach($dosen1->id);
+		$matkul_ppl->dosen()->attach($dosen3->id);
+		$matkul_ppl->save();
+
+		$matkul_propensi->dosen()->attach($dosen1->id);
+		$matkul_propensi->dosen()->attach($dosen2->id);
+		$matkul_propensi->save();
+
+		$matkul_matdas2->dosen()->attach($dosen1->id);
+		$matkul_matdas2->save();
+
+		$matkul_anum->dosen()->attach($dosen1->id);
+		$matkul_anum->dosen()->attach($dosen2->id);
+		$matkul_anum->prasyarat()->attach($matkul_matdas2->id);
+		$matkul_anum->save();
 		
 		
+		/* REVIEW */
 		$review1 = new Review;
-		$review1->jenis = "baik";
+		$review1->rating = 5;
 		$review1->isi = "sangat direkomendasikan";
-		$review1->dosen_nip = $dosen1->nip;
+		$review1->dosen_id = $dosen1->id;
+		$review1->pengguna_id = $pengguna1->id;
 		
 		$review2 = new Review;
-		$review2->jenis = "buruk";
+		$review2->rating = 2;
 		$review2->isi = "terlalu cepat ngajarnya";
-		$review2->dosen_nip = $dosen1->nip;
-		
-		$dosen1->save();
-		$dosen2->save();
-		$dosen3->save();
-		$matkul1->save();
-		$matkul2->save();
+		$review2->dosen_id = $dosen1->id;
+		$review2->pengguna_id = $pengguna1->id;
+
 		$review1->save();
 		$review2->save();
 		
 		$komentar1 = new Komentar;
 		$komentar1->isi = "saya setuju";
 		$komentar1->review_id = $review1->id;
+		$komentar1->pengguna_id = $pengguna1->id;
 		
 		$komentar2 = new Komentar;
 		$komentar2->isi = "saya tidak setuju";
 		$komentar2->review_id = $review1->id;
+		$komentar2->pengguna_id = $pengguna1->id;
 		
 		$komentar3 = new Komentar;
 		$komentar3->isi = "mantap!";
 		$komentar3->review_id = $review2->id;
-		
-		$vote1 = new UpvoteDownvote;
-		$vote1->tipe = 1;
-		$vote1->review_id = $review1->id;
-		
-		$vote2 = new UpvoteDownvote;
-		$vote2->tipe = 0;
-		$vote2->review_id = $review1->id;
-		
-		$vote3 = new UpvoteDownvote;
-		$vote3->tipe = 1;
-		$vote3->review_id = $review2->id;
-		
-		$report1 = new Report;
-		$report1->review_id = $review1->id;
-		
-		$report2 = new Report;
-		$report2->review_id = $review1->id;
-		
-		$report3 = new Report;
-		$report3->review_id = $review2->id;
+		$komentar3->pengguna_id = $pengguna1->id;
 		
 		$komentar1->save();
 		$komentar2->save();
 		$komentar3->save();
-		$vote1->save();
-		$vote2->save();
-		$vote3->save();
-		$report1->save();
-		$report2->save();
-		$report3->save();
+		
+		$vote1 = new Vote;
+		$vote1->tipe = Vote::UP;
+		$vote1->review_id = $review1->id;
+		$vote1->pengguna_id = $pengguna1->id;
+		
+		$vote2 = new Vote;
+		$vote2->tipe = Vote::DOWN;
+		$vote2->review_id = $review2->id;
+		$vote2->pengguna_id = $pengguna1->id;
 
-        // $dosen = new Dosen;
-        // $dosen->nik = "0089645";
-        // $dosen->nama = "Budi Gugun";
-        // $dosen->save();
+		$vote1->save();
+		$vote2->save();	
+			
     }
 }
