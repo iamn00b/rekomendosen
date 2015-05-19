@@ -22,7 +22,19 @@ class HomeController extends _MainController {
 	}
 
 	function logout() {
+		$this->readNotifikasi();
 		Auth::logout();
+	}
+	
+	function readNotifikasi() {
+		$pengguna = Auth::getPengguna();
+		$notifikasi = Notifikasi::where('pengguna_npm', '=', $pengguna->npm)->get();
+		foreach ($notifikasi as $notif) {
+			if($notif->total > 0) {
+				$notif->read = 1;
+				$notif->save();
+			}
+		}
 	}
 
 	function tampilAdministrasiStatistik() {

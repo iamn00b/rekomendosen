@@ -23,7 +23,6 @@ $app->get('/matakuliah/:id', function ($id) use ($app) 	{ (new MataKuliahControl
 
 $app->get('/pencarian/', 	function () use ($app){ (new PencarianController())->tampilHasilPencarian(); 	})->name('pencarian');
 $app->post('/feedback/', 		function () use ($app)		{ (new FeedbackController())->tambahFeedback(); 						})->name('feedback');
-
 $app->get('/achievments/:nomor', function ($nomor) use ($app) 		{ (new AchievmentController())->tampilAchievment($nomor); 		})->name('achievment');
 
 /* ADMIN */
