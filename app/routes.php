@@ -20,3 +20,4 @@ $app->get('/admin-report/', function () use ($app) 	{ (new _MainController())->r
 $app->get('/admin-feedback/', function () use ($app) 	{ (new _MainController())->render('admin-feedback.html');	})->name('admin-feedback');
 $app->get('/admin-statistics/', function () use ($app) 	{ (new _MainController())->render('admin-statistics.html');	})->name('admin-statistics');
 $app->get('/admin/', function () use ($app) { (new _MainController())->render('admin.html');	})->name('admin');
+$app->get('/achievement/', function () use ($app) { (new _MainController())->render('achievement.html');	})->name('achievement');
