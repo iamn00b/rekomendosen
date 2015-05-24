@@ -91,14 +91,25 @@
     </div>
   </form>
   <!-- Modal Tutorial -->
-  <form action="{{ urlFor('tutorial') }}" method="post" id="tutorial-dialog" class="modal modal-footer">
+  <form action="{{ urlFor('tutorial') }}" method="post" id="tutorial-dialog" class="modal tutorhoy">
     <div class="modal-content">
       <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Tutorial</h4>
-      <p class="black-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui ante, tincidunt non tortor semper, mollis convallis magna. Curabitur ut sodales est, ultricies cursus enim. Maecenas sit amet tincidunt augue. Praesent aliquet a nisi in pellentesque. Morbi convallis, arcu ut faucibus dictum, elit sem auctor magna, et dictum mi est quis sem. Vestibulum mattis, justo id scelerisque pharetra, dolor augue blandit augue, ac tempus urna elit eget augue. In massa velit, aliquam nec convallis volutpat, eleifend sit amet sapien. Aenean nec vestibulum turpis. Duis ornare ultrices nisl, ut pellentesque eros aliquam commodo. Aliquam congue viverra consequat. Mauris sed tincidunt justo. Suspendisse vitae velit eget massa ullamcorper sagittis. Donec ut nunc eu dui consectetur vestibulum.</p>
-      <p class="black-text">
-      Phasellus lacus eros, auctor sit amet turpis ut, aliquet viverra justo. Fusce et nibh sapien. Donec bibendum, ex scelerisque commodo molestie, ante eros convallis ex, nec scelerisque odio leo nec urna. Sed egestas congue magna, id lacinia neque imperdiet scelerisque. In at quam nec justo viverra commodo. Nunc imperdiet lectus risus, vel efficitur ligula elementum ac. Ut vel dui vitae mauris fringilla interdum vel quis nunc. Donec ullamcorper bibendum odio ac accumsan. Vivamus hendrerit pellentesque leo, vitae sodales orci posuere sit amet. Nunc lacinia ligula at porttitor auctor. Integer placerat felis sed ligula consequat, at finibus tortor maximus. Integer felis lectus, sagittis non viverra nec, consequat vel sem. Curabitur lorem ex, commodo at iaculis quis, dictum varius nibh.
-      </p>
+        <div class="slider">
+                    <ul class="slides">
+                      <li>
+                       <img src="{{ BASE_URL }}img/tutor-1.png"><!-- random image -->
+                      </li>
+                      <li>
+                        <img src="{{ BASE_URL }}img/tutor-2.png"> <!-- random image -->
+                      </li>
+                      <li>
+                        <img src="{{ BASE_URL }}img/tutor-3.png"> <!-- random image -->
+                      </li>
+                      <li>
+                        <img src="{{ BASE_URL }}img/tutor-4.png"> <!-- random image -->
+                      </li>
+                    </ul>
+        </div>
     </div>
     <div class="modal-footer">
       <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Tutup</a>
