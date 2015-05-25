@@ -54,8 +54,6 @@ class Auth {
 
 	static function isLogin() {
 
-		$pengguna = self::getPengguna();
-		
-		return true;
+		return Auth::check();
 	}
 }

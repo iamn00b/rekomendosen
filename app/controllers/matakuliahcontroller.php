@@ -37,48 +37,64 @@ class MataKuliahController extends _MainController {
 
 		$kodemk = $matkul['kodemk'];
 		$nama = $matkul['nama'];
-		$sks = $matkul['sks'];
+		$singkatan_1 = $matkul['singkatan_1'];
+		$singkatan_2 = $matkul['singkatan_2'];
 		$prodi = $matkul['prodi'];
+		$jenis = $matkul['jenis'];
+		$sks = $matkul['sks'];
 		$semester = $matkul['semester'];
+		$deskripsi = $matkul['deskripsi'];
 
 		$matkul1 = new MataKuliah;
 		$matkul1->kodemk = $kodemk;
 		$matkul1->nama = $nama;
+		$matkul1->singkatan_1 = $singkatan_1;
+		$matkul1->singkatan_2 = $singkatan_2;
 		$matkul1->sks = $sks;
 		$matkul1->prodi = $prodi;
+		$matkul1->jenis = $jenis;
 		$matkul1->semester = $semester;
+		$matkul1->deskripsi = $deskripsi;
 		$matkul1->save();
-		$this->app->flash('notif', 'Berhasil menambah mata kuliah '.$nama.' dengan Kode MK #' . $kodemk);
+		$this->app->flash('notif', 'Berhasil menambah mata kuliah '.$nama);
 
-		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
+		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 200);
 	}
 	
 	function updateMataKuliah($id) {
 		$matkul = $this->app->request->post();
 
-		// $kodemk = $matkul['kodemk'];
+		$kodemk = $matkul['kodemk'];
 		$nama = $matkul['nama'];
-		$sks = $matkul['sks'];
+		$singkatan_1 = $matkul['singkatan_1'];
+		$singkatan_2 = $matkul['singkatan_2'];
 		$prodi = $matkul['prodi'];
+		$jenis = $matkul['jenis'];
+		$sks = $matkul['sks'];
 		$semester = $matkul['semester'];
+		$deskripsi = $matkul['deskripsi'];
 
 		$matkul1 = MataKuliah::find($id);
-		// $matkul1->kodemk = $kodemk;
+		$matkul1->kodemk = $kodemk;
 		$matkul1->nama = $nama;
+		$matkul1->singkatan_1 = $singkatan_1;
+		$matkul1->singkatan_2 = $singkatan_2;
 		$matkul1->sks = $sks;
 		$matkul1->prodi = $prodi;
+		$matkul1->jenis = $jenis;
 		$matkul1->semester = $semester;
+		$matkul1->deskripsi = $deskripsi;
 		$matkul1->save();
-		$this->app->flash('notif', 'Berhasil mengubah mata kuliah '.$nama.' dengan Kode MK #' . $matkul1->kodemk);
+		$this->app->flash('notif', 'Berhasil mengubah mata kuliah '.$nama);
 		
-		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
+		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 200);
 	}
 	
 	function deleteMataKuliah($id) {
 		$matakuliah = MataKuliah::find($id);
-		$this->app->flash('notif', 'Berhasil menghapus mata kuliah '.$matakuliah->nama.' dengan Kode MK #' . $matakuliah->kodemk);
+		$this->app->flash('notif', 'Berhasil menghapus mata kuliah '.$matakuliah->nama);
 		$matakuliah->delete();
 
-		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 400);
+		$this->app->response->redirect($this->app->urlFor('crudmatakuliah'), 200);
 	}
 }

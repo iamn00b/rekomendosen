@@ -41,4 +41,19 @@ class HomeController extends _MainController {
 
 		$this->render('admin/statistik.html', $data);
 	}
+
+	function achievement() {
+		$data = array();
+		$data['achievements'] = Achievement::all();
+
+		$this->render('achievement.html', $data);
+	}
+
+	function maintenanceMode($status) {
+		$underMaintenance = ServerMode::where('desc','=','maintenance')->first();
+		$underMaintenance->status = strtoupper($status);
+		$underMaintenance->save();
+
+		$this->app->response->redirect($this->app->urlFor('statistik'), 200);
+	}
 }

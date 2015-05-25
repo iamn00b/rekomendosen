@@ -9,16 +9,16 @@
 </li>
 
 <!-- Switch -->
-<li id="maintenance-mode-switch">
+<!-- <li id="maintenance-mode-switch">
   <div class="switch">
     <label>
       Maintenance Mode &nbsp;&nbsp;&nbsp;Off
-      <input type="checkbox">
+      <input type="checkbox" id="maintenance-mode" checked="{% if maintenance %}true{% else %}no{% endif %}">
       <span class="lever"></span>
       On
     </label>
   </div>
-</li>
+</li> -->
 
 <li class="menu-admin">
 	<ul>
@@ -30,9 +30,21 @@
 		<a href="{{ urlFor('rudkomentar') }}"><li class="menu-admin-item">Kelola Komentar</li></a>
 		<a href="{{ urlFor('rreport') }}"><li class="menu-admin-item">Kelola Report</li></a>
 		<a href="{{ urlFor('rdfeedback') }}"><li class="menu-admin-item">Kelola Feedback</li></a>
+		<a href="#!" class="maintenance"><li class="menu-admin-item">{% if maintenance == 'Y' %}Keluar{% else %}Masuk{% endif %} Maintenance Mode</li></a>
 	</ul>
 </li>
 {% endblock %}
 
 {% block additional %}
+{% endblock %}
+
+{% block templatejs %}
+{{ parent() }}
+<script>
+	$('.maintenance').click( function() {
+		var c = confirm("{% if maintenance == 'Y' %}Keluar dari maintenance mode?{% else %}Memasuki maintenance mode?{% endif %}");
+		if (c)
+			location.replace("{% if maintenance == 'Y' %}{{ urlFor('maintenance', {'status':'n'}) }}{% else %}{{ urlFor('maintenance', {'status':'y'}) }}{% endif %}");
+	});
+</script>
 {% endblock %}

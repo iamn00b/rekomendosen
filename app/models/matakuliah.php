@@ -12,6 +12,8 @@ class MataKuliah extends Model {
 
 	const ILMU_KOMPUTER = 'ilkom';
 	const SISTEM_INFORMASI = 'si';
+
+	const FOTO_URL = "/images/icon/matkul/";
 	
 	public function dosen() {
 		return $this->belongsToMany('Dosen', 'mengajar', 'matakuliah_id', 'dosen_id');
@@ -32,6 +34,13 @@ class MataKuliah extends Model {
 			
 			default: return $this->prodi;
 		}
+	}
+
+	public function getFoto() {
+		$foto = "matkul-fakultas.png";
+		if ($this->prodi == self::ILMU_KOMPUTER) $foto = "matkul-cs.png";
+		if ($this->prodi == self::SISTEM_INFORMASI) $foto = "matkul-si.png";
+		return BASE_URL . self::FOTO_URL . $foto;
 	}
 
 }

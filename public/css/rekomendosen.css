@@ -23,6 +23,19 @@
 	cursor: pointer;
 }
 
+.rd-admin-action-btn {
+	opacity: .525;
+
+	transition: all .35s ease;
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-o-transition: all .35s ease;
+}
+
+.rd-admin-action-btn:hover {
+	opacity : 1;
+}
+
 /* ---------------------------------------- */
 /* ---------- NAVIGATION & PROFILE -------- */
 /* ---------------------------------------- */
@@ -127,6 +140,16 @@
 	background-color: #455a64;
 }
 
+#sidebar .sidebar-list .rd-card {
+	font-size: .9rem;
+	padding: .75rem;
+}
+
+#sidebar .sidebar-list .rd-card .waktu {
+	font-size: .825em;
+	color: #DDA5A5;
+	text-align: right;
+}
 /* ---------------------------------------- */
 /* ---------------- FEEDBACK -------------- */
 /* ---------------------------------------- */
@@ -151,6 +174,11 @@
 	background-clip:padding-box;
 }
 
+p .rd-small-circle {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 .rd-circle {
 	width: 120px;
 	height: 120px;
@@ -159,6 +187,30 @@
 	-moz-border-radius:50%;
 	border-radius:50%;
 	background-clip:padding-box;
+}
+
+.rd-circle {
+	width: 120px;
+	height: 120px;
+
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	background-clip:padding-box;
+}
+
+.rd-medium-circle {
+	width: 60px;
+	height: 60px;
+
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	background-clip:padding-box;
+}
+
+.rd-icon {
+	padding: .5em;
 }
 
 /* ---------------------------------------- */
@@ -270,6 +322,11 @@
 
 .star {
 	font-size: 1.6rem;
+}
+
+i.star.left {
+	margin-right: 0;
+	padding-right: 15px;
 }
 
 .star.rd-review-rating-6 { color : #4caf50; }

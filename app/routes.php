@@ -12,39 +12,56 @@ $authenticate = function( $role = Pengguna::DOSEN) {
         }
 
         if (!$authenticated) {
-        	// TODO : redirect
+        	\Slim\Slim::getInstance()->response->redirect(\Slim\Slim::getInstance()->urlFor('401'), 401);
         }
     };
+};
+
+function maintenanceFilter() {
+
+	$underMaintenance = ServerMode::where('desc','=','maintenance')->first()->status;
+
+	if($underMaintenance == 'Y')
+		\Slim\Slim::getInstance()->response->redirect(\Slim\Slim::getInstance()->urlFor('undermaintenance'), 200);
+
 };
 
 /* 404 */
 $app->notFound(function () {
 
-	(new _MainController)->renderTanpaLogin('404.html');
+	(new _MainController)->renderTanpaLogin('error/404.html');
 
 });
+
+$app->get('/401', function () use ($app) { (new _MainController)->renderTanpaLogin('error/401.html'); })->name('401');
+$app->get('/maintenance', function () use ($app) { (new _MainController)->renderTanpaLogin('error/maintenance.html'); })->name('undermaintenance');
  
 /* USER */
-$app->get('/', 					function () use ($app) 		{ (new HomeController())->welcome(); 						})->name('welcome');
-$app->get('/home', 			function () use ($app) 		{ (new HomeController())->index(); 						})->name('home');
-$app->get('/logout', 			function () use ($app) 		{ (new HomeController())->logout(); 						})->name('logout');
+$app->get('/', function () use ($app) { (new HomeController())->welcome(); })->name('welcome');
+$app->get('/home', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app) { (new HomeController())->index(); })->name('home');
+$app->get('/achievement', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app) { (new HomeController())->achievement(); })->name('achievement');
+$app->get('/logout', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app) { (new HomeController())->logout(); })->name('logout');
 
-$app->get('/dosen', 			function () use ($app) 		{ (new DosenController())->tampilDaftarDosen(); 					})->name('dosen');
-$app->get('/dosen/:id',	function ($id) use ($app) 	{ (new DosenController())->tampilRincianDosen($id); 		})->name('rinciandosen');
+$app->get('/dosen', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app) { (new DosenController())->tampilDaftarDosen(); })->name('dosen');
+$app->get('/dosen/:id', 'maintenanceFilter', $authenticate(Pengguna::DOSEN),	function ($id) use ($app) { (new DosenController())->tampilRincianDosen($id); })->name('rinciandosen');
 
-$app->post('/komentar/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahKomentar($id); 		})->name('komentar');
-$app->get('/upvote/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahUpvote($id); 		})->name('upvote');
-$app->get('/downvote/:id', function ($id) use ($app) 		{ (new ReviewController())->tambahDownvote($id); 		})->name('downvote');
-$app->get('/report/:id', function ($id) use ($app) 		{ (new ReviewController())->beriReport($id); 		})->name('report');
+$app->get('/matakuliah', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app) { (new MataKuliahController())->tampilDaftarMataKuliah(); })->name('matakuliah');
+$app->get('/matakuliah/:id', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function ($id) use ($app) { (new MataKuliahController())->tampilRincianMataKuliah($id); })->name('rincianmatakuliah');
 
-$app->get('/matakuliah', 		function () use ($app) 		{ (new MataKuliahController())->tampilDaftarMataKuliah(); 		})->name('matakuliah');
-$app->get('/matakuliah/:id', function ($id) use ($app) 	{ (new MataKuliahController())->tampilRincianMataKuliah($id); 		})->name('rincianmatakuliah');
+$app->get('/pencarian', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app) { (new PencarianController())->tampilHasilPencarian(); })->name('pencarian');
+$app->post('/feedback', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function () use ($app)	{ (new FeedbackController())->tambahFeedback(); })->name('feedback');
 
-$app->get('/pencarian', 	function () use ($app){ (new PencarianController())->tampilHasilPencarian(); 	})->name('pencarian');
-$app->post('/feedback', 		function () use ($app)		{ (new FeedbackController())->tambahFeedback(); 						})->name('feedback');
+/* should be API instead */
+$app->get('/report/:id', 'maintenanceFilter', $authenticate(Pengguna::DOSEN), function ($id) use ($app) { (new ReviewController())->beriReport($id); })->name('report');
+
+$app->post('/komentar/:id', 'maintenanceFilter', $authenticate(Pengguna::MAHASISWA), function ($id) use ($app) { (new ReviewController())->tambahKomentar($id); })->name('komentar');
+$app->get('/upvote/:id', 'maintenanceFilter', $authenticate(Pengguna::MAHASISWA), function ($id) use ($app) { (new ReviewController())->tambahUpvote($id); })->name('upvote');
+$app->get('/downvote/:id', 'maintenanceFilter', $authenticate(Pengguna::MAHASISWA), function ($id) use ($app) { (new ReviewController())->tambahDownvote($id); })->name('downvote');
+$app->get('/hapusreview/:id', 'maintenanceFilter', $authenticate(Pengguna::MAHASISWA), function ($id) use ($app) { (new ReviewController())->hapusReview($id); })->name('hapusreview');
+$app->get('/hapuskomentar/:id', 'maintenanceFilter', $authenticate(Pengguna::MAHASISWA), function ($id) use ($app) { (new ReviewController())->hapusKomentar($id); })->name('hapuskomentar');
 
 /* API */
-$app->group('/api', $authenticate(Pengguna::DOSEN), function () use ($app) {
+$app->group('/api', 'maintenanceFilter', $authenticate(Pengguna::MAHASISWA), function () use ($app) {
 
 	$app->post('/subscribe/:id', function($id) { (new DosenController())->subscribe($id); 						})->name('subscribe');
 
@@ -57,6 +74,7 @@ $app->group('/admin', $authenticate(Pengguna::ADMINISTRATOR), function () use ($
 
 	// Statistik
 	$app->get('/', function() { (new HomeController())->tampilAdministrasiStatistik(); 						})->name('statistik');
+	$app->get('/maintenace/:status', function($status) { (new HomeController())->maintenanceMode($status); 	})->name('maintenance');
 
 	// CRUD Profil Dosen
 	$app->group('/profildosen', function () use ($app) {

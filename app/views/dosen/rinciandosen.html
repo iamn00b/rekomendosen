@@ -51,7 +51,7 @@
         <span class="black-text">
           {% for matakuliah in dosen.matakuliah.get %} 
           <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id }) }}" class="flat left">
-            <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="rd-small-circle left"> 
+            <img src="{{ matakuliah.foto }}" alt="" class="rd-small-circle left"> 
             <h6 class="left">{{ matakuliah.nama }}</h6>
           </a>
           {% endfor %}
@@ -62,7 +62,7 @@
 </div>  
 
 <!-- Form -->
-{% if pengguna.isAktif %}
+{% if pengguna.isAktif and not pengguna.isGivingReview(dosen.id) %}
 <div class="row">
   <form method="POST" class="rd-card rd-form white" id="beri-review">
     <h5>Review Anda</h5>
@@ -88,6 +88,13 @@
   </form>
 </div>
 {% endif %}
+{% if pengguna.isGivingReview(dosen.id) %}
+<div class="row">
+  <div class="rd-card white">
+    <p>Anda telah memberikan review kepada Dosen {{ dosen.nama }}</p>
+  </div>
+</div>
+{% endif %}
 
 <!-- Review -->
 <div class="row">
@@ -107,14 +114,14 @@
 
             <h5>{{ review.jumlahVoteAsString }}</h5>
 
-            <a href="{{ urlFor('upvote', {'id' : review.id }) }}" {% if pengguna.isGivingDownvote(review.id) %}class="active"{% endif %}>
+            <a href="{{ urlFor('downvote', {'id' : review.id }) }}" {% if pengguna.isGivingDownvote(review.id) %}class="active"{% endif %}>
               <i class="mdi-navigation-arrow-drop-down btn-vote"></i>
             </a>
           </div>
 
           <!-- image -->
           <div class="col s1">
-            <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle responsive-img left">
+            <img src="{{ review.icon.first.getIcon }}" alt="" class="{{ review.color }} rd-icon circle responsive-img left">
           </div>
 
           <div class="col s9">
@@ -124,9 +131,11 @@
                 <i class="mdi-action-grade star rd-review-rating-{{ review.rating }} left"></i>
                 {% endfor %}
 
+                {% if review.rating < 6 %}
                 {% for i in review.rating+1..6 %}
-                <i class="mdi-action-grade grey-text text-lighten-1 left"></i>
+                <i class="mdi-action-grade star rd-review-rating-0 left"></i>
                 {% endfor %}
+                {% endif %}
               </div>
             </div>
             <div class="row">
@@ -143,11 +152,33 @@
             <!-- Dropdown Structure -->
             <ul id='review-{{ review.id }}-menu' class='dropdown-content'>
               {% if pengguna.id == review.pengguna_id %}
-              <li><a href="#!">Delete</a></li>
+              <li><a href="#modal-hapus-review-{{review.id}}" class="modal-trigger">Delete</a></li>
               {% endif %}
               <li class="divider"></li>
-              <li><a href="#!">Report</a></li>
+              <li><a href="#modal-report-review-{{review.id}}" class="modal-trigger">Report</a></li>
             </ul>
+          </div>
+
+          <!-- Modal Structure -->
+          <div id="modal-hapus-review-{{review.id}}" class="modal">
+            <div class="modal-content">
+              <p>Hapus review?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+              <a href="{{ urlFor('hapusreview', {'id': review.id })}}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+            </div>
+          </div>
+
+          <!-- Modal Structure -->
+          <div id="modal-report-review-{{review.id}}" class="modal">
+            <div class="modal-content">
+              <p>Report review?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+              <a href="{{ urlFor('report', {'id': review.id })}}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+            </div>
           </div>
         </div>
 
@@ -161,7 +192,7 @@
         <div class="row valign-wrapper">
 
           <div class="col s1 offset-s2">
-            <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle responsive-img left">
+            <img src="{{ komentar.icon.first.getIcon }}" alt="" class="{{ komentar.color }} rd-icon circle responsive-img left">
           </div>
 
           <div class="col s8">
@@ -175,11 +206,23 @@
             <!-- Dropdown Structure -->
             <ul id='komentar-{{ komentar.id }}-menu' class='dropdown-content'>
               {% if pengguna.id == komentar.pengguna_id %}
-              <li><a href="#!">Delete</a></li>
+              <li><a href="#modal-hapus-komentar-{{komentar.id}}" class="modal-trigger">Delete</a></li>
               {% endif %}
-              <li class="divider"></li>
-              <li><a href="#!">Report</a></li>
+              <!-- <li class="divider"></li>
+              <li><a href="#!">Report</a></li> -->
             </ul>
+
+            <!-- Modal Structure -->
+            <div id="modal-hapus-komentar-{{komentar.id}}" class="modal">
+              <div class="modal-content">
+                <p>Hapus komentar?</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+                <a href="{{ urlFor('hapuskomentar', {'id': komentar.id })}}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+              </div>
+            </div>
+
           </div>
         </div>
         {% endfor %}
@@ -191,6 +234,21 @@
 
             <div class="col s1">
               <button type="submit" class="btn-flat"><i class="mdi-content-send"></i></button>
+
+              <div class="preloader-wrapper small active hidden">
+                <div class="spinner-layer spinner-green-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+
             </div>
         </form>
 
@@ -207,6 +265,7 @@
 <script type="text/javascript">
 
   $('.collapsible').collapsible();
+  $('.hidden').hide();
 
   // SUBSCRIBE BUTTON HANDLER
   $('#subscribe').click( function(e) {
@@ -338,6 +397,48 @@
     }
 
   });
+
+  // $('#beri-komentar').submit( function(e) {
+  //     e.preventDefault();
+
+  //     $(this).find('button[type="submit"]').parent().find('.preloader-wrapper').show();
+  //     $(this).find('button[type="submit"]').hide();
+
+  //     if ( $(this).valid() ) {
+
+  //       var commentText = $(this).find('input[name="komentar"]').val();
+  //       var urlAction = $(this).attr('action');
+
+  //       // AJAX 
+  //       $.post( urlAction, { komentar: commentText }, function( data ) {
+
+  //         data = JSON.parse(data);
+  //         console.log(data);
+
+  //         if (data.status == 'success') {
+  //           Materialize.toast("Berhasil memberikan komentar", 2000)
+  //           location.reload();
+  //         } else if (data.status == 'invalid') {
+  //           Materialize.toast(data.message, 2000)
+  //         } else {
+  //           Materialize.toast("Terdapat kesalahan", 2000)
+  //         }
+
+  //       }).fail( function() {
+  //         Materialize.toast("Terdapat kesalahan koneksi ke server", 2000)
+
+  //       }).always( function() {
+  //         $('progress-review').remove();
+  //         $(this).find('button[type="submit"]').toggle();
+  //       });
+  //       // END AJAX
+  //     } else {
+  //       $('.progress-review').remove();
+  //       $(this).find('button[type="submit"]').toggle();
+  //     }
+
+  //   });
+
 
 </script>
 {% endblock %}

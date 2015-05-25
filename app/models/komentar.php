@@ -12,5 +12,9 @@ class Komentar extends Model {
 	public function pengguna() {
 		return $this->belongsTo('Pengguna');
 	}
+	
+	public function icon() {
+		return $this->belongsTo('Icon');
+	}
 
 }

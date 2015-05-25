@@ -2,12 +2,18 @@
 
 class Review extends Model {
 	
+	const MAX_INPUT_RATING = 6;
+
 	protected $table 		= 'review';
 	
 	public function dosen() {
 		return $this->belongsTo('Dosen');
 	}
 	
+	public function icon() {
+		return $this->belongsTo('Icon');
+	}
+
 	public function pengguna() {
 		return $this->belongsTo('Pengguna');
 	}
@@ -30,6 +36,10 @@ class Review extends Model {
 
 	public function jumlahDownvote() {
 		return $this->vote()->where('tipe', '=', Vote::DOWN)->count();
+	}
+
+	public function jumlahVote() {
+		return $this->jumlahUpvote() - $this->jumlahDownvote();
 	}
 
 	public function jumlahVoteAsString() {

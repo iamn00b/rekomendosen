@@ -16,6 +16,10 @@ class Dosen extends Model {
 		return $this->hasMany('Review');
 	}
 
+	public function subscriber() {
+		return $this->belongsToMany('Pengguna', 'subscribe');
+	}
+
 	public function getFoto() {
 		return BASE_URL . self::FOTO_URL . $this->foto;
 	}
@@ -26,16 +30,37 @@ class Dosen extends Model {
 
 	public function jumlahRating() {
 
-		// TODO
-		return 6;
+		$daftarReview = $this->review()->get();
+
+		$reviewEligable = 0;
+		$totalPoints = 0;
+		foreach ($daftarReview as $review) {
+			if ($review->jumlahVote() >= 0) {
+				$reviewEligable += $review->jumlahVote() + 1;
+				$totalPoints += $review->rating * ($review->jumlahVote() + 1);
+			}
+		}
+
+		if ($reviewEligable <= 0)
+			return 0;
+
+		$totalRating = $totalPoints / ($reviewEligable * Review::MAX_INPUT_RATING);
+		return $totalRating * 10;
 		
 	}
 
 	public function jumlahRatingAsString() {
 
-		// TODO
-		return "6";
+		$rating = $this->jumlahRating();
 
+		$depan = (integer) $rating;
+		$belakang = abs((integer) ($rating * 100) - ($depan * 100));
+
+		$ratingArray = array();
+		$ratingArray['depan'] = $depan;
+		$ratingArray['belakang'] = $belakang;
+
+		return $ratingArray;
 	}
 
 }

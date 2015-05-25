@@ -31,6 +31,14 @@ class Pengguna extends Model {
 		return $this->hasMany('Feedback');
 	}
 
+	public function riwayat() {
+		return $this->hasMany('Riwayat');
+	}
+
+	public function notifikasi() {
+		return $this->hasMany('Notifikasi');
+	}
+
 	public function subscribe() {
 		return $this->belongsToMany('Dosen', 'subscribe');
 	}
@@ -71,9 +79,17 @@ class Pengguna extends Model {
 		return (time() - $this->banned_hingga < 0);
 	}
 
-	function isGivingVote($review_id) {
+	function getVote($review_id) {
 		try {
 			return $this->vote()->where('review_id', '=', $review_id)->firstOrFail();
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+
+	function isGivingReview($dosen_id) {
+		try {
+			return $this->review()->where('dosen_id', '=', $dosen_id)->firstOrFail();
 		} catch (Exception $e) {
 			return false;
 		}
@@ -97,6 +113,19 @@ class Pengguna extends Model {
 
 	function isSubscribe($dosen_id) {
 		return ($this->subscribe()->where('dosen_id', '=', $dosen_id)->count() > 0);
+	}
+
+	function getAllEligableIcons() {
+		$jumlahPost = $this->review()->count();
+		$icons = new \Illuminate\Database\Eloquent\Collection;
+
+		foreach (Achievement::all() as $achievement) {
+			if ($achievement->target <= $jumlahPost) {
+				$icons = $icons->merge($achievement->icons()->get());
+			}
+		}
+
+		return $icons;
 	}
 
 }

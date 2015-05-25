@@ -19,7 +19,7 @@ class MataKuliahMigration {
             $table->integer('sks')->default(3);
             
             $table->integer('semester')->default(1);
-            $table->enum('jenis', array('universitas', 'fakultas', 'jurusan', 'peminatan'))->default('fakultas');
+            $table->enum('jenis', array('universitas', 'rumpun', 'fakultas', 'jurusan', 'peminatan'))->default('fakultas');
             $table->enum('prodi', array('universitas', 'fakultas', 'ilkom', 'si'))->default('fakultas');
             $table->string('deskripsi')->default('Lorem ipsum dolor sit amet');
 

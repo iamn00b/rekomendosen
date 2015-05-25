@@ -16,7 +16,18 @@
 					<span class="black-text">
 						<h4>{{ dosen.nama }}</h4>
 					</span>
-					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+					
+			        <table class="bordered">
+			          <tr>
+			            <td><strong>Jenis Kelamin</strong></td>
+			            <td>{{ dosen.jenisKelaminAsString }}</td>
+			          </tr>
+			          <tr>
+			            <td><strong>Pendidikan</strong></td>
+			            <td>{{ dosen.pendidikan }}</td>
+			          </tr>
+			        </table>
+			        
 				</div>
 				<div class="col s2">
 					<span class="teal-text text-lighten-3 center-align">
@@ -35,7 +46,7 @@
                   <span class="black-text">
                     {% for matakuliah in dosen.matakuliah.take(3).get %} 
                       <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id }) }}" class="flat left">
-                        <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="rd-small-circle left"> 
+                        <img src="{{ matakuliah.foto }}" alt="" class="rd-small-circle left"> 
                         <h6 class="left">{{ matakuliah.nama }}</h6>
                       </a>
                     {% endfor %} 

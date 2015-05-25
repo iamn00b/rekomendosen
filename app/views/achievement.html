@@ -1,0 +1,21 @@
+{% extends "template/pengguna.template.html" %}
+
+{% block title %}Beranda{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <h2>Achievement</h2>
+
+  {% for achievement in achievements %}
+    <div class="rd-card white">
+      <h4>{{ achievement.nama }} Achievement</h4>
+      <p>Memberi review sebanyak {{ achievement.target }} kali</p>
+      <p><strong>Unlockables:</strong></p>
+      {% for icon in achievement.icons.get %}
+        <img src="{{ icon.getIcon }}" class="green responsive-img rd-icon rd-medium-circle">
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

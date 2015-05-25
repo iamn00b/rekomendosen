@@ -5,6 +5,7 @@ class _MainController extends Controller {
 	public function render($page, $pass_var = array()) {
 
 		$pass_var['BASE_URL'] = BASE_URL;
+		$pass_var['maintenance'] = ServerMode::where('desc','=','maintenance')->first()->status;
 		$pass_var['pengguna'] = Auth::getPengguna();
 
 		parent::render($page, $pass_var);

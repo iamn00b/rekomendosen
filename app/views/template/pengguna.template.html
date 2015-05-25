@@ -9,22 +9,38 @@
 
 {% block sidebar %}
 <li class="jumlahrekomendasi">
-  <span class="rekomendasi"><strong>{{ pengguna.jumlahReview }}</strong> Rekomendasi</span>
+  <span class="rekomendasi"><strong>{{ pengguna.review.count }}</strong> Rekomendasi</span>
 </li>
 
 <li class="achievement-list">
   <span>Achievement</span><br/>
-  <img src="http://placehold.it/87x15">
-  <img src="http://placehold.it/87x15">
+  <a href="{{ urlFor('achievement') }}"><img src="http://placehold.it/87x15"></a>
+  <!--{% for icon in pengguna.getAllEligableIcons %}
+    <img src="{{ icon.getIcon }}" class="green responsive-img rd-icon circle">
+  {% endfor %}-->
 </li>
 
 <li class="action">
   <ul class="tabs">
-    <li class="tab col s6"><a href="#test1" class="active">Notifikasi</a></li>
-    <li class="tab col s6"><a href="#test2">Riwayat</a></li>
+    <li class="tab col s6"><a href="#notif" class="active">Notifikasi</a></li>
+    <li class="tab col s6"><a href="#log">Riwayat</a></li>
   </ul>
-  <div id="test1" class="col s12">Test 1</div>
-  <div id="test2" class="col s12">Test 2</div>
+  <div id="notif" class="col s12 sidebar-list">
+    {% for notifikasi in pengguna.notifikasi.take(6).get %}
+    <div class="rd-card link white waves-effect waves-light" href="#!">
+      {{ notifikasi.teks }}
+      <div class="waktu">{{ notifikasi.created_at | date("l, j M Y H:i:s") }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <div id="log" class="col s12 sidebar-list">
+    {% for riwayat in pengguna.riwayat.orderBy('created_at', 'desc').take(6).get %}
+    <div class="rd-card link white waves-effect waves-light" href="#!">
+      {{ riwayat.teks }}
+      <div class="waktu">{{ riwayat.created_at | date("l, j M Y H:i:s") }}</div>
+    </div>
+    {% endfor %}
+  </div>
 </li>
 {% endblock %}
 

@@ -4,6 +4,33 @@ class MainSeed {
 
     function run()
     {
+    	$maintenancemode = new ServerMode;
+    	$maintenancemode->desc = 'maintenance';
+    	$maintenancemode->save();
+
+    	/* Achievements */
+    	$achievementBasic = new Achievement;
+    	$achievementBasic->nama = 'Basic';
+    	$achievementBasic->target = 0;
+    	$achievementBasic->badge = 'placeholder.png';
+    	$achievementBasic->save();
+
+    	/* Icon */
+    	$icon1 = new Icon;
+    	$icon1->filename = 'ambulance.png';
+    	$icon1->achievement_id = $achievementBasic->id;
+    	$icon1->save();
+
+    	$icon2 = new Icon;
+    	$icon2->filename = 'balls.png';
+    	$icon2->achievement_id = $achievementBasic->id;
+    	$icon2->save();
+
+    	$icon3 = new Icon;
+    	$icon3->filename = 'bandaid.png';
+    	$icon3->achievement_id = $achievementBasic->id;
+    	$icon3->save();
+
 
     	/* Pengguna */
     	$pengguna1 = new Pengguna;
@@ -18,6 +45,7 @@ class MainSeed {
 		$dosen1->nama = "Anto";
 		$dosen1->jeniskelamin = Dosen::LAKI_LAKI;
 		$dosen1->pendidikan = 'S2';
+		$dosen1->foto = 'test.jpg';
 		
 		$dosen2 = new Dosen;
 		$dosen2->nip = "1113";
@@ -100,47 +128,53 @@ class MainSeed {
 		$review1->isi = "sangat direkomendasikan";
 		$review1->dosen_id = $dosen1->id;
 		$review1->pengguna_id = $pengguna1->id;
+		$review1->icon_id = $icon1->id;
+		$review1->color = Icon::AVAILABLE_COLOR['red'];
 		
-		$review2 = new Review;
-		$review2->rating = 2;
-		$review2->isi = "terlalu cepat ngajarnya";
-		$review2->dosen_id = $dosen1->id;
-		$review2->pengguna_id = $pengguna1->id;
+		// $review2 = new Review;
+		// $review2->rating = 2;
+		// $review2->isi = "terlalu cepat ngajarnya";
+		// $review2->dosen_id = $dosen1->id;
+		// $review2->pengguna_id = $pengguna1->id;
 
 		$review1->save();
-		$review2->save();
+		// $review2->save();
 		
 		$komentar1 = new Komentar;
 		$komentar1->isi = "saya setuju";
 		$komentar1->review_id = $review1->id;
 		$komentar1->pengguna_id = $pengguna1->id;
+		$komentar1->icon_id = $icon3->id;
+		$komentar1->color = Icon::AVAILABLE_COLOR['yellow'];
 		
 		$komentar2 = new Komentar;
 		$komentar2->isi = "saya tidak setuju";
 		$komentar2->review_id = $review1->id;
 		$komentar2->pengguna_id = $pengguna1->id;
+		$komentar2->icon_id = $icon2->id;
+		$komentar2->color = Icon::AVAILABLE_COLOR['blue'];
 		
-		$komentar3 = new Komentar;
-		$komentar3->isi = "mantap!";
-		$komentar3->review_id = $review2->id;
-		$komentar3->pengguna_id = $pengguna1->id;
+		// $komentar3 = new Komentar;
+		// $komentar3->isi = "mantap!";
+		// $komentar3->review_id = $review2->id;
+		// $komentar3->pengguna_id = $pengguna1->id;
 		
 		$komentar1->save();
 		$komentar2->save();
-		$komentar3->save();
+		// $komentar3->save();
 		
 		$vote1 = new Vote;
 		$vote1->tipe = Vote::UP;
 		$vote1->review_id = $review1->id;
 		$vote1->pengguna_id = $pengguna1->id;
 		
-		$vote2 = new Vote;
-		$vote2->tipe = Vote::DOWN;
-		$vote2->review_id = $review2->id;
-		$vote2->pengguna_id = $pengguna1->id;
+		// $vote2 = new Vote;
+		// $vote2->tipe = Vote::DOWN;
+		// $vote2->review_id = $review2->id;
+		// $vote2->pengguna_id = $pengguna1->id;
 
 		$vote1->save();
-		$vote2->save();	
+		// $vote2->save();	
 			
 		// $report1 = new Report;
 		// $report1->review_id = $review1->id;

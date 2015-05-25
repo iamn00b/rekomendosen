@@ -27,7 +27,6 @@
 				{% block topbar %}
 				{% endblock %}
 				<li><a href="{{ urlFor('logout') }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Logout"><i class="mdi-content-clear"></i></a></li>
-
 			</ul>
 		</div>
 	</nav>
@@ -48,15 +47,6 @@
 
 <!-- Content -->
 <div class="rd-body container">
-	{% if flash.notif is defined %}
-	<div class="row">
-	  <div class="col s12">
-	    <div class="card-panel green lighten-1">
-	      <span class="white-text">{{ flash.notif }}</span>
-	    </div>
-	  </div>
-	</div>
-	{% endif %}
 
 	{% block content %}
 	{% endblock %}
@@ -78,7 +68,11 @@
     });
 
 	// Activate material design Datepicker
-	$('.datepicker').pickadate(); 
+	$('.datepicker').pickadate({
+	    selectMonths: true, // Creates a dropdown to control month
+	    selectYears: 15, // Creates a dropdown of 15 years to control year
+	    format: 'yyyy-mm-dd'
+	}); 
 
 	// Activate material design Select Dropdown
 	$('select').material_select();
@@ -90,5 +84,10 @@
 	$('.rd-card.link').click(function() {
 	  window.location = $(this).attr('href');
 	})
+
+	// FLASH NOTIFICATION
+	{% if flash.notif is defined %}
+	Materialize.toast('{{ flash.notif }}', 4000);
+	{% endif %}
 </script>
 {% endblock %}

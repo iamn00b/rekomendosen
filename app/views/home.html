@@ -3,53 +3,117 @@
 {% block title %}Beranda{% endblock %}
 
 {% block content %}
-{% if flash.notif is defined %}
+
 <div class="row">
-  <div class="col s12">
-    <div class="card-panel green lighten-1">
-      <span class="white-text">{{ flash.notif }}</span>
-    </div>
-  </div>
-</div>
-{% endif %}
-	<ul id="review-rekomendasi">
-
+  <ul class="rd-review collapsible popout" data-collapsible="expandable">
 	{% for review in daftarReview %}
-		<li class="row">
-			<div class="card card-panel grey lighten-5 card-review">
-				<div class="row">
-					<div class="col s1"><img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img"></div>
-					<h6 class="col s11">Dosen <strong>{{ review.dosen.first.nama }}</strong> diberikan {% if review.isBaik %}rekomendasikan{% else %}tidak rekomendasi{% endif %} oleh seseorang</h6>
-				</div>
-				<div class="row">
-					<div class="col m2">
-						<img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img">
-					</div>
-					<div class="col m10">
-						<blockquote class="rd-review-home {% if review.isBaik %} baik {% else %} buruk {% endif %}">{{ review.isi }}</blockquote>
-					</div>
-				</div>
+	<!-- Review Item --> 
+		<p> Dosen <a href="{{ urlFor('rinciandosen', {'id': review.dosen.first.id }) }}"><img src="{{ review.dosen.first.getFoto }}" class="rd-small-circle"> <strong>{{ review.dosen.first.nama }}</strong></a> diberikan review oleh seseorang</p>
+    <li class="rd-review-item rd-review-rating-{{ review.rating }}">
+      <div class="collapsible-header">
+        <div class="row valign-wrapper">
 
-				{% for komentar in review.komentars.get %}
-				<div class="row">
-					<div class="col m9 offset-m2">
-						<div class="col m2"><img src="{{ BASE_URL }}/img/tes.jpg" alt="" class="activator circle responsive-img"></div>
-						<div class="col m10">
-							<span>{{ komentar.isi }}</span>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
+          <!-- Vote button -->
+          <div class="col s1 rd-vote">
+            <a href="{{ urlFor('upvote', {'id' : review.id }) }}" {% if pengguna.isGivingUpvote(review.id) %}class="active"{% endif %}>
+              <i class="mdi-navigation-arrow-drop-up btn-vote"></i>
+            </a>
 
-				<form method="POST" action="{{ urlFor('komentar', {'id' : review.id }) }}" class="row">
-					<div class="input-field col m9 offset-m3">
-						<textarea id="komentar-{{review.id}}" name="komentar" class="materialize-textarea"></textarea>
-						<label for="komentar-{{review.id}}">Komentar</label>
-						<button type="submit" class="waves-effect waves-light btn teks-putih rata-kanan offset-m3">Kirim</button>
-					</div>
-				</form>
-			</div>
-		</li>
+            <h5>{{ review.jumlahVoteAsString }}</h5>
+
+            <a href="{{ urlFor('downvote', {'id' : review.id }) }}" {% if pengguna.isGivingDownvote(review.id) %}class="active"{% endif %}>
+              <i class="mdi-navigation-arrow-drop-down btn-vote"></i>
+            </a>
+          </div>
+
+          <!-- image -->
+          <div class="col s1">
+            <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle responsive-img left">
+          </div>
+
+          <div class="col s9">
+            <div class="row no-margin">
+              <div class="col s12">
+                {% for i in 1..review.rating %}
+                <i class="mdi-action-grade star rd-review-rating-{{ review.rating }} left"></i>
+                {% endfor %}
+
+                {% if review.rating < 6 %}
+                {% for i in review.rating+1..6 %}
+                <i class="mdi-action-grade star rd-review-rating-0 left"></i>
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <p>{{ review.isi }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s1">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-button btn-flat' href='#' data-hover="true" data-activates='review-{{ review.id }}-menu'><i class="mdi-navigation-more-vert"></i></a>
+
+            <!-- Dropdown Structure -->
+            <ul id='review-{{ review.id }}-menu' class='dropdown-content'>
+              {% if pengguna.id == review.pengguna_id %}
+              <li><a href="{{ urlFor('hapusreview', {'id': review.id })}}">Delete</a></li>
+              {% endif %}
+              <li class="divider"></li>
+              <li><a href="{{ urlFor('report', {'id': review.id })}}">Report</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Review comment -->
+      <div class="collapsible-body">
+
+        <!-- Review comment item -->
+        {% for komentar in review.komentar.get %}
+        <div class="row valign-wrapper">
+
+          <div class="col s1 offset-s2">
+            <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle responsive-img left">
+          </div>
+
+          <div class="col s8">
+            <p>{{ komentar.isi }}</p>
+          </div>
+
+          <div class="col s1">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-button btn-flat' href='#' data-hover="true" data-activates='komentar-{{ komentar.id }}-menu'><i class="mdi-navigation-more-vert"></i></a>
+
+            <!-- Dropdown Structure -->
+            <ul id='komentar-{{ komentar.id }}-menu' class='dropdown-content'>
+              {% if pengguna.id == komentar.pengguna_id %}
+              <li><a href="{{ urlFor('hapuskomentar', {'id': komentar.id })}}">Delete</a></li>
+              {% endif %}
+              <!-- <li class="divider"></li>
+              <li><a href="#!">Report</a></li> -->
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+
+        <form class="validated row valign-wrapper" method="POST" action="{{ urlFor('komentar', {'id' : review.id}) }}">
+            <div class="input-field col s8 offset-s3">
+              <input type="text" name="komentar" placeholder="tuliskan komentar" required>
+            </div>
+
+            <div class="col s1">
+              <button type="submit" class="btn-flat"><i class="mdi-content-send"></i></button>
+
+            </div>
+        </form>
+
+      </div>
+    </li>
 	{% endfor %}
 	</ul>
+</div>
 {% endblock %}

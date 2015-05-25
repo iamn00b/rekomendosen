@@ -19,7 +19,6 @@ class DosenMigration {
             $table->string('pendidikan')->default('S1');
 
             $table->timestamps();
-
         });
     }
 }

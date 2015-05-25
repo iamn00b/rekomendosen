@@ -80,17 +80,17 @@ class DosenController extends _MainController {
 		$nip = $dosen['nip'];
 		$nama = $dosen['nama'];
 		$jeniskelamin = $dosen['jeniskelamin'];
-		$ttl = $dosen['ttl'];
+		$pendidikan = $dosen['pendidikan'];
 
 		$dosen1 = new Dosen;
 		$dosen1->nip = $nip;
 		$dosen1->nama = $nama;
 		$dosen1->jeniskelamin = $jeniskelamin;
-		$dosen1->ttl = $ttl;
+		$dosen1->pendidikan = $pendidikan;
 		$dosen1->save();
-		$this->app->flash('notif', 'Berhasil menambah dosen '.$nama.' dengan id #' . $dosen1->id);
+		$this->app->flash('notif', 'Berhasil menambah dosen '.$nama);
 
-		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
+		$this->app->response->redirect($this->app->urlFor('cruddosen'), 200);
 	}
 	
 	function updateDosen($id) {
@@ -99,25 +99,25 @@ class DosenController extends _MainController {
 		$nip = $dosen['nip'];
 		$nama = $dosen['nama'];
 		$jeniskelamin = $dosen['jeniskelamin'];
-		$ttl = $dosen['ttl'];
+		$pendidikan = $dosen['pendidikan'];
 
 		$dosen1 = Dosen::find($id);
 		$dosen1->nip = $nip;
 		$dosen1->nama = $nama;
 		$dosen1->jeniskelamin = $jeniskelamin;
-		$dosen1->ttl = $ttl;
+		$dosen1->pendidikan = $pendidikan;
 		$dosen1->save();
-		$this->app->flash('notif', 'Berhasil mengubah dosen '.$nama.' dengan id #' . $id);
+		$this->app->flash('notif', 'Berhasil mengubah dosen '.$nama);
 
-		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
+		$this->app->response->redirect($this->app->urlFor('cruddosen'), 200);
 	}
 	
 	function deleteDosen($id) {
 		$dosen = Dosen::find($id);
-		$this->app->flash('notif', 'Berhasil menghapus dosen '.$dosen->nama.' dengan id #' . $id);
+		$this->app->flash('notif', 'Berhasil menghapus dosen '.$dosen->nama);
 		$dosen->delete();
 		
-		$this->app->response->redirect($this->app->urlFor('cruddosen'), 400);
+		$this->app->response->redirect($this->app->urlFor('cruddosen'), 200);
 	}
 
 }
