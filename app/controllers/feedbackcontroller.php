@@ -10,15 +10,14 @@ class FeedbackController extends _MainController {
 		$isi = $feedback['feedback'];
 
 		$pengguna = Auth::getPengguna();
-		$npm = $pengguna->npm;
 		$feedback1 = new Feedback;
 		$feedback1->rating = $rating;
 		$feedback1->isi = $isi;
-		$feedback1->pengguna_npm = $npm;
+		$feedback1->pengguna_id = $pengguna->id;
 		$feedback1->save();
 		$this->app->flash('notif', 'Terima kasih telah memberi feedback! Feedback anda akan sangat berguna untuk perkembangan rekomendosen kedepannya!');
 
-		$this->app->response->redirect($this->app->urlFor('home'), 400);
+		$this->app->response->redirect($this->app->urlFor('home'), 200);
 	}
 	
 	function tampilAdministrasiFeedback() {

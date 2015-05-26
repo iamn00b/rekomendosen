@@ -48,7 +48,7 @@
 <a class="waves-effect waves-white btn green lighten-1 rd-feedback modal-trigger" href="#feedback-dialog">Beri Feedback</a>
 
 <!-- Modal Feedback -->
-<form method="post" id="feedback-dialog" class="modal modal-footer">
+<form method="post" action="{{ urlFor('feedback') }}" id="feedback-dialog" class="modal modal-footer validated">
   <div class="modal-content">
     <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Beri Feedback</h4>
     <div class="input-field section">
@@ -80,15 +80,35 @@
 <!-- END Modal Feedback -->
 
 <!-- Modal Tutorial -->
-<div id="tutorial-dialog" class="modal modal-footer">
+<div id="tutorial-dialog" class="modal white modal-footer" style="height:550px">
   <div class="modal-content">
     <h4><i class="small teal-text text-lighten-2 mdi-content-add"></i>Tutorial</h4>
 
-    <p class="black-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui ante, tincidunt non tortor semper, mollis convallis magna. Curabitur ut sodales est, ultricies cursus enim. Maecenas sit amet tincidunt augue. Praesent aliquet a nisi in pellentesque. Morbi convallis, arcu ut faucibus dictum, elit sem auctor magna, et dictum mi est quis sem. Vestibulum mattis, justo id scelerisque pharetra, dolor augue blandit augue, ac tempus urna elit eget augue. In massa velit, aliquam nec convallis volutpat, eleifend sit amet sapien. Aenean nec vestibulum turpis. Duis ornare ultrices nisl, ut pellentesque eros aliquam commodo. Aliquam congue viverra consequat. Mauris sed tincidunt justo. Suspendisse vitae velit eget massa ullamcorper sagittis. Donec ut nunc eu dui consectetur vestibulum.</p>
+      <div class="slider">
+        <ul class="slides white">
+          <li>
+           <img src="{{ BASE_URL }}/images/tutorial/tutor-1.png"><!-- random image -->
+          </li>
+          <li>
+            <img src="{{ BASE_URL }}/images/tutorial/tutor-2.png"> <!-- random image -->
+          </li>
+          <li>
+            <img src="{{ BASE_URL }}/images/tutorial/tutor-3.png"> <!-- random image -->
+          </li>
+          <li>
+            <img src="{{ BASE_URL }}/images/tutorial/tutor-4.png"> <!-- random image -->
+          </li>
+          <li>
+            <img src="{{ BASE_URL }}/images/tutorial/tutor-5.png"> <!-- random image -->
+          </li>
+          <li>
+            <img src="{{ BASE_URL }}/images/tutorial/tutor-6.png"> <!-- random image -->
+          </li>
+        </ul>
+      </div>
 
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer white">
     <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Tutup</a>
   </div>
 </div>

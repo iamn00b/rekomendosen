@@ -85,6 +85,12 @@
 	  window.location = $(this).attr('href');
 	})
 
+	$('form.validated').each( function() {
+	    $(this).validate();
+	  });
+
+	$('.slider').slider();
+
 	// FLASH NOTIFICATION
 	{% if flash.notif is defined %}
 	Materialize.toast('{{ flash.notif }}', 4000);

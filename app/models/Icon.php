@@ -3,10 +3,6 @@
 class Icon extends Model {
 
 	const FILE_URL = "/images/icon/";
-	const AVAILABLE_COLOR = array('green' 	=> 'green',
-								  'red' 	=> 'red', 
-								  'yellow' 	=> 'yellow', 
-								  'blue' 	=> 'blue');
 
 	protected $table = 'icon';
 

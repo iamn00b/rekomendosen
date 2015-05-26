@@ -9,55 +9,64 @@
 {% block content %}
 	<h2>Hasil Pencarian '{{ query }}'</h2>
 	<h4>Dosen</h4>      
-	<ul id="hasil-pencarian-dosen">
 
   {% if daftarDosen is empty %}
     <h5 class="rd-pencarian-gagal">Tidak ditemukan dosen dengan kata kunci '{{ query }}'</h5>
   {% endif %}
 
   {% for dosen in daftarDosen %}
-  
-		<li class="col s12 m8 offset-m2 l6 offset-l3">
-      
-        <div class="card rd-card card-panel grey lighten-5 waves-effect waves-light" href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}">
-          <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="{{ dosen.getFoto }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col s8">
-              <span class="black-text">
-                <h4>{{ dosen.nama }}</h4>
-              </span>
-              <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-            </div>
-            <div class="col s2">
-              <span class="teal-text text-lighten-3 center-align">
-                <h4>Rating</h4>
-              <h1 style="line-height: 5px;"><strong>9</strong>.<small>85</small></h1>
-              </span>
-            </div>
-          </div>
-	        <div class="row">
-		        <div class="col s12 m4 l2">
-	                <h6 class="matkul black-text"><strong>Mengajar Mata Kuliah:</strong></h6>
-		        </div>
-            <div class="col s12 m4 l8">
-                  <span class="black-text valign-wrapper">
-                    {% for matakuliah in dosen.matakuliahs.take(3).get %} 
-                      <div class="valign-wrapper rd-left">
-                        <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class="circle rd-small-circle responsive-img"> 
-                        <h6 class="valign">{{ matakuliah.nama }}, </h6>
-                      </div>
+    <div class="rd-card link white waves-effect waves-light" href="{{ urlFor('rinciandosen', {'id' : dosen.id }) }}">
+      <div class="row">
+        <div class="col s2">
+          <img src="{{ dosen.getFoto }}" alt="" class="rd-circle center-block"> 
+        </div>
+        <div class="col s8">
+          <span class="black-text">
+            <h4>{{ dosen.nama }}</h4>
+          </span>
+          
+              <table class="bordered">
+                <tr>
+                  <td><strong>Jenis Kelamin</strong></td>
+                  <td>{{ dosen.jenisKelaminAsString }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Pendidikan</strong></td>
+                  <td>{{ dosen.pendidikan }}</td>
+                </tr>
+              </table>
+              
+        </div>
+        <div class="col s2">
+          <span class="teal-text text-lighten-3 center-align">
+            <h4>Rating</h4>
+            <h1 style="line-height: 5px;"><strong>{{ dosen.jumlahRatingAsString['depan'] }}</strong>.<small>{{ dosen.jumlahRatingAsString['belakang'] }}</small></h1>
+            <p>dari {{ dosen.review.count }} review</p>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m4 l2">
+          <h6 class="matkul black-text"><strong>Mengajar Mata Kuliah:</strong></h6>
+        </div>
+        <div class="col s12 m4 l8">
+                  <span class="black-text">
+                    {% for matakuliah in dosen.matakuliah.take(3).get %} 
+                      <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id }) }}" class="flat left">
+                        <img src="{{ matakuliah.foto }}" alt="" class="rd-small-circle left"> 
+                        <h6 class="left">{{ matakuliah.nama }}</h6>
+                      </a>
                     {% endfor %} 
 
-                    <a href="detil-mata-kuliah" class="lain teal-text text-lighten-3 valign"> lainnya...</a>
+                    {% if dosen.matakuliahs.count > 3 %}
+                    <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}#daftarmatakuliah" class="lain teal-text text-lighten-3 valign"> lainnya...</a>
+                    {% endif %}
                   </span>
-            </div>
-	        </div>
         </div>
-		</li>
+      </div>
+    </div> 
     {% endfor %}
-	</ul>
 
   <h4>Mata Kuliah</h4>
   <ul id="hasil-pencarian-mata-kuliah">
@@ -67,47 +76,44 @@
   {% endif %}
 
   {% for matakuliah in daftarMataKuliah %}
-    <li class="col s12">
-      <div class="rd-card link grey lighten-5 waves-effect waves-light" href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id }) }}">
-        <div class="row valign-wrapper">
-          <div class="col s2">
-            <img src="{{ BASE_URL }}/img/grey.jpg" alt="" class=" activator rd-circle center-block"> 
-          </div>
-          <div class="col s8">
-            <span class="black-text">
-              <h4>{{ matakuliah.singkatan_1 }} {% if matakuliah.singkatan_2 is not empty %}/ {{ matakuliah.singkatan_2 }} {% endif %}</h4>
-              <h6><strong>{{ matakuliah.nama }}</strong></h6>
-            </span>
-            <p>{{ matakuliah.deskripsi }}</p>
-          </div>
-          <div class="col s2">
-            <span class="teal-text text-lighten-3 center-align">
-              <h5>Semester</h5>
-            <h1 style="line-height: 5px;"><strong>{{ matakuliah.semester }}</strong></h1>
-            </span>
-          </div>
+    <div class="rd-card link grey lighten-5 waves-effect waves-light" href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.id }) }}">
+      <div class="row valign-wrapper">
+        <div class="col s2">
+          <img src="{{ matakuliah.foto }}" alt="" class=" activator rd-circle center-block"> 
         </div>
-        <div class="row">
-          <div class="col s12 m2">
-                <h6 class="black-text"><strong>Dosen Pengajar:</strong></h6>
-          </div>
-          <div class="col s12 m8 black-text">
-                  {% for dosen in matakuliah.dosen.take(3).get %} 
-                    <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}" class="left">
-                      <img src="{{ dosen.getFoto }}" alt="" class="rd-small-circle left"> 
-                      <h6 class="left">{{ dosen.nama }}</h6>
-                    </a>
-                  {% endfor %} 
-
-                  {% if matakuliah.dosen.count > 3 %}
-                  <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}#daftardosen" class="lain teal-text text-lighten-3 valign"> lainnya...</a>
-                  {% endif %}
-          </div>
+        <div class="col s8">
+          <span class="black-text">
+            <h4>{{ matakuliah.singkatan_1 }} {% if matakuliah.singkatan_2 is not empty %}/ {{ matakuliah.singkatan_2 }} {% endif %}</h4>
+            <h6><strong>{{ matakuliah.nama }}</strong></h6>
+          </span>
+          <p>{{ matakuliah.deskripsi }}</p>
+        </div>
+        <div class="col s2">
+          <span class="teal-text text-lighten-3 center-align">
+            <h5>Semester</h5>
+          <h1 style="line-height: 5px;"><strong>{{ matakuliah.semester }}</strong></h1>
+          </span>
         </div>
       </div>
-    </li>
-    {% endfor %}
+      <div class="row">
+        <div class="col s12 m2">
+              <h6 class="black-text"><strong>Dosen Pengajar:</strong></h6>
+        </div>
+        <div class="col s12 m8 black-text">
+                {% for dosen in matakuliah.dosen.take(3).get %} 
+                  <a href="{{ urlFor('rinciandosen', {'id' : dosen.id}) }}" class="flat left">
+                    <img src="{{ dosen.getFoto }}" alt="" class="rd-small-circle left"> 
+                    <h6 class="left">{{ dosen.nama }}</h6>
+                  </a>
+                {% endfor %} 
 
+                {% if matakuliah.dosen.count > 3 %}
+                <a href="{{ urlFor('rincianmatakuliah', {'id' : matakuliah.kodemk}) }}#daftardosen" class="lain teal-text text-lighten-3 valign"> lainnya...</a>
+                {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
 	<ul>
 {% endblock %}
 

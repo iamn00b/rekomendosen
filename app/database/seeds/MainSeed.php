@@ -129,7 +129,7 @@ class MainSeed {
 		$review1->dosen_id = $dosen1->id;
 		$review1->pengguna_id = $pengguna1->id;
 		$review1->icon_id = $icon1->id;
-		$review1->color = Icon::AVAILABLE_COLOR['red'];
+		$review1->color = 'red';
 		
 		// $review2 = new Review;
 		// $review2->rating = 2;
@@ -145,14 +145,14 @@ class MainSeed {
 		$komentar1->review_id = $review1->id;
 		$komentar1->pengguna_id = $pengguna1->id;
 		$komentar1->icon_id = $icon3->id;
-		$komentar1->color = Icon::AVAILABLE_COLOR['yellow'];
+		$komentar1->color = 'yellow';
 		
 		$komentar2 = new Komentar;
 		$komentar2->isi = "saya tidak setuju";
 		$komentar2->review_id = $review1->id;
 		$komentar2->pengguna_id = $pengguna1->id;
 		$komentar2->icon_id = $icon2->id;
-		$komentar2->color = Icon::AVAILABLE_COLOR['blue'];
+		$komentar2->color = 'blue';
 		
 		// $komentar3 = new Komentar;
 		// $komentar3->isi = "mantap!";

@@ -3,41 +3,43 @@
 {% block title %}Kelola Feedback{% endblock %}
 
 {% block content %}
-{% if flash.notif is defined %}
 <h2>Kelola Feedback</h2>
-<ul id="daftar-Report" class="row margin-nol">
-	{% for feedback in daftarFeedback %}
-	<li>
-		<div class="col m12 card card-panel grey lighten-5 padding-20" href="#!">
-			<div class="row no-bottom-space">
-				<div class="col s12">
-					<a href="#modal-hapus-feedback-{{feedback.id}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-				</div>
-			</div>
+<div class="rd-card white">
+<table class="responsive-table white centered">
+	 <thead>
+          <tr>
+			  <th data-field="id">Feedback Oleh</th>
+              <th data-field="name">Nilai</th>
+              <th data-field="price">Isi</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
 
-			<div class="row valign-wrapper">
-				<div class="col s12">
-					<span class="black-text">
-						<h4>Feedback oleh {{feedback.pengguna_npm}}</h4>
-					</span>
-					<ul>
-						<li>Nilai: <strong>{{feedback.rating}}</strong>/5</li>
-						<li>Isi: {{feedback.isi}}</li>
-					</ul>
-				</div>
-			</div>
+        <tbody>
+        {% for feedback in daftarFeedback %}
+          <tr>
+            <td>{{feedback.pengguna.first.nama}}</td>
+            <td>{{feedback.rating}}</td>
+            <td>{{feedback.isi}}</td>
+            <td><a href="#modal-hapus-feedback-{{feedback.id}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+</div>
+
+
+{% for feedback in daftarFeedback %}
+	<!-- Modal Structure -->
+	<div id="modal-hapus-feedback-{{feedback.id}}" class="modal">
+		<div class="modal-content">
+			<p>Apakah anda yakin ingin hapus hapus Feedback dari {{feedback.pengguna.first.nama}}?</p>
 		</div>
-		<!-- Modal Structure -->
-		<div id="modal-hapus-feedback-{{feedback.id}}" class="modal">
-			<div class="modal-content">
-				<p>Hapus Feedback dari {{feedback.pengguna_npm}}?</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-				<a href="{{ urlFor('feedbackdelete', {'id' : feedback.id }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
-			</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+			<a href="{{ urlFor('feedbackdelete', {'id' : feedback.id }) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
 		</div>
-	</li>
-	{% endfor %}
-</ul>
+	</div>
+{% endfor %}
+
 {% endblock %}

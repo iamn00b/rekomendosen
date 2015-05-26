@@ -3,66 +3,86 @@
 {% block title %}Kelola Komentar{% endblock %}
 
 {% block content %}
-{% if flash.notif is defined %}
-<div class="row">
-  <div class="col s12">
-    <div class="card-panel green lighten-1">
-      <span class="white-text">{{ flash.notif }}</span>
-    </div>
-  </div>
-</div>
-{% endif %}
 <h2>Kelola Komentar</h2>
-<ul id="daftar-Komentar" class="row margin-nol">
-	{% for komentar in daftarKomentar %}
-	<li>
-		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light padding-20" href="#!">
-			<div class="row no-bottom-space">
-				<div class="col s12">
-					<a href="#modal-hapus-Komentar-{{komentar.id}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-				</div>
-			</div>
-			<div class="row valign-wrapper modal-trigger" href="#modal-ubah-Komentar-{{komentar.id}}">
-				<div class="col s12">
-					<span class="black-text">
-						<h4>Komentar #{{komentar.id}} ({{komentar.created_at}})</h4>
-					</span>
-					<ul>
-						<li>dari: {{komentar.pengguna.first.npm}}</li>
-						<li>review: {{komentar.review.first.id}}</li>
-						<li>Isi: {{komentar.isi}}</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- Modal Structure -->
-		<form method="POST" action="{{ urlFor('komentarupdate', {'id' : komentar.id}) }}" id="modal-ubah-Komentar-{{komentar.id}}" class="modal">
-			<div class="modal-content">
-				<h4>Ubah Komentar</h4>
+<div class="rd-card white">
+<table class="responsive-table hoverable white centered">
+	 <thead>
+          <tr>
+              <th data-field="name">Tanggal</th>
+              <th data-field="price">Pengguna</th>
+              <th data-field="price">Review ID</th>
+              <th data-field="price">Isi Komentar</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for komentar in daftarKomentar %}
+          <tr>
+            <td>{{komentar.created_at | date("l, j M Y H:i:s")}}</td>
+            <td>{{komentar.pengguna.first.nama}}</td>
+            <td>{{komentar.review.first.id}}</td>
+            <td>{{komentar.isi}}</td>
+            <td><a href="#modal-ubah-Komentar-{{komentar.id}}" class="modal-trigger"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;<a href="#modal-hapus-Komentar-{{komentar.id}}" class="modal-trigger"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+</div>
+
+{% for komentar in daftarKomentar %}
+<!-- Modal Structure -->
+<form method="POST" action="{{ urlFor('komentarupdate', {'id' : komentar.id}) }}" id="modal-ubah-Komentar-{{komentar.id}}" class="validated modal">
+	<div class="modal-content">
+		<h4>Ubah Komentar</h4>
+		<div class="col m12">
+
+			<div class="row">
+		      <div class="col s12">
+		        <table class="bordered">
+		          <tr>
+		            <td><strong>Pengguna</strong></td>
+		            <td>{{ komentar.pengguna.first.nama }} ({{ komentar.pengguna.first.nomor }})</td>
+		          </tr>
+		          <tr>
+		            <td><strong>Review ID</strong></td>
+		            <td>{{ komentar.review.first.id }}</td>
+		          </tr>
+		        </table>
+		      </div>
+		    </div>
+
+			<div class="row">
 				<div class="col m12">
-					<div class="row">
-						<div class="input-field col m12">
-							<textarea name="isi" class="materialize-textarea" required>{{komentar.isi}}</textarea>
-							<label for="isi">Isi</label>
-						</div>
-					</div>
+					<label for="isi">Isi</label>
+					<textarea name="isi" class="materialize-textarea" onblur=' this.value=this.value.replace(/(^\s*)|(\s*$)/g, "");' required>{{komentar.isi}}</textarea>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
-			</div>
-		</form>
-		<!-- Modal Structure -->
-		<div id="modal-hapus-Komentar-{{komentar.id}}" class="modal">
-			<div class="modal-content">
-				<p>Hapus Komentar #{{komentar.id}} ({{komentar.created_at}})?</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-				<a href="{{ urlFor('komentardelete', {'id' : komentar.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
-			</div>
 		</div>
-	</li>
-	{% endfor %}
-</ul>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</button>
+	</div>
+</form>
+
+<!-- Modal Structure -->
+<div id="modal-hapus-Komentar-{{komentar.id}}" class="modal">
+	<div class="modal-content">
+		<p>Apakah anda yakin ingin hapus Komentar #{{komentar.id}} dari {{komentar.pengguna.first.nama}}({{komentar.pengguna.first.npm}})?</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+		<a href="{{ urlFor('komentardelete', {'id' : komentar.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+// FORM VALIDATION 
+  $('form.validated').each( function() {
+    $(this).validate();
+  });
+</script>
 {% endblock %}

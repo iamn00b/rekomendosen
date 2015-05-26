@@ -261,23 +261,21 @@ class ReviewController extends _MainController {
 	
 	function updateReview($id) {
 		$review = $this->app->request->post();
-		$jenis = $review['jenis'];
 		$isi = $review['isi'];
 
 		$review1 = Review::find($id);
-		$review1->jenis = $jenis;
 		$review1->isi = $isi;
 		$review1->save();
-		$this->app->flash('notif', 'Berhasil mengupdate review id #' . $id);
+		$this->app->flash('notif', 'Berhasil mengupdate review' );
 
-		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
+		$this->app->response->redirect($this->app->urlFor('rudreview'), 200);
 	}
 	
 	function deleteReview($id) {
 		$review = Review::find($id)->delete();
-		$this->app->flash('notif', 'Berhasil menghapus review id #' . $id);
+		$this->app->flash('notif', 'Berhasil menghapus review');
 
-		$this->app->response->redirect($this->app->urlFor('rudreview'), 400);
+		$this->app->response->redirect($this->app->urlFor('rudreview'), 200);
 	}
 	
 	function tampilAdministrasiKomentar() {
@@ -295,16 +293,16 @@ class ReviewController extends _MainController {
 		$komentar1 = Komentar::find($id);
 		$komentar1->isi = $isi;
 		$komentar1->save();
-		$this->app->flash('notif', 'Berhasil mengupdate komentar id #' . $id);
+		$this->app->flash('notif', 'Berhasil mengupdate komentar');
 
-		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
+		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 200);
 	}
 	
 	function deleteKomentar($id) {
 		$komentar = Komentar::find($id)->delete();
-		$this->app->flash('notif', 'Berhasil menghapus komentar id #' . $id);
+		$this->app->flash('notif', 'Berhasil menghapus komentar');
 		
-		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 400);
+		$this->app->response->redirect($this->app->urlFor('rudkomentar'), 200);
 	}
 
 	function tampilAdministrasiReport() {

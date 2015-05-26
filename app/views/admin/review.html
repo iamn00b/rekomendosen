@@ -4,75 +4,131 @@
 
 {% block content %}
 <h2>Kelola Review</h2>
-<ul id="daftar-review" class="row margin-nol">
-	<li>
-		{% for review in daftarReview %}
-		<div class="col m12 card card-panel grey lighten-5 waves-effect waves-light" href="#!">
-			<div class="row no-bottom-space">
-				<div class="col s12">
-					<a href="#modal-hapus-review-{{review.id}}" class="row rata-kanan hapus-profil-dosen modal-trigger"><i class="mdi-action-highlight-remove"></i></a>
-				</div>
-			</div>
+<div class="rd-card white">
+<table class="responsive-table white centered">
+	 <thead>
+          <tr>
+              <th data-field="price">Icon</th>
+              <th data-field="price">Pengguna</th>
+              <th data-field="price">Dosen</th>
+              <th data-field="price">Isi</th>
+              <th data-field="price">Action</th>
+          </tr>
+        </thead>
 
-			<div class="row valign-wrapper modal-trigger" href="#modal-ubah-review-{{review.id}}">
-				<div class="col s10">
-					<span class="black-text">
-						<h4>Review #{{review.id}} ({{ review.created_at }})</h4>
-					</span>
-					<ul>
-						<li>Oleh : {{ review.pengguna.first.npm }}</li>
-						<li>Dosen: {{ review.dosen.first.nama}}</li>
-						<li>Jenis: {{ review.jenisAsString }}</li>
-						<li>Isi: {{ review.isi }}</li>
-					</ul>
-				</div>
-				<div class="col s2">
-					<span class="teal-text text-lighten-3 center-align">
-						<h5>Vote</h5>
-						<h1 style="line-height: 5px;"><strong>{{ review.jumlahVoteAsString }}</strong></h5>
-						</span>
-					</div>
-				</div>
-			</div>
+        <tbody>
+        {% for review in daftarReview %}
+          <tr>
+          	<td><img src="{{ review.icon.first.getIcon }}" alt="" class="{{ review.color }} rd-icon rd-medium-circle responsive-img"></td>
+            <td>{{review.pengguna.first.nama}}</td>
+            <td>{{review.dosen.first.nama}}</td>
+            <td>{{review.isi}}</td>
+            <td>
+            	<a href="#modal-lihat-review-{{review.id}}" class="modal-trigger rd-admin-action-btn"><i class="small mdi-image-remove-red-eye"></i></a>&nbsp;
+	            <a href="#modal-ubah-review-{{review.id}}" class="modal-trigger rd-admin-action-btn"><i class="small mdi-editor-mode-edit"></i></a>&nbsp;
+	            <a href="#modal-hapus-review-{{review.id}}" class="modal-trigger rd-admin-action-btn"><i class="small mdi-action-delete"></i></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+</table>
+</div>
 
-			<!-- Modal Structure -->
-			<form method="POST" action="{{ urlFor('reviewupdate', {'id' : review.id }) }}" id="modal-ubah-review-{{review.id}}" class="modal">
-				<div class="modal-content">
-					<h4>Ubah Review #{{review.id}} ({{ review.created_at }})</h4>
-					<div class="col m12">
-						<div class="row">
-							<div class="col m12">
-								<label for="jenis">Jenis</label>
-								
-						          <select name="jenis" required>
-						            <option {% if review.jenis == 'baik' %}selected="true"{%endif%} value="baik">Baik</option>
-						            <option {% if review.jenis == 'buruk' %}selected="true"{%endif%} value="buruk">Buruk</option>
-						          </select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col m12">
-								<label for="isi">Isi</label>
-								<textarea name="isi" class="materialize-textarea" required>{{review.isi}}</textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
-				</div>
-			</form>
-			<!-- Modal Structure -->
-			<div id="modal-hapus-review-{{review.id}}" class="modal">
-				<div class="modal-content">
-					<p>Hapus review id {{review.id}} dari {{review.pengguna.first.npm}}?</p>
-				</div>
-				<div class="modal-footer">
-					<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
-					<a href="{{ urlFor('reviewdelete', {'id' : review.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+{% for review in daftarReview %}
+<!-- Modal Structure-->
+<div id="modal-lihat-review-{{review.id}}" class="modal">
+	<div class="modal-content">
+  		<div class="row">
+	      <div class="col s12">
+	        <table class="bordered">
+	          <tr>
+	            <td><strong>Pengguna</strong></td>
+	            <td>{{ review.pengguna.first.nama }} ({{ review.pengguna.first.nomor }})</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Dosen</strong></td>
+	            <td>{{ review.dosen.first.nama }}</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Tanggal</strong></td>
+	            <td>{{ review.created_at | date("l, j M Y H:i:s") }}</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Isi</strong></td>
+	            <td>{{ review.isi }}</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Rating</strong></td>
+	            <td>{{ review.rating }}</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Total Vote</strong></td>
+	            <td>{{ review.jumlahVoteAsString }}</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Banyak Vote</strong></td>
+	            <td>+{{ review.jumlahUpvote }} / -{{review.jumlahDownvote}}</td>
+	          </tr>
+	        </table>
+	      </div>
+	    </div>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tutup</a>
+	</div>
+</div>
+
+<!-- Modal Structure -->
+<form method="POST" action="{{ urlFor('reviewupdate', {'id' : review.id }) }}" id="modal-ubah-review-{{review.id}}" class="validated modal">
+	<div class="modal-content">
+		<h4>Ubah Review</h4>
+		<div class="col m12">
+			<div class="row">
+	      <div class="col s12">
+	        <table class="bordered">
+	          <tr>
+	            <td><strong>Pengguna</strong></td>
+	            <td>{{ review.pengguna.first.nama }} ({{ review.pengguna.first.nomor }})</td>
+	          </tr>
+	          <tr>
+	            <td><strong>Dosen</strong></td>
+	            <td>{{ review.dosen.first.nama }}</td>
+	          </tr>
+	        </table>
+	      </div>
+	    </div>
+			<div class="row">
+				<div class="col m12">
+					<label for="isi">Isi</label>
+					<textarea name="isi" class="materialize-textarea" required>{{review.isi}}</textarea>
 				</div>
 			</div>
-		</li>
-		{% endfor %}
-	</ul>
-	{% endblock %}
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class=" modal-action waves-effect waves-green btn">Simpan</a>
+	</div>
+</form>
+
+<!-- Modal Structure -->
+<div id="modal-hapus-review-{{review.id}}" class="modal">
+	<div class="modal-content">
+		<p>Apakah anda yakin ingin hapus review dari {{review.pengguna.first.nama}}?</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Tidak</a>
+		<a href="{{ urlFor('reviewdelete', {'id' : review.id}) }}" class="modal-action waves-effect waves-green btn geser-kanan-dikit">Ya</a>
+	</div>
+</div>
+
+{% endfor %}
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+// FORM VALIDATION 
+  $('form.validated').each( function() {
+    $(this).validate();
+  });
+</script>
+{% endblock %}
